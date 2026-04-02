@@ -1,0 +1,20 @@
+{
+  "name": "v0_local_run",
+  "version": "v0",
+  "llm": "claude-code (Claude Opus, acting as agent LLM)",
+  "model_for_env": "deterministic (simulate.py v0 logic)",
+  "rounds": 10,
+  "agents": [
+    "George Ripley",
+    "Nathaniel Hawthorne",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "n_agents": 5,
+  "notes": "First test run. Claude Code generates agent responses manually based on personas and environment state. 10 rounds covering Apr 1841 \u2014 Oct 1842. Testing whether v0 loop produces coherent narrative and plausible character arcs.",
+  "historical_baseline": "Hawthorne left ~Nov 1842 (after 18 months). Brook Farm survived until 1847. Key tensions: intellectuals vs laborers, money problems, Fourier conversion (1844), phalanstery fire (1846).",
+  "timestamp": "20260401_220537",
+  "run_dir": "runs/v0_local_20260401_220537",
+  "random_seed": 42
+}

@@ -1,0 +1,14 @@
+{
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "max_rounds": 30,
+  "timestamp": "20260401_223703",
+  "agents": [
+    "George Ripley",
+    "Nathaniel Hawthorne",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "random_seed": 42
+}

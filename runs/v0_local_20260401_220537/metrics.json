@@ -1,0 +1,102 @@
+[
+  {
+    "round": 1,
+    "date": "Apr 1841",
+    "food": 91,
+    "money": 525,
+    "morale": 85,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 2,
+    "date": "Jun 1841",
+    "food": 90,
+    "money": 550,
+    "morale": 85,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 3,
+    "date": "Aug 1841",
+    "food": 73,
+    "money": 575,
+    "morale": 90,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 4,
+    "date": "Oct 1841",
+    "food": 72,
+    "money": 590,
+    "morale": 95,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 5,
+    "date": "Dec 1841",
+    "food": 47,
+    "money": 615,
+    "morale": 100,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 6,
+    "date": "Feb 1841",
+    "food": 25,
+    "money": 640,
+    "morale": 100,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 7,
+    "date": "Apr 1842",
+    "food": 8,
+    "money": 665,
+    "morale": 90,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 8,
+    "date": "Jun 1842",
+    "food": 0,
+    "money": 710,
+    "morale": 65,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 9,
+    "date": "Aug 1842",
+    "food": 0,
+    "money": 725,
+    "morale": 40,
+    "members": 5,
+    "farm_output": 0,
+    "school_income": 0
+  },
+  {
+    "round": 10,
+    "date": "Oct 1842",
+    "food": 0,
+    "money": 750,
+    "morale": 15,
+    "members": 4,
+    "farm_output": 0,
+    "school_income": 0
+  }
+]

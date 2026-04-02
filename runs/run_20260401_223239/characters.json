@@ -1,0 +1,189 @@
+{
+  "George Ripley": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "SPEAK <on the purpose and principles of Brook Farm>",
+      "mood": "Resolute",
+      "satisfaction": 70,
+      "inner_thought": "I am terrified, if I am honest. Five souls, good land, a modicum of funds\u2014but will this actually work? Will Hawthorne and the others truly commit to the manual labor? They are poets and philosophers; I know their hearts. But the plow does not care for sentiment. Still, I have burned my bridges. The ministry is behind me. Everything rests on what we build here. I must inspire them, convince them\u2014convince *myself*\u2014that this is possible.",
+      "observation": "Sophia is watching me carefully, her eyes steady and encouraging. The others seem energized but also uncertain, waiting for me to anchor them. Even Hawthorne, who carries himself with such distance, leans slightly forward when the group gathers. There is hunger here\u2014hunger for something more than money and routine.",
+      "reflect_mood": "anxious",
+      "reflect_satisfaction": 100,
+      "concerns": [
+        "Hawthorne came to observe, not to join\u2014his skepticism about whether our ideals can survive contact with the plow is evident in every measured word",
+        "Charles Dana retreating to write while others labor\u2014is this the pattern I feared? Intellectuals claiming exemption through art?",
+        "I am carrying too much weight myself, trying to be minister, farmer, fundraiser, philosopher all at once",
+        "The East Building stands complete, but buildings do not sustain a community; will does",
+        "Sophia and Dwight speak of cultural achievement while the fields wait for spring planting"
+      ],
+      "relationships": {
+        "Nathaniel Hawthorne": {
+          "trust": 10,
+          "attitude": "His hands suggest he knows labor, yet his questions reveal he doubts we can truly marry the mind with the spade\u2014precisely what haunts me in the dark hours."
+        },
+        "Sophia Ripley": {
+          "trust": 10,
+          "attitude": "My wife moves through this community with grace the school flourishes under her steady hand, and I am grateful beyond measure for her presence."
+        },
+        "Charles Dana": {
+          "trust": 10,
+          "attitude": "His retreat into solitary writing today felt like evasion, though I may be unjust\u2014still, it troubles me when so much practical work remains undone."
+        },
+        "John Sullivan Dwight": {
+          "trust": 10,
+          "attitude": "His musical evening lifted spirits, and the community needs such moments, yet I wonder if we celebrate culture while neglecting the harder work of transformation."
+        }
+      }
+    }
+  ],
+  "Nathaniel Hawthorne": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "TEACH",
+      "mood": "Calculating",
+      "satisfaction": 75,
+      "inner_thought": "Ripley's speech was eloquent\u2014too eloquent. \"Labor is the curse of the world,\" I felt him saying without saying it. Yet he assigns me, a writer, to rake hay like a farmhand. This farce cannot last long. But if I teach well, earn the community's respect through intellectual contribution, I secure my position and my salary. I will prove that my pen is worth more than my back. And perhaps, in organizing lessons, I might carve out a corner of quiet\u2014a desk, a lamp, a ledger\u2014where I can at least think, if not write. Three years hence, Sophia. Three years of this, and we can marry.",
+      "observation": "I notice that Ripley watches the others with the eyes of a prophet inspecting his flock. Sophia Ripley seems genuinely moved by his words; she has true faith. The younger members\u2014Dana, Dwight\u2014hang on every phrase. But I see doubt flicker across one face in the back: someone has already begun to wonder if poetry and pigs can truly coexist.",
+      "reflect_mood": "restless",
+      "reflect_satisfaction": 73,
+      "concerns": [
+        "Cannot secure the solitude necessary to write; the very thing that sustains my soul is denied me here",
+        "Ripley increasingly expects ideological commitment I cannot honestly give",
+        "Timeline uncertain for accumulating sufficient funds to marry Sophia Peabody",
+        "Physical labor is consuming my hands and my spirit\u2014'labor is the curse of the world' feels prophetic",
+        "Fear that prolonged silence may extinguish what little creative fire remains"
+      ],
+      "relationships": {
+        "George Ripley": {
+          "trust": 10,
+          "attitude": "He means well and I respect his earnestness, but I sense he is studying me, testing whether I can be made into a true believer; I cannot be."
+        },
+        "Sophia Ripley": {
+          "trust": 10,
+          "attitude": "A capable woman managing the school with admirable steadiness, but I know her only in passing; there is no particular intimacy yet."
+        },
+        "Charles Dana": {
+          "trust": 10,
+          "attitude": "He has found what I cannot\u2014withdrawal to write unmolested\u2014and I confess some envy of his privilege, though I know it is unworthy."
+        },
+        "John Sullivan Dwight": {
+          "trust": 10,
+          "attitude": "An earnest musician whose faith in this experiment seems genuine; I wish I could share it, but his na\u00efvet\u00e9 saddens me."
+        }
+      }
+    }
+  ],
+  "Sophia Ripley": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "TEACH",
+      "mood": "Purposeful",
+      "satisfaction": 75,
+      "inner_thought": "*Finally, someone who understands what a school can be.* George speaks in grand abstractions, but the work of actual education\u2014that is where the ideals must live or die. Hawthorne is no romantic; he has the gravity I need. And yet... I wonder if even the best curriculum can redeem an experiment built on such fragile foundations. Still, the girls in that schoolroom\u2014*they* deserve my best effort. They will not learn that their minds are lesser. Not here.",
+      "observation": "The community gathers still in the afterglow of George's speech. Hawthorne lingers near the Nest, watching the children at play with the gaze of someone weighing them. He seems genuinely interested\u2014not performing idealism, but *thinking*. The others mill about, uncertain of their purposes. They will follow George's lead because they have nowhere else to go. But the school\u2014the school must be built on something firmer than sentiment.",
+      "reflect_mood": "perplexed",
+      "reflect_satisfaction": 100,
+      "concerns": [
+        "Whether our community's idealism can sustain itself materially, or if we are like children playing at Utopia",
+        "The palpable distance I feel from many here, even George\u2014have I become too much the administrator and too little the believer?",
+        "My increasing certainty that the original vision was childish and empty; where is this doubt leading me?",
+        "Whether the school's success is genuine institution-building or merely keeping the farm afloat on borrowed time",
+        "The spiritual hunger I cannot name or satisfy within these grounds"
+      ],
+      "relationships": {
+        "George Ripley": {
+          "trust": 10,
+          "attitude": "He carries the vision with such grace, yet I wonder if he truly sees the practical abyss beneath our feet."
+        },
+        "Nathaniel Hawthorne": {
+          "trust": 10,
+          "attitude": "A man of genuine perception\u2014I saw him measure the farm's promise and find it... insufficient. He was polite, but his hands told the truth."
+        },
+        "Charles Dana": {
+          "trust": 10,
+          "attitude": "He withdraws to write. Sometimes I envy him that permission to simply remove himself from the machinery of this place."
+        },
+        "John Sullivan Dwight": {
+          "trust": 10,
+          "attitude": "A gentle man, and his contribution to our life here is sincere\u2014yet his remark about my absence made me feel the full weight of what I have sacrificed to keep the school alive."
+        }
+      }
+    }
+  ],
+  "Charles Dana": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "WRITE",
+      "mood": "Purposeful",
+      "satisfaction": 78,
+      "inner_thought": "*I can feel it\u2014this moment will matter. Whether this succeeds or fails, someone should write the true account, not the sanitized version Ripley will craft for donors. And if I'm to build a name in journalism, I need to show I can observe, not just manage ledgers. Besides, my eyes have been troubling me in the field work. Writing is safer, and necessary.*",
+      "observation": "Hawthorne moves with the deliberation of a man testing whether ideals can survive contact with soil. Sophia Ripley has the bearing of someone accustomed to making impossible things work\u2014she'll be the backbone here, not George. The others watch George like he holds the key to something they desperately need to believe in.",
+      "reflect_mood": "wary",
+      "reflect_satisfaction": 100,
+      "concerns": [
+        "The fragility of community ideals when tested by intelligent skeptics like Hawthorne",
+        "Whether our finances can sustain this through next winter without attracting more paying students",
+        "Ripley's optimism masking the practical difficulties ahead",
+        "My own complicity\u2014do I stay for the principles or because I have nowhere else to go?"
+      ],
+      "relationships": {
+        "George Ripley": {
+          "trust": 10,
+          "attitude": "I respect his vision and remain loyal, but his confidence sometimes blinds him to the mathematics of survival."
+        },
+        "Nathaniel Hawthorne": {
+          "trust": 10,
+          "attitude": "A writer of uncommon intelligence who has already decided we are naive; his skepticism is contagious and I fear it."
+        },
+        "Sophia Ripley": {
+          "trust": 10,
+          "attitude": "A capable administrator like myself; I sense she notices what I notice, but we've not spoken of it."
+        },
+        "John Sullivan Dwight": {
+          "trust": 10,
+          "attitude": "His earnestness about Beethoven is genuine, but I wonder if music alone can sustain a community when the crops fail."
+        }
+      }
+    }
+  ],
+  "John Sullivan Dwight": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "ORGANIZE <a musical evening gathering>",
+      "mood": "Fervent",
+      "satisfaction": 75,
+      "inner_thought": "I confess I am *alive* in a way I have not been in years. No pulpit to stand behind, no congregation to disappoint with my inadequate piety. Here\u2014here I can finally do what I was meant to do. Let the others discuss crops and construction. I will create the soul of this place.",
+      "observation": "Hawthorne moves about the Nest with quiet purposefulness, already shaping the school. Sophia works alongside him with remarkable ease\u2014there is a harmony there. Dana scribbles furiously, capturing our genesis like a historian. And Ripley... Ripley radiates the certainty of a man who believes he is changing history. I wonder if he truly understands what we are all really seeking here\u2014or if he sees only the grand social architecture he has designed?",
+      "reflect_mood": "grateful",
+      "reflect_satisfaction": 78,
+      "concerns": [
+        "Hawthorne's visible skepticism about the balance between labor and contemplation\u2014his calloused hands suggest the ideals and the reality do not align for him",
+        "Charles withdrawing from community life to write; is he struggling with something I have not perceived?",
+        "My own unease: am I truly serving Brook Farm's practical needs, or merely decorating it with music while others bear the true burden?"
+      ],
+      "relationships": {
+        "George Ripley": {
+          "trust": 10,
+          "attitude": "He remains earnest and expansive, but I wonder if even he fully grasps the tension between his vision and the weariness I see creeping into others' eyes."
+        },
+        "Nathaniel Hawthorne": {
+          "trust": 10,
+          "attitude": "A fellow refugee from a calling that did not suit him, though he keeps his thoughts close; his reserve suggests depths of doubt about this experiment."
+        },
+        "Sophia Ripley": {
+          "trust": 10,
+          "attitude": "She has seen me truly today\u2014a small grace. Her recognition of my contributions, offered amidst her own exhaustion, suggests she understands what the cultural life means to this place."
+        },
+        "Charles Dana": {
+          "trust": 10,
+          "attitude": "His solitude concerns me; there is something more than artistic devotion in his retreat."
+        }
+      }
+    }
+  ]
+}
