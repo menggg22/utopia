@@ -1,1 +1,2 @@
+# Required for --backend api only (not needed for CLI backend)
 anthropic>=0.40.0

@@ -12,13 +12,12 @@ Drop AI agents (each modeled after a real historical person) into a shared envir
 
 Transcendentalist commune in Massachusetts. Founded by George Ripley, joined by Nathaniel Hawthorne (who later wrote a novel about it). Well-documented failure: intellectuals vs workers split, Fourierist conversion, phalanstery fire, financial collapse.
 
-**6 agents** modeled from real biographies:
+**5 agents** modeled from real biographies:
 - **George Ripley** — Founder, visionary, carried the debt for 13 years after
-- **Nathaniel Hawthorne** — Skeptic, writer, left after 18 months ("my soul is not utterly buried under a dung-heap")
-- **Sophia Ripley** — Co-founder, ran the school (only reliable income), later called it all "childish, empty, & sad"
-- **Charles Dana** — 22-year-old pragmatist, spoke 10 languages, later became Assistant Secretary of War
-- **John Sullivan Dwight** — Music critic, cultural heart, organized the evening gatherings
-- **Isaac Hecker** — Spiritual seeker, left during Fourier conversion, founded the Paulist Fathers
+- **Nathaniel Hawthorne** — Skeptic, writer, left after 18 months
+- **Sophia Ripley** — Co-founder, ran the school (only reliable income)
+- **Charles Dana** — 22-year-old pragmatist, spoke 10 languages
+- **John Sullivan Dwight** — Music critic, cultural heart
 
 ## How It Works
 
@@ -32,97 +31,99 @@ Agents have **structured memory**: permanent key moments, evolving relationships
 
 Historical events are injected at the right time: Brisbane's Fourierist visit, the phalanstery proposal, smallpox, the fire.
 
-## Logging
+## First Result
 
-Single JSONL event stream (`events.jsonl`) captures everything — actions, inner thoughts, conversations, votes, relationship changes, gossip, resource levels. All other views (narrative, charts, character arcs) derive from this one file.
+30-round run (Apr 1841 — Feb 1845). 304 LLM calls, ~81 min.
 
-15 event types. Flush every write. Survives crashes. Ready for documentary reconstruction.
+| | Simulation | History |
+|---|---|---|
+| Hawthorne departs | Round 11 (Dec 1842) | Nov 1842 |
+| Core failure mode | Intellectuals don't farm (22 FARM in 150 agent-rounds) | "Intellectual laborers" couldn't sustain farm work |
+| School as lifeline | Sophia taught 20/30 rounds, only stable income | School was Brook Farm's primary revenue |
+| Founder's burden | Ripley farmed most, satisfaction 0 for 17 rounds | Ripley spent 13 years repaying debts |
 
-## Status
+**Emergent pattern**: Dana gave ~15 speeches about the financial crisis while farming 3 times. The community talked about its problems more than it worked on them.
 
-- [x] Experiment design ([DESIGN.md](DESIGN.md))
-- [x] Historical research — 6 persona cards with real biographies, quotes, outcomes ([BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md))
-- [x] v0 simulation engine ([simulate.py](simulate.py))
-- [x] v1 agent design — structured memory, conversations, voting, gossip ([AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md))
-- [x] Logging specification — JSONL event stream ([LOGGING-SPEC.md](LOGGING-SPEC.md))
-- [x] v0 test run — 10 rounds, Hawthorne departs round 10 ([run summary](#v0-test-run))
-- [x] v1 implementation ([simulate_v1.py](simulate_v1.py), [derive.py](derive.py))
-- [x] First complete run — 30 rounds, reproduces key failure modes ([run summary](#v1-first-complete-run))
-- [ ] Controlled experiments (remove founder, add scarcity, scale up)
-- [ ] Visualization / documentary
+Full analysis: [`runs/run_20260401_235509/RUN_NOTES.md`](runs/run_20260401_235509/RUN_NOTES.md)
 
-## What Would Make This Worth Sharing
+## Running Experiments
 
-1. **Same failure mode, different cause** — simulation produces a schism for a structural reason history didn't record
-2. **Counterfactual insight** — "if Hawthorne had stayed, the community lasts 2 more years"
-3. **Universal pattern** — running 3 different communities produces the same failure at the same point
-4. **The rule that saves it** — in 100 runs, surviving communities independently invent the same rule
+### Quick start (uses Claude Code CLI / Max subscription)
 
-## v0 Test Run
+```bash
+# Single run
+python simulate_v1.py 30
 
-10 rounds (Apr 1841 — Oct 1842), claude-opus-4-6 (via Claude Code), pre-generated agent responses grounded in historical personas.
+# With experiment config
+python simulate_v1.py --config experiments/baseline_seed0.json
 
-**Result**: Hawthorne departed round 10 (Oct 1842) — matches real history (~18 months). 4 members survived. Food hit 0, morale crashed to 15%.
+# Batch run
+python experiment.py experiments/baseline_seed0.json experiments/no_hawthorne.json
 
-| Metric | Final |
-|--------|-------|
-| Food | 0 |
-| Money | $750 |
-| Morale | 15% |
-| Departed | Nathaniel Hawthorne |
-| Survived | Ripley, Sophia, Dana, Dwight |
+# All experiments
+python experiment.py experiments/
+```
 
-**Lessons for v1**:
-- Satisfaction model too simple (monotonic +5/+8 per action, caps at 100) — needs decay, social factors, unmet-goal pressure
-- Money too generous (two teachers + base school income outpaces costs) — needs rebalancing
-- No conversations, voting, or reflection — the core v1 additions
-- Food drain harsh (5/agent/round) with only 1-2 farmers — farming yield or consumption needs tuning
-
-Output: `runs/v0_local_20260401_220537/` (config.json, full_log.json, characters.json, metrics.json, narrative.md, summary.txt)
-
-## Setup
+### With Anthropic API
 
 ```bash
 pip install anthropic
 export ANTHROPIC_API_KEY=sk-ant-...
-python simulate.py
+python simulate_v1.py 30 --backend api
 ```
 
-Output lands in `runs/<timestamp>/`.
+### After a run
 
-## v1 First Complete Run
+```bash
+# Derive narrative, character arcs, metrics, conversations, votes
+python derive.py runs/<run_dir>/events.jsonl
 
-30 rounds (Apr 1841 — Feb 1845), claude-haiku-4-5-20251001 via Claude Code CLI. 304 LLM calls, 1401 events, ~81 min.
+# Compare multiple runs
+python compare.py runs/baseline_* runs/no_hawthorne_*
+```
 
-**Result**: Community limps to round 30 with 3 survivors. Morale 0% for 20 straight rounds.
+## Experiments
 
-| Metric | Final |
-|--------|-------|
-| Food | 10 (emergency purchases) |
-| Money | $241 (down from $500) |
-| Morale | 0% (since round 11) |
-| Departed | Hawthorne (R11), Dwight (R21) |
-| Survived | Ripley, Sophia, Dana |
+9 experiment configs in `experiments/`:
 
-**Key findings**:
+| Config | What | Question |
+|--------|------|----------|
+| `baseline_seed[0-4].json` | 5 identical runs, different seeds | Is the failure mode reproducible? |
+| `no_hawthorne.json` | Remove the skeptic | Does the community last longer? |
+| `no_sophia.json` | Remove the school backbone | Does losing the only income source accelerate collapse? |
+| `no_ripley.json` | Remove the founder | Does anyone else step up? |
+| `double_food.json` | Start with 200 food | Does more time change the outcome? |
 
-1. **Hawthorne's departure timing matches history** — Left round 11 (Dec 1842). Real Hawthorne left Nov 1842. The simulation reproduced this without being told when he left.
+## Status
 
-2. **Intellectuals don't farm** — Only 22 FARM actions in 150 agent-rounds. Ripley did half of all farming. Food collapsed by round 5. This IS Brook Farm's documented failure mode, reproduced structurally.
+- [x] Historical research — 5 persona cards with real biographies ([BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md))
+- [x] v1 simulation engine — 3-phase rounds, structured memory, conversations, voting, gossip ([simulate_v1.py](simulate_v1.py))
+- [x] JSONL event stream — 15 event types, single source of truth ([LOGGING-SPEC.md](LOGGING-SPEC.md))
+- [x] First complete run — reproduces Hawthorne departure and intellectual farming failure
+- [x] Experiment infrastructure — config-driven runs, batch execution, cross-run comparison
+- [ ] Reproducibility (5 baseline runs) — in progress
+- [ ] Counterfactual experiments — in progress
+- [ ] Visualization / documentary
+- [ ] Second community (Oneida, New Harmony)
 
-3. **The speech spiral** — Dana gave ~15 speeches about the financial crisis while farming only 3 times. The community talked about its problems more than it worked on them.
+## Project Structure
 
-4. **Sophia as load-bearer** — Taught 20/30 rounds, satisfaction stayed high. The school was the only functional institution — matching history.
+```
+simulate_v1.py      Main simulation engine (v1)
+derive.py           Extract outputs from events.jsonl
+experiment.py       Batch experiment runner
+compare.py          Cross-run analysis tool
+experiments/        Experiment config files (JSON)
+runs/               Simulation output (events.jsonl + derived files)
+simulate.py         v0 engine (reference, not used)
+run_v0_local.py     v0 local test run (reference)
+```
 
-5. **Ripley's sacrifice** — Farmed the most, satisfaction hit 0 by round 13, stayed 17 more rounds at 0. Matches the real Ripley who spent 13 years repaying Brook Farm's debts.
-
-Full analysis: [`runs/run_20260401_235509/RUN_NOTES.md`](runs/run_20260401_235509/RUN_NOTES.md)
-
-## Docs
+## Design Docs
 
 | File | What |
 |------|------|
-| [DESIGN.md](DESIGN.md) | Original experiment design — candidates, environment, evaluation |
-| [BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md) | 6 persona cards, timeline, economic model, Blithedale mappings |
-| [AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md) | v1 agent system — 3-phase rounds, structured memory, conversations |
-| [LOGGING-SPEC.md](LOGGING-SPEC.md) | JSONL event stream specification — 15 event types |
+| [DESIGN.md](DESIGN.md) | Original experiment design |
+| [BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md) | Persona cards, timeline, economic model |
+| [AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md) | v1 agent system design |
+| [LOGGING-SPEC.md](LOGGING-SPEC.md) | JSONL event stream specification |
