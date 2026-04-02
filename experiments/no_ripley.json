@@ -1,0 +1,7 @@
+{
+  "name": "no_ripley",
+  "rounds": 30,
+  "seed": 42,
+  "agents": ["Nathaniel Hawthorne", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"],
+  "notes": "Counterfactual: what happens without the founder?"
+}

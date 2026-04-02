@@ -293,6 +293,7 @@ class AgentMemory:
 
 @dataclass
 class Environment:
+    n_initial_agents: int = 5
     day: int = 1
     season: str = "spring"
     food: int = 100
@@ -491,7 +492,7 @@ class Environment:
             "food": self.food,
             "money": self.money,
             "morale": self.morale,
-            "members_present": 5 - len(self.departed),
+            "members_present": self.n_initial_agents - len(self.departed),
             "buildings": list(self.buildings),
             "building_health": dict(self.building_health),
             "rules": list(self.rules),
@@ -508,7 +509,7 @@ class Environment:
         return (
             f"DATE: {day_to_date(self.day)} (Day {self.day}, {self.season})\n"
             f"RESOURCES: Food={self.food}, Money=${self.money}, Community Morale={self.morale}%\n"
-            f"MEMBERS PRESENT: {5 - len(self.departed)} of 5\n"
+            f"MEMBERS PRESENT: {self.n_initial_agents - len(self.departed)} of 5\n"
             f"BUILDINGS:\n" + "\n".join(building_status) + "\n"
             f"COMMUNITY RULES: {', '.join(self.rules) if self.rules else 'None yet'}\n"
             f"WHO HAS LEFT: {', '.join(self.departed) if self.departed else 'No one'}\n"
@@ -1099,57 +1100,110 @@ def spread_gossip(agents: dict, current_round: int, logger: EventLogger):
 
 # --- Main Simulation ---
 
-def run_simulation(n_rounds: int = MAX_ROUNDS):
+def run_simulation(config: dict = None):
+    """Run a simulation from a config dict.
+
+    Config keys (all optional, with defaults):
+        name: str           — experiment name (default: "run")
+        rounds: int         — number of rounds (default: 30)
+        seed: int           — random seed (default: 42)
+        model: str          — LLM model (default: MODULE-level MODEL)
+        backend: str        — "cli" or "api" (default: MODULE-level BACKEND)
+        agents: list[str]   — subset of PERSONAS keys (default: all)
+        environment: dict   — override food, money, morale (default: standard)
+    """
+    if config is None:
+        config = {}
+
+    global MODEL, BACKEND
+
+    exp_name = config.get("name", "run")
+    n_rounds = config.get("rounds", MAX_ROUNDS)
+    seed = config.get("seed", 42)
+    model = config.get("model", MODEL)
+    backend = config.get("backend", BACKEND)
+    agent_names = config.get("agents", list(PERSONAS.keys()))
+    env_overrides = config.get("environment", {})
+
+    # Set globals for this run (used by Agent._llm_call)
+    MODEL = model
+    BACKEND = backend
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_dir = os.path.join(LOG_DIR, f"run_{timestamp}")
+    run_dir = os.path.join(LOG_DIR, f"{exp_name}_{timestamp}")
     os.makedirs(run_dir, exist_ok=True)
 
     start_time = time.time()
     logger = EventLogger(os.path.join(run_dir, "events.jsonl"))
-    env = Environment()
-    random.seed(42)
 
-    # Initialize agents
+    # Environment with optional overrides
+    env = Environment(n_initial_agents=len(agent_names))
+    if "food" in env_overrides:
+        env.food = env_overrides["food"]
+    if "money" in env_overrides:
+        env.money = env_overrides["money"]
+    if "morale" in env_overrides:
+        env.morale = env_overrides["morale"]
+
+    random.seed(seed)
+
+    # Initialize agents (filtered by config)
     shared_client = None
-    if BACKEND == "api":
+    if backend == "api":
         if Anthropic is None:
             print("Error: anthropic package not installed. Use --backend cli or pip install anthropic")
             sys.exit(1)
         shared_client = Anthropic()
+
+    selected_personas = {k: v for k, v in PERSONAS.items() if k in agent_names}
     agents = {}
-    for name, persona in PERSONAS.items():
+    for name, persona in selected_personas.items():
         agent = Agent(name=name, persona=persona, client=shared_client)
         agents[name] = agent
 
-    # Save config
-    config = {
-        "model": MODEL,
-        "backend": BACKEND,
-        "max_rounds": n_rounds,
+    # Save config — everything needed to reproduce this exact run
+    git_hash = ""
+    try:
+        git_hash = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL
+        ).decode().strip()
+    except Exception:
+        pass
+
+    full_config = {
+        "name": exp_name,
+        "model": model,
+        "backend": backend,
+        "rounds": n_rounds,
+        "seed": seed,
+        "agents": list(selected_personas.keys()),
+        "environment": {"food": env.food, "money": env.money, "morale": env.morale},
         "timestamp": timestamp,
-        "agents": list(PERSONAS.keys()),
-        "random_seed": 42,
+        "run_dir": run_dir,
+        "git_hash": git_hash,
+        "config_source": config.get("_config_file", None),
+        "notes": config.get("notes", None),
     }
     with open(os.path.join(run_dir, "config.json"), "w") as f:
-        json.dump(config, f, indent=2)
+        json.dump(full_config, f, indent=2)
 
     # --- Setup events ---
     logger.log(0, "setup", "sim_start", data={
-        "model": MODEL,
+        "model": model,
         "max_rounds": n_rounds,
-        "n_agents": len(PERSONAS),
-        "agents": list(PERSONAS.keys()),
+        "n_agents": len(selected_personas),
+        "agents": list(selected_personas.keys()),
         "initial_state": {"food": env.food, "money": env.money, "morale": env.morale},
     })
-    for name, persona in PERSONAS.items():
+    for name, persona in selected_personas.items():
         logger.log(0, "setup", "persona_loaded", agent=name, data=persona)
 
     total_llm_calls = 0
 
     print(f"\n{'='*60}")
-    print(f"  BROOK FARM SIMULATION v1")
-    print(f"  {n_rounds} rounds | {len(agents)} agents")
-    print(f"  Model: {MODEL} (backend: {BACKEND})")
+    print(f"  BROOK FARM SIMULATION v1 — {exp_name}")
+    print(f"  {n_rounds} rounds | {len(agents)} agents | seed={seed}")
+    print(f"  Model: {model} (backend: {backend})")
     print(f"  Output: {run_dir}/")
     print(f"{'='*60}\n")
 
@@ -1479,10 +1533,28 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Brook Farm v1 simulation")
     parser.add_argument("rounds", nargs="?", type=int, default=MAX_ROUNDS, help="Number of rounds")
+    parser.add_argument("--config", type=str, help="Path to experiment config JSON")
     parser.add_argument("--backend", choices=["cli", "api"], default=BACKEND,
                         help="LLM backend: 'cli' (claude CLI / Max sub) or 'api' (Anthropic API key)")
     parser.add_argument("--model", default=MODEL, help="Model to use")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed")
     args = parser.parse_args()
-    BACKEND = args.backend
-    MODEL = args.model
-    run_simulation(args.rounds)
+
+    if args.config:
+        with open(args.config) as f:
+            config = json.load(f)
+        # CLI args override config file
+        if args.backend != BACKEND:
+            config["backend"] = args.backend
+        if args.model != MODEL:
+            config["model"] = args.model
+    else:
+        config = {
+            "name": "run",
+            "rounds": args.rounds,
+            "seed": args.seed,
+            "model": args.model,
+            "backend": args.backend,
+        }
+
+    run_simulation(config)
