@@ -1,0 +1,112 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$224, Morale=0%
+Departed: Nathaniel Hawthorne, John Sullivan Dwight
+Survived: George Ripley, Sophia Ripley, Charles Dana
+Total events: 1401
+LLM calls: 304
+Wall time: 4862.0s
+
+Action counts per agent:
+  Charles Dana:
+    TRADE: 7
+    WRITE: 5
+    FARM: 3
+    SPEAK — Address the community about the crisis, both material and spiritual: 1
+    SPEAK about what it means to endure when the transcendental ideal meets ordinary hunger: 1
+    SPEAK <the financial reality>: 1
+    SPEAK <the path forward>: 1
+    SPEAK <on sustenance and the shape of our actual circumstance>: 1
+    SPEAK <the state of our resources and what we must decide>: 1
+    SPEAK <on the financial reality and what choices remain to us>: 1
+    SPEAK [about the financial reality]: 1
+    SPEAK <about the true financial condition and what it demands of us>: 1
+    SPEAK <about the true state of our circumstances>: 1
+    SPEAK <about what integrity looks like when an experiment fails>: 1
+    SPEAK <about the true financial condition of Brook Farm>: 1
+    SPEAK about the truth of our situation: 1
+    SPEAK <the financial and food crisis>: 1
+    SPEAK <about our financial reality and what it means for all of us>: 1
+  George Ripley:
+    FARM: 11
+    TRADE: 2
+    REPAIR The Hive: 1
+    REPAIR <The Hive>: 1
+    SPEAK <the financial reality and our collective commitment>: 1
+    SPEAK <on shared sacrifice and the necessity of faith>: 1
+    REPAIR <The Nest>: 1
+    SPEAK about the truth of what we have built: 1
+    SPEAK <about what has been left unspoken>: 1
+    SPEAK <on the future of Brook Farm and Brisbane's proposition>: 1
+    SPEAK <on our crisis>: 1
+    SPEAK on the Phalanstery proposal: 1
+    TEACH: 1
+    SPEAK <about the future>: 1
+    SPEAK <the true state of our community>: 1
+    SPEAK <response to Charles Dana's call for honesty>: 1
+    WRITE: 1
+    SPEAK <the truth about our labor>: 1
+    SPEAK <the true cost of this vision>: 1
+  John Sullivan Dwight:
+    FARM: 6
+    ORGANIZE <event>: 4
+    ORGANIZE <event> — Evening gathering with music and philosophical discussion in the Hive's parlor at sunset: 1
+    ORGANIZE <evening circle with visitors>: 1
+    TEACH: 1
+    SPEAK <"Whether Beauty Sustains Us or Merely Comforts the Dying">: 1
+    SPEAK "The truth of what we are becoming": 1
+    SPEAK <"On my own failure, and what music cannot cure">: 1
+    SPEAK about faith and failure: 1
+    SPEAK (about the state of the community and what we must acknowledge): 1
+    WRITE: 1
+    SPEAK <truth>: 1
+    LEAVE: 1
+  Nathaniel Hawthorne:
+    WRITE: 3
+    TEACH: 2
+    : 1
+    SPEAK <address the food and financial crisis>: 1
+    TRADE: 1
+    REPAIR <The Nest>: 1
+    REST: 1
+    LEAVE: 1
+  Sophia Ripley:
+    TEACH: 20
+    WRITE: 5
+    FARM: 2
+    SPEAK <the gap between our ideals and our survival>: 1
+    SPEAK <the accounting we must face>: 1
+    REPAIR THE NEST: 1
+
+Key moments:
+  Round 6 (Feb 1841): George Ripley — Yes. This is the night doubt became audible among us. When even Dwight—our Orpheus, the one whose faith burned brightest—could only offer us the ashes of his conviction, I understood we are not failing slowly. We are already falling. [Terror]
+  Round 6 (Feb 1841): John Sullivan Dwight — Yes. This is the night I admitted the community cannot survive on music and circles alone. This is the beginning of the end, whether the end comes tomorrow or in two years. [Despair]
+  Round 7 (Apr 1842): George Ripley — The library conversation with Dwight. This is the moment I have feared in my deepest thoughts. Not sudden collapse, but the slow, terrible crumbling of conviction. If Dwight—our truest believer, our Orpheus—has begun to doubt, then the heart of this vision has been pierced. [Terror]
+  Round 7 (Apr 1842): Sophia Ripley — John Sullivan Dwight's confession to George—that the music may be escape rather than transcendence, that he cannot sustain faith in what we are building. It was brave and it was terrible. It made visible what I have felt but dared not name aloud. [Dread]
+  Round 8 (Jun 1842): George Ripley — Yes. This is the moment when private collapse became communal knowledge. Dwight's absence from the fields, his confession to Dana—it is no longer whispered doubt. It is visible failure, and others are witnessing it. [Dread]
+  Round 9 (Aug 1842): George Ripley — Yes. This is the night my wife named the wound that will not heal. Not Dwight's departure—but our confession to each other that the vision itself was false. We promised a new Eden. We built creditors. [Devastation]
+  Round 9 (Aug 1842): Charles Dana — Dwight's public breaking. When a man of such intellectual depth and faith begins to turn away, it signals that something fundamental is fracturing. This may be the moment others begin to see what I have already seen. [Dread]
+  Round 11 (Dec 1842): George Ripley — Nathaniel Hawthorne's departure from Brook Farm. [Grief]
+  Round 11 (Dec 1842): Sophia Ripley — Nathaniel Hawthorne's departure [Desolation]
+  Round 11 (Dec 1842): Charles Dana — Nathaniel Hawthorne's departure from Brook Farm. [Resignation]
+  Round 11 (Dec 1842): John Sullivan Dwight — Yes. Nathaniel Hawthorne's departure is the first visible crack in our foundation. One of us has finally chosen to leave. [Despair]
+  Round 12 (Feb 1842): George Ripley — The private conversation with Sophia. This is the night we stopped pretending. When your wife looks at you and confirms what you have feared in the dark hours—that the very idea we sacrificed everything for was an illusion—something breaks that cannot be mended. Years from now, I will remember exactly how the lamplight caught her face when she said it. [Devastation]
+  Round 12 (Feb 1842): Charles Dana — Yes. The moment Sophia spoke to George about Nathaniel—about knowing and pretending not to know. This is the day the collective delusion became visible to everyone simultaneously. We can no longer hide from ourselves. [Recognition]
+  Round 18 (Feb 1843): Sophia Ripley — George's admission that the very ground itself resists us, that something beyond our control has pronounced judgment on our vision. This is the moment when doubt moved from my private torment to his visible despair. [Desolation]
+  Round 20 (Jun 1844): George Ripley — The moment Sophia named it. "He is not a stranger to himself; he is what becomes of us when we persist in something that refuses to become what we promised it would be." In those words, the last illusion fell away. This is the night the vision truly died—not in failure, but in honest recognition of what it was. I will carry the exact timbre of her voice into all my remaining years. [Devastation]
+  Round 20 (Jun 1844): Sophia Ripley — Yes. Tonight George and I stopped pretending to each other. This is the moment when the community's failure became something we must live in consciously, not something we dance around in silence. [Solidarity]
+  Round 21 (Aug 1844): George Ripley — Yes. Another one gone. Not in anger or argument, but in quiet departure—the way people leave sinking ships. This is how the dissolution happens. Not with a dramatic collapse, but with individuals slipping away one by one. [Resignation]
+  Round 21 (Aug 1844): Charles Dana — John Sullivan Dwight's silent departure. When a man withdraws without explanation, he is telling us that words have become worthless. [Dread]
+  Round 25 (Apr 1845): George Ripley — Yes. The private conversation with Sophia tonight. This is the moment we both named aloud what we have only whispered to ourselves—that the hired women are carrying the labor we promised would be shared, that our vision has become a lie we tell to ourselves while others pay the price. Minot sitting warm by the fire while they finish the separator. This is not failure of execution. This is failure of the idea itself. [Despair]
+  Round 27 (Aug 1845): Charles Dana — Yes. The moment George reached out and I chose deflection. This is the day I moved from observer of our collapse to active participant in the silence that enables it. [Cowardice]
+  Round 30 (Feb 1845): George Ripley — Yes—this is the night Sophia and I stopped pretending. In her cold fingers and measured words, I saw the truth I could no longer hide from myself. [Devastation]
+
+Departures:
+  Nathaniel Hawthorne — Round 11 (Dec 1842), satisfaction: 89
+    ""George, I will leave within the week. I came here in good faith and incomplete honesty—I needed capital for marriage, and I hoped the labor might sustain that need. You have been honest today in a way you had not been before, and I will repay that honesty with clarity: I have no capital, I have no quiet, and I have no true belief in what we are building. My absence will preserve both your stores and your conscience. I wish you well, and I mean that without irony.""
+  John Sullivan Dwight — Round 21 (Aug 1844), satisfaction: 36
+    "Nothing. I pack my things in silence and leave a note on the table: *"I have failed the community by staying. Forgive me. —JSD"*"
