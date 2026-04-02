@@ -60,7 +60,7 @@ Single JSONL event stream (`events.jsonl`) captures everything — actions, inne
 
 ## v0 Test Run
 
-10 rounds (Apr 1841 — Oct 1842), Claude Code as LLM, pre-generated agent responses grounded in historical personas.
+10 rounds (Apr 1841 — Oct 1842), claude-opus-4-6 (via Claude Code), pre-generated agent responses grounded in historical personas.
 
 **Result**: Hawthorne departed round 10 (Oct 1842) — matches real history (~18 months). 4 members survived. Food hit 0, morale crashed to 15%.
 
