@@ -1,0 +1,512 @@
+{
+  "George Ripley": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "TEACH",
+      "mood": "hopeful",
+      "satisfaction": 75,
+      "inner_thought": "At last it begins. I have staked everything \u2014 my ministry, my reputation, Sophia's patience \u2014 on this dream. The land is beautiful. The people are willing. God help us make it work.",
+      "observation": "Hawthorne arrived with a trunk of books and a look of quiet bewilderment. Dana is already asking about the accounts. Dwight found the piano and hasn't left it.",
+      "still_here": true
+    },
+    {
+      "round": 2,
+      "date": "Jun 1841",
+      "action": "FARM",
+      "mood": "determined",
+      "satisfaction": 72,
+      "inner_thought": "My back aches from yesterday's labor and I accomplished less than Dana does before breakfast. But the principle matters \u2014 no one is above physical work. The school income is steady. If only the farming would improve.",
+      "observation": "Hawthorne's hands are raw with blisters. He says nothing but I see him wince with every stroke of the hoe. Dana has become our best farmer despite having no experience. Dwight remains a mystery in the fields \u2014 he works slowly but sings beautifully while doing it.",
+      "still_here": true
+    },
+    {
+      "round": 3,
+      "date": "Aug 1841",
+      "action": "TEACH",
+      "mood": "anxious",
+      "satisfaction": 77,
+      "inner_thought": "I am exhausted. The farming is harder than I imagined \u2014 not the physical labor, which is merely painful, but the gap between what we produce and what we need. Dana saves us again and again. I must find more income sources.",
+      "observation": "Hawthorne has retreated to write instead of farming. Part of me is relieved \u2014 he was miserable and unproductive in the fields. But others notice. If one person excuses himself from labor, the principle of equality collapses.",
+      "still_here": true
+    },
+    {
+      "round": 4,
+      "date": "Oct 1841",
+      "action": "FARM",
+      "mood": "anxious",
+      "satisfaction": 74,
+      "inner_thought": "The harvest is modest. Not catastrophic, but not what we needed. I have begun to understand why real farmers do not have time for philosophy \u2014 the land demands everything. I must write to Boston for more donations. Perhaps Emerson will help, though he declined to join us.",
+      "observation": "Hawthorne has been writing more and farming less. I cannot force him \u2014 this is a voluntary community. But the others see. Dana never complains but I catch him shaking his head sometimes. Sophia has taken to giving me pointed looks at supper.",
+      "still_here": true
+    },
+    {
+      "round": 5,
+      "date": "Dec 1841",
+      "action": "TEACH",
+      "mood": "anxious",
+      "satisfaction": 79,
+      "inner_thought": "Winter has come and with it a terrible clarity. The farm produced less than half what we need. We survive on school tuition and my ability to charm donations from Boston sympathizers. I wrote three letters today begging for funds. I have become what I despised \u2014 a beggar for an institution.",
+      "observation": "Hawthorne barely leaves his room. He writes furiously, which I suppose is something, but he contributes nothing to the community. Dana keeps the accounts with grim precision. Sophia has not had a day of rest since April. Dwight's music keeps morale from collapsing entirely.",
+      "still_here": true
+    },
+    {
+      "round": 6,
+      "date": "Feb 1841",
+      "action": "SPEAK about the community's mission and future",
+      "mood": "desperate",
+      "satisfaction": 79,
+      "inner_thought": "I gave a speech tonight about our mission. The words came easily \u2014 they always do. But I saw Hawthorne's face and it frightened me. He looked at me as a man looks at someone who is drowning and doesn't know it. Am I drowning? The debts grow. The food dwindles. Only Sophia's school keeps us alive. Perhaps that is enough.",
+      "observation": "The community feels smaller in winter. Hawthorne barely speaks. Dana runs the finances with a kind of grim competence that I find both reassuring and terrifying. Sophia has dark circles under her eyes. Dwight plays beautifully and that is not nothing \u2014 beauty sustains the soul even when the body is cold.",
+      "still_here": true
+    },
+    {
+      "round": 7,
+      "date": "Apr 1842",
+      "action": "TEACH",
+      "mood": "cautiously hopeful",
+      "satisfaction": 84,
+      "inner_thought": "Spring has come and we survived the winter. Barely. I can feel the community's energy returning with the warmth. But Hawthorne worries me \u2014 he is here in body but his mind has gone elsewhere. I must speak to him soon. I cannot lose a founding member. Not for the principle. Not for the money.",
+      "observation": "The snow is melting and so is the winter gloom. Dana is already in the fields at dawn. Dwight has organized a spring dance. Hawthorne stands at the window looking toward Salem. Sophia teaches on, steady as ever, though she seems less certain than she once was.",
+      "still_here": true
+    },
+    {
+      "round": 8,
+      "date": "Jun 1842",
+      "action": "TEACH",
+      "mood": "proud",
+      "satisfaction": 89,
+      "inner_thought": "Visitors from Boston \u2014 some genuinely curious, others come to gawk at the utopians. I showed them the school, the gardens, the library. They were impressed, I think. They paid their touring fees. But one man asked, 'How long can you sustain this?' and I had no good answer. I smiled and spoke of faith and community. He nodded politely, which is worse than arguing.",
+      "observation": "The visitors brought money and scrutiny in equal measure. Dana handled them brilliantly \u2014 charming, factual, practical. Hawthorne disappeared entirely during the visit, which was probably wise. Sophia's school impressed everyone. Dwight played for them and they left humming Beethoven.",
+      "still_here": true
+    },
+    {
+      "round": 9,
+      "date": "Aug 1842",
+      "action": "FARM",
+      "mood": "grieving",
+      "satisfaction": 86,
+      "inner_thought": "Hawthorne asked to speak with me privately. I know what is coming. I have known for months. But knowing and hearing are different things. I farmed today with a ferocity that surprised even Dana \u2014 as though I could dig deep enough to plant something that will not leave me.",
+      "observation": "Hawthorne is preparing to leave. His room is tidier than it has been in months \u2014 a man making order before departure. Dana works silently, knowing. Sophia said nothing at supper but reached for my hand under the table. Dwight, blessed Dwight, played music after dinner as though nothing were wrong.",
+      "still_here": true
+    },
+    {
+      "round": 10,
+      "date": "Oct 1842",
+      "action": "TEACH",
+      "mood": "wounded",
+      "satisfaction": 91,
+      "inner_thought": "Hawthorne left this morning. He shook my hand and said, 'I shall remember this place, George, though not as you would wish.' I wanted to argue, to beg, to explain \u2014 but what could I say? He was right to leave. This place was killing his art. I am losing members and gaining debts. But I will not stop. I cannot stop. If I stop, it was all for nothing.",
+      "observation": "The farm feels emptier. Not because one man's labor mattered \u2014 Hawthorne was never much of a farmer \u2014 but because his presence meant something. A founding member has left. Dana is steady as ever. Sophia teaches with renewed intensity, as though work itself is the answer. Dwight played a slow piece last night \u2014 an elegy, I think.",
+      "still_here": true
+    }
+  ],
+  "Nathaniel Hawthorne": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "FARM",
+      "mood": "determined",
+      "satisfaction": 67,
+      "inner_thought": "The fields stretch out endlessly. My hands, accustomed to pen and paper, grip the hoe like a foreign instrument. But I invested $1,000 in this venture \u2014 Sophia Peabody's future depends on it. I will try.",
+      "observation": "Ripley speaks with the conviction of a prophet. Dana works like two men. Dwight drifts toward music as a compass needle finds north. Sophia Ripley has already organized the school schedule \u2014 the only one with a practical plan.",
+      "still_here": true
+    },
+    {
+      "round": 2,
+      "date": "Jun 1841",
+      "action": "FARM",
+      "mood": "frustrated",
+      "satisfaction": 64,
+      "inner_thought": "My hands are destroyed \u2014 blisters upon blisters. I shoveled manure for six hours today and could not form a single sentence in my mind the whole time. This is what Ripley calls 'uniting thought and labor'? My thoughts are buried under dung. I have not written a word in two months.",
+      "observation": "Dana works with a frightening efficiency \u2014 the boy speaks ten languages and farms better than any of us. Ripley farms badly but earnestly. Dwight treats the hoe as though it might bite him. Sophia Ripley teaches as though the school alone will save us. She may be right.",
+      "still_here": true
+    },
+    {
+      "round": 3,
+      "date": "Aug 1841",
+      "action": "WRITE",
+      "mood": "guilty",
+      "satisfaction": 72,
+      "inner_thought": "I stole away to write and it felt like breaking the surface after nearly drowning. My hands remember the pen. But guilt follows me \u2014 I can hear the others in the fields while I sit here with my notebook. Ripley will be diplomatic about it. Dana will say nothing but his silence will be eloquent.",
+      "observation": "I watched them from the window \u2014 Ripley struggling with the hay rake, Dana doing the work of three men, Dwight wandering between tasks like a man in a pleasant dream. Only Sophia seems to have found her true vocation here. The rest of us are playacting.",
+      "still_here": true
+    },
+    {
+      "round": 4,
+      "date": "Oct 1841",
+      "action": "FARM",
+      "mood": "bitter",
+      "satisfaction": 69,
+      "inner_thought": "Back to the fields for the harvest. My body rebels at every motion. I find myself calculating \u2014 I invested $1,000 and have earned nothing. I could be writing. I could be with Sophia Peabody. Instead I am here, hauling pumpkins and pretending this is enlightenment. Ripley's dream is not my dream. I must face that truth soon.",
+      "observation": "The harvest is thin. Dana knows it \u2014 I can see the worry behind his pragmatic mask. Ripley will spin it into a sermon about perseverance. Sophia Ripley teaches through it all, steady as a clock. Dwight organized another concert \u2014 pleasant enough, but concerts don't fill the granary.",
+      "still_here": true
+    },
+    {
+      "round": 5,
+      "date": "Dec 1841",
+      "action": "WRITE",
+      "mood": "restless",
+      "satisfaction": 77,
+      "inner_thought": "Winter is a liberation. No one can expect me to farm frozen ground. I wrote twelve pages today \u2014 the first real writing in months. But the question circles like a vulture: what am I doing here? I have not saved money. I have not found quiet. I miss Sophia Peabody with a physical ache. My investment of $1,000 feels like money thrown into a well.",
+      "observation": "The community huddles around the stove and pretends to be happy. Ripley's optimism has become performative \u2014 he smiles too broadly, speaks too cheerfully. Dana said nothing at dinner but his silence was a speech. Only Dwight seems genuinely content, lost in his music as the world freezes around him.",
+      "still_here": true
+    },
+    {
+      "round": 6,
+      "date": "Feb 1841",
+      "action": "REST",
+      "mood": "melancholy",
+      "satisfaction": 79,
+      "inner_thought": "I sat by the fire all day and thought about Sophia Peabody. We were to be married. Every day here is a day stolen from that future. Ripley gave another speech tonight \u2014 all fire and conviction. He believes his own words, which makes it worse. I no longer believe. My soul is not utterly buried under a dung-heap only because I have stopped shoveling.",
+      "observation": "Ripley's speech was magnificent and futile. The man could sell sand in the desert but he cannot grow potatoes in Massachusetts. Dana listened with his arms crossed \u2014 the posture of a man doing mental arithmetic. Sophia Ripley did not attend; she was grading papers. She is the only one doing anything real.",
+      "still_here": true
+    },
+    {
+      "round": 7,
+      "date": "Apr 1842",
+      "action": "WRITE",
+      "mood": "resolved",
+      "satisfaction": 87,
+      "inner_thought": "I have been here a year. I have written almost nothing, saved no money, and ruined my hands. Sophia Peabody writes me letters that I read and re-read until the paper is soft. I must go to her. This place \u2014 it is beautiful, and the people are good, but it is not for me. I am a solitary creature. Communities are for joiners, and I was born a watcher.",
+      "observation": "Spring makes everything look possible again \u2014 that is its cruelty. Ripley speaks of new beginnings as though last year's failures have been erased by snowmelt. Dana plants with the energy of a man who has decided to believe. Dwight blooms with the season. Only I remain winter inside.",
+      "still_here": true
+    },
+    {
+      "round": 8,
+      "date": "Jun 1842",
+      "action": "WRITE",
+      "mood": "sardonic",
+      "satisfaction": 95,
+      "inner_thought": "Visitors from Boston, come to inspect us like specimens in a jar. I hid in my room and wrote. The irony is not lost on me \u2014 I am writing about communities, about the gap between ideals and reality, about men who build utopias and the women who actually keep them running. This will become something, someday. But not here. Not as a farmer.",
+      "observation": "I watched the visitors from my window. They were charmed, as visitors always are. Brook Farm is delightful for an afternoon. It is living here that is the difficulty. Ripley shone, as he always does with an audience. Dana was smooth. Dwight performed. Only Sophia seemed annoyed by the interruption to her teaching.",
+      "still_here": true
+    },
+    {
+      "round": 9,
+      "date": "Aug 1842",
+      "action": "REST",
+      "mood": "peaceful",
+      "satisfaction": 97,
+      "inner_thought": "I have decided. I will tell Ripley this week and leave before September. Eighteen months. I came to save money for my marriage and have saved nothing. I came to find quiet for writing and found only noise and manure. But I will not leave in bitterness \u2014 these are good people, struggling with an impossible dream. I will write about them someday, with compassion and with truth.",
+      "observation": "The community continues as though it will last forever. Ripley plans, Dana plants, Sophia teaches, Dwight plays. They are a living painting \u2014 beautiful and still. But I am not part of the composition. I never was. I stood always at the edge, observing, which is both my gift and my curse.",
+      "still_here": true
+    },
+    {
+      "round": 10,
+      "date": "Oct 1842",
+      "action": "LEAVE",
+      "mood": "relieved",
+      "satisfaction": 97,
+      "inner_thought": "I am free. God forgive me, but that is what I feel \u2014 freedom. Eighteen months of pretending to be a farmer, a communitarian, a joiner. I am none of these things. I am a writer, solitary by nature, and I have wasted eighteen months of my short life. But not entirely \u2014 I have seen something true here, something worth writing about. The gap between what people dream and what they can build. Ripley's magnificent, doomed optimism. Sophia Ripley's quiet heroism. Dana's competence, wasted on pumpkins. Dwight's music floating over fields that can barely feed their workers. I shall put all of this in a book someday.",
+      "observation": "I looked back once as I walked down the road. The Hive sat white against the green fields. I could hear Dwight's piano faintly. George stood at the door, watching me go. He did not wave. The community will survive my departure \u2014 it does not need watchers. It needs farmers, and I was never that.",
+      "still_here": false
+    }
+  ],
+  "Sophia Ripley": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "TEACH",
+      "mood": "dedicated",
+      "satisfaction": 75,
+      "inner_thought": "George's eyes shine with that old fire. I share his dream \u2014 but I also know someone must make it real. The school is my domain. If we fail, it will not be because the children were neglected.",
+      "observation": "George is already overcommitting \u2014 promising everything to everyone. Hawthorne looks like a man who has wandered into the wrong party. Dana is the only young person here with any sense of money.",
+      "still_here": true
+    },
+    {
+      "round": 2,
+      "date": "Jun 1841",
+      "action": "TEACH",
+      "mood": "concerned",
+      "satisfaction": 80,
+      "inner_thought": "The tuition money is real. The farming income is... hopeful. George comes home exhausted and accomplishes a fraction of what a real farmer would. But I cannot say this to him. The school is working. I must protect it.",
+      "observation": "Hawthorne is suffering. He is not made for this work \u2014 anyone can see it. George pretends not to notice. Dana carries more than his share without complaint. Dwight's evening gatherings are the one thing everyone enjoys.",
+      "still_here": true
+    },
+    {
+      "round": 3,
+      "date": "Aug 1841",
+      "action": "TEACH",
+      "mood": "weary",
+      "satisfaction": 85,
+      "inner_thought": "I have not missed a single class. Not one. Meanwhile the men debate philosophy over dinner while the dishes sit unwashed. George's great experiment in equality has not reached the kitchen. But the school \u2014 the school is real. It works. The children learn.",
+      "observation": "Hawthorne was writing today, not farming. George pretended not to notice. Dana worked twice as hard to compensate \u2014 he always does. I wonder how long the young man's goodwill can sustain what the community's economics cannot.",
+      "still_here": true
+    },
+    {
+      "round": 4,
+      "date": "Oct 1841",
+      "action": "TEACH",
+      "mood": "worried",
+      "satisfaction": 90,
+      "inner_thought": "Six new students! The school earns more than the farm now \u2014 has anyone noticed? George is so fixed on proving that intellectuals can farm that he has overlooked the one enterprise that actually works. I said nothing. I never say anything. I teach, and I endure.",
+      "observation": "Hawthorne came to the harvest looking like a condemned man. George is too proud to see what is obvious \u2014 some people are not meant for manual labor, and that is not a moral failing. Dana told me the treasury numbers privately. We must economize or we will not survive the winter.",
+      "still_here": true
+    },
+    {
+      "round": 5,
+      "date": "Dec 1841",
+      "action": "TEACH",
+      "mood": "exhausted",
+      "satisfaction": 95,
+      "inner_thought": "I have taught every day for eight months without rest. My fingers are ink-stained and my back aches from bending over student work by candlelight. George asks me every evening how the school went and I say 'well' and he nods and returns to his letters. He does not ask if I am well. The school is well. I am tired.",
+      "observation": "Hawthorne writes alone in his room like a man already gone. George writes fundraising letters with increasing desperation. Dana has privately told me the accounts are 'manageable' \u2014 his word for alarming. Dwight plays Beethoven's late quartets, which are either sublime or funereal depending on one's mood.",
+      "still_here": true
+    },
+    {
+      "round": 6,
+      "date": "Feb 1841",
+      "action": "TEACH",
+      "mood": "resigned",
+      "satisfaction": 100,
+      "inner_thought": "George gave his speech. It was beautiful. It changed nothing. We are burning through money and the farm is buried under snow. I keep teaching because it is the only thing that works. I am beginning to wonder if this whole enterprise was childish \u2014 a group of educated people playing at being farmers because they read too much Rousseau.",
+      "observation": "George's speech rallied a few \u2014 Dana nodded, Dwight wept a little. Hawthorne was absent in spirit if present in body. I notice I am having thoughts I never expected: that perhaps this optimism was childish, empty, and sad. But I will not say so. Not yet.",
+      "still_here": true
+    },
+    {
+      "round": 7,
+      "date": "Apr 1842",
+      "action": "TEACH",
+      "mood": "conflicted",
+      "satisfaction": 100,
+      "inner_thought": "A year has passed. The school has grown from five students to fourteen. This is my achievement, though George speaks of 'our school' in his letters to Boston. I do not begrudge him this \u2014 but I notice it. I also notice that I have begun to pray differently. The Unitarianism that brought us here feels thin. I want something older, richer. But I cannot say this to George.",
+      "observation": "Hawthorne is leaving. He hasn't said so, but a woman can tell. He writes all day and looks toward the road. George doesn't see it \u2014 or won't. Dana sees everything but says nothing. Dwight lives in a beautiful dream that I envy deeply.",
+      "still_here": true
+    },
+    {
+      "round": 8,
+      "date": "Jun 1842",
+      "action": "TEACH",
+      "mood": "irritated",
+      "satisfaction": 100,
+      "inner_thought": "The visitors tramped through my classroom as though it were a curiosity. My students are not exhibits. George was in his element \u2014 all grand gestures and quotable phrases. He does not notice that the visitors' money barely covers the cost of hosting them. I said nothing. I taught through the disruption as best I could.",
+      "observation": "The visitors saw what we wanted them to see. They did not see the treasury ledger. They did not see Hawthorne hiding in his room. They did not see me grading papers at midnight. They saw Ripley's dream in its Sunday best. It is a beautiful dream. I am less certain, month by month, that it is real.",
+      "still_here": true
+    },
+    {
+      "round": 9,
+      "date": "Aug 1842",
+      "action": "TEACH",
+      "mood": "sad",
+      "satisfaction": 100,
+      "inner_thought": "Hawthorne is leaving. I saw it in his face at supper \u2014 the relief of a man who has made a hard decision. I do not blame him. I am beginning to understand the feeling. But I have no fianc\u00e9e waiting in Salem, no literary career to return to. I have George, the school, and an increasingly hollow faith in our experiment.",
+      "observation": "Hawthorne asked George for a private conversation. George's face went pale for a moment, then he recovered his composure. Dana knows \u2014 he always knows. Dwight is the only one who seems genuinely surprised that anyone might want to leave paradise. His innocence is either admirable or infuriating.",
+      "still_here": true
+    },
+    {
+      "round": 10,
+      "date": "Oct 1842",
+      "action": "TEACH",
+      "mood": "stoic",
+      "satisfaction": 100,
+      "inner_thought": "Hawthorne left today. George tried to be stoic and failed \u2014 I saw him standing alone by the garden for an hour after. I wanted to comfort him but I am running out of comfort to give. The school is my anchor. Fourteen students depend on me. I will teach. I will endure. But something has shifted in me. The first departure makes the second easier to imagine.",
+      "observation": "One chair empty at dinner. Four where there were five. George speaks of the future as though this changes nothing. Dana quietly adjusted the budget \u2014 one fewer person to feed, one fewer share of the labor. The mathematics of departure are cold. Dwight played something mournful and beautiful. He always knows what the community feels before it knows itself.",
+      "still_here": true
+    }
+  ],
+  "Charles Dana": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "FARM",
+      "mood": "energetic",
+      "satisfaction": 67,
+      "inner_thought": "This is extraordinary \u2014 philosophers hauling manure, ministers building fences. I came with nothing and they welcomed me as an equal. I will make myself indispensable. There is much to learn here, and much to do.",
+      "observation": "Ripley is the soul of the enterprise but cannot tell a hoe from a rake. Hawthorne watches everything with those dark eyes \u2014 I suspect he is already composing a novel about us. Mrs. Ripley is the only one with a business plan.",
+      "still_here": true
+    },
+    {
+      "round": 2,
+      "date": "Jun 1841",
+      "action": "FARM",
+      "mood": "pragmatic",
+      "satisfaction": 64,
+      "inner_thought": "I am keeping quiet about the finances, but the numbers don't lie \u2014 we spend more than we earn. The school income helps but it's not enough. Still, the summer harvest could change things. I'll work harder and say nothing for now.",
+      "observation": "Hawthorne looks miserable in the fields. I catch him staring at the distant hills as though planning an escape. Ripley works himself to exhaustion to prove a philosophical point. The women do twice the practical work with half the credit.",
+      "still_here": true
+    },
+    {
+      "round": 3,
+      "date": "Aug 1841",
+      "action": "FARM",
+      "mood": "determined",
+      "satisfaction": 61,
+      "inner_thought": "Hawthorne was missing from the fields again. Writing, they say. I don't blame the man \u2014 his hands are ruined and his heart was never in it. But I cannot help noticing that I rise at five and he rises at nine. The community treasury has $420. Expenses run $30 a week. I can do the arithmetic even if no one wants to hear it.",
+      "observation": "Ripley is spreading himself too thin \u2014 teaching, farming, planning, fundraising. He will collapse before the community does. Hawthorne has mentally departed even if his body remains. Sophia Ripley is the most indispensable person here and the least appreciated.",
+      "still_here": true
+    },
+    {
+      "round": 4,
+      "date": "Oct 1841",
+      "action": "FARM",
+      "mood": "stoic",
+      "satisfaction": 58,
+      "inner_thought": "The harvest is adequate, not good. We have enough to eat through December if we're careful. The treasury stands at $385. School tuition will carry us, but there is no margin for error. I've started keeping a private ledger \u2014 the official one is too optimistic.",
+      "observation": "Hawthorne worked today but his heart is a thousand miles away. I give him three more months before he leaves. Ripley is a good man leading a venture he doesn't fully understand. Sophia Ripley is the most undervalued person in Massachusetts.",
+      "still_here": true
+    },
+    {
+      "round": 5,
+      "date": "Dec 1841",
+      "action": "TRADE",
+      "mood": "worried",
+      "satisfaction": 60,
+      "inner_thought": "Treasury: $310. Monthly expenses: $120. School income: $65/month. The arithmetic is clear \u2014 we are losing $55 a month. At this rate we have six months before insolvency. I could present this to Ripley but he would respond with a sermon about faith. I will find other income instead.",
+      "observation": "Ripley writes letters all day \u2014 to Emerson, to Parker, to anyone who might donate. Hawthorne has retreated so deeply into his writing that he might as well be in Salem. Sophia Ripley looks ill with exhaustion but refuses to slow down. We are all held together by stubbornness, not by economics.",
+      "still_here": true
+    },
+    {
+      "round": 6,
+      "date": "Feb 1841",
+      "action": "FARM",
+      "mood": "stoic",
+      "satisfaction": 57,
+      "inner_thought": "Treasury: $245. We have perhaps four months. I said nothing during Ripley's speech because what could I say? The man is not wrong about the vision \u2014 he is wrong about the math. I repaired the barn door today and fed the animals. Small work, necessary work. Someone must do it.",
+      "observation": "Ripley speaks of spring as though it will solve everything. It will not. Hawthorne is deciding whether to leave \u2014 I can see it in his face, the way a man looks at a door. Sophia Ripley missed the community meeting to grade papers. She was the only one being productive.",
+      "still_here": true
+    },
+    {
+      "round": 7,
+      "date": "Apr 1842",
+      "action": "FARM",
+      "mood": "energetic",
+      "satisfaction": 54,
+      "inner_thought": "A new growing season. Treasury: $280 after a winter of bleeding. If the harvest is good and enrollment holds, we survive another year. If not \u2014 well. I have begun writing for the Boston papers on the side. A man should have options. But I am not leaving. Not yet. There is too much to learn here.",
+      "observation": "Hawthorne will leave before summer \u2014 I would bet money on it, if I had any. Ripley is planning an expansion he cannot afford. Sophia Ripley has taught every single day for a year without break. The woman is either a saint or a martyr, and I fear both.",
+      "still_here": true
+    },
+    {
+      "round": 8,
+      "date": "Jun 1842",
+      "action": "FARM",
+      "mood": "pragmatic",
+      "satisfaction": 51,
+      "inner_thought": "The visitors paid $20, which helps. I showed them the accounts \u2014 cleaned up, naturally \u2014 and the farm operations. One man offered to invest if we could 'demonstrate profitability within two years.' I told him we would try. We cannot. But the $20 is real and I will take it.",
+      "observation": "Ripley is an extraordinary showman. The visitors left enthusiastic. But enthusiasm does not convert to donations reliably. Hawthorne's absence was noticed \u2014 one visitor asked about 'the famous author' and Ripley smoothly said he was 'at his literary work.' A generous interpretation.",
+      "still_here": true
+    },
+    {
+      "round": 9,
+      "date": "Aug 1842",
+      "action": "FARM",
+      "mood": "resigned",
+      "satisfaction": 48,
+      "inner_thought": "Hawthorne is leaving. I owe myself five dollars \u2014 I predicted this in April. His departure will cost us his $1,000 investment if he demands it back. Treasury: $305. We cannot afford it. But more than money, it will be a blow to morale. A founding member leaving says something. Ripley will take it personally. He takes everything personally.",
+      "observation": "Hawthorne told Ripley he wants to talk. The news spread through the community in an hour \u2014 that's how gossip works in a commune of twenty people. Sophia Ripley comforted George at supper. Dwight suggested a farewell concert, which means he already knows. We all know. We're just waiting for the words.",
+      "still_here": true
+    },
+    {
+      "round": 10,
+      "date": "Oct 1842",
+      "action": "FARM",
+      "mood": "somber",
+      "satisfaction": 45,
+      "inner_thought": "Hawthorne is gone. Treasury impact: minimal \u2014 he wasn't earning. Labor impact: also minimal, honestly. But the symbolic impact is enormous. A founding member, a famous author, walked away from our experiment. When he writes about this place \u2014 and he will \u2014 it will not be kind. He will be fair but devastating, as only a great writer can be.",
+      "observation": "Ripley aged five years today. He stood by the garden watching Hawthorne's carriage disappear and I thought \u2014 this man will carry this wound for the rest of his life. He takes every departure as a personal failure. Sophia threw herself into teaching with frightening intensity. Dwight played. I farmed. We each grieve in our own language.",
+      "still_here": true
+    }
+  ],
+  "John Sullivan Dwight": [
+    {
+      "round": 1,
+      "date": "Apr 1841",
+      "action": "ORGANIZE evening gathering with music and readings",
+      "mood": "joyful",
+      "satisfaction": 75,
+      "inner_thought": "I have escaped! No more fumbling through sermons to empty pews. Here I can teach music, play Beethoven, and no one will think me impractical. Well \u2014 perhaps Hawthorne will. But the others understand.",
+      "observation": "The piano is tolerable, though it needs tuning. Ripley and his wife are the true center of this place \u2014 one provides the vision, the other the structure. Dana is a marvel of energy. Hawthorne is already sunburnt.",
+      "still_here": true
+    },
+    {
+      "round": 2,
+      "date": "Jun 1841",
+      "action": "TEACH",
+      "mood": "content",
+      "satisfaction": 80,
+      "inner_thought": "I confess the farming is tedious beyond measure. But when I sit at the piano in the evening and the whole community gathers \u2014 that is transcendence. Real transcendence, not the kind Emerson theorizes about from his comfortable study in Concord.",
+      "observation": "Hawthorne is like a caged animal in the fields. Ripley doesn't see it \u2014 or won't. Dana is the backbone of this place, though he's the youngest among us. Sophia's school is the only enterprise that actually functions like a business.",
+      "still_here": true
+    },
+    {
+      "round": 3,
+      "date": "Aug 1841",
+      "action": "ORGANIZE concert and theatrical evening",
+      "mood": "reflective",
+      "satisfaction": 85,
+      "inner_thought": "I organized a concert under the stars tonight \u2014 Mozart and some folk songs. For two hours, no one thought about money or farming or philosophy. They just listened. This is what Brook Farm should be \u2014 not a farm at all, but a school for the soul. If only souls didn't need feeding.",
+      "observation": "The community seems tired. Not just physically \u2014 there is a weariness of spirit. Hawthorne barely speaks at meals. Ripley's optimism has a desperate edge. Only Dana and Sophia seem fully committed to the daily grind. My evening gatherings are well-attended, at least.",
+      "still_here": true
+    },
+    {
+      "round": 4,
+      "date": "Oct 1841",
+      "action": "ORGANIZE harvest festival",
+      "mood": "bittersweet",
+      "satisfaction": 90,
+      "inner_thought": "The harvest festival was my idea and I think it saved us \u2014 for a night, at least. People danced, sang, told stories. Hawthorne even smiled, briefly. But when the music stopped, the worry returned to every face. We need more than music. We need money.",
+      "observation": "There is a split forming \u2014 those who work the land and those who work the mind. Dana and Sophia carry the practical weight. Ripley and I live in ideas. Hawthorne stands apart from everyone, watching, always watching. He is writing about us, I am sure of it.",
+      "still_here": true
+    },
+    {
+      "round": 5,
+      "date": "Dec 1841",
+      "action": "ORGANIZE holiday concert and readings",
+      "mood": "hopeful",
+      "satisfaction": 95,
+      "inner_thought": "I prepared a Christmas concert \u2014 carols, some Handel, readings from Dickens. For an hour the parlor was warm with more than just the fire. People smiled. Hawthorne even attended, though he sat in the corner like a man observing a foreign custom. These gatherings are my contribution. They are all I have to give.",
+      "observation": "The mood is fragile. Money is tight \u2014 even I can see it, and I am the least practical person here. Ripley's cheerfulness has a manic quality. Sophia works too hard. Dana worries too quietly. Hawthorne writes and waits for something \u2014 for spring, perhaps, or for the courage to leave.",
+      "still_here": true
+    },
+    {
+      "round": 6,
+      "date": "Feb 1841",
+      "action": "TEACH",
+      "mood": "somber",
+      "satisfaction": 100,
+      "inner_thought": "Ripley's speech moved me to tears, which I tried to hide. He is a great man, perhaps a foolish one, but great. The winter is hard. I miss warmth, I miss green things, I miss the sound of the community in full voice. The evening gatherings are smaller now. But the music endures. Beethoven endured worse than this.",
+      "observation": "Everyone is quieter in February. The cold strips away pretense. I see now that we are held together by three things: Ripley's belief, Sophia's school, and Dana's labor. The rest of us are \u2014 what? Ornaments? No. Music is not ornament. But it is not bread either.",
+      "still_here": true
+    },
+    {
+      "round": 7,
+      "date": "Apr 1842",
+      "action": "ORGANIZE spring dance and concert",
+      "mood": "joyful",
+      "satisfaction": 100,
+      "inner_thought": "Spring! The windows are open and I can hear birdsong for the first time in months. I organized a dance last night \u2014 reels, waltzes, a polka that had even stoic Dana laughing. Hawthorne stood by the wall, smiling his enigmatic smile. If he leaves, I will miss that smile. He never dances, but he watches dancing as though it contains a secret.",
+      "observation": "The community breathes again. But underneath the spring joy there is a crack I did not see before \u2014 people are tired. Not winter-tired but bone-tired, spirit-tired. Sophia Ripley snapped at George at supper, which I have never seen. Hawthorne looks like a man who has already left and is waiting for his body to catch up.",
+      "still_here": true
+    },
+    {
+      "round": 8,
+      "date": "Jun 1842",
+      "action": "ORGANIZE concert for the Boston visitors",
+      "mood": "excited",
+      "satisfaction": 100,
+      "inner_thought": "I played Beethoven's Moonlight Sonata for the visitors and a woman wept. This is what Brook Farm can offer the world \u2014 not cheaper vegetables but richer souls. If only we could charge tuition for the soul. I suppose that is what churches do. And I have already failed at that profession once.",
+      "observation": "The visit was a success, I think. The visitors seemed genuinely moved by the community spirit. But they also asked uncomfortable questions about finances. Ripley deflected beautifully. Dana provided reassuring numbers. Hawthorne hid. Sophia bristled. We are a family, with all the dysfunction that implies.",
+      "still_here": true
+    },
+    {
+      "round": 9,
+      "date": "Aug 1842",
+      "action": "ORGANIZE evening music and farewell preparation",
+      "mood": "melancholy",
+      "satisfaction": 100,
+      "inner_thought": "Hawthorne is going. I can feel it \u2014 the way the air changes before a storm. I do not understand how anyone could leave this place. Yes, the farming is tedious and the money is scarce, but where else can one hear Beethoven under the stars and discuss Plato over breakfast? Perhaps I am the fool. Perhaps home is only home if you cannot imagine leaving.",
+      "observation": "A sadness has settled over Brook Farm like autumn mist. Ripley tries to smile but his eyes betray him. Sophia Ripley is stoic \u2014 she has been stoic all year, carrying more than anyone sees. Dana harvests with mechanical precision, preparing for a winter with one fewer mouth to feed and one fewer pair of hands.",
+      "still_here": true
+    },
+    {
+      "round": 10,
+      "date": "Oct 1842",
+      "action": "ORGANIZE memorial concert for the community",
+      "mood": "elegiac",
+      "satisfaction": 100,
+      "inner_thought": "Hawthorne is gone. I played Schubert's 'Death and the Maiden' tonight \u2014 not for death, but for the death of an idea. The idea that we would all stay, that the community would hold everyone it embraced. Some will leave. The question is whether enough of us stay to keep the music playing. I stay. I will always stay. Where else would I go?",
+      "observation": "The community is smaller but not broken. Ripley's grief is visible to anyone who looks. Sophia is a fortress \u2014 she has retreated behind her lesson plans and will not be drawn out. Dana is the most resilient \u2014 he simply works harder. And I play. Four voices in a quartet can be as rich as five, if each voice is true.",
+      "still_here": true
+    }
+  ]
+}

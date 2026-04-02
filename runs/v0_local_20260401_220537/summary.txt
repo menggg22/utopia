@@ -1,0 +1,14 @@
+Brook Farm Simulation — v0 Local Run 20260401_220537
+Rounds: 10
+Final: Food=0, Money=$750, Morale=15%
+Departed: Nathaniel Hawthorne
+Survived: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+
+Character Final States:
+  George Ripley: STAYED, satisfaction=91/100, actions=10
+  Nathaniel Hawthorne: LEFT, satisfaction=97/100, actions=10
+  Sophia Ripley: STAYED, satisfaction=100/100, actions=10
+  Charles Dana: STAYED, satisfaction=45/100, actions=10
+  John Sullivan Dwight: STAYED, satisfaction=100/100, actions=10
+
+Rules adopted: 0
