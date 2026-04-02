@@ -46,8 +46,8 @@ Single JSONL event stream (`events.jsonl`) captures everything — actions, inne
 - [x] v1 agent design — structured memory, conversations, voting, gossip ([AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md))
 - [x] Logging specification — JSONL event stream ([LOGGING-SPEC.md](LOGGING-SPEC.md))
 - [x] v0 test run — 10 rounds, Hawthorne departs round 10 ([run summary](#v0-test-run))
-- [ ] v1 implementation
-- [ ] First run + comparison to history
+- [x] v1 implementation ([simulate_v1.py](simulate_v1.py), [derive.py](derive.py))
+- [x] First complete run — 30 rounds, reproduces key failure modes ([run summary](#v1-first-complete-run))
 - [ ] Controlled experiments (remove founder, add scarcity, scale up)
 - [ ] Visualization / documentary
 
@@ -89,6 +89,34 @@ python simulate.py
 ```
 
 Output lands in `runs/<timestamp>/`.
+
+## v1 First Complete Run
+
+30 rounds (Apr 1841 — Feb 1845), claude-haiku-4-5-20251001 via Claude Code CLI. 304 LLM calls, 1401 events, ~81 min.
+
+**Result**: Community limps to round 30 with 3 survivors. Morale 0% for 20 straight rounds.
+
+| Metric | Final |
+|--------|-------|
+| Food | 10 (emergency purchases) |
+| Money | $241 (down from $500) |
+| Morale | 0% (since round 11) |
+| Departed | Hawthorne (R11), Dwight (R21) |
+| Survived | Ripley, Sophia, Dana |
+
+**Key findings**:
+
+1. **Hawthorne's departure timing matches history** — Left round 11 (Dec 1842). Real Hawthorne left Nov 1842. The simulation reproduced this without being told when he left.
+
+2. **Intellectuals don't farm** — Only 22 FARM actions in 150 agent-rounds. Ripley did half of all farming. Food collapsed by round 5. This IS Brook Farm's documented failure mode, reproduced structurally.
+
+3. **The speech spiral** — Dana gave ~15 speeches about the financial crisis while farming only 3 times. The community talked about its problems more than it worked on them.
+
+4. **Sophia as load-bearer** — Taught 20/30 rounds, satisfaction stayed high. The school was the only functional institution — matching history.
+
+5. **Ripley's sacrifice** — Farmed the most, satisfaction hit 0 by round 13, stayed 17 more rounds at 0. Matches the real Ripley who spent 13 years repaying Brook Farm's debts.
+
+Full analysis: [`runs/run_20260401_235509/RUN_NOTES.md`](runs/run_20260401_235509/RUN_NOTES.md)
 
 ## Docs
 
