@@ -115,8 +115,7 @@ experiment.py       Batch experiment runner
 compare.py          Cross-run analysis tool
 experiments/        Experiment config files (JSON)
 runs/               Simulation output (events.jsonl + derived files)
-simulate.py         v0 engine (reference, not used)
-run_v0_local.py     v0 local test run (reference)
+archive/            v0 code and superseded design docs
 ```
 
 ## Design Docs
@@ -125,5 +124,4 @@ run_v0_local.py     v0 local test run (reference)
 |------|------|
 | [DESIGN.md](DESIGN.md) | Original experiment design |
 | [BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md) | Persona cards, timeline, economic model |
-| [AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md) | v1 agent system design |
-| [LOGGING-SPEC.md](LOGGING-SPEC.md) | JSONL event stream specification |
+| [archive/](archive/) | v0 code, v1 design doc, logging spec |
