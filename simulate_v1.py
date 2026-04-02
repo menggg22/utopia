@@ -331,32 +331,53 @@ class Environment:
         self.events_this_round = []
         self.pending_proposals = []
 
+        # Food consumption
         food_consumed = n_agents * 5
         self.food -= food_consumed
 
-        base_school = 15
-        self.money += base_school
-        self.total_school_income += base_school
-        self.money -= 10  # operating costs
-
-        if self.food < 20:
-            self.morale -= 10
-            self._announce("Food is running dangerously low. People are hungry.")
-        if self.money < 50:
-            self.morale -= 5
-            self._announce("The treasury is nearly empty.")
-        if self.food < 0:
-            self.food = 0
-            self.morale -= 20
-            self._announce("There is NO food. People are going hungry.")
-
-        self.morale = max(0, min(100, self.morale))
-
+        # Winter extra food drain
         if self.season == "winter":
             self.food -= 5
             if random.random() < 0.1:
                 self._announce("A harsh winter storm damages supplies.")
                 self.food -= 10
+
+        # School income scales with morale — students leave when community struggles
+        if self.morale >= 50:
+            base_school = 15
+        elif self.morale >= 25:
+            base_school = 8
+            self._announce("Some students have withdrawn. School income is falling.")
+        else:
+            base_school = 3
+            self._announce("Most students have left. The school barely functions.")
+        self.money += base_school
+        self.total_school_income += base_school
+        self.money -= 10  # operating costs
+
+        # Resource crisis effects on morale
+        if self.food < 20 and self.food > 0:
+            self.morale -= 10
+            self._announce("Food is running dangerously low. People are hungry.")
+        if self.food <= 0:
+            self.food = 0
+            self.morale -= 20
+            self._announce("There is NO food. People are going hungry.")
+            # Starvation: community must spend money to buy food, or people get sick
+            if self.money >= 20:
+                self.money -= 20
+                self.food += 10  # emergency purchase
+                self._announce("Emergency: $20 spent buying food from neighbors. This cannot continue.")
+            else:
+                self._announce("CRISIS: No food and no money to buy any. Members are falling ill.")
+                self.morale -= 15  # extra morale hit
+        if self.money < 50:
+            self.morale -= 5
+            self._announce("The treasury is nearly empty.")
+
+        # Clamp
+        self.food = max(0, self.food)
+        self.morale = max(0, min(100, self.morale))
 
         self.day += 1
 
@@ -734,8 +755,13 @@ class Agent:
             f"Respond in EXACTLY this format:\n\n"
             f"SUMMARY: <2-3 sentences — what stays with you from today?>\n\n"
             f"MOOD: <one word>\n\n"
-            f"SATISFACTION: <number 0-100>\n\n"
-            f"KEY_MOMENT: <Was today a key moment? If yes, describe in one sentence. If no, write 'none'>\n"
+            f"SATISFACTION_CHANGE: <how much your satisfaction changed today: a number from -10 to +10. "
+            f"Negative if the day was discouraging, frustrating, or you feel worse about being here. "
+            f"Positive only if something genuinely good happened. 0 if an ordinary day. "
+            f"Most days should be -5 to +3. Your current satisfaction is {self.satisfaction}/100.>\n\n"
+            f"KEY_MOMENT: <Was today a TRULY memorable moment — a turning point, a shock, a revelation? "
+            f"Most days are NOT key moments. Write 'none' unless something extraordinary happened. "
+            f"If yes, describe in one sentence.>\n"
             f"KEY_EMOTION: <If key moment, one emotion word. If none, write 'none'>\n\n"
             f"CONCERNS:\n<List your current worries, one per line with '- ' prefix. Replace old list.>\n\n"
             f"{rel_prompts}\n"
@@ -765,12 +791,34 @@ class Agent:
             elif upper.startswith("MOOD:"):
                 result["mood"] = stripped[5:].strip().lower()
                 in_concerns = False
+            elif upper.startswith("SATISFACTION_CHANGE:") or upper.startswith("SATISFACTION CHANGE:"):
+                try:
+                    prefix_len = 19 if "CHANGE:" in upper else 20
+                    val = stripped[prefix_len:].strip()
+                    # Extract number (may have +/- sign)
+                    num_str = ""
+                    for c in val:
+                        if c in "-+0123456789":
+                            num_str += c
+                        elif num_str:
+                            break
+                    delta = int(num_str) if num_str else 0
+                    delta = max(-10, min(10, delta))  # clamp to [-10, +10]
+                    result["satisfaction_change"] = delta
+                except (ValueError, IndexError):
+                    result["satisfaction_change"] = 0
+                in_concerns = False
             elif upper.startswith("SATISFACTION:"):
+                # Fallback if LLM ignores the _CHANGE format
                 try:
                     val = stripped[13:].strip()
-                    result["satisfaction"] = int("".join(c for c in val if c.isdigit())[:3])
+                    raw = int("".join(c for c in val if c.isdigit())[:3])
+                    # Convert absolute to delta, clamped
+                    delta = raw - self.satisfaction
+                    delta = max(-10, min(10, delta))
+                    result["satisfaction_change"] = delta
                 except (ValueError, IndexError):
-                    result["satisfaction"] = self.satisfaction
+                    result["satisfaction_change"] = 0
                 in_concerns = False
             elif upper.startswith("KEY_MOMENT:"):
                 val = stripped[11:].strip()
@@ -835,7 +883,7 @@ class Agent:
 
         result.setdefault("summary", "")
         result.setdefault("mood", "neutral")
-        result.setdefault("satisfaction", self.satisfaction)
+        result.setdefault("satisfaction_change", 0)
         result.setdefault("key_moment", None)
         result.setdefault("key_emotion", None)
         result.setdefault("relationships", {})
@@ -1365,8 +1413,8 @@ def run_simulation(n_rounds: int = MAX_ROUNDS):
                 agent.memory.add_observation(obs["about"], obs["detail"], round_num)
 
             # Update satisfaction
-            new_sat = reflection.get("satisfaction", agent.satisfaction)
-            agent.satisfaction = max(0, min(100, new_sat))
+            sat_delta = reflection.get("satisfaction_change", 0)
+            agent.satisfaction = max(0, min(100, agent.satisfaction + sat_delta))
 
             logger.log(round_num, "reflect", "reflection", agent=name, data={
                 "summary": reflection.get("summary", ""),
