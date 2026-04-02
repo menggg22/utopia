@@ -45,6 +45,7 @@ Single JSONL event stream (`events.jsonl`) captures everything — actions, inne
 - [x] v0 simulation engine ([simulate.py](simulate.py))
 - [x] v1 agent design — structured memory, conversations, voting, gossip ([AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md))
 - [x] Logging specification — JSONL event stream ([LOGGING-SPEC.md](LOGGING-SPEC.md))
+- [x] v0 test run — 10 rounds, Hawthorne departs round 10 ([run summary](#v0-test-run))
 - [ ] v1 implementation
 - [ ] First run + comparison to history
 - [ ] Controlled experiments (remove founder, add scarcity, scale up)
@@ -56,6 +57,28 @@ Single JSONL event stream (`events.jsonl`) captures everything — actions, inne
 2. **Counterfactual insight** — "if Hawthorne had stayed, the community lasts 2 more years"
 3. **Universal pattern** — running 3 different communities produces the same failure at the same point
 4. **The rule that saves it** — in 100 runs, surviving communities independently invent the same rule
+
+## v0 Test Run
+
+10 rounds (Apr 1841 — Oct 1842), Claude Code as LLM, pre-generated agent responses grounded in historical personas.
+
+**Result**: Hawthorne departed round 10 (Oct 1842) — matches real history (~18 months). 4 members survived. Food hit 0, morale crashed to 15%.
+
+| Metric | Final |
+|--------|-------|
+| Food | 0 |
+| Money | $750 |
+| Morale | 15% |
+| Departed | Nathaniel Hawthorne |
+| Survived | Ripley, Sophia, Dana, Dwight |
+
+**Lessons for v1**:
+- Satisfaction model too simple (monotonic +5/+8 per action, caps at 100) — needs decay, social factors, unmet-goal pressure
+- Money too generous (two teachers + base school income outpaces costs) — needs rebalancing
+- No conversations, voting, or reflection — the core v1 additions
+- Food drain harsh (5/agent/round) with only 1-2 farmers — farming yield or consumption needs tuning
+
+Output: `runs/v0_local_20260401_220537/` (config.json, full_log.json, characters.json, metrics.json, narrative.md, summary.txt)
 
 ## Setup
 
