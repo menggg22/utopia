@@ -759,4 +759,6 @@ def run_simulation(n_rounds: int = MAX_ROUNDS) -> dict:
 
 
 if __name__ == "__main__":
-    run_simulation()
+    import sys
+    rounds = int(sys.argv[1]) if len(sys.argv) > 1 else MAX_ROUNDS
+    run_simulation(rounds)
