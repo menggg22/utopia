@@ -10,16 +10,68 @@ Drop AI agents (each modeled after a real historical person) into a shared envir
 
 ## First Target: Brook Farm (1841-1847)
 
-Transcendentalist commune in Massachusetts. 5-8 key members including Nathaniel Hawthorne (who wrote a novel about it). Well-documented failure mode: intellectuals vs workers split, Fourierism conversion, financial collapse.
+Transcendentalist commune in Massachusetts. Founded by George Ripley, joined by Nathaniel Hawthorne (who later wrote a novel about it). Well-documented failure: intellectuals vs workers split, Fourierist conversion, phalanstery fire, financial collapse.
+
+**6 agents** modeled from real biographies:
+- **George Ripley** — Founder, visionary, carried the debt for 13 years after
+- **Nathaniel Hawthorne** — Skeptic, writer, left after 18 months ("my soul is not utterly buried under a dung-heap")
+- **Sophia Ripley** — Co-founder, ran the school (only reliable income), later called it all "childish, empty, & sad"
+- **Charles Dana** — 22-year-old pragmatist, spoke 10 languages, later became Assistant Secretary of War
+- **John Sullivan Dwight** — Music critic, cultural heart, organized the evening gatherings
+- **Isaac Hecker** — Spiritual seeker, left during Fourier conversion, founded the Paulist Fathers
+
+## How It Works
+
+Each simulation round has 3 phases:
+
+1. **Act** — Each agent observes the environment and chooses an action (farm, teach, build, write, propose a rule, leave...)
+2. **Talk** — 2-3 conversation pairs interact. Voting happens if rules are proposed. Agents argue, persuade, confide.
+3. **Reflect** — Each agent privately updates their memory: what mattered today, how they feel about each person, what worries them.
+
+Agents have **structured memory**: permanent key moments, evolving relationships (trust + attitude per person), running concerns, and observations about others that spread as gossip.
+
+Historical events are injected at the right time: Brisbane's Fourierist visit, the phalanstery proposal, smallpox, the fire.
+
+## Logging
+
+Single JSONL event stream (`events.jsonl`) captures everything — actions, inner thoughts, conversations, votes, relationship changes, gossip, resource levels. All other views (narrative, charts, character arcs) derive from this one file.
+
+15 event types. Flush every write. Survives crashes. Ready for documentary reconstruction.
 
 ## Status
 
-- [x] Design doc
-- [ ] Historical research (persona cards for Brook Farm members)
-- [ ] v0: minimal simulation loop
+- [x] Experiment design ([DESIGN.md](DESIGN.md))
+- [x] Historical research — 6 persona cards with real biographies, quotes, outcomes ([BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md))
+- [x] v0 simulation engine ([simulate.py](simulate.py))
+- [x] v1 agent design — structured memory, conversations, voting, gossip ([AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md))
+- [x] Logging specification — JSONL event stream ([LOGGING-SPEC.md](LOGGING-SPEC.md))
+- [ ] v1 implementation
 - [ ] First run + comparison to history
 - [ ] Controlled experiments (remove founder, add scarcity, scale up)
+- [ ] Visualization / documentary
 
-## Design
+## What Would Make This Worth Sharing
 
-See [DESIGN.md](DESIGN.md) for full design doc.
+1. **Same failure mode, different cause** — simulation produces a schism for a structural reason history didn't record
+2. **Counterfactual insight** — "if Hawthorne had stayed, the community lasts 2 more years"
+3. **Universal pattern** — running 3 different communities produces the same failure at the same point
+4. **The rule that saves it** — in 100 runs, surviving communities independently invent the same rule
+
+## Setup
+
+```bash
+pip install anthropic
+export ANTHROPIC_API_KEY=sk-ant-...
+python simulate.py
+```
+
+Output lands in `runs/<timestamp>/`.
+
+## Docs
+
+| File | What |
+|------|------|
+| [DESIGN.md](DESIGN.md) | Original experiment design — candidates, environment, evaluation |
+| [BROOK-FARM-PERSONAS.md](BROOK-FARM-PERSONAS.md) | 6 persona cards, timeline, economic model, Blithedale mappings |
+| [AGENT-DESIGN-V1.md](AGENT-DESIGN-V1.md) | v1 agent system — 3-phase rounds, structured memory, conversations |
+| [LOGGING-SPEC.md](LOGGING-SPEC.md) | JSONL event stream specification — 15 event types |
