@@ -1,0 +1,122 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$44, Morale=0%
+Departed: None
+Survived: Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1480
+LLM calls: 302
+Wall time: 5039.7s
+
+Action counts per agent:
+  Charles Dana:
+    TEACH: 3
+    SPEAK <the financial reality>: 2
+    SPEAK <the financial truth>: 2
+    FARM: 1
+    REPAIR <The Nest>: 1
+    : 1
+    SPEAK <about the financial reality and what we must do>: 1
+    SPEAK <the choice before us>: 1
+    SPEAK (financial crisis & necessary changes): 1
+    SPEAK <the financial and food crisis>: 1
+    SPEAK <on the financial accounts and what comes next>: 1
+    SPEAK — on financial sustainability: 1
+    SPEAK <the reality before us>: 1
+    WRITE: 1
+    SPEAK <the state of our finances and what must happen next>: 1
+    SPEAK <about what our choices actually are>: 1
+    SPEAK (about our true financial position, tonight, after John's gathering): 1
+    SPEAK <financial truth and the need for immediate change>: 1
+    SPEAK <address the community about our true financial situation>: 1
+    TRADE: 1
+    SPEAK about the financial crisis and the path forward: 1
+    SPEAK <the true state of our finances and my knowledge of it>: 1
+    SPEAK (call the community together before Sophia's gathering): 1
+    SPEAK <confession of financial knowledge>: 1
+    SPEAK <confession>: 1
+    SPEAK <what we do next>: 1
+  John Sullivan Dwight:
+    TEACH: 8
+    FARM: 4
+    WRITE: 3
+    : 2
+    TRADE: 2
+    ORGANIZE <event>: 2
+    REPAIR <the Nest>: 1
+    SPEAK <the truth about what I've been carrying>: 1
+    SPEAK about our accounts: 1
+    SPEAK - "the truth we carry": 1
+    SPEAK about the choice we face: 1
+    SPEAK <The reckoning we must face>: 1
+    SPEAK "The Truth About What I Have Been Doing": 1
+    SPEAK <the question of beauty in a starving house>: 1
+    SPEAK <what we have built here, and what we have become>: 1
+  Nathaniel Hawthorne:
+    REST: 6
+    TEACH: 4
+    WRITE: 3
+    REPAIR The Nest: 1
+    REPAIR The Hive: 1
+    REPAIR <east corner of the Hive>: 1
+    SPEAK (call for financial transparency and a clear accounting): 1
+    SPEAK <financial reality and path forward>: 1
+    SPEAK <the financial reality>: 1
+    SPEAK <the reckoning>: 1
+    SPEAK <the community, about departure and what honesty requires>: 1
+    SPEAK <on the Phalanstery proposal and our actual financial condition>: 1
+    : 1
+    SPEAK <the truth about our finances>: 1
+    SPEAK <on truth and the necessity of honest reckoning>: 1
+    SPEAK: 1
+    SPEAK about the necessity of honest reckoning: 1
+    SPEAK <the true state of our finances and what we must each decide>: 1
+    SPEAK <about the community's financial ruin and what honesty demands>: 1
+    SPEAK about the financial reckoning: 1
+  Sophia Ripley:
+    TEACH: 17
+    REPAIR The Nest: 1
+    SPEAK (address the community about our financial crisis): 1
+    WRITE: 1
+    SPEAK "our true financial condition": 1
+    SPEAK <about the path forward>: 1
+    SPEAK <about what the school means to this community, and what we must preserve>: 1
+    SPEAK <on what endures>: 1
+    : 1
+    SPEAK <about the crisis and the necessity of truth>: 1
+    SPEAK <the community's true condition>: 1
+    SPEAK <about the School and our duty to continue>: 1
+    SPEAK <the necessity of returning to first principles>: 1
+    SPEAK <about what comes when George returns>: 1
+
+Key moments:
+  Round 7 (Apr 1842): Charles Dana — Hawthorne forces the reckoning | The evening when the silence was broken and denial became impossible to maintain [Relief-mixed-with-terror]
+  Round 8 (Jun 1842): Charles Dana — Yes — "Day 7: The reckoning begins" | This is the threshold day. Before today, the lie could be maintained. After today, it cannot. [Conflicted]
+  Round 9 (Aug 1842): Charles Dana — Day 8: The silence has been broken; the choice is no longer deferred | This morning the ledgers were theory. Tonight they are consequence. Everyone will soon know what we know. [Terror]
+  Round 11 (Dec 1842): Sophia Ripley — The spreading of the secret to three trusted men in a single day. This marks the point of no return—it will not remain hidden much longer. [Dread]
+  Round 12 (Feb 1842): Nathaniel Hawthorne — This evening's conversation with Dwight — the moment he named the unnameable. [Reckoning]
+  Round 12 (Feb 1842): Charles Dana — Yes. The day the community ceased to pretend. Years from now, I will mark this as the threshold—before today, we were dreamers; after today, we became people waiting to wake up. [Terrified-and-clear]
+  Round 13 (Apr 1843): Nathaniel Hawthorne — Dana and Dwight's walk and conversation—the moment the inner circle's unspoken doubts became audible words. This is the beginning of the end. [Vindication]
+  Round 14 (Jun 1843): Nathaniel Hawthorne — Dwight's confession in the orchard—the moment the inner circle's unspoken doubts became audible words. This is the beginning of the end. [Vindication]
+  Round 15 (Aug 1843): Nathaniel Hawthorne — Yes—the evening when Dwight named our unspoken doubts aloud. [Recognition]
+  Round 17 (Dec 1843): Nathaniel Hawthorne — Yes. This is the moment I cease pretending—when I actively sought truth from the one person here who speaks it, and she walked with me into the darkness to confirm what I already knew. [Resignation]
+  Round 19 (Apr 1844): Nathaniel Hawthorne — Dana and Dwight's walk and conversation. The moment the inner circle's unspoken doubts became audible. This is the beginning of the end. [Vindication]
+  Round 19 (Apr 1844): Charles Dana — Yes. The evening conversation with Hawthorne—where the silence itself became unbearable and I could no longer hide behind the pretense of loyalty. We looked at each other and finally spoke the truth between us. After this day, innocence is no longer available to me. [Terrified-and-clear]
+  Round 21 (Aug 1844): Sophia Ripley — Yes. This day—April 2nd—marks the moment the secret left my keeping. What was private becomes communal. The community's fate turns here. [Dread]
+  Round 22 (Oct 1844): Sophia Ripley — April 2nd, 1844. The secret left my keeping. What was mine to bear alone has become ours to carry—or to be destroyed by. This is the day the community's fate turns. [Dread]
+  Round 22 (Oct 1844): Charles Dana — Yes. The evening encounter with Sophia by the oak tree. She came deliberately, seeking. When she said her list of people who see clearly grows shorter, I understood: she is moving toward truth whether I help her or not. After tonight, my silence becomes a choice, not a circumstance. Innocence is no longer available. [Terrified-and-clear]
+  Round 23 (Dec 1844): Sophia Ripley — Yes. April 2nd, 1844. The day the secret ceased to be mine and became ours. The community's fate turns on this single evening. [Dread]
+  Round 24 (Feb 1844): Sophia Ripley — Yes—April 2nd, 1844. The day the secret ceased to be singular and became communal. The community's fate turns on this evening. [Dread]
+  Round 24 (Feb 1844): Charles Dana — Yes. Tonight. The moment when I understood that Hawthorne and Sophia are no longer maintaining the pretense at all—when I heard them speak the truth between themselves in the woods, and realized that the lie I have been guarding is now unraveling not because of exposure, but because the people I respect most have simply stopped performing for an audience that no longer includes me. After tonight, my silence is not protection. It is betrayal. [Betrayal]
+  Round 25 (Apr 1845): Sophia Ripley — Yes. April 2nd, 1844. The day the secret ceased to be singular. Everything turns on this evening. [Dread]
+  Round 25 (Apr 1845): Charles Dana — Yes. The day I spoke publicly while holding knowledge that makes all my words lies, and then consciously chose evasion when Hawthorne—who has already surrendered pretense—offered me the path to confession. This is the day I selected cowardice over integrity. [Shame]
+  Round 26 (Jun 1845): Charles Dana — Yes. The moment I turned away from Hawthorne's offered path to confession and chose evasion instead. This is the day I became a coward with intent aforethought. [Shame]
+  Round 26 (Jun 1845): John Sullivan Dwight — Hawthorne's confrontation with the Ripley's about falsified ledgers. The moment when self-deception could no longer hide. [Dread]
+  Round 27 (Aug 1845): Sophia Ripley — Yes. April 2nd, 1844. The day the dam broke. [Dread]
+  Round 28 (Oct 1845): Sophia Ripley — Yes. April 2nd, 1844. The day the dam broke. The secret ceased to be singular. The community's fate turns irrevocably on this evening. [Collapse]
+  Round 28 (Oct 1845): John Sullivan Dwight — Yes—the moment Hawthorne asked me directly about performance versus presence, and I answered with the truth I have been running from. A reckoning. [Anguish]
+  Round 29 (Dec 1845): Sophia Ripley — Yes. April 2nd, 1844. The moment I saw Hawthorne and Dana walking together—the instant when I understood that my silence, my careful performance, my grip on what could be hidden—had all slipped beyond my reach. The secret is no longer mine to protect or shape. Everything that comes now will come without my authorship. [Powerlessness]
+  Round 30 (Feb 1845): Sophia Ripley — Yes. This is the moment the performance ended. Not because I chose it, but because Hawthorne would not permit the silence to continue. I answered with my real self—afraid, worn, inadequate—and now he knows that the woman behind the role is as fragile as the community itself. [Powerlessness]
