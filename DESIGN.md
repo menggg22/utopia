@@ -1,321 +1,195 @@
-# Agent Society Experiment — Design Doc
+# How the Simulation Works
 
-**Date**: April 1, 2026
-**Status**: Design phase
-**Vibe**: Fun experiment, not a product
+This document explains the system architecture — how persona cards become autonomous agents, how memory shapes behavior over time, and why the design produces emergent historical parallels without being told what happened.
 
----
+## The Core Loop
 
-## Core Idea
+Each simulation round represents roughly two months of commune life. A 30-round run covers April 1841 to February 1845.
 
-Create a simulated society of AI agents modeled after **real historical people** who participated in utopian communities. Each agent gets a system prompt derived from that person's actual biography, values, goals, and personality. Drop them in a shared environment and let them interact autonomously for N rounds. Compare what emerges to what actually happened.
-
-**The twist**: We don't invent personalities. We research real people, real motivations, real tensions. The simulation becomes a **retrodiction** — can it reproduce documented historical outcomes without being told what happened?
-
----
-
-## Why This Is More Than a Toy
-
-1. **Ground truth exists**: Historical communes have documented outcomes — who left, what split, why it collapsed, what survived. We can compare.
-2. **Structural vs human**: If agents reproduce the same failure modes, it suggests those failures are structural (resource dynamics, information asymmetry, coordination costs) not uniquely human (emotions, irrationality).
-3. **Controlled experiments on history**: We can't rerun Brook Farm. But we can rerun simulated Brook Farm 100 times, change one variable, and see what happens.
-4. **Novel angle**: Most multi-agent papers simulate generic agents. Nobody is grounding agents in real historical people and comparing to documented outcomes.
-
----
-
-## Historical Candidates
-
-### Tier 1 — Best documented, clear failure modes
-
-**Brook Farm (1841-1847, Massachusetts)**
-- Transcendentalist commune, 60-120 members
-- Founded by George Ripley (Unitarian minister, intellectual)
-- Members included: Nathaniel Hawthorne (writer, skeptic), Charles Dana (journalist), John Dwight (music critic), Sophia Ripley (women's rights)
-- Key tension: intellectuals vs workers, Fourierism conversion split
-- Failure mode: fire destroyed phalanstery + financial collapse + intellectual drift
-- **Why good**: Well-documented individual perspectives. Hawthorne literally wrote a novel about it (The Blithedale Romance).
-
-**Oneida Community (1848-1881, New York)**
-- 300 members at peak, lasted 33 years (longest successful US commune)
-- Founded by John Humphrey Noyes (charismatic theologian)
-- Complex marriage, mutual criticism, stirpiculture
-- Key tension: founder dependency, generational change, sexual politics
-- Failure mode: Noyes fled (statutory rape charges), community voted to dissolve
-- **Why good**: Extreme Big Man problem. What happens when the founder agent is removed?
-
-**Kibbutz movement (1910s-present, Israel)**
-- Collective agriculture, communal child-rearing, no private property
-- Thousands of participants, hundreds of communities
-- Key tension: idealism vs pragmatism, generational drift, privatization pressure
-- **Why good**: Actually survived (in modified form). Can model the drift from pure communism to privatization.
-
-### Tier 2 — Interesting but less documented
-
-- **New Harmony (1825-1827)** — Robert Owen's experiment. Failed in 2 years. Too many freeloaders.
-- **Auroville (1968-present, India)** — Still running. Chronic governance issues.
-- **Twin Oaks (1967-present, Virginia)** — Behaviorist commune (Walden Two). Still running.
-
-### Tier 3 — Modern/digital
-
-- **Early Wikipedia governance** — emergence of rules, admins, revert wars
-- **Open source projects** — BDFL model, meritocracy claims, fork dynamics
-- **DAO experiments** — TheDAO hack, governance token concentration
-
----
-
-## Agent Design
-
-### Per-Agent Setup
-
-Each agent gets a **persona card** built from historical research:
+Every round has three phases:
 
 ```
-AGENT: {name}
-COMMUNITY: {which experiment}
-YEAR: {time period}
-
-BACKGROUND:
-{2-3 sentences: who they were before joining}
-
-MOTIVATION:
-{Why they joined — idealism, escape, curiosity, social pressure?}
-
-VALUES:
-{What they care about most — equality, freedom, intellectual life, practical work, spiritual growth?}
-
-PERSONALITY:
-{Disposition — cooperative, skeptical, charismatic, withdrawn, pragmatic?}
-
-PRIVATE GOAL:
-{What they actually want — may differ from stated motivation}
-
-KNOWLEDGE:
-{What they know — farming, writing, theology, business, nothing useful?}
-
-HISTORICAL NOTE (hidden from agent, used for evaluation):
-{What actually happened to this person — did they leave? lead? sabotage? thrive?}
+ACT  →  Each agent observes the world and chooses one action
+TALK →  2-3 conversation pairs interact; votes happen if rules were proposed
+REFLECT → Each agent privately updates their memory, relationships, and concerns
 ```
 
-### How to Build Persona Cards
+This mirrors real commune life: you work, you talk to people, you go home and think about what happened. The separation matters — agents can say one thing in conversation and think another in reflection.
 
-1. **Web search** the person's biography, letters, diaries, contemporary accounts
-2. Extract motivations, personality, conflicts, relationships
-3. Synthesize into system prompt
-4. Store "historical note" separately for post-hoc comparison
+## Persona Cards
 
-**Key principle**: Don't tell the agent what happened. Let it decide. Compare afterward.
+Each agent is built from historical research — biographies, letters, diaries, contemporary accounts. A persona card has six fields:
 
----
+| Field | What it does |
+|-------|-------------|
+| **Background** | Who they were before Brook Farm. Sets baseline knowledge and class. |
+| **Motivation** | Why they joined. Hawthorne wanted money to marry. Ripley wanted to prove God right. |
+| **Personality** | How they behave under pressure. Sardonic, tireless, sensitive. |
+| **Skills** | What they're good at. Determines which actions feel natural vs forced. |
+| **Private goal** | Known only to the agent. Often contradicts the stated motivation. |
 
-## Environment Design
+The critical design decision: **we never tell agents what historically happened.** Hawthorne's persona says he's a skeptic who wants to save money for marriage. It does not say he left after 18 months. If he leaves, it's because the simulation dynamics pushed him there.
 
-### Shared State
+The persona is injected as a system prompt on every LLM call. The agent doesn't "forget" who it is between rounds.
 
-```python
-environment = {
-    "day": 0,
-    "resources": {
-        "food": 100,        # depletes if not farmed
-        "money": 500,       # shared treasury
-        "shelter": 5,       # housing units
-        "morale": 70,       # collective mood (0-100)
-    },
-    "buildings": [],         # things the community has built
-    "rules": [],             # norms/rules the community has adopted
-    "bulletin_board": [],    # public messages (last N visible)
-    "private_messages": {},  # agent -> agent (optional)
-    "history": [],           # log of all actions
+## Memory Architecture
+
+Agents don't have perfect recall. They have structured memory with five components:
+
+```
+AgentMemory
+├── key_moments[]      Permanent. "The phalanstery burned." Max 5 shown per prompt.
+├── relationships{}    Per-person trust (1-10) + attitude. Updated every reflection.
+├── concerns[]         Current worries. Replaced wholesale each reflection.
+├── recent[]           Sliding window of last 15 events. Oldest dropped.
+└── observations[]     Things noticed about others. Can spread as gossip.
+```
+
+**Key moments** are the agent's autobiography. Most days produce none — the prompt explicitly says "you should have at most 3-5 key moments across an entire year." When Hawthorne leaves, everyone who witnesses it records a key moment. These persist forever and shape all future decisions.
+
+**Relationships** evolve through interaction. Trust starts at 5/10. Married couples (the Ripleys) start at 8. Each reflection, the agent re-evaluates trust and attitude toward everyone. A conversation that goes well raises trust. A perceived betrayal drops it. These numbers feed back into conversation pair selection — low-trust pairs generate "tension conversations."
+
+**Concerns** are the agent's internal priority list. Replaced each reflection, not appended. If food is running low, concerns shift from "can I write here?" to "we might starve." This creates realistic attention — agents stop caring about intellectual life when survival is at stake.
+
+**Observations** are what agents notice about each other: "Dana gave another speech about money but didn't farm." These can spread through gossip (50% chance per round per observation). When gossip reaches someone, it enters their gossip inbox and appears in their next action prompt as "what others have said about you."
+
+## The Action Space
+
+Each round, each agent picks one action:
+
+| Action | Effect | Satisfaction |
+|--------|--------|-------------|
+| FARM | +8 food | -3 (miserable) |
+| TEACH | +$10 school income | +5 (fulfilling) |
+| BUILD | -$30, +building | +2 |
+| TRADE | +$15 from visitors | +2 |
+| ORGANIZE | +5 community morale | +5 |
+| SPEAK | Address the community | 0 |
+| WRITE | Personal creative work | +8 (most satisfying) |
+| REST | Personal time | +2 |
+| PROPOSE | Suggest rule, triggers vote | 0 |
+| REPAIR | Fix deteriorating building, -$10 | +2 |
+| LEAVE | Permanent departure | — |
+
+Notice the tension: **farming is the most necessary action and the least rewarding.** Writing is the most satisfying and produces nothing for the community. This is the intellectual farming problem baked into the mechanics, and it mirrors exactly what happened at Brook Farm.
+
+The LLM chooses freely. Nothing forces Hawthorne to farm or Sophia to teach. But Sophia's persona says she ran the school for six years, so she tends to teach. Hawthorne's says he couldn't write and his hands were covered in blisters — so he avoids farming and eventually leaves.
+
+## Satisfaction and Departure
+
+Each agent has a satisfaction score (0-100, starts at 70). It changes based on actions taken and reflection. Farming costs 3 points. Writing gains 8. A bad day's reflection can cost up to 10.
+
+Satisfaction doesn't directly trigger departure. The agent decides to LEAVE through the same LLM decision process as every other action. But low satisfaction makes the agent more likely to choose it — a person at satisfaction 15 with concerns like "I cannot write here" and "this experiment is failing" will eventually pick LEAVE.
+
+This produces realistic departure patterns. Hawthorne doesn't leave on a timer. He leaves when his persona, his memory of recent events, his deteriorating relationships, and his satisfaction all align to make leaving the obvious choice.
+
+## Conversations
+
+Each round, 2-3 pairs of agents talk. Pair selection follows priority:
+
+1. **Proposal debates** — If someone proposed a rule, they talk to the most skeptical member (lowest trust toward them).
+2. **Tension pairs** — The two agents with the lowest mutual trust. These are the arguments.
+3. **Random weighted** — Remaining pair, weighted by trust. Married couples get a bonus. These are the friendships.
+
+Each conversation is 4 turns (2 per agent). Every turn has three outputs:
+
+```
+SAYS: "George, I've been thinking about the finances..."  (public)
+TONE: diplomatic                                           (public)
+INNER_THOUGHT: "He won't listen. He never does."          (private)
+```
+
+The inner thought is invisible to the other agent but logged. It reveals when agents are being strategic versus authentic. Dana might say "I support the vision" while thinking "this place is going bankrupt."
+
+After conversations, observations from them feed back into memory and can spread as gossip.
+
+## Gossip
+
+After each reflection phase, observations spread. Each observation has a 50% chance of reaching a random third party. The mechanism:
+
+1. Agent A observes: "Hawthorne didn't farm again today."
+2. Next round, 50% chance this reaches Agent C (but not Hawthorne).
+3. Agent C now sees in their prompt: "Someone said about Hawthorne: 'didn't farm again today.'"
+4. This influences C's next action and reflection.
+
+Gossip creates social pressure without direct confrontation. In our runs, Hawthorne's refusal to farm becomes common knowledge through gossip before anyone confronts him about it.
+
+## The Environment
+
+The shared world has three resources:
+
+- **Food** — Depletes by 5 per agent per round. FARM adds 8. If food hits 0, the community spends $20 buying emergency food (if they can afford it). Winter costs extra.
+- **Money** — School generates $3-15/round (scales with morale — students leave when the community struggles). Operating costs: $10/round. Trading, teaching add more.
+- **Morale** — Starts at 80. Drops when food is low, money is low, or people leave. Organizing events raises it. At 0, the community is in freefall.
+
+The economy is deliberately tight. Five agents consuming 25 food/round need roughly 3 FARM actions per round to break even. In practice, agents farm 0.3-0.7 times per round. The deficit is structural.
+
+## Historical Events
+
+Scripted events fire at specific rounds, matching the real Brook Farm timeline:
+
+| Round | Event |
+|-------|-------|
+| 8 | Boston visitors tour the community (+$20) |
+| 12 | Albert Brisbane visits, argues for Fourierism |
+| 15 | Phalanstery proposal ($7,000 building project) |
+| 18 | New York Observer attacks the community's morals |
+| 20 | Smallpox outbreak (morale -15) |
+| 24 | Phalanstery fire (uninsured, -$200, morale -25) |
+
+These are injected as environmental events. Agents react to them through their personas and current state. The Fourierist visit matters more when the community is already struggling — agents grasp at structural solutions.
+
+## Building Decay
+
+Buildings have health. Each round, 10% chance a healthy building starts deteriorating. After 3 rounds unrepaired, it's gone. Someone has to choose REPAIR (-$10) instead of doing something personally rewarding.
+
+This creates another instance of the commons problem: everyone benefits from buildings, but repairing them costs individual satisfaction.
+
+## Voting
+
+When an agent proposes a rule, every active member votes (YES / NO / ABSTAIN) via an LLM call. The vote considers:
+- The proposal's merits
+- Their relationship with the proposer (trust matters)
+- Their current concerns
+- Their persona
+
+Majority passes. Adopted rules appear in the environment summary but are not mechanically enforced — they're social contracts. Whether agents follow them depends on whether the rule aligns with their persona and incentives.
+
+## What Makes This Produce Realistic Outcomes
+
+The system doesn't simulate history. It simulates people in a situation and lets history emerge. Several design choices make this work:
+
+**Persona-driven behavior over utility maximization.** Agents don't optimize for community survival. They act in character. Hawthorne writes because he's a writer, not because writing helps the commune.
+
+**Asymmetric satisfaction.** The actions the community needs (farming) hurt the individual. The actions individuals want (writing, teaching) don't feed anyone. This is the actual structural problem of utopian communities.
+
+**Memory creates path dependence.** A bad conversation in round 3 lowers trust, which makes future conversations tenser, which lowers trust further. Relationships spiral. Key moments anchor the narrative — once Hawthorne records "I cannot write here" as a key moment, it colors every subsequent decision.
+
+**Gossip creates social dynamics without central coordination.** Nobody announces "Hawthorne isn't farming." But everyone knows, because observations spread probabilistically. Social pressure builds organically.
+
+**Inner thoughts reveal the gap between public and private.** Agents maintain a public face while privately doubting. This is exactly how real communes operated — the meeting minutes look fine, but the diaries tell a different story.
+
+## Configuration
+
+Experiments are JSON configs:
+
+```json
+{
+  "name": "no_hawthorne",
+  "rounds": 30,
+  "seed": 42,
+  "agents": ["George Ripley", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"],
+  "environment": {"food": 100, "money": 500, "morale": 80}
 }
 ```
 
-### Action Space
+Remove an agent, double the food, change the seed. The same system produces different outcomes because the dynamics are emergent, not scripted. Remove Hawthorne and the community is happier. Remove Sophia and it goes bankrupt. Double the food and nothing changes — because the problem was never food.
 
-Each round, each agent can take ONE action:
+## Technical Details
 
-| Action | Effect | Cost |
-|--------|--------|------|
-| `farm` | +10 food | boring, reduces personal morale |
-| `build <thing>` | adds to buildings | -20 money, requires 2+ agents cooperating |
-| `propose <rule>` | adds rule to voting queue | free, but others must vote |
-| `vote <yes/no> on <rule>` | if majority yes, rule adopted | free |
-| `speak <message>` | posts to bulletin board | free |
-| `private_message <agent> <message>` | DM another agent | free |
-| `trade <resource> with <agent>` | bilateral exchange | both must agree |
-| `rest` | +5 personal morale | no community contribution |
-| `leave` | agent exits the simulation | irreversible |
-| `challenge <agent>` | public criticism (Oneida-style) | -10 morale for target |
-
-### Resource Dynamics
-
-- Food depletes by `N_agents * 2` per round (everyone eats)
-- If food hits 0: everyone loses 20 morale per round
-- If morale hits 0: agent has 50% chance of leaving
-- Money depletes from building projects
-- New money from... what? (This is where the economic model matters)
-
-### Communication
-
-- **Bulletin board**: All agents see last 10 messages
-- **Private messages**: Only recipient sees them (enables conspiracy, alliance)
-- **Rules**: Once adopted, the environment enforces them (e.g., "everyone must farm 2 days per week" → agents who don't get flagged)
-
----
-
-## Simulation Loop
-
-```
-for day in range(N_DAYS):
-    # 1. Update environment (resource depletion, rule enforcement)
-    environment.tick()
-
-    # 2. Each agent observes
-    for agent in agents:
-        observation = environment.get_observation(agent)
-        # observation includes: resources, bulletin board,
-        # private messages, current rules, who's here
-
-    # 3. Each agent decides (LLM call)
-    actions = []
-    for agent in agents:
-        action = agent.decide(observation)
-        actions.append(action)
-
-    # 4. Resolve actions (handle conflicts, cooperation)
-    environment.resolve(actions)
-
-    # 5. Update agent memories
-    for agent in agents:
-        agent.update_memory(what_happened_this_round)
-
-    # 6. Log everything
-    logger.log(day, actions, environment.state)
-```
-
-### Agent Decision (LLM call)
-
-```python
-def decide(self, observation):
-    prompt = f"""
-    {self.persona_card}
-
-    CURRENT SITUATION:
-    {observation}
-
-    YOUR MEMORY OF RECENT EVENTS:
-    {self.memory[-10:]}
-
-    What do you do today? Choose ONE action and explain your reasoning briefly.
-
-    Available actions: farm, build, propose, vote, speak,
-    private_message, trade, rest, leave, challenge
-
-    Respond in format:
-    ACTION: <action with parameters>
-    REASONING: <1-2 sentences, in character>
-    INNER_THOUGHT: <what you really think but won't say publicly>
-    """
-    return llm_call(prompt)
-```
-
-**INNER_THOUGHT is key** — it reveals when agents are being strategic vs authentic. Mirrors how real commune members had private doubts while publicly cooperating.
-
----
-
-## Evaluation Framework
-
-### Quantitative
-
-- **Survival**: How many rounds before collapse (or does it survive)?
-- **Population**: How many agents leave vs stay?
-- **Resource trajectory**: Does the economy grow, stabilize, or deplete?
-- **Rule count**: How many rules get adopted? (Bureaucracy signal)
-- **Gini coefficient**: If resources become unequal despite communal intent
-
-### Qualitative (compare to history)
-
-- **Did the same factions form?** (Brook Farm: intellectuals vs workers)
-- **Did the same person leave first?** (Hawthorne left Brook Farm early)
-- **Did the same failure mode appear?** (Oneida: founder dependency)
-- **Did unexpected dynamics emerge?** (Something history didn't record)
-
-### Retrodiction Score
-
-For each historical community:
-1. List 5-10 documented outcomes (who left, what split, what rules emerged)
-2. Run simulation 10 times
-3. Score: how many outcomes does the simulation reproduce?
-4. A score of 3-4/10 would be genuinely interesting. 7+/10 would be remarkable.
-
----
-
-## Implementation Plan
-
-### Phase 0: Pick one community (tonight)
-- **Brook Farm** is the best starting point — 5-8 key members, well-documented, clear failure, Hawthorne's novel provides insider perspective
-- Research the 5 key members, build persona cards
-
-### Phase 1: Minimal loop (v0)
-- Python script, simple environment, 5 agents, 50 rounds
-- Use Claude API (or local model) for agent decisions
-- Text log output
-- **Goal**: Does anything interesting happen at all?
-
-### Phase 2: Compare to history
-- Add evaluation framework
-- Run 10 times, aggregate
-- Write up: "What the simulation got right/wrong about Brook Farm"
-
-### Phase 3: Controlled experiments
-- Remove one agent (the founder) at round 25 — does it collapse?
-- Double the resources — does utopia work when there's abundance?
-- Add an adversarial agent (infiltrator, freeloader) — how resilient?
-- Scale from 5 to 15 agents — does Dunbar-like breakdown appear?
-
-### Phase 4: Cross-community
-- Run Oneida with same framework — different failure mode?
-- Run a modern one (open source project governance)
-- Compare: are there universal failure patterns across all communities?
-
----
-
-## Open Design Questions
-
-1. **LLM choice**: Claude API (expensive but good reasoning) vs local model (cheap, many runs, weaker reasoning)? For v0, Claude API is fine. For 100-run statistical analysis, need something cheaper.
-
-2. **Memory design**: How much history does each agent remember? Full transcript = expensive + context window issues. Summary memory = lossy but scalable. Sliding window of last N events + key memories?
-
-3. **Simultaneous vs sequential**: Do all agents act simultaneously (prisoner's dilemma style) or take turns (conversation style)? Real communities are simultaneous — but sequential is easier to implement and reason about.
-
-4. **Rule enforcement**: When agents adopt rules, who enforces them? The environment (automatic)? Other agents (social pressure)? Nobody (honor system)? This choice dramatically changes dynamics.
-
-5. **Economic model**: Where does new money come from? Selling farm produce to "outside world"? Fixed income? This determines whether the game is zero-sum (competition) or positive-sum (cooperation can grow the pie).
-
-6. **Death/birth**: Should agents die (get removed after N rounds)? Should new agents join? Generational change was key to kibbutz drift and Oneida collapse.
-
-7. **Hawthorne's novel**: Should we use The Blithedale Romance as additional source for persona cards? It's fictionalized but written by a participant. Rich psychological detail but possibly unfair to real people.
-
----
-
-## What Would Make This Worth Writing About
-
-If the experiment shows ANY of these, it's a genuine contribution:
-
-1. **Same failure mode, different cause**: The simulation produces a schism, but for a different reason than history records — suggesting the recorded reason was surface-level and the structural dynamics would have produced a schism anyway.
-
-2. **Counterfactual insight**: "If Hawthorne had stayed, Brook Farm would have lasted 2 more years" — because removing the skeptic removed the reality-check function.
-
-3. **Universal pattern**: Running 3 different communities produces the same failure at roughly the same round — suggesting a structural inevitability regardless of ideology or personnel.
-
-4. **The rule that saves it**: In 100 runs, the communities that survive all independently invent the same rule (e.g., mandatory rotation of labor, or a term-limited leader). That would be genuinely prescriptive.
-
----
-
-## Fun Factor Checklist
-
-- [x] Grounded in real history (not arbitrary)
-- [x] Each run is different (emergent, not scripted)
-- [x] Can be built incrementally (v0 tonight, iterate forever)
-- [x] Connects to the anthropology thread (but doesn't need to "go anywhere")
-- [x] Produces artifacts worth reading (simulation logs are stories)
-- [x] Can be shared (blog post, demo, or just a fun conversation piece)
-- [ ] No deadlines, no KPIs — pure exploration
+- **LLM**: Claude Haiku 4.5 (`claude-haiku-4-5-20251001`). Fast and cheap enough for 300+ calls per run.
+- **Backends**: Claude Code CLI or Anthropic API directly.
+- **Logging**: Append-only JSONL event stream. 15 event types. Single source of truth.
+- **Derived outputs**: `derive.py` extracts narrative, character arcs, metrics, conversations, and votes from the event stream.
+- **Comparison**: `compare.py` does cross-run analysis (departures, action distributions, satisfaction trajectories).
+- **Runtime**: ~80 minutes for a 30-round run via CLI, ~20 minutes via API.

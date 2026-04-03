@@ -1,0 +1,70 @@
+[
+  {
+    "round": 2,
+    "date": "Jun 1841",
+    "proposal": "<RULE: ALL MEMBERS SHALL WORK THE FIELDS A MINIMUM OF 4 HOURS WEEKLY, REGARDLESS OF OTHER DUTIES\u2014NO EXCEPTIONS>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "\"We cannot sustain ourselves on philosophy alone. If we do not establish this expectation now, while our resolve is firm and our numbers small, the work will never be equitably shared. Better to set the standard by our own practice than to discover too late that we have built another world of comfortable parasitism.\""
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "NO",
+        "reasoning": "\"A rule that makes no exceptions breeds only resentment and departure. The farm's survival depends on members staying\u2014not on proving the purity of our labor.\""
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "The school cannot be managed by divided attention, and it is the school that feeds this community. If I am bound to four hours in the fields, *who* teaches the children from Philadelphia and Cuba? George does not see that ideals require infrastructure."
+      },
+      "Charles Dana": {
+        "vote": "NO",
+        "reasoning": "The principle is sound\u2014we all must contribute\u2014but an inflexible mandate will alienate minds like Hawthorne, whose skepticism we can ill afford to harden into departure. Better to call for commitment by conscience than by rule."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "\"The community requires sustenance if it is to survive, and I cannot in conscience refuse what I ask of others. Four hours is... manageable, if only to preserve the unity we have built here.\""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 2,
+      "NO": 3,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 5,
+    "date": "Dec 1841",
+    "proposal": "<RULE>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 0,
+      "NO": 0,
+      "ABSTAIN": 5
+    }
+  }
+]

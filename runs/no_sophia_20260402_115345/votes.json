@@ -1,0 +1,32 @@
+[
+  {
+    "round": 6,
+    "date": "Feb 1841",
+    "proposal": "<STRICT DAILY RATIONING BY HOUSEHOLD NEED\u2014ADULTS 800 CALORIES, CHILDREN 600, ADJUSTED MONTHLY BY HARVEST>",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "Charles Dana speaks only truth, and his accounting of our waste cannot be denied. If we do not ration now with intention, we shall ration by desperation\u2014and desperation shatters communities. This is the hard arithmetic of survival."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "\"Dana speaks plainly what others will not. We do not ration now, we shall be rationing nothing by spring. The arithmetic admits of no sentiment.\""
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The ledgers do not lie. We consume grain and preserved stores at a rate that will exhaust our capital by midsummer without adjustment. Rationing is not idealism\u2014it is arithmetic. We either impose discipline now or face collapse."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "Charles Dana speaks what the ledgers compel us to face. If our community is to survive eighteen months of accounting that admits the truth, we must ration by need rather than illusion. I cannot in conscience vote against his honesty."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  }
+]

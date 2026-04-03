@@ -1,9 +1,9 @@
 {
   "name": "baseline",
+  "seed": 0,
+  "rounds": 30,
   "model": "claude-haiku-4-5-20251001",
   "backend": "cli",
-  "rounds": 30,
-  "seed": 0,
   "agents": [
     "George Ripley",
     "Nathaniel Hawthorne",
@@ -15,10 +15,5 @@
     "food": 100,
     "money": 500,
     "morale": 80
-  },
-  "timestamp": "20260402_085324",
-  "run_dir": "runs/baseline_20260402_085324",
-  "git_hash": "58f73493c76b1a3f5f8be0856a0ad05cae24623d",
-  "config_source": "experiments/baseline_seed0.json",
-  "notes": null
+  }
 }

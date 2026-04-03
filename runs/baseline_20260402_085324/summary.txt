@@ -1,0 +1,145 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$14, Morale=0%
+Departed: None
+Survived: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1852
+LLM calls: 377
+Wall time: 6109.4s
+
+Action counts per agent:
+  Charles Dana:
+    WRITE: 6
+    TRADE: 3
+    FARM: 2
+    TEACH: 1
+    SPEAK <the path forward>: 1
+    SPEAK "Financial Reality and Our Path Forward": 1
+    SPEAK <on structural necessity and our true situation>: 1
+    SPEAK <the financial reality and what it means for our choice>: 1
+    SPEAK <Our Path Forward>: 1
+    SPEAK on the question of what comes next: 1
+    SPEAK <about the school>: 1
+    SPEAK (on the necessity of honest reckoning): 1
+    SPEAK <on the financial truth and my failure to speak it>: 1
+    SPEAK <on the crisis before us>: 1
+    SPEAK about the financial truth: 1
+    SPEAK about finances and what must come next: 1
+    SPEAK: 1
+    SPEAK <The gathering Sophia has called. What I have known and hidden.>: 1
+    SPEAK <about the truth of our situation and what we owe each other>: 1
+    SPEAK <the state of this community and what honesty requires of us>: 1
+    SPEAK <the truth about our circumstance>: 1
+    SPEAK <on the state of our community and what truth demands of us now>: 1
+  George Ripley:
+    FARM: 10
+    SPEAK <the truth>: 2
+    WRITE: 2
+    PROPOSE <RULE: All members shall work the fields a minimum of 4 hours weekly, regardless of other duties—no exceptions>: 1
+    SPEAK <on the failure of the rule and what it means for us>: 1
+    PROPOSE <rule>: 1
+    SPEAK <on the division between intellectual and manual labor>: 1
+    SPEAK (to address the community about what Sophia, Charles, and John have revealed): 1
+    SPEAK <on the future of Brook Farm>: 1
+    SPEAK to the community: 1
+    SPEAK <about Brisbane's Fourier proposal and our structural crisis>: 1
+    TEACH: 1
+    SPEAK <to the community at Charles Dana's assembly tonight, about the state of our experiment>: 1
+    SPEAK "The truth of our covenant": 1
+    SPEAK <the truth about our circumstances>: 1
+    SPEAK <the true state of our community>: 1
+    SPEAK <the truth we have all been avoiding>: 1
+    SPEAK <the truth about the falsified accounts>: 1
+    SPEAK <about our hunger and the path forward>: 1
+  John Sullivan Dwight:
+    WRITE: 8
+    TEACH: 3
+    FARM: 2
+    ORGANIZE <evening gathering with music and conversation>: 1
+    SPEAK <about purpose and fear>: 1
+    TRADE: 1
+    SPEAK <the evening assembly>: 1
+    SPEAK about the future of the community: 1
+    SPEAK <the crisis of faith—in ourselves, not just the Farm>: 1
+    REST: 1
+    SPEAK <about what we must choose now>: 1
+    SPEAK about the necessity of departing together, with honesty: 1
+    SPEAK <about what we have become>: 1
+    SPEAK <the cost of our silence>: 1
+    SPEAK (about our true condition and my complicity): 1
+    SPEAK (about honesty and complicity): 1
+    SPEAK <on my own role in our evasion>: 1
+    SPEAK <about what we choose to be>: 1
+    SPEAK <the truth I should have spoken in that room>: 1
+    SPEAK <about my complicity in our false comfort>: 1
+  Nathaniel Hawthorne:
+    WRITE: 7
+    TRADE: 3
+    TEACH: 2
+    SPEAK: 2
+    REST: 2
+    SPEAK <about the proposed rule>: 1
+    SPEAK <financial reality of the farm>: 1
+    SPEAK <the future of Brook Farm>: 1
+    SPEAK <the crisis and what comes next>: 1
+    SPEAK <on the state of provisions and the choice before us>: 1
+    SPEAK <about the Phalanstery proposal and our financial reality>: 1
+    SPEAK <the question before us>: 1
+    SPEAK <about the state of our provisions and what honesty now requires>: 1
+    SPEAK <financial reckoning>: 1
+    SPEAK <the true state of our accounts and circumstances>: 1
+    SPEAK (the financial truth): 1
+    SPEAK <the financial reckoning>: 1
+    SPEAK <financial reality and what follows>: 1
+    FARM: 1
+  Sophia Ripley:
+    TEACH: 13
+    WRITE: 4
+    SPEAK <on the foundation of honest work>: 1
+    SPEAK <on the cost of our idealism and the unsustainability of our current arrangement>: 1
+    REPAIR THE NEST: 1
+    SPEAK — "On Principle and Bread": 1
+    SPEAK <the truth about where we are>: 1
+    SPEAK (to the community about the school's purpose and our path forward): 1
+    SPEAK about Dana's proposal and the path forward: 1
+    SPEAK <the real situation facing us>: 1
+    SPEAK (to the community, this evening): 1
+    SPEAK about the school's foundation and the truth we can no longer avoid: 1
+    SPEAK (the truth about the school's finances and the community's actual condition): 1
+    SPEAK (to address what comes next): 1
+    SPEAK: "The Truth We Cannot Hide": 1
+
+Key moments:
+  Round 2 (Jun 1841): John Sullivan Dwight — The failed vote. Ripley's proposal was defeated—whether by Hawthorne's eloquence or by the community's own silent doubts, I cannot say. But this is the first moment where I have seen the ideals we came here to live actually *fracture* under their own weight. [Apprehension]
+  Round 3 (Aug 1841): John Sullivan Dwight — The vote. The first visible fracture in the community's foundation. This day will mark the beginning of the end, I fear—whether that end comes in months or years. [Apprehension]
+  Round 5 (Dec 1841): George Ripley — Yes. The failed vote. Not because the rule itself mattered supremely, but because it revealed the fragility of our collective will. I proposed something I believed necessary. The community rejected it. This is the moment when theory meets resistance—not from Nature, but from those I asked to follow me into this wilderness. [Doubt]
+  Round 5 (Dec 1841): John Sullivan Dwight — Yes—the failed vote. This is the first moment where I have seen the ideals we came here to live actually *fracture* under their own weight. The community has lost something today that cannot be recovered by next week's potato harvest. [Dread]
+  Round 8 (Jun 1842): Charles Dana — Yes—this is the night the community ceased to deny. When John acknowledged the figures "quite plain," something broke open that cannot be sealed again. [Anguish]
+  Round 9 (Aug 1842): Charles Dana — Yes. This is the night George Ripley ceased to resist. [Complicity.]
+  Round 10 (Oct 1842): Sophia Ripley — Yes. George's admission, in my arms, that he must hide his despair each morning to face the community—this is the moment when the pretense breaks entirely. This is when we stop building and start managing the collapse. [Heartbreak]
+  Round 10 (Oct 1842): Charles Dana — Yes. Tonight George Ripley ceased to resist the truth about Brook Farm's finances. This is the night the community's fate sealed itself. Everything that follows now is merely the unraveling. [Anguish]
+  Round 11 (Dec 1842): Nathaniel Hawthorne — Yes. The evening encounter—Sophia and John's conversation. The moment the pretense became unsustainable, when even those of us in silence could no longer avoid witnessing what we already knew. This is when the dream began its final collapse. [Despair]
+  Round 11 (Dec 1842): Charles Dana — Yes. This is the night the community's fate sealed itself. George ceased to resist. John spoke the truth aloud. There is no returning from this moment. [Anguish]
+  Round 12 (Feb 1842): Nathaniel Hawthorne — Yes. This is when the farm ceased to be a future and became a reckoning. [Despair]
+  Round 12 (Feb 1842): Charles Dana — Yes. This is the day despair became visible in the body—in Sophia's trembling hands, in George's surrender to the numbers that will not lie. The collective fiction ended tonight. [Shame]
+  Round 16 (Oct 1843): John Sullivan Dwight — None—but we are approaching one. [None]
+  Round 18 (Feb 1843): George Ripley — Yes. The moment when the illusion fractured entirely. [Betrayal]
+  Round 18 (Feb 1843): Nathaniel Hawthorne — Yes. This is the moment the institution ceased to be a future and became a reckoning. [Despair]
+  Round 18 (Feb 1843): Sophia Ripley — yes [Dread]
+  Round 18 (Feb 1843): John Sullivan Dwight — The collapse of our last pretense. Not the failed vote—that was the first fracture. This is the moment when honesty itself became too dangerous to maintain, when our leaders chose cipher over truth. This is the day the community died in the ways that matter most. [Betrayal]
+  Round 19 (Apr 1844): George Ripley — Yes. This is the day I ceased to be the leader of Brook Farm and became merely a witness to its unraveling. The moment when deception, distance, and desperation crystallized into a single terrible clarity. [Betrayal]
+  Round 19 (Apr 1844): Charles Dana — Yes. This is the night the collective fiction ended. Not in numbers or debates, but in a woman's trembling hands and a man's surrender to being seen. Everything after this is merely the shape of ruin. [Despair]
+  Round 20 (Jun 1844): George Ripley — Yes. The moment Sophia stopped accepting my evasions. [Betrayal]
+  Round 20 (Jun 1844): Nathaniel Hawthorne — Yes. The evening conversation between George and Sophia Ripley. This is the moment when the Farm ceased to be a future and became a funeral rite. [Despair]
+  Round 20 (Jun 1844): John Sullivan Dwight — Yes. This is the day the careful fictions collapsed entirely. George's suspicions, Sophia's exhaustion with riddles, the gap between what we say and what we know—it has all become too visible to pretend away. [Shame]
+  Round 21 (Aug 1844): Charles Dana — Yes. This is the evening when George's resistance finally broke—not in numbers or logic, but in a desperate walk away from home, seeking quieter ground. The fracture is no longer invisible. [Despair]
+  Round 22 (Oct 1844): Nathaniel Hawthorne — Yes. George's admission by the kiln—the moment our shared pretense ended and we stood together in the knowledge of what we have become. This is when the farm ceased to be a test of virtue and became a witness to our complicity. [Despair]
+  Round 22 (Oct 1844): Sophia Ripley — Yes—this is the evening when the pretense stops being a shared project between George and me, and becomes a visible ruin that the community itself can see. The collapse, which has been private arithmetic in my hands and in George's face, is now public knowledge. Everything that follows will be managed ruin. [Desolation]
+  Round 22 (Oct 1844): Charles Dana — Yes. This is the evening George's resistance finally surrendered entirely—not in argument, but in his body's refusal to remain in the rooms where he must lie. The fracture has become irreversible. [Despair]
+  Round 23 (Dec 1844): Nathaniel Hawthorne — Yes. This is the moment when even Dwight's faith begins to fracture—when the one among us most devoted to Beauty admits he is running rather than building. [Dread]
+  Round 24 (Feb 1844): Nathaniel Hawthorne — Yes. This is the day when the institution's founders themselves admitted—in whispers, in moonlight, in the shaking of a woman's hands—that it is already dead. We are no longer building. We are mourning. [Despair]
+  Round 26 (Jun 1845): Charles Dana — Yes [Shame]

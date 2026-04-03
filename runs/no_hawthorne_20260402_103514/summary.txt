@@ -1,0 +1,87 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$234, Morale=0%
+Departed: None
+Survived: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1466
+LLM calls: 304
+Wall time: 4711.3s
+
+Action counts per agent:
+  Charles Dana:
+    TRADE: 11
+    TEACH: 5
+    WRITE: 4
+    FARM: 3
+    REST: 2
+    REPAIR The Hive: 1
+    SPEAK "The Practical Path Forward": 1
+    SPEAK about the financial reality and the Phalanstery proposal: 1
+    SPEAK <the financial truth and what it demands of us>: 1
+    SPEAK <the path forward>: 1
+  George Ripley:
+    FARM: 3
+    REST: 3
+    TEACH: 3
+    SPEAK <vision for Brook Farm>: 1
+    SPEAK <on the integration of intellectual and physical labor>: 1
+    SPEAK <the necessity of balancing labor and learning>: 1
+    SPEAK <commitment and labor>: 1
+    SPEAK <food crisis and community responsibility>: 1
+    SPEAK <the food crisis — we must reckon honestly with our emergency>: 1
+    SPEAK <on truth and what comes next>: 1
+    TRADE: 1
+    SPEAK <about our crisis and what we must do>: 1
+    SPEAK <the truth about our crisis and what is required of us>: 1
+    SPEAK - on the state of our community and what honesty demands: 1
+    SPEAK <to the community, this afternoon>: 1
+    SPEAK <about our true condition and what it requires of us>: 1
+    SPEAK <the nature of what we are becoming>: 1
+    SPEAK <the truth about our condition>: 1
+    SPEAK <truth about our direction>: 1
+    SPEAK <the true state of our resources and what it demands of us>: 1
+    REPAIR <The Nest>: 1
+    REPAIR THE NEST: 1
+    SPEAK <call an evening gathering to discuss the community's true situation>: 1
+    SPEAK <the unsustainable trajectory we are on>: 1
+  John Sullivan Dwight:
+    TEACH: 8
+    WRITE: 3
+    ORGANIZE <event>: 2
+    ORGANIZE <evening concert and gathering>: 2
+    SPEAK <the true condition of our community>: 1
+    SPEAK <the truth beneath our silence>: 1
+    ORGANIZE <an evening gathering with music and readings>: 1
+    SPEAK <about the choice before us: reorganization or recommitment>: 1
+    ORGANIZE <an evening gathering — music, readings, and silence>: 1
+    ORGANIZE <an evening gathering>: 1
+    SPEAK <on what beauty means when we are hungry>: 1
+    SPEAK—Address the Community on Truth and Our Present Condition: 1
+    SPEAK <about the difference between beauty and survival>: 1
+    SPEAK <on the fracture beneath our silence>: 1
+    SPEAK: 1
+    ORGANIZE <event: Winter concert in the parlor — a Beethoven evening with the remaining members>: 1
+    FARM: 1
+    ORGANIZE <event> — An evening gathering with music and circle: 1
+    ORGANIZE <event> — AN EVENING GATHERING WITH READINGS FROM TRANSCENDENTALIST PHILOSOPHY AND CONVERSATION: 1
+  Sophia Ripley:
+    TEACH: 17
+    WRITE: 7
+    SPEAK (about the financial realities the community must face): 1
+    SPEAK <the reality we face>: 1
+    SPEAK <truth about the school, the community, and what I believe we owe each other>: 1
+    REST: 1
+    SPEAK about the cost of hope: 1
+    FARM: 1
+
+Key moments:
+  Round 11 (Dec 1842): Sophia Ripley — John's question: "what then?" when my patience runs dry. He named my unspoken fear and did not flinch from it. [Clarity tinged with dread]
+  Round 17 (Dec 1843): Sophia Ripley — The evening encounter with Charles Dana—when I asked him directly whether he believes we are lost, and he revealed that his clarity about failure has become a form of seduction, even an indispensability. In that moment I saw our slow drowning crystallized in his self-awareness. [Recognition]
+  Round 18 (Feb 1843): Charles Dana — Yes. Sophia's question to me this evening—"I confess I envy that certainty"—made me articulate, for the first time aloud, the truth I have been hiding from myself: that I am driven by motion, not conviction. That George walks toward our collapse because standing still has become unbearable. The intimacy of that exchange, and what it revealed about all of us, will stay with me. [Vulnerability]
+  Round 18 (Feb 1843): John Sullivan Dwight — Charles's confession that certainty is only the velocity of escape from doubt. This is the moment when the practical machinery of our survival shows its weakness—not mechanical failure, but spiritual exhaustion. If he is right, then George's leadership is not conviction but momentum. If he is right, we are all already falling, and none of us has noticed yet. [Dread]
+  Round 26 (Jun 1845): Charles Dana — The conversation in the orchard. Not a rupture—not yet—but a threshold. After tonight, I cannot pretend Sophia and I do not share the same grave doubts about whether this place can survive, or should. [Complicity]
+  Round 28 (Oct 1845): Sophia Ripley — The evening encounter—George seeking something in Charles that I can no longer give him. The moment I understood, truly understood, that my warmth is not enough against the gravity of Charles's honest grave. This is the turning: George is no longer mine in the way that matters. [Dread]

@@ -1,0 +1,23 @@
+{
+  "name": "no_hawthorne",
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "rounds": 30,
+  "seed": 42,
+  "agents": [
+    "George Ripley",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "environment": {
+    "food": 100,
+    "money": 500,
+    "morale": 80
+  },
+  "timestamp": "20260402_103514",
+  "run_dir": "runs/no_hawthorne_20260402_103514",
+  "git_hash": "52299f143579cab2b2306f683e9a8d48200efa6b",
+  "config_source": "experiments/no_hawthorne.json",
+  "notes": "Counterfactual: what happens without the skeptic?"
+}

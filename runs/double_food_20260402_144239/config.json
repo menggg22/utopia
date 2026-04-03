@@ -1,0 +1,24 @@
+{
+  "name": "double_food",
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "rounds": 30,
+  "seed": 42,
+  "agents": [
+    "George Ripley",
+    "Nathaniel Hawthorne",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "environment": {
+    "food": 200,
+    "money": 500,
+    "morale": 80
+  },
+  "timestamp": "20260402_144239",
+  "run_dir": "runs/double_food_20260402_144239",
+  "git_hash": "52299f143579cab2b2306f683e9a8d48200efa6b",
+  "config_source": "experiments/double_food.json",
+  "notes": "Counterfactual: does more starting food change the outcome, or do intellectuals still refuse to farm?"
+}

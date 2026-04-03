@@ -1,0 +1,40 @@
+{
+  "total_time_seconds": 26436.6,
+  "runs": [
+    {
+      "config": "baseline",
+      "seed": 0,
+      "run_dir": "runs/baseline_20260402_085324",
+      "events": 1853,
+      "llm_calls": 377
+    },
+    {
+      "config": "no_hawthorne",
+      "seed": 42,
+      "run_dir": "runs/no_hawthorne_20260402_103514",
+      "events": 1467,
+      "llm_calls": 304
+    },
+    {
+      "config": "no_sophia",
+      "seed": 42,
+      "run_dir": "runs/no_sophia_20260402_115345",
+      "events": 1423,
+      "llm_calls": 305
+    },
+    {
+      "config": "no_ripley",
+      "seed": 42,
+      "run_dir": "runs/no_ripley_20260402_131839",
+      "events": 1481,
+      "llm_calls": 302
+    },
+    {
+      "config": "double_food",
+      "seed": 42,
+      "run_dir": "runs/double_food_20260402_144239",
+      "events": 1616,
+      "llm_calls": 339
+    }
+  ]
+}
