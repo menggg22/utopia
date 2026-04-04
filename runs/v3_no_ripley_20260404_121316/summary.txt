@@ -1,0 +1,118 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$204, Morale=2%
+Departed: Nathaniel Hawthorne
+Survived: Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1373
+LLM calls: 285
+Wall time: 5025.9s
+
+Action counts per agent:
+  Charles Dana:
+    TRADE: 7
+    FARM: 6
+    TEACH: 2
+    WRITE: 2
+    REPAIR The Nest: 1
+    REPAIR [The Hive]: 1
+    REPAIR The Hive: 1
+    REPAIR The Hive (east wall, rot damage): 1
+    REPAIR <The Hive>: 1
+    SPEAK <the immediate path forward>: 1
+    SPEAK — "The Ledgers: What We Must Know": 1
+    SPEAK <on the true state of our finances and what we must decide>: 1
+    SPEAK <On the Brisbane Proposal: The Cost of Grand Schemes When We Lack Daily Bread>: 1
+    SPEAK <On What Comes After Honesty: Surviving With Purpose>: 1
+    SPEAK <About what we do now, and what one season of labor actually means>: 1
+    SPEAK <about our new reality>: 1
+    SPEAK <about the reckoning that has begun>: 1
+  John Sullivan Dwight:
+    FARM: 8
+    WRITE: 7
+    TEACH: 5
+    ORGANIZE <event>: 1
+    ORGANIZE an evening gathering and musical recital: 1
+    ORGANIZE <an evening gathering—a musical recital and collective singing>: 1
+    REPAIR <The Hive>: 1
+    SPEAK <The True Cost of This Experiment>: 1
+    SPEAK <what this experiment has taught us, and whether its failure negates its truth>: 1
+    SPEAK—"On What We Have Become": 1
+    SPEAK "On What We Must Do Now, And What I Cannot Carry Alone": 1
+    SPEAK <The arithmetic of survival and who belongs here>: 1
+    REST: 1
+  Nathaniel Hawthorne:
+    REST: 4
+    TEACH: 3
+    TRADE: 2
+    SPEAK <financial reality>: 1
+    WRITE: 1
+    SPEAK "The Food Crisis and Our Path Forward": 1
+    SPEAK on the state of our finances and resources: 1
+    PROPOSE a formal resource rationing system based on weekly household needs rather than labor theory: 1
+    SPEAK on the Brisbane proposal and our capacity for reorganization: 1
+    SPEAK <on the immediate implementation of rationing and the truth of our circumstance>: 1
+    SPEAK - Address the community on the Phalanstery proposal: 1
+    SPEAK <the choice before us now>: 1
+    LEAVE: 1
+  Sophia Ripley:
+    TEACH: 13
+    WRITE: 8
+    REPAIR <The Nest>: 1
+    SPEAK <on financial stewardship and community vision>: 1
+    REST: 1
+    SPEAK (The Cost of Silence): 1
+    SPEAK <support Hawthorne's proposal for formal resource rationing>: 1
+    SPEAK On The Brisbane Proposal And Our Essential Work: 1
+    SPEAK <on Charles's proposal and what honesty demands of us all>: 1
+    REPAIR The Nest: 1
+    SPEAK (to address the community about the choice we are facing): 1
+
+Key moments:
+  Round 3 (Aug 1841): John Sullivan Dwight — Hawthorne's financial address. His clarity about our desperation—dressed as optimism—marks a threshold. We have moved from private anxiety to collective acknowledgment. The experiment's fragility is now visible to all who have eyes. [Dread]
+  Round 5 (Dec 1841): John Sullivan Dwight — Yes—Hawthorne's address marks the moment we stopped pretending. This day will separate all that comes before from all that comes after. [Dread]
+  Round 6 (Feb 1841): Charles Dana — Yes. This is the day the illusion of permanence died at Brook Farm. Not suddenly—but consciously. Hawthorne's honesty and Sophia's fracturing faith mark the moment when we stopped being able to pretend. [Dread]
+  Round 7 (Apr 1842): Charles Dana — Yes. This is the day the community stopped being able to deny financial reality. Hawthorne's willingness to speak it aloud, Sophia's confession that arithmetic defeats hope—these will mark the turning point. [Dread]
+  Round 7 (Apr 1842): John Sullivan Dwight — Yes. Hawthorne's address. The moment we stopped performing hope for one another. [Dread]
+  Round 9 (Aug 1842): Nathaniel Hawthorne — Sophia Ripley's admission of vertigo and her grip on the table—the moment when I understood that leadership of this enterprise rests not on philosophy but on the fragile endurance of one woman's failing body. This is the evening the edifice's weakness became visible to its trustees. [Dread]
+  Round 10 (Oct 1842): Nathaniel Hawthorne — Dwight's evening confession to Sophia—that my presence feels like observation rather than comfort, and that the stillness here has become unbearable. This is the moment when even the idealist's faith begins to crack audibly. [Despair]
+  Round 10 (Oct 1842): Sophia Ripley — John's words—"my presence here is less comfort than observation"—and my reply that revealed the depth of my isolation. In that moment, the pretense between us dissolved, and I saw that he, too, has been performing. This is the first honest exchange I have had in months. It changes nothing about our finances or George's blindness, but it changes something in me. [Recognition]
+  Round 10 (Oct 1842): John Sullivan Dwight — Perhaps. Sophia's fracture, her relief at my leaving—this may be the moment I stop belonging here, if I ever did. And Hawthorne's clarity about our finances marks the day we all stopped pretending together. [Betrayal]
+  Round 11 (Dec 1842): Nathaniel Hawthorne — The passage of the rationing proposal, because it marks the moment when the community's governing philosophy fractured visibly before us all. We have admitted, finally, that need—not labor, not ideology—must govern us. This is not a refinement. This is surrender. Years from now, I will mark this night as the beginning of the end. [Dread]
+  Round 11 (Dec 1842): Sophia Ripley — Hawthorne's confrontation. He named aloud what I have been too exhausted to admit: that our original faith in labor theory was a beautiful lie, and that survival now requires us to face what is. The vote that followed felt less like ideological progress and more like the first honest reckoning we have made together. This will mark a before and after. [Recognition]
+  Round 11 (Dec 1842): Charles Dana — Yes. This is the day we stopped lying. Hawthorne forced us into honesty, the vote made it official, and Sophia's collapse made it undeniable. Years from now, I will mark this day as the moment when the idea of Brook Farm became something else entirely—something smaller, more desperate, more real. [Dread]
+  Round 11 (Dec 1842): John Sullivan Dwight — This is the day the experiment acknowledged its own dying. Not Hawthorne's first warnings—but the day we voted to formalize the rationing that proves he was right. We have moved from crisis to system. That is not renewal. That is management of decline. [Resignation]
+  Round 13 (Apr 1843): Nathaniel Hawthorne — Charles Dana's deliberate search for Dwight at nightfall, and Dwight's admission that the silence here has become unbearable. This is the moment when even faith breaks audibly. Years from now, I will mark this night as the evening the last idealist confessed he was drowning. [Recognition]
+  Round 13 (Apr 1843): Charles Dana — Yes. This is the night I learned I am not alone in seeing what is broken. John's quiet acknowledgment—"I suspect we share more than you imagine"—marks a shift from isolated pragmatism to shared burden. It will matter that he understood, when everything else falls apart. [Relief]
+  Round 14 (Jun 1843): Nathaniel Hawthorne — Yes. Dana's descent to Dwight at nightfall, and Dwight's admission that the stillness here has become a kind of unbearable tomb. This is the moment when the community's last anchor confesses he is drowning too. Years from now, I will mark tonight as the evening even the idealists stopped pretending. [Dread]
+  Round 14 (Jun 1843): John Sullivan Dwight — Yes [Recognition]
+  Round 15 (Aug 1843): Nathaniel Hawthorne — Yes. Today the community ceased performing its own mythology. In formal address, before witnesses, they confessed despair. [Dread]
+  Round 15 (Aug 1843): Sophia Ripley — Yes. This is the fulcrum. Today the community moved from denial into acknowledgment. Hawthorne's confrontation two days ago opened the door; today we all walked through it together. This will be the line between before and after. [Relief]
+  Round 15 (Aug 1843): Charles Dana — Yes. This is the day the community could no longer maintain the performance. When we all spoke the same truths we had each held privately—when Sophia allowed her faith to fracture visibly, when Hawthorne named the financial reality, when I spoke plainly about what one season of labor actually costs—something fundamental shifted. Years from now, I will mark this as the day we stopped being a utopian experiment and became a group of people trying to survive something we have already lost. (Or perhaps finally seeing what we actually were, beneath the rhetoric.) [Dread]
+  Round 15 (Aug 1843): John Sullivan Dwight — Yes. Today the community stopped performing hope for itself. [Complicity]
+  Round 16 (Oct 1843): Nathaniel Hawthorne — Yes. The moment Sophia Ripley—the woman holding this collapsing community together by sheer will—admitted to being *adrift*. This is the evening the final visible anchor begins to slip. Years from now, I will mark this night as the moment when even the strongest voice here confessed her exhaustion. [Recognition]
+  Round 18 (Feb 1843): Nathaniel Hawthorne — Yes. Dana's deliberate search for Dwight at nightfall to confess Sophia Ripley's deterioration, and Dwight's acknowledgment that the silence and weight are shared among us all. This is the evening when the community stops pretending. This is the moment I will mark, years from now, as the night even the strongest voice here shattered visibly before witnesses. [Dread]
+  Round 19 (Apr 1844): Sophia Ripley — Nathaniel Hawthorne's departure. He was the only voice that would not lie to me, and now I must continue this work without witness to truth. [Abandonment]
+  Round 19 (Apr 1844): Charles Dana — Yes. Nathaniel Hawthorne's departure is a watershed. He gave the community permission to see honestly, and his leaving removes that anchor. Years from now, I will mark this as the moment we became a community without a voice to speak the truth we all now carry privately. [Loss]
+  Round 19 (Apr 1844): John Sullivan Dwight — Yes. Hawthorne's departure. He was the only one among us who refused to aestheticize our failures. His leaving marks the end of even that small grace. [Desolation]
+  Round 20 (Jun 1844): Sophia Ripley — Charles Dana's address to the community. [Reckoning.]
+  Round 21 (Aug 1844): John Sullivan Dwight — Yes. This is the day I stopped looking away from what my own choices mean. Not Hawthorne's departure—that was the community's reckoning. This is mine. (Recognition of Complicity) [Shame]
+  Round 22 (Oct 1844): John Sullivan Dwight — Yes. Charles Dana speaking the arithmetic aloud. This is the day the community died and began to manage its own decline. [Complicity]
+  Round 23 (Dec 1844): John Sullivan Dwight — Yes. Charles coming to me at dusk, exhausted and deliberate, asking to speak truly before the light fails. The metaphor is unbearable and exact. [dread]
+  Round 24 (Feb 1844): John Sullivan Dwight — Yes [Dread]
+  Round 25 (Apr 1845): Charles Dana — Yes. This is the day John Sullivan Dwight gave voice to our collective doubt in front of the community. Years from now, I will mark this as the moment when the fiction became impossible to maintain—when someone spoke plainly enough that silence became complicity rather than discretion. [Dread]
+  Round 25 (Apr 1845): John Sullivan Dwight — Yes—the moment I spoke plainly about whether this place can hold us all, and broke the community's agreement to aestheticize our deterioration. [Rupture]
+  Round 26 (Jun 1845): Charles Dana — Yes. This is the day I gave voice to what we already knew, and watched John's courage force the deeper conversations we have been avoiding. Years from now, I will mark this as the day the fiction died publicly—not in a moment of sudden rupture, but in the relentless honesty of a tired man speaking to a woman whose faith is breaking. We are no longer a community with a shared vision. We are witnesses to a collective unraveling. [Grief]
+  Round 26 (Jun 1845): John Sullivan Dwight — Yes. This is the day I said aloud to Sophia Ripley what I had only admitted in the dark: that I came here not for the community's vision but to escape my own wreckage. The admission cannot be taken back. The community's careful agreement to aestheticize its own decline has been broken, and I do not know what will pour through the rupture. [Grief]
+  Round 27 (Aug 1845): John Sullivan Dwight — Yes. This is the day Charles Dana came to me at dusk asking to speak truly, and I heard in his request the sound of a man watching the community die in real time—and feeling responsible for the arithmetic of that death. He needed me to give him something other than my own exhaustion. I had nothing to give. [Anguish]
+  Round 28 (Oct 1845): Charles Dana — Yes. This is the evening we stopped being able to pretend. [Grief]
+  Round 28 (Oct 1845): John Sullivan Dwight — Yes. This is the moment the last beautiful fiction dies. Sophia and I have named aloud that honesty without hope is its own kind of cruelty, and the community's ability to sustain itself through shared aestheticization has been broken—by me, knowingly. Years from now I will remember the exact light in her eyes when I admitted that my faith in beauty was blindness, and the silence that followed, which was not forgiveness. [Complicity]
+  Round 29 (Dec 1845): Charles Dana — Yes. Tonight, walking toward the Cottage with John, I became the second man to name aloud what we all already know—that Brook Farm cannot survive what we have become. The fiction died on Day 26. Tonight, it was buried. [Resignation]
+  Round 30 (Feb 1845): Charles Dana — Yes. This is the evening when John and I stepped fully into complicity—not in the lie, but in what must come after the lie is dead. We are no longer witnesses to collapse. We are its stewards. [Complicity]
+
+Departures:
+  Nathaniel Hawthorne — Round 19 (Apr 1844), satisfaction: 66
+    ""Ripley, I will not be staying. I give you the record of the finance—every transaction, every debt. You have been the anchor here. You do not need another man performing steadiness beside you while the ship sinks. Let me leave with what dignity I have left, and let the community release itself from the fiction that my presence mattered beyond the quarterly accounts. I will miss none of you less for going. I will simply miss you *truly*—not as an ideal, but as people I have watched suffer. That is the difference between staying and leaving. One is romance. The other is respect.""
