@@ -697,7 +697,7 @@
     /* Landing */
     .home-hero h1 { font-size: 26px; letter-spacing: 4px; }
     .home-hero .hero-sub { font-size: 10px; letter-spacing: 2px; }
-    .home-premise, .home-premise-alert { font-size: 13px; line-height: 1.55; }
+    .home-premise, .home-premise-alert { font-size: 16px; line-height: 1.6; }
     .home-pull-quote .quote-text { font-size: 12px; max-width: 100%; }
     .home-pull-quote .quote-attr { font-size: 10px; }
     .home-emoji-row-1 { font-size: 18px !important; letter-spacing: 3px !important; }
@@ -1531,7 +1531,8 @@ document.addEventListener("keydown", e => {
 // Tap left/right half to navigate (reader mode)
 document.getElementById("app").addEventListener("click", e => {
   if (!currentRunKey) return; // not on landing or picker
-  if (e.target.closest("button, a, .expand-btn, .key-moment, .conversation, .vote-box, .departure-box")) return;
+  if (e.target.closest("button, a, .expand-btn, .run-card, .cast-card, .key-moment, .conversation, .vote-box, .departure-box")) return;
+  if (document.getElementById("home-screen")?.classList.contains("active")) return;
   const x = e.clientX;
   const mid = window.innerWidth / 2;
   if (x < mid) goBack();
