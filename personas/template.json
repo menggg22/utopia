@@ -1,0 +1,99 @@
+{
+  "_README": [
+    "This is a template for creating your own community simulation.",
+    "Copy this file, fill in your own values, and run:",
+    "  python simulate_v3.py 30 --personas personas/my_community.json",
+    "",
+    "Lines starting with '_' are comments — they're ignored by the simulator."
+  ],
+
+  "name": "My Community",
+  "description": "What question are you trying to answer?",
+  "setting": "Where and when? Be specific — the agents will stay in character.",
+
+  "_environment_note": [
+    "These are SHARED community resources that all members see.",
+    "  food:   Shared food supply. Depletes each round. FARM action adds to it.",
+    "  money:  Shared treasury. TEACH and TRADE add to it. BUILD and REPAIR spend it.",
+    "  morale: Community confidence (0-100). Reported by agents each round, not a formula.",
+    "",
+    "Think of these as the community's commons — what everyone depends on.",
+    "A commune shares everything. A startup might use: runway, users, morale.",
+    "A Mars colony might use: oxygen, supplies, morale."
+  ],
+  "environment": {
+    "food": 100,
+    "money": 500,
+    "morale": 80
+  },
+
+  "_actions_note": [
+    "What can members DO each round? Each action has:",
+    "  food/money:      Resource effect (positive = produce, negative = consume)",
+    "  satisfaction:     How it feels (-3 = miserable, +8 = fulfilling)",
+    "  prompt:           What the agent sees when choosing",
+    "  arg (optional):   Takes a parameter, e.g. BUILD <what>",
+    "",
+    "PROPOSE, SPEAK, REST, and LEAVE are special — keep them.",
+    "Replace FARM/TEACH/etc with whatever fits your community.",
+    "Examples: CODE, DESIGN, MARKET, RESEARCH, COOK, PATROL, MEDITATE..."
+  ],
+  "actions": {
+    "FARM":     {"food": 8, "satisfaction": -3, "prompt": "Work the fields (+food, physically exhausting)"},
+    "TEACH":    {"money": 10, "satisfaction": 5, "prompt": "Run school classes (+money)"},
+    "SPEAK":    {"prompt": "Address the community", "arg": "<topic>"},
+    "ORGANIZE": {"satisfaction": 5, "prompt": "Plan a social event", "arg": "<event>"},
+    "TRADE":    {"money": 15, "satisfaction": 2, "prompt": "Sell goods (+money)"},
+    "WRITE":    {"satisfaction": 8, "prompt": "Personal creative work"},
+    "BUILD":    {"money": -30, "satisfaction": 2, "prompt": "Construction (-$30)", "arg": "<what>"},
+    "REPAIR":   {"money": -10, "satisfaction": 2, "prompt": "Fix something (-$10)", "arg": "<what>"},
+    "PROPOSE":  {"prompt": "Suggest a rule for the community to vote on", "arg": "<rule>"},
+    "REST":     {"satisfaction": 2, "prompt": "Personal time"},
+    "LEAVE":    {"prompt": "Permanently depart (irreversible)"}
+  },
+
+  "_relationships_note": [
+    "Special starting relationships. Default trust is 5 (neutral).",
+    "  1-2 = hostile/suspicious, 5 = neutral, 8 = close, 10 = unconditional",
+    "  type: any label (married, rivals, mentor-student, ex-friends, co-founders)"
+  ],
+  "relationships": [
+    {"pair": ["Person A", "Person B"], "type": "married", "initial_trust": 8}
+  ],
+
+  "_agents_note": [
+    "The people. 2-6 members works best. Each needs:",
+    "  background:    Who are they? The richer, the better they behave.",
+    "  motivation:    Why did they join? What do they need?",
+    "  personality:   How they act under pressure. Flaws make it interesting.",
+    "  private_goal:  What they secretly want. Drives departure decisions.",
+    "  passions:      Actions that give them bonus satisfaction (1-5 points).",
+    "",
+    "Tips:",
+    "  - Give people conflicting motivations (joined for money, stays for community)",
+    "  - Make private goals contradict the community's needs",
+    "  - Passions should match their personality (the musician loves ORGANIZE)"
+  ],
+  "agents": {
+    "Person A": {
+      "role": "Their role in the community",
+      "age": 35,
+      "background": "Who are they? Where did they come from? The richer this is, the better they behave.",
+      "motivation": "Why did they join? What do they need from this community?",
+      "personality": "How do they act under pressure? What are their flaws? What makes them interesting?",
+      "skills": ["skill1", "skill2", "skill3"],
+      "private_goal": "What do they secretly want? This drives whether they stay or leave.",
+      "passions": {"WRITE": 3}
+    },
+    "Person B": {
+      "role": "Their role",
+      "age": 30,
+      "background": "Who are they?",
+      "motivation": "Why did they join?",
+      "personality": "How do they behave?",
+      "skills": ["skill1", "skill2"],
+      "private_goal": "What do they secretly want?",
+      "passions": {"FARM": 5}
+    }
+  }
+}

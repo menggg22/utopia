@@ -64,6 +64,7 @@ BACKEND = "cli"  # "cli" (uses claude CLI / Max sub) or "api" (uses Anthropic AP
 MAX_ROUNDS = 30
 LOG_DIR = "runs"
 CONVERSATION_PAIRS_PER_ROUND = 2
+ACTION_DEFS = None  # set by run_simulation from persona file or DEFAULT_ACTIONS
 MAX_GOSSIP_IN_PROMPT = 5
 
 
@@ -77,6 +78,37 @@ def day_to_date(day: int) -> str:
 
 
 # --- Personas ---
+
+# Default personas — loaded from JSON if --personas is specified
+DEFAULT_PERSONAS_FILE = os.path.join(os.path.dirname(__file__), "personas", "brook_farm.json")
+
+def load_personas(path=None):
+    """Load personas from a JSON file. Returns (agents_dict, setting, relationships, environment, actions)."""
+    path = path or DEFAULT_PERSONAS_FILE
+    with open(path) as f:
+        data = json.load(f)
+    agents = data.get("agents", data)  # support both {agents: {...}} and flat dict
+    setting = data.get("setting", "Brook Farm, a utopian community in West Roxbury, Massachusetts, in the 1840s.")
+    relationships = data.get("relationships", [])
+    environment = data.get("environment", {})
+    actions = data.get("actions", None)  # None = use hardcoded defaults
+    return agents, setting, relationships, environment, actions
+
+
+# Default actions (used when persona file doesn't define them)
+DEFAULT_ACTIONS = {
+    "FARM":     {"food": 8, "satisfaction": -3, "prompt": "Work the fields (+food, physically exhausting)"},
+    "TEACH":    {"money": 10, "satisfaction": 5, "prompt": "Run school classes (+money, intellectually fulfilling)"},
+    "BUILD":    {"money": -30, "satisfaction": 2, "prompt": "Construction (-$30, +building)", "arg": "<what>"},
+    "PROPOSE":  {"prompt": "Suggest a rule — ALL members will vote on it", "arg": "<rule>"},
+    "SPEAK":    {"prompt": "Address the community", "arg": "<topic>"},
+    "ORGANIZE": {"satisfaction": 5, "prompt": "Plan a cultural/social event", "arg": "<event>"},
+    "TRADE":    {"money": 15, "satisfaction": 2, "prompt": "Sell goods to visitors (+money)"},
+    "REPAIR":   {"money": -10, "satisfaction": 2, "prompt": "Fix a deteriorating building (-$10)", "arg": "<building>"},
+    "REST":     {"satisfaction": 2, "prompt": "Personal time"},
+    "WRITE":    {"satisfaction": 8, "prompt": "Work on personal writing/art"},
+    "LEAVE":    {"prompt": "Permanently depart the community (irreversible)"},
+}
 
 PERSONAS = {
     "George Ripley": {
@@ -577,23 +609,19 @@ class Agent:
     satisfaction: int = 70
     action_history: list = field(default_factory=list)
     consecutive_speeches: int = 0  # v2: track speech fatigue
+    community_setting: str = "Brook Farm, a utopian community in West Roxbury, Massachusetts, in the 1840s."
     client: object = field(default=None, repr=False)  # Anthropic client (api mode only)
 
     def __post_init__(self):
-        # Initialize relationships with all other agents
+        # Initialize relationships with all other agents (default trust 5)
         for other_name in PERSONAS:
             if other_name != self.name:
-                trust = 5
-                # Married couple starts higher
-                if {self.name, other_name} == {"George Ripley", "Sophia Ripley"}:
-                    trust = 8
-                self.memory.update_relationship(other_name, attitude="new acquaintance", trust=trust)
+                self.memory.update_relationship(other_name, attitude="new acquaintance", trust=5)
 
     def _system_prompt(self) -> str:
         p = self.persona
         return (
-            f"You are {self.name}, a member of Brook Farm, a utopian community in "
-            f"West Roxbury, Massachusetts, in the 1840s.\n\n"
+            f"You are {self.name}, a member of {self.community_setting}\n\n"
             f"ROLE: {p['role']}\n"
             f"AGE: {p['age']}\n\n"
             f"BACKGROUND:\n{p['background']}\n\n"
@@ -624,7 +652,10 @@ class Agent:
                 capture_output=True, text=True, timeout=60,
             )
             if result.returncode == 0:
-                return result.stdout.strip()
+                text = result.stdout.strip()
+                if not text:
+                    return "(CLI error: empty response)"
+                return text
             else:
                 return f"(CLI error: {result.stderr.strip()[:200]})"
         except subprocess.TimeoutExpired:
@@ -683,17 +714,11 @@ class Agent:
             f"What do you do today? Choose ONE action.\n\n"
             + (f"** RECENT EVENT: {env.event_catalyst} **\n\n" if env.event_catalyst else "")
             + f"Available actions:\n"
-            f"- FARM: Work the fields (+food, physically exhausting)\n"
-            f"- TEACH: Run school classes (+money, intellectually fulfilling)\n"
-            f"- BUILD <what>: Construction (-$30, +building)\n"
-            f"- PROPOSE <rule>: Suggest a rule — ALL members will vote on it\n"
-            f"- SPEAK <topic>: Address the community\n"
-            f"- ORGANIZE <event>: Plan a cultural/social event (+morale)\n"
-            f"- TRADE: Sell goods to visitors (+money)\n"
-            f"- REPAIR <building>: Fix a deteriorating building (-$10)\n"
-            f"- REST: Personal time\n"
-            f"- WRITE: Work on personal writing/art\n"
-            f"- LEAVE: Permanently depart Brook Farm (irreversible)\n\n"
+            + "".join(
+                f"- {name}{(' ' + a.get('arg', '')) if a.get('arg') else ''}: {a['prompt']}\n"
+                for name, a in (ACTION_DEFS or DEFAULT_ACTIONS).items()
+            )
+            + "\n"
             f"Respond in EXACTLY this format:\n"
             f"ACTION: <your chosen action>\n"
             f"REASONING: <1-2 sentences, in character>\n"
@@ -977,10 +1002,13 @@ def _apply_passion_bonus(agent: Agent, action_type: str, base_sat: int) -> int:
 
 
 def resolve_action(agent_name: str, decision: dict, env: Environment, agent: Agent) -> dict:
-    """Resolve an action and return {description, effects}."""
+    """Resolve an action and return {description, effects}.
+    v3.1: reads action effects from ACTION_DEFS (data-driven)."""
     action = decision.get("action", "REST").upper()
     action_type = action.split()[0] if action else "REST"
+    arg = action[len(action_type):].strip().strip("<>") if len(action) > len(action_type) else ""
     effects = {}
+    defs = ACTION_DEFS or DEFAULT_ACTIONS
 
     # v2: track speech fatigue
     if action_type == "SPEAK":
@@ -988,94 +1016,87 @@ def resolve_action(agent_name: str, decision: dict, env: Environment, agent: Age
     else:
         agent.consecutive_speeches = 0
 
-    if action.startswith("FARM"):
-        env.food += 8
-        env.farm_output_this_round += 8
-        env.total_farm_output += 8
-        sat_delta = _apply_passion_bonus(agent, "FARM", -3)
-        agent.satisfaction = max(0, min(100, agent.satisfaction + sat_delta))
-        effects = {"food": 8, "satisfaction": sat_delta}
-        desc = f"{agent_name} spent the day working the fields. (+8 food)"
-
-    elif action.startswith("TEACH"):
-        env.money += 10
-        env.school_income_this_round += 10
-        env.total_school_income += 10
-        sat_delta = _apply_passion_bonus(agent, "TEACH", 5)
-        agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-        effects = {"money": 10, "satisfaction": sat_delta}
-        desc = f"{agent_name} taught classes at the school. (+$10)"
-
-    elif action.startswith("BUILD"):
-        what = action[5:].strip() if len(action) > 5 else "a new structure"
-        if env.money >= 30:
-            env.money -= 30
-            env.buildings.append(what)
-            env.building_health[what] = -1
-            sat_delta = _apply_passion_bonus(agent, "BUILD", 2)
-            agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-            effects = {"money": -30, "satisfaction": sat_delta}
-            desc = f"{agent_name} worked on building {what}. (-$30, +building)"
-        else:
-            desc = f"{agent_name} wanted to build but the treasury is empty."
-            effects = {}
-
-    elif action.startswith("PROPOSE"):
-        rule = action[7:].strip() if len(action) > 7 else "a new community rule"
-        env.pending_proposals.append({"proposal": rule, "proposed_by": agent_name})
-        desc = f"{agent_name} proposed: '{rule}' — a vote will be held."
-        effects = {}
-
-    elif action.startswith("SPEAK"):
-        desc = f"{agent_name} addressed the community."
-        effects = {}
-        # v2: speech fatigue — after 3+ consecutive speeches, trust erodes
-        if agent.consecutive_speeches >= 3:
-            effects["speech_fatigue"] = agent.consecutive_speeches
-            desc += f" (has spoken {agent.consecutive_speeches} rounds in a row without other action)"
-
-    elif action.startswith("ORGANIZE"):
-        what = action[8:].strip() if len(action) > 8 else "a community gathering"
-        sat_delta = _apply_passion_bonus(agent, "ORGANIZE", 5)
-        agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-        effects = {"satisfaction": sat_delta}
-        desc = f"{agent_name} organized {what}."
-
-    elif action.startswith("TRADE"):
-        env.money += 15
-        sat_delta = _apply_passion_bonus(agent, "TRADE", 2)
-        agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-        effects = {"money": 15, "satisfaction": sat_delta}
-        desc = f"{agent_name} sold goods to visitors. (+$15)"
-
-    elif action.startswith("REPAIR"):
-        building = action[6:].strip() if len(action) > 6 else ""
-        if env.repair_building(building):
-            sat_delta = _apply_passion_bonus(agent, "REPAIR", 2)
-            agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-            effects = {"money": -10, "satisfaction": sat_delta}
-            desc = f"{agent_name} repaired a building. (-$10)"
-        else:
-            desc = f"{agent_name} wanted to repair but nothing needs fixing (or no money)."
-            effects = {}
-
-    elif action.startswith("WRITE"):
-        sat_delta = _apply_passion_bonus(agent, "WRITE", 8)
-        agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-        effects = {"satisfaction": sat_delta}
-        desc = f"{agent_name} retreated to write in solitude."
-
-    elif action.startswith("LEAVE"):
+    # Special-case actions (structural side effects beyond resources)
+    if action_type == "LEAVE":
         env.departed.append(agent_name)
         agent.has_left = True
-        desc = f"*** {agent_name} has packed their things and left Brook Farm. ***"
-        effects = {"departed": True}
+        return {"description": f"*** {agent_name} has departed the community. ***", "effects": {"departed": True}}
 
-    else:  # REST
-        sat_delta = _apply_passion_bonus(agent, "REST", 2)
-        agent.satisfaction = min(100, agent.satisfaction + sat_delta)
-        effects = {"satisfaction": sat_delta}
-        desc = f"{agent_name} rested quietly."
+    if action_type == "PROPOSE":
+        rule = arg or "a new community rule"
+        env.pending_proposals.append({"proposal": rule, "proposed_by": agent_name})
+        return {"description": f"{agent_name} proposed: '{rule}' — a vote will be held.", "effects": {}}
+
+    if action_type == "BUILD":
+        what = arg or "a new structure"
+        cost = abs(defs.get("BUILD", {}).get("money", -30))
+        if env.money >= cost:
+            env.money -= cost
+            env.buildings.append(what)
+            env.building_health[what] = -1
+            base_sat = defs.get("BUILD", {}).get("satisfaction", 2)
+            sat_delta = _apply_passion_bonus(agent, "BUILD", base_sat)
+            agent.satisfaction = min(100, agent.satisfaction + sat_delta)
+            return {"description": f"{agent_name} worked on building {what}. (-${cost})", "effects": {"money": -cost, "satisfaction": sat_delta}}
+        else:
+            return {"description": f"{agent_name} wanted to build but the treasury is empty.", "effects": {}}
+
+    if action_type == "REPAIR":
+        building = arg or ""
+        if env.repair_building(building):
+            base_sat = defs.get("REPAIR", {}).get("satisfaction", 2)
+            sat_delta = _apply_passion_bonus(agent, "REPAIR", base_sat)
+            agent.satisfaction = min(100, agent.satisfaction + sat_delta)
+            cost = abs(defs.get("REPAIR", {}).get("money", -10))
+            return {"description": f"{agent_name} repaired a building. (-${cost})", "effects": {"money": -cost, "satisfaction": sat_delta}}
+        else:
+            return {"description": f"{agent_name} wanted to repair but nothing needs fixing (or no money).", "effects": {}}
+
+    # Generic data-driven resolution
+    action_def = defs.get(action_type, defs.get("REST", {"satisfaction": 2, "prompt": "Personal time"}))
+    base_sat = action_def.get("satisfaction", 0)
+    sat_delta = _apply_passion_bonus(agent, action_type, base_sat)
+
+    # Apply resource effects
+    food_delta = action_def.get("food", 0)
+    money_delta = action_def.get("money", 0)
+
+    if food_delta:
+        env.food += food_delta
+        env.farm_output_this_round += max(0, food_delta)
+        env.total_farm_output += max(0, food_delta)
+    if money_delta > 0:
+        env.money += money_delta
+        if action_type == "TEACH":
+            env.school_income_this_round += money_delta
+            env.total_school_income += money_delta
+    elif money_delta < 0:
+        env.money += money_delta  # negative
+
+    if sat_delta:
+        agent.satisfaction = max(0, min(100, agent.satisfaction + sat_delta))
+
+    effects = {}
+    if food_delta: effects["food"] = food_delta
+    if money_delta: effects["money"] = money_delta
+    if sat_delta: effects["satisfaction"] = sat_delta
+
+    # Build description
+    desc_parts = [f"{agent_name} — {action_def.get('prompt', action_type)}"]
+    if arg:
+        arg_display = arg.title() if arg == arg.upper() else arg
+        desc_parts[0] = f"{agent_name} — {action_def.get('prompt', action_type)}: {arg_display}"
+    effect_notes = []
+    if food_delta: effect_notes.append(f"{'+' if food_delta > 0 else ''}{food_delta} food")
+    if money_delta: effect_notes.append(f"{'+'if money_delta > 0 else ''}${money_delta}")
+    if effect_notes:
+        desc_parts.append(f"({', '.join(effect_notes)})")
+    desc = " ".join(desc_parts)
+
+    # Speech fatigue
+    if action_type == "SPEAK" and agent.consecutive_speeches >= 3:
+        effects["speech_fatigue"] = agent.consecutive_speeches
+        desc += f" (spoken {agent.consecutive_speeches} rounds in a row)"
 
     return {"description": desc, "effects": effects}
 
@@ -1205,13 +1226,28 @@ def run_simulation(config: dict = None):
         seed: int           — random seed (default: 42)
         model: str          — LLM model (default: MODULE-level MODEL)
         backend: str        — "cli" or "api" (default: MODULE-level BACKEND)
-        agents: list[str]   — subset of PERSONAS keys (default: all)
+        agents: list[str]   — subset of persona keys (default: all)
+        personas: str       — path to personas JSON file (default: brook_farm.json)
         environment: dict   — override food, money, morale (default: standard)
     """
     if config is None:
         config = {}
 
-    global MODEL, BACKEND
+    global MODEL, BACKEND, PERSONAS
+
+    # v3.1: load personas from JSON file
+    personas_file = config.get("personas", None)
+    if personas_file:
+        PERSONAS, community_setting, persona_relationships, persona_env, custom_actions = load_personas(personas_file)
+    else:
+        community_setting = "Brook Farm, a utopian community in West Roxbury, Massachusetts, in the 1840s."
+        persona_relationships = [{"pair": ["George Ripley", "Sophia Ripley"], "type": "married", "initial_trust": 8}]
+        persona_env = {}
+        custom_actions = None
+
+    # v3.1: action definitions — custom or default (module global for Agent access)
+    global ACTION_DEFS
+    ACTION_DEFS = custom_actions or DEFAULT_ACTIONS
 
     exp_name = config.get("name", "run")
     n_rounds = config.get("rounds", MAX_ROUNDS)
@@ -1219,7 +1255,8 @@ def run_simulation(config: dict = None):
     model = config.get("model", MODEL)
     backend = config.get("backend", BACKEND)
     agent_names = config.get("agents", list(PERSONAS.keys()))
-    env_overrides = config.get("environment", {})
+    # Environment: persona file sets defaults, experiment config overrides
+    env_overrides = {**persona_env, **config.get("environment", {})}
 
     # Set globals for this run (used by Agent._llm_call)
     MODEL = model
@@ -1254,8 +1291,17 @@ def run_simulation(config: dict = None):
     selected_personas = {k: v for k, v in PERSONAS.items() if k in agent_names}
     agents = {}
     for name, persona in selected_personas.items():
-        agent = Agent(name=name, persona=persona, client=shared_client)
+        agent = Agent(name=name, persona=persona, client=shared_client,
+                      community_setting=community_setting)
         agents[name] = agent
+
+    # v3.1: Apply custom relationships from persona file
+    for rel in persona_relationships:
+        pair = rel.get("pair", [])
+        if len(pair) == 2 and pair[0] in agents and pair[1] in agents:
+            trust = rel.get("initial_trust", 8)
+            agents[pair[0]].memory.update_relationship(pair[1], trust=trust)
+            agents[pair[1]].memory.update_relationship(pair[0], trust=trust)
 
     # Save config — everything needed to reproduce this exact run
     git_hash = ""
@@ -1287,6 +1333,7 @@ def run_simulation(config: dict = None):
     # --- Setup events ---
     logger.log(0, "setup", "sim_start", data={
         "version": "v3",
+        "experiment": exp_name,
         "model": model,
         "max_rounds": n_rounds,
         "n_agents": len(selected_personas),
@@ -1297,35 +1344,89 @@ def run_simulation(config: dict = None):
         logger.log(0, "setup", "persona_loaded", agent=name, data=persona)
 
     total_llm_calls = 0
+    rich = not config.get("clean", False)
+    WRAP = 120  # max line width for rich output
 
-    print(f"\n{'='*60}")
-    print(f"  BROOK FARM SIMULATION v3 — {exp_name}")
-    print(f"  {n_rounds} rounds | {len(agents)} agents | seed={seed}")
-    print(f"  Model: {model} (backend: {backend})")
+    # --- Pretty output helpers ---
+    def wrap_text(text, indent="     ", max_line=None):
+        """Word-wrap text with indent prefix."""
+        if max_line is None:
+            max_line = WRAP
+        if len(indent + text) <= max_line:
+            return indent + text
+        lines = []
+        words = text.split()
+        line = indent
+        for word in words:
+            if len(line) + len(word) + 1 > max_line and line.strip():
+                lines.append(line)
+                line = indent + word
+            else:
+                line = line + (' ' if line != indent else '') + word
+        if line.strip():
+            lines.append(line)
+        return '\n'.join(lines)
+
+    def bar(value, max_val=100, width=20):
+        filled = int(value / max_val * width) if max_val > 0 else 0
+        filled = max(0, min(width, filled))
+        return "█" * filled + "░" * (width - filled)
+
+    MOOD_EMOJI = {
+        "hopeful": "😊", "optimistic": "😊", "content": "😌", "happy": "😄",
+        "anxious": "😰", "worried": "😟", "concerned": "😟",
+        "frustrated": "😤", "angry": "😠", "bitter": "😒",
+        "sad": "😢", "melancholy": "😢", "resigned": "😔", "despairing": "😞",
+        "determined": "💪", "resolute": "💪",
+        "guilty": "😣", "conflicted": "😣",
+        "neutral": "😐", "tired": "😫", "exhausted": "😫",
+    }
+    ACTION_EMOJI = {
+        "FARM": "🌾", "TEACH": "📚", "BUILD": "🔨", "REPAIR": "🔧",
+        "TRADE": "💰", "WRITE": "✍️", "SPEAK": "🎤", "ORGANIZE": "🎵",
+        "REST": "💤", "PROPOSE": "📜", "LEAVE": "🚪",
+    }
+
+    def get_mood_emoji(mood):
+        mood_lower = (mood or "neutral").lower()
+        for key, emoji in MOOD_EMOJI.items():
+            if key in mood_lower:
+                return emoji
+        return "😐"
+
+    print(f"\n  🏛️  UTOPIA SIMULATION")
+    print(f"  {'─'*50}")
+    print(f"  {exp_name}")
+    print(f"  {n_rounds} rounds · {len(agents)} agents · seed {seed}")
+    print(f"  Model: {model} ({backend})")
     print(f"  Output: {run_dir}/")
-    print(f"{'='*60}\n")
+    print(f"  {'─'*50}\n")
 
     for round_num in range(1, n_rounds + 1):
         date_str = day_to_date(env.day)
         active = {n: a for n, a in agents.items() if not a.has_left}
 
-        print(f"\n{'─'*55}")
+        print(f"\n  {'═'*60}")
         print(f"  Round {round_num}/{n_rounds} — {date_str} ({env.season})")
-        print(f"  Food: {env.food} | Money: ${env.money} | Morale: {env.morale}%")
-        print(f"  Active: {', '.join(active.keys())}")
-        print(f"{'─'*55}")
+        print(f"  🌾 Food   {bar(env.food, 200)} {env.food}")
+        print(f"  💰 Money  {bar(env.money, 1000)} ${env.money}")
+        print(f"  ❤️  Morale {bar(env.morale)} {env.morale}%")
+        print(f"  👥 {', '.join(active.keys())}")
+        print(f"  {'═'*60}")
 
         # --- Environment events ---
         env.trigger_event()
         logger.log(round_num, "env", "env_state", data=env.snapshot())
         for ev in env.events_this_round:
             logger.log(round_num, "env", ev["type"], data=ev)
-            print(f"\n  ** {ev['type'].upper()}: {ev['description'][:80]}...")
+            print(f"\n  ⚡ {ev['type'].upper()}: {ev['description'][:80]}")
 
         # ========================
         # PHASE 1: ACT
         # ========================
-        print(f"\n  --- Phase 1: ACT ---")
+        print(f"\n  {'─'*40}")
+        print(f"  🎭 Actions")
+        print(f"  {'─'*40}")
         round_action_summaries = []
 
         for name, agent in active.items():
@@ -1370,7 +1471,7 @@ def run_simulation(config: dict = None):
                     "parting_words": decision.get("dialogue", ""),
                     "inner_thought": decision.get("inner_thought", ""),
                 })
-                print(f"  *** {name} DEPARTS ***")
+                print(f"  🚪 {name} DEPARTS")
 
             # Bulletin board
             dialogue = decision.get("dialogue", "nothing")
@@ -1386,19 +1487,41 @@ def run_simulation(config: dict = None):
             round_action_summaries.append(f"{name}: {result['description']}")
 
             # Print
-            print(f"  [{name}] {decision.get('action', 'REST')} — {decision.get('mood', '?')}")
-            print(f"    → {result['description']}")
+            action_raw = decision.get('action', 'REST')
+            action_base = action_raw.split()[0].upper()
+            mood = decision.get('mood', 'neutral')
+            emoji = ACTION_EMOJI.get(action_base, '·')
+            mood_e = get_mood_emoji(mood)
+            first = name.split()[0]
+
+            if rich:
+                inner = decision.get('inner_thought', '').strip().strip('*')
+                dialogue = decision.get('dialogue', '').strip().strip('"')
+                desc = result['description']
+                # Strip agent name from description — already shown in header
+                short_desc = desc.split(' — ', 1)[-1] if ' — ' in desc else desc
+                print(f"\n  {emoji} {first} → {action_raw.lower()} {mood_e}")
+                print(wrap_text(short_desc))
+                if inner:
+                    print(wrap_text(f"🧠 {inner}"))
+                if dialogue and dialogue.lower() != "nothing":
+                    print(wrap_text(f'💬 "{dialogue}"'))
+                print(f"  {'·'*30}")
+            else:
+                print(f"  {emoji} {first} → {action_raw.lower()} {mood_e}")
 
         # Refresh active list (someone may have left)
         active = {n: a for n, a in agents.items() if not a.has_left}
         if not active:
-            print("\n  *** ALL MEMBERS HAVE LEFT ***")
+            print("\n  💀 ALL MEMBERS HAVE LEFT")
             break
 
         # ========================
         # PHASE 2: TALK
         # ========================
-        print(f"\n  --- Phase 2: TALK ---")
+        print(f"\n  {'─'*40}")
+        print(f"  👥 Conversations")
+        print(f"  {'─'*40}")
         pairs = select_conversation_pairs(agents, env, env.pending_proposals)
         all_conversations = []
 
@@ -1468,16 +1591,38 @@ def run_simulation(config: dict = None):
                 "exchanges": history,
             })
 
-            print(f"  [{agent_a_name} <-> {agent_b_name}] ({context[:40]}...)")
+            first_name_a = agent_a_name.split()[0]
+            first_name_b = agent_b_name.split()[0]
+            print(f"\n  👥 {first_name_a} & {first_name_b}")
             for t in history:
-                print(f'    {t["speaker"]}: "{t.get("says", "...")[:60]}..." ({t.get("tone", "?")})')
+                speaker_first = t["speaker"].split()[0]
+                says = t.get("says", "...").strip().strip('"')
+                if rich:
+                    inner = t.get("inner_thought", "").strip().strip('*')
+                    tone = t.get("tone", "")
+                    tone_str = f" ({tone})" if tone else ""
+                    print(f'\n     {speaker_first}{tone_str}:')
+                    print(wrap_text(f'💬 "{says}"', indent="       "))
+                    if inner:
+                        print(wrap_text(f"🧠 {inner}", indent="       "))
+                else:
+                    # Clean: first sentence only
+                    dot = says.find(". ")
+                    if dot > 40:
+                        says = says[:dot+1]
+                    elif len(says) > 80:
+                        says = says[:77] + "..."
+                    print(f'     {speaker_first}: "{says}"')
+
+            if rich:
+                print(f"  {'·'*30}")
 
         # ========================
         # PHASE 2b: VOTE
         # ========================
         all_votes = []
         for proposal in env.pending_proposals:
-            print(f"\n  --- VOTE: {proposal['proposal'][:50]}... ---")
+            print(f"\n  📜 VOTE: {proposal['proposal'][:60]}")
             logger.log(round_num, "vote", "vote_start", data={
                 "proposal": proposal["proposal"],
                 "proposed_by": proposal["proposed_by"],
@@ -1495,7 +1640,8 @@ def run_simulation(config: dict = None):
                     "inner_thought": vote_result.get("inner_thought", ""),
                     "dialogue": vote_result.get("dialogue", "nothing"),
                 })
-                print(f"    {name}: {vote_result['vote']} — {vote_result.get('reasoning', '')[:60]}")
+                vote_icon = "✅" if vote_result['vote'] == "YES" else "❌"
+                print(f"     {vote_icon} {name}: {vote_result.get('reasoning', '')[:60]}")
 
             yes_count = sum(1 for v in votes.values() if v["vote"] == "YES")
             no_count = sum(1 for v in votes.values() if v["vote"] == "NO")
@@ -1517,12 +1663,15 @@ def run_simulation(config: dict = None):
                 agent.memory.add_recent(vote_memory)
 
             all_votes.append({"proposal": proposal, "votes": votes, "result": result_str})
-            print(f"  Result: {result_str} ({yes_count} YES, {no_count} NO)")
+            result_icon = "✅ PASSED" if passed else "❌ FAILED"
+            print(f"  {result_icon} ({yes_count} yes, {no_count} no)")
 
         # ========================
         # PHASE 3: REFLECT
         # ========================
-        print(f"\n  --- Phase 3: REFLECT ---")
+        print(f"\n  {'─'*40}")
+        print(f"  🪞 Reflections")
+        print(f"  {'─'*40}")
 
         # Build today's summary
         today_parts = []
@@ -1588,7 +1737,30 @@ def run_simulation(config: dict = None):
                 "community_morale": reflection.get("community_morale", 50),  # v3
             })
 
-            print(f"  [{name}] mood: {reflection.get('mood', '?')}, satisfaction: {agent.satisfaction}, morale_vote: {reflection.get('community_morale', 50)}")
+            mood = reflection.get('mood', 'neutral')
+            mood_e = get_mood_emoji(mood)
+            first = name.split()[0]
+
+            if rich:
+                summary = reflection.get('summary', '')
+                key_moment = reflection.get('key_moment', '')
+                key_emotion = reflection.get('key_emotion', '')
+                sat_delta = reflection.get('satisfaction_change', 0)
+                sat_str = f"sat {agent.satisfaction}"
+                if sat_delta > 0:
+                    sat_str += f" (+{sat_delta})"
+                elif sat_delta < 0:
+                    sat_str += f" ({sat_delta})"
+
+                print(f"\n  {mood_e} {first} ({sat_str}) — {mood}")
+                if summary:
+                    print(wrap_text(summary))
+                if key_moment:
+                    emotion_str = f" [{key_emotion}]" if key_emotion else ""
+                    print(wrap_text(f"★ {key_moment}{emotion_str}"))
+                print(f"  {'·'*30}")
+            else:
+                print(f"  {mood_e} {first} (sat {agent.satisfaction}) — {mood}")
 
         # --- v3: Update community morale from agents' assessments ---
         if morale_scores:
@@ -1600,7 +1772,8 @@ def run_simulation(config: dict = None):
                 "new_morale": env.morale,
                 "old_morale": old_morale,
             })
-            print(f"  [MORALE] {old_morale}% → {env.morale}% (from {len(morale_scores)} agents: {morale_scores})")
+            direction = "📈" if env.morale > old_morale else "📉" if env.morale < old_morale else "➡️"
+            print(f"\n  {direction} Community morale: {old_morale}% → {env.morale}%")
 
         # --- Gossip spread ---
         spread_gossip(agents, round_num, logger)
@@ -1617,7 +1790,7 @@ def run_simulation(config: dict = None):
                 logger.log(round_num, "reflect", "speech_fatigue", agent=name, data={
                     "consecutive_speeches": agent.consecutive_speeches,
                 })
-                print(f"  [SPEECH FATIGUE] {name} has spoken {agent.consecutive_speeches} rounds in a row")
+                print(f"  ⚠️  {name} has been speechifying for {agent.consecutive_speeches} rounds straight")
 
         # --- v2: Clear event catalyst after one round ---
         env.event_catalyst = None
@@ -1630,10 +1803,10 @@ def run_simulation(config: dict = None):
         # Check termination
         active = {n: a for n, a in agents.items() if not a.has_left}
         if not active:
-            print("\n  *** ALL MEMBERS HAVE LEFT ***")
+            print("\n  💀 ALL MEMBERS HAVE LEFT")
             break
         if env.morale <= 10:
-            print(f"\n  *** COMMUNITY MORALE CRITICAL: {env.morale}% ***")
+            print(f"\n  🔥 COMMUNITY MORALE CRITICAL: {env.morale}%")
 
     # --- Sim end ---
     wall_time = time.time() - start_time
@@ -1648,15 +1821,22 @@ def run_simulation(config: dict = None):
     })
     logger.close()
 
-    print(f"\n{'='*60}")
-    print(f"  SIMULATION COMPLETE")
-    print(f"  Rounds: {round_num} | LLM calls: {total_llm_calls}")
-    print(f"  Final: Food={env.food}, Money=${env.money}, Morale={env.morale}%")
-    print(f"  Departed: {', '.join(env.departed) if env.departed else 'None'}")
-    print(f"  Time: {wall_time:.1f}s")
-    print(f"\n  Output: {run_dir}/events.jsonl ({logger.seq} events)")
-    print(f"  Run: python derive.py {run_dir}/events.jsonl")
-    print(f"{'='*60}\n")
+    departed_str = ', '.join(env.departed) if env.departed else 'None'
+    survived = [n for n, a in agents.items() if not a.has_left]
+    survived_str = ', '.join(survived) if survived else 'None'
+
+    print(f"\n  {'═'*52}")
+    print(f"  🏛️  SIMULATION COMPLETE")
+    print(f"  {'─'*52}")
+    print(f"  Rounds: {round_num} · LLM calls: {total_llm_calls} · {wall_time:.0f}s")
+    print(f"  🌾 Food: {env.food}  💰 Money: ${env.money}  ❤️ Morale: {env.morale}%")
+    print(f"  👥 Survived: {survived_str}")
+    print(f"  🚪 Departed: {departed_str}")
+    print(f"  {'─'*52}")
+    print(f"  📁 {run_dir}/events.jsonl ({logger.seq} events)")
+    print(f"  ▶  python replay.py {run_dir} -i")
+    print(f"  📊 python derive.py {run_dir}/events.jsonl")
+    print(f"  {'═'*52}\n")
 
     return {"run_dir": run_dir, "events": logger.seq, "llm_calls": total_llm_calls}
 
@@ -1670,6 +1850,8 @@ if __name__ == "__main__":
                         help="LLM backend: 'cli' (claude CLI / Max sub) or 'api' (Anthropic API key)")
     parser.add_argument("--model", default=MODEL, help="Model to use")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
+    parser.add_argument("--personas", type=str, help="Path to personas JSON file (default: personas/brook_farm.json)")
+    parser.add_argument("--clean", action="store_true", help="Clean compact output (default: rich detailed output)")
     args = parser.parse_args()
 
     if args.config:
@@ -1680,6 +1862,9 @@ if __name__ == "__main__":
             config["backend"] = args.backend
         if args.model != MODEL:
             config["model"] = args.model
+        if args.personas:
+            config["personas"] = args.personas
+        config["clean"] = args.clean
     else:
         config = {
             "name": "run",
@@ -1688,5 +1873,8 @@ if __name__ == "__main__":
             "model": args.model,
             "backend": args.backend,
         }
+        if args.personas:
+            config["personas"] = args.personas
+        config["clean"] = args.clean
 
     run_simulation(config)
