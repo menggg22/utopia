@@ -44,29 +44,70 @@ Full system architecture: [v1/DESIGN.md](v1/DESIGN.md). What changed in v3: [V3-
 
 ## Run It Yourself
 
+**Cost per 30-round run:** ~940K tokens (376 LLM calls).
+
+By default, the simulation uses the **Claude CLI** (`claude` command) — no API key needed. Or use the Anthropic API for faster runs.
+
+🍿 The live output reads like a novel unfolding in your terminal — full dialogue, inner monologues, key moments, trust shifting round by round. Grab coffee; each round takes a few minutes, and there's always something happening. Enjoy it!
+
+Use `--clean` for compact output if you prefer just the headlines.
+
 ```bash
-# Single run (~80 min via CLI, ~20 min via API)
+# Default: uses Claude CLI (no API key needed, ~80 min)
 python simulate_v3.py 30
 
-# With Anthropic API
+# Faster: use Anthropic API (~$0.40/run)
 pip install anthropic
 export ANTHROPIC_API_KEY=sk-ant-...
 python simulate_v3.py 30 --backend api
 
-# Counterfactual: what if Hawthorne never joined?
-python simulate_v3.py --config experiments/no_hawthorne.json
+# Compact output (no inner thoughts, short conversations)
+python simulate_v3.py 30 --clean
+```
 
-# Run all experiments
-python experiment_v3.py experiments/
+---
 
+## Build Your Own Utopia 🏛️
+
+The interactive wizard lets you customize Brook Farm or design a community from scratch:
+
+```bash
+python create_persona.py
+```
+
+**Start with Brook Farm** — you get 5 historical members, then customize:
+
+- **Remove** someone — "What if Hawthorne never joined?" → instant counterfactual
+- **Edit** someone's persona — change their motivation, personality, private goals
+- **Add** someone new — pick from "what if?" presets or create from scratch:
+
+| Extra Character | Role | The Question |
+|----------------|------|-------------|
+| **Thomas Reed** | Farmer | What if someone who actually liked farming joined? |
+| **Silas Warren** | Merchant | What if someone competent with money showed up? |
+| **Eliza Crane** | Journalist | What if a skeptic came to write an exposé? |
+
+Or **start from scratch** — define your own utopian community with custom setting, actions, members, and relationships.
+
+The wizard generates a JSON persona file. Run it:
+
+```bash
+python simulate_v3.py 30 --personas personas/my_community.json
+```
+
+Or skip the wizard — copy [`personas/template.json`](personas/template.json) and edit the JSON to build your community directly.
+
+Then enjoy the live show from your terminal. All run logs are saved locally, so no worries, the history is well preserved after it finishes:
+
+```bash
 # Extract narrative, character arcs, metrics from any run
 python derive.py runs/<run_dir>/events.jsonl
 
-# Compare runs
-python compare.py <run_dir_1> <run_dir_2> ...
+# A replay tool help you navigate the whole thing 
+python replay.py runs/<run_dir> -i
 ```
 
-9 experiment configs included. Or write your own — change the agents, the resources, the seed.
+Now go and see if your community survives!
 
 ---
 
@@ -101,15 +142,25 @@ Counterfactual experiments (remove one person, double food, etc.) are running. R
 ## Project Structure
 
 ```
-simulate_v3.py           Simulation engine (recommended)
+simulate_v3.py           Simulation engine (rich live output by default)
+create_persona.py        Interactive wizard — customize Brook Farm or build from scratch
+replay.py                Replay past runs in your terminal (clean/rich, interactive)
+derive.py                Extract narrative, character arcs, metrics from events.jsonl
+compare.py               Cross-run analysis
 experiment_v3.py         Batch experiment runner
-experiments/             9 experiment configs
+
+personas/                Community persona files
+  brook_farm.json        Default — the original 5 members
+  brook_farm_with_farmer.json  "What if a real farmer joined?"
+  template.json          Blank template with inline docs
+
+experiments/             9 experiment configs (counterfactuals, seeds)
 runs/                    Completed runs with full event logs
+
 V3-DESIGN.md             System architecture and design decisions
 V3-ANALYSIS.md           Findings from v3 runs
-derive.py                Extract narrative, characters, metrics from events.jsonl
-compare.py               Cross-run analysis
 BROOK-FARM-PERSONAS.md   Historical research — persona cards, timeline, economic model
+LICENSE                  CC BY-NC 4.0
 ```
 
 ### Earlier Versions
