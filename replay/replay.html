@@ -155,7 +155,7 @@
     border-radius: 5px;
     background: #f5f1eb;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background 0.2s, border-color 0.2s, flex 0.35s ease, max-width 0.35s ease, padding 0.25s ease;
     flex: 1 1 160px;
     max-width: 200px;
   }
@@ -189,15 +189,23 @@
     font-style: italic;
   }
   .cast-bio {
-    display: none;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #d5d0c8;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid transparent;
     font-size: 15px;
     line-height: 1.6;
-    opacity: 0.85;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
   }
-  .cast-card.expanded .cast-bio { display: block; }
+  .cast-card.expanded .cast-bio {
+    max-height: 600px;
+    opacity: 0.85;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top-color: #d5d0c8;
+  }
 
   .home-cta {
     text-align: center;
@@ -687,14 +695,20 @@
     /* Landing */
     .home-hero h1 { font-size: 26px; letter-spacing: 4px; }
     .home-hero .hero-sub { font-size: 10px; letter-spacing: 2px; }
-    .home-premise, .home-premise-alert { font-size: 15px; }
-    .home-pull-quote .quote-text { font-size: 14px; max-width: 100%; }
-    .cta-btn { padding: 12px 24px; font-size: 12px; }
+    .home-premise, .home-premise-alert { font-size: 14px; line-height: 1.6; }
+    .home-pull-quote .quote-text { font-size: 13px; max-width: 100%; }
+    .home-emoji-row-1 { font-size: 18px !important; letter-spacing: 3px !important; }
+    .home-emoji-row-2 { font-size: 13px !important; letter-spacing: 3px !important; }
+    .cta-btn { padding: 11px 22px; font-size: 12px; }
 
-    /* Picker */
-    .cast-card { flex: 1 1 100%; max-width: 100%; }
-    .cast-grid { gap: 10px; }
-    .run-grid { grid-template-columns: 1fr; gap: 10px; }
+    /* Picker — cast: 5 compact chips in one row, no reflow on expand */
+    .cast-grid { gap: 6px; flex-wrap: wrap; }
+    .cast-card { flex: 1 1 0 !important; min-width: 0; max-width: none !important; padding: 8px 4px; text-align: center; }
+    .cast-card .cast-hook, .cast-card .cast-role, .cast-card .cast-bio { display: none; }
+    .cast-card .cast-name { font-size: 11px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cast-card.expanded { background: #ede8e0; border-color: #b5a99a; }
+    #cast-detail-panel { display: block; margin-top: 10px; }
+    .run-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
     .run-name { font-size: 15px; }
     .section-label { margin: 16px 0 10px; font-size: 11px; }
 
@@ -708,7 +722,8 @@
     .resource-row { font-size: 12px; }
     .resource-label { width: 60px; }
     .action-role { display: none; }
-    .action-row { font-size: 13px; }
+    .action-row { font-size: 13px; flex-wrap: wrap; align-items: center; }
+    .action-detail { flex-basis: 100%; padding-left: 4px; font-size: 13px; margin-top: 2px; }
     .conversation { padding-left: 8px; }
     .conversation .says { font-size: 14px; }
     .full-convo { padding: 12px; }
@@ -873,19 +888,30 @@ function toggleConvo(id) {
 
 function toggleCast(card) {
   const wasExpanded = card.classList.contains("expanded");
-  // Collapse all
   document.querySelectorAll(".cast-card.expanded").forEach(c => c.classList.remove("expanded"));
-  if (!wasExpanded) card.classList.add("expanded");
+  const panel = document.getElementById("cast-detail-panel");
+  if (wasExpanded) {
+    if (panel) { panel.style.maxHeight = "0"; panel.style.opacity = "0"; }
+    return;
+  }
+  card.classList.add("expanded");
+  // On mobile, show bio in the detail panel below the grid instead
+  if (panel) {
+    const bio = card.querySelector(".cast-bio");
+    panel.innerHTML = bio ? bio.innerHTML : "";
+    panel.style.maxHeight = "600px";
+    panel.style.opacity = "1";
+  }
 }
 
 // ── Render: Landing ──
 function renderLanding() {
   return `
     <!-- Emoji scene -->
-    <div style="text-align:center;font-size:22px;letter-spacing:6px;opacity:0.75">
+    <div class="home-emoji-row-1" style="text-align:center;font-size:22px;letter-spacing:6px;opacity:0.75">
       🌳 🌾 🏡 🌾 🌳
     </div>
-    <div style="text-align:center;font-size:16px;letter-spacing:8px;opacity:0.5;margin-top:6px">
+    <div class="home-emoji-row-2" style="text-align:center;font-size:16px;letter-spacing:8px;opacity:0.5;margin-top:6px">
       📚 &nbsp; 🎻 &nbsp; ✍️ &nbsp; ⛏️ &nbsp; 📰
     </div>
 
@@ -940,7 +966,7 @@ function renderHome() {
   };
   return `
     <div class="picker-header">
-      <h2>Choose a Simulation</h2>
+      <h2>Choose a Universe</h2>
       <div class="picker-sub">Brook Farm · 1841–1847</div>
     </div>
 
@@ -956,6 +982,7 @@ function renderHome() {
         </div>
       `).join("")}
     </div>
+    <div id="cast-detail-panel" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.3s ease;font-size:14px;line-height:1.65;color:#3a2e20;padding:0 4px"></div>
 
     <div class="section-label">The runs <span style="font-family:'Lora',serif;font-weight:400;font-size:13px;opacity:0.5;letter-spacing:0;text-transform:none;margin-left:8px">Five idealists. One farm. Thirty rounds.</span></div>
     <div class="run-grid">
