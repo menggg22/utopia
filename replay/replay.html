@@ -1528,6 +1528,16 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") { e.preventDefault(); goHome(); }
 });
 
+// Tap left/right half to navigate (reader mode)
+document.getElementById("app").addEventListener("click", e => {
+  if (!currentRunKey) return; // not on landing or picker
+  if (e.target.closest("button, a, .expand-btn, .key-moment, .conversation, .vote-box, .departure-box")) return;
+  const x = e.clientX;
+  const mid = window.innerWidth / 2;
+  if (x < mid) goBack();
+  else goNext();
+});
+
 // ── Boot: load data from external file ──
 fetch('replay_data.json')
   .then(r => {
