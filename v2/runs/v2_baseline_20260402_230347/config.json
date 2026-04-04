@@ -1,0 +1,25 @@
+{
+  "version": "v2",
+  "name": "baseline",
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "rounds": 30,
+  "seed": 0,
+  "agents": [
+    "George Ripley",
+    "Nathaniel Hawthorne",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "environment": {
+    "food": 100,
+    "money": 500,
+    "morale": 80
+  },
+  "timestamp": "20260402_230347",
+  "run_dir": "runs/v2_baseline_20260402_230347",
+  "git_hash": "6cf64ba80751be37ffaf9971d341456136606cc8",
+  "config_source": "experiments/v2/baseline_seed0.json",
+  "notes": null
+}

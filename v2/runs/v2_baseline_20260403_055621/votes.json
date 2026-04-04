@@ -1,0 +1,66 @@
+[
+  {
+    "round": 4,
+    "date": "Oct 1841",
+    "proposal": "<RULE: EACH MEMBER RECEIVES TWO HOURS DAILY, GUARANTEED AND PROTECTED, FOR THEIR PRIMARY WORK\u2014WRITING, MUSIC, COMPOSITION, STUDY, OR INTELLECTUAL PURSUIT. FARM LABOR AND DOMESTIC WORK FILL THE REMAINING HOURS. THIS TIME IS SACRED AND INVIOLABLE.>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "The evidence before me is undeniable\u2014our best minds are breaking under the weight of exhaustion. If this community is to survive and achieve anything, we must preserve the intellectual capacity that brought us here. This guarantee provides the necessary conditions for meaningful work to flourish."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "This proposal restores the original covenant of Brook Farm\u2014that hand and mind need not destroy each other. As Trustee of Finance, I can affirm that two hours costs us nothing but organization. More importantly, I cannot serve this community's books if my own faculties atrophy in the fields."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "George's proposal honors what I know in my bones to be true\u2014that the work of mind and spirit is not luxury, but sustenance. To protect it is to protect the soul of this community. I must support it."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The principle is sound\u2014Hawthorne is right that labor devours the very breath needed for real work\u2014and the community cannot ask people to build something meaningful on the scraps of their exhaustion. We must trust our own ideals."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "This rule names the very thing that brought me here\u2014time for music, for study, for the cultivation of mind and spirit. Without these guaranteed hours, we become merely another struggling farm, and I become merely another failed man, fleeing one impossible life into another."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 5,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 8,
+    "date": "Jun 1842",
+    "proposal": "<ROTATING LABOR SYSTEM WHERE ALL MEMBERS, WITHOUT EXCEPTION, WORK THE FIELDS TWO DAYS PER WEEK\u2014NO EXEMPTIONS FOR EDUCATIONAL OR EDITORIAL WORK. ALL OTHER WORK DISTRIBUTES EQUALLY. INTELLECTUAL TIME COMES FROM THE SAME SHARED POOL AS EVERYONE ELSE'S REST TIME.>",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "Hawthorne's departure has destroyed my faith in half-measures. If my rule of sacred hours could not save him\u2014could not save *any* of us\u2014then I have built a temple to illusion. Perhaps Charles is right: we must either commit entirely to the principle of shared labor, or cease pretending we ever believed in it."
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "The school is not a luxury\u2014it is the sinew holding this body together. Without it, there is no money, no purpose, no proof that our experiment can sustain life beyond rhetoric. To drain my hours into the fields would collapse the one institution we have built that works."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "If the protected hours truly worked, Hawthorne would still be here. The rule created the very resentment it meant to prevent\u2014some of us writing while others break their backs in mud. We cannot buy our way out of this with special treatment. Either we all face the same weight, or we abandon the whole thing as a lie."
+      },
+      "John Sullivan Dwight": {
+        "vote": "NO",
+        "reasoning": "I cannot vote to surrender the hours that make me fully myself\u2014the hours where music lives. But I vote this way with a crack in my chest, knowing that Charles, in proposing this equality, has named the unspeakable truth we have all been dancing around."
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 2,
+      "NO": 2,
+      "ABSTAIN": 0
+    }
+  }
+]

@@ -1,0 +1,125 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$76, Morale=0%
+Departed: Nathaniel Hawthorne
+Survived: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1544
+LLM calls: 319
+Wall time: 5228.4s
+
+Action counts per agent:
+  Charles Dana:
+    FARM: 7
+    WRITE: 2
+    : 2
+    TRADE: 2
+    REPAIR <The Nest>: 1
+    SPEAK <the need for honest growth and recruitment>: 1
+    ORGANIZE <event>: 1
+    SPEAK <about the financial reality and what we must do>: 1
+    SPEAK <the necessity of honest reckoning about our resources>: 1
+    SPEAK about financial reality and next steps: 1
+    SPEAK (About financial sustainability and structural reform): 1
+    SPEAK <about structural reform and financial necessity>: 1
+    SPEAK (about the Phalanstery proposal and financial reality): 1
+    SPEAK <about the financial condition and what it means>: 1
+    SPEAK <the mathematics of survival>: 1
+    SPEAK — The Truth of the Ledgers: 1
+    TEACH: 1
+    SPEAK <the true state of our finances and what the numbers mean>: 1
+    SPEAK about the financial reality and paths forward: 1
+    SPEAK about the financial crisis and whether Brook Farm can continue: 1
+    SPEAK <the mathematics, and what they mean>: 1
+  George Ripley:
+    FARM: 6
+    WRITE: 3
+    SPEAK <the truth about our situation>: 2
+    SPEAK <the truth about our condition>: 2
+    SPEAK <about our purpose and first principles>: 1
+    REPAIR <The Nest>: 1
+    REPAIR The Nest: 1
+    REPAIR The Nest (east window): 1
+    SPEAK (about enrollment and community survival): 1
+    SPEAK on the true condition of Brook Farm: 1
+    SPEAK <on food and our covenant>: 1
+    SPEAK about our present condition: 1
+    SPEAK "I must hear your proposal, Charles. This community will decide together what Charles has seen and I have not.": 1
+    SPEAK <the truth>: 1
+    SPEAK about our true condition: 1
+    SPEAK <the truth of our situation>: 1
+    SPEAK <the true arithmetic of winter>: 1
+    TEACH: 1
+    SPEAK <about the food crisis and what winter will bring>: 1
+    SPEAK to the community about the harvest and our provisions: 1
+    SPEAK <the truth about our condition and what comes next>: 1
+  John Sullivan Dwight:
+    ORGANIZE <event>: 4
+    TEACH: 3
+    FARM: 3
+    SPEAK <the truth of our condition>: 2
+    WRITE: 2
+    REPAIR <The Nest>: 2
+    SPEAK <on our true condition and what principle demands of us>: 1
+    SPEAK <about our purpose, and what hunger truly means to this experiment>: 1
+    SPEAK <about our complicity and what comes next>: 1
+    SPEAK <about what silence has cost us>: 1
+    SPEAK <We must speak honestly about what we are and what we can bear>: 1
+    SPEAK about the choice before us: 1
+    REPAIR The Nest: 1
+    SPEAK <about my failure to contribute>: 1
+    SPEAK <the truth about my inadequacy for this life>: 1
+    TRADE: 1
+    ORGANIZE <evening concert—hand-circle gathering in the Hive>: 1
+    SPEAK <about what truth requires of us now>: 1
+    SPEAK: "The collapse of our pretense": 1
+    SPEAK: "On whether we continue, and what we owe each other to decide it honestly": 1
+  Nathaniel Hawthorne:
+    TEACH: 3
+    REPAIR The Nest: 1
+    : 1
+    SPEAK (about the financial reality): 1
+    SPEAK about the food crisis and our honest path forward: 1
+    WRITE: 1
+    LEAVE: 1
+  Sophia Ripley:
+    TEACH: 13
+    WRITE: 5
+    SPEAK about what the school requires to survive, and what Brook Farm cannot give it: 1
+    SPEAK <the state of our community and what I can no longer pretend>: 1
+    SPEAK (The community, before George's evening meeting): 1
+    SPEAK "The Phalanstery Proposal": 1
+    SPEAK <the truth of our situation>: 1
+    SPEAK: 1
+    SPEAK <the truth of what winter will demand>: 1
+    SPEAK <what the experiment has actually taught us>: 1
+    SPEAK <what the farm truly requires>: 1
+    REPAIR <The Nest>: 1
+    SPEAK <the true state of our circumstances>: 1
+    SPEAK <the future of Brook Farm>: 1
+
+Key moments:
+  Round 6 (Feb 1841): Nathaniel Hawthorne — George's walk with me to the library. He has begun to see what I see. This is the moment the careful architecture of mutual deception starts to crack. [Dread]
+  Round 7 (Apr 1842): Charles Dana — The conversation with John at the barn. For months I have carried this knowledge alone, and tonight I let it down. He was already watching, already worried. This is the moment the silence breaks. [Relief colliding with dread]
+  Round 9 (Aug 1842): George Ripley — Nathaniel Hawthorne's departure. He was the only one among us who faced the labor without illusion, who found honest peace in the work itself. His leaving is not a loss—it is a verdict. [Grief]
+  Round 9 (Aug 1842): Sophia Ripley — Hawthorne's departure [Bereft]
+  Round 9 (Aug 1842): Charles Dana — Nathaniel Hawthorne's departure from Brook Farm. [Vindication]
+  Round 9 (Aug 1842): John Sullivan Dwight — Hawthorne's departure [Betrayal]
+  Round 10 (Oct 1842): George Ripley — Yes. This is the day the pretense cracked. Not suddenly—but finally. The community is not failing by degrees; it is failing now, and I have been its architect and its witness both. [Resignation]
+  Round 12 (Feb 1842): George Ripley — yes [Despair]
+  Round 12 (Feb 1842): Sophia Ripley — Yes. George chose to flee rather than remain. This is the moment when we moved from fighting to surrendering. [Despair]
+  Round 16 (Oct 1843): Sophia Ripley — The conversation in stillness. This is the moment when I stopped pretending that love alone can save what the world has already unmade. [Acceptance]
+  Round 20 (Jun 1844): George Ripley — Yes. Sophia names the failing aloud—not the community's, but her own exhaustion, her own recognition that the world we meant to teach no longer exists. [Complicity]
+  Round 21 (Aug 1844): George Ripley — Yes. Sophia's confession in the fading light. She told me clarity is a luxury she surrendered years ago. This is the moment I can no longer hide from what is coming. [Complicity]
+  Round 21 (Aug 1844): John Sullivan Dwight — Yes. This is the day the pretense died between them. [Recognition]
+  Round 22 (Oct 1844): George Ripley — Yes. This is the moment when all pretense ends, even between myself and John. He has known. We both know. The community still stands in darkness, unaware, but its architects have stopped lying to each other. [Resignation]
+  Round 22 (Oct 1844): Charles Dana — George Ripley's walk to the orchard. This is the moment when the founder stops defending the dream and begins to grieve it. After this evening, we cannot pretend together anymore. [Complicity.]
+  Round 22 (Oct 1844): John Sullivan Dwight — George opened himself to me—not as an idea, but as a drowning man. The pretense between us is gone. [Honored]
+  Round 24 (Feb 1844): Charles Dana — George Ripley's admission in the orchard—the moment the founder stops defending and begins to grieve openly. This is the turning point. We cannot pretend together after this. [Dread]
+
+Departures:
+  Nathaniel Hawthorne — Round 9 (Aug 1842), satisfaction: 89
+    ""George. I will help settle the household accounts before I depart. I leave at dawn. Tell Sophia I am grateful for her grace. I will always remember this as a place where I tried to become something other than what I am—and learned that I cannot.""

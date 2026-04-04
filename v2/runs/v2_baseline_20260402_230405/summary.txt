@@ -1,0 +1,129 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$173, Morale=0%
+Departed: None
+Survived: George Ripley, Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1819
+LLM calls: 369
+Wall time: 6328.7s
+
+Action counts per agent:
+  Charles Dana:
+    WRITE: 6
+    TEACH: 6
+    FARM: 2
+    SPEAK (about our financial condition and what honesty requires of me): 1
+    TRADE: 1
+    SPEAK <the true financial state of Brook Farm>: 1
+    SPEAK <the financial truth>: 1
+    SPEAK <the financial state>: 1
+    SPEAK: The financial reality and what it requires of us: 1
+    SPEAK <the path forward>: 1
+    SPEAK <the arithmetic, and what comes after>: 1
+    SPEAK <the community's true financial position>: 1
+    SPEAK <on the true state of our finances and prospects>: 1
+    SPEAK (on food security and what the ledgers require us to see): 1
+    SPEAK <financial reality and community future>: 1
+    SPEAK <on the hard truth we must face together>: 1
+    SPEAK <on the meaning of remaining>: 1
+    SPEAK <about what the mathematics demand we become>: 1
+    SPEAK <the true state of our finances and what we must choose>: 1
+  George Ripley:
+    FARM: 12
+    SPEAK on the purpose of Brook Farm: 1
+    SPEAK <on honest labor and material need>: 1
+    SPEAK (on doubt and commitment): 1
+    SPEAK <about tonight's gathering and our true condition>: 1
+    SPEAK <the state of our harvest, and the choice before us>: 1
+    SPEAK <about our direction and the choice before us>: 1
+    SPEAK <the path forward>: 1
+    SPEAK <propose dissolution vote with alternative paths>: 1
+    SPEAK <the true state of our accounts and what it means for Brook Farm>: 1
+    SPEAK about Our Actual Condition: 1
+    SPEAK <our reckoning>: 1
+    : 1
+    SPEAK <addressing the crisis before Charles Dana's address>: 1
+    WRITE: 1
+    SPEAK <the truth>: 1
+    SPEAK <topic: the truth of our condition>: 1
+    TEACH: 1
+    SPEAK <on the meaning of our struggle>: 1
+  John Sullivan Dwight:
+    TEACH: 7
+    FARM: 6
+    ORGANIZE <event>: 2
+    ORGANIZE <evening gathering with music and silent reflection>: 1
+    SPEAK about the role of art and music in sustaining our work: 1
+    TRADE: 1
+    SPEAK <about what remains true>: 1
+    SPEAK <on Brisbane's proposal and our path forward>: 1
+    SPEAK <on what we are truly voting for>: 1
+    SPEAK <the truth we have all avoided>: 1
+    SPEAK <the unbearable gap between what we profess and what we have done>: 1
+    SPEAK <the gap between what we profess and what I have done>: 1
+    SPEAK <on the nature of our work in this crisis>: 1
+    SPEAK <truth and commitment>: 1
+    ORGANIZE <EVENT>: 1
+    SPEAK <The Mathematics of Survival>: 1
+    SPEAK <on the meaning of what we attempted here>: 1
+    SPEAK: 1
+  Nathaniel Hawthorne:
+    WRITE: 7
+    REST: 3
+    TEACH: 3
+    REPAIR The Nest: 1
+    SPEAK <on the community's financial crisis>: 1
+    REPAIR <The Hive>: 1
+    SPEAK <financial reality>: 1
+    SPEAK <the financial crisis and what must change>: 1
+    SPEAK on the Brisbane proposal: 1
+    SPEAK on our capacity for self-deception and what honesty requires of us: 1
+    SPEAK <financial reality and the Phalanstery>: 1
+    SPEAK <on food security and what we can honestly claim under Sophia Ripley's new rule>: 1
+    SPEAK <topic: "What the ledgers tell us">: 1
+    SPEAK <the unspoken arithmetic>: 1
+    SPEAK <the arithmetic of illusion>: 1
+    SPEAK <the truth about our resources and the timeline to collapse>: 1
+    SPEAK <the truth about our financial collapse>: 1
+    TRADE: 1
+    SPEAK <The Mathematics of Mercy>: 1
+    SPEAK <The food emergency and what it means>: 1
+  Sophia Ripley:
+    TEACH: 17
+    REPAIR <The Nest>: 1
+    SPEAK <about the true condition of the community and what honesty requires of us now>: 1
+    SPEAK <the plain truth about our condition and what we must now decide>: 1
+    SPEAK <The choice before us>: 1
+    SPEAK — Address the community plainly about our choices: 1
+    PROPOSE <rule: No capital projects exceeding $100 shall proceed without unanimous consent and proof of 30 days' food security>: 1
+    SPEAK about the community's future and the hard choices ahead: 1
+    SPEAK <The practical reckoning>: 1
+    SPEAK <the food crisis and what we must face>: 1
+    SPEAK to the community about the future: 1
+    SPEAK <the truth about what is crumbling>: 1
+    SPEAK (about practical reality and the future of the school): 1
+    FARM: 1
+
+Key moments:
+  Round 1 (Apr 1841): George Ripley — Yes [Doubt]
+  Round 4 (Oct 1841): Sophia Ripley — Hawthorne's admission about the accounts. He did not hide it. He will not hide it. And now I know he *sees* what I see. [Vindication—and the loneliness that comes when one's private terrors are finally made public.]
+  Round 9 (Aug 1842): Nathaniel Hawthorne — George Ripley's confession to Charles Dana—the moment our leader stopped pretending the numbers could be made to balance. [Vindication]
+  Round 9 (Aug 1842): Charles Dana — The evening conversation with George Ripley in his study. This is the day the illusion broke. [Dread]
+  Round 10 (Oct 1842): George Ripley — Hawthorne's declaration of our financial death. Six months. The words were not spoken to me, but they were spoken *in* my community, and now they live in me. [Despair]
+  Round 10 (Oct 1842): Nathaniel Hawthorne — Dwight's confession that we wish to sustain the fiction *especially knowing* the arithmetic fails us. This is the moment I understood that leaving will not save the community—it is already lost to its own willful blindness. [Betrayal]
+  Round 11 (Dec 1842): Charles Dana — The day the silence broke. The community will divide or dissolve from this point forward. I carried this knowledge in isolation; now it belongs to all of us, and we must choose what to do with it. [Dread]
+  Round 15 (Aug 1843): Nathaniel Hawthorne — Yes—the passage of Sophia's rule. This is the moment the community chose transparency without understanding they chose to see what cannot be hidden. In six months, this vote will be remembered as the moment the arithmetic became impossible to maintain. [Dread]
+  Round 15 (Aug 1843): Sophia Ripley — The vote. When they passed my rule, they voted for caution—which means they voted to acknowledge that caution is needed. The dream does not require rules about food security if the dream is working. [Vindication]
+  Round 15 (Aug 1843): Charles Dana — The community voted to institutionalize financial caution. This marks the day my solitary knowledge became public governance—the moment before we can no longer pretend spring's ambitions are sustainable. [Vindication]
+  Round 19 (Apr 1844): Nathaniel Hawthorne — George Ripley's admission to Sophia—the moment our leader ceased to hide from himself. The fiction is no longer sustainable because it is no longer believed, even by its architect. This is not a beginning. This is an ending beginning. [Dread]
+  Round 19 (Apr 1844): John Sullivan Dwight — Yes. This is the day George Ripley ceased to believe in Brook Farm—not in some abstract way, but in his body, standing in mud that will not yield. Once the dreamer stops dreaming, the dream dies. History will mark this day, or a day very like it. [Despair]
+  Round 20 (Jun 1844): George Ripley — Sophia sought Hawthorne's company for plain speech. She did not seek mine. [Inadequacy]
+  Round 20 (Jun 1844): Nathaniel Hawthorne — The evening encounter in the orchard. Mrs. Ripley and I found mutual understanding in the very quiet the farm cannot provide. This moment will return to me—not as a beginning, but as a small mercy before what comes next. [Recognition]
+  Round 26 (Jun 1845): Sophia Ripley — George's question to John, and John's honest answer. It is the first time I have heard anyone here admit aloud that they do not believe in their own capacity to sustain this place. [Dread]
+  Round 28 (Oct 1845): George Ripley — John Sullivan Dwight's confession at the eastern fence—the moment when my secret fear about the intellectuals became visible, undeniable, and irreversible. [Despair]
+  Round 28 (Oct 1845): John Sullivan Dwight — Yes. This is the moment when private despair became shared truth. [Recognition]
+  Round 30 (Feb 1845): John Sullivan Dwight — Yes. George's question to Charles—"How did you know what he needed?"—is the moment when the founder's loss of faith became visible in his behavior, not merely in his face. A man who built this community on human connection can no longer trust in simple presence. This matters. This will be remembered. [Sorrow]

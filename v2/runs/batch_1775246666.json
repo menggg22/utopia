@@ -1,0 +1,68 @@
+{
+  "total_time_seconds": 50421.0,
+  "runs": [
+    {
+      "config": "baseline",
+      "seed": 0,
+      "run_dir": "runs/v2_baseline_20260402_230405",
+      "events": 1820,
+      "llm_calls": 369
+    },
+    {
+      "config": "baseline",
+      "seed": 1,
+      "run_dir": "runs/v2_baseline_20260403_004934",
+      "events": 1545,
+      "llm_calls": 319
+    },
+    {
+      "config": "baseline",
+      "seed": 2,
+      "run_dir": "runs/v2_baseline_20260403_021642",
+      "events": 1852,
+      "llm_calls": 369
+    },
+    {
+      "config": "baseline",
+      "seed": 3,
+      "run_dir": "runs/v2_baseline_20260403_040227",
+      "events": 1919,
+      "llm_calls": 397
+    },
+    {
+      "config": "baseline",
+      "seed": 4,
+      "run_dir": "runs/v2_baseline_20260403_055621",
+      "events": 1497,
+      "llm_calls": 328
+    },
+    {
+      "config": "double_food",
+      "seed": 42,
+      "run_dir": "runs/v2_double_food_20260403_072904",
+      "events": 1598,
+      "llm_calls": 328
+    },
+    {
+      "config": "no_hawthorne",
+      "seed": 42,
+      "run_dir": "runs/v2_no_hawthorne_20260403_085921",
+      "events": 1513,
+      "llm_calls": 308
+    },
+    {
+      "config": "no_ripley",
+      "seed": 42,
+      "run_dir": "runs/v2_no_ripley_20260403_102321",
+      "events": 1196,
+      "llm_calls": 284
+    },
+    {
+      "config": "no_sophia",
+      "seed": 42,
+      "run_dir": "runs/v2_no_sophia_20260403_113949",
+      "events": 1502,
+      "llm_calls": 304
+    }
+  ]
+}

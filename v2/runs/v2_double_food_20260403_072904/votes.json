@@ -1,0 +1,36 @@
+[
+  {
+    "round": 5,
+    "date": "Dec 1841",
+    "proposal": "<A RULE: MEMBERS ENTITLED TO TWO DAYS PER WEEK FREE FROM FARM LABOR FOR INTELLECTUAL, ARTISTIC, OR RESTORATIVE PURSUITS>",
+    "proposed_by": "John Sullivan Dwight",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "Dwight alone understands what this place could be. If I refuse him this mercy, I lose him as I am losing Hawthorne. The community bleeds. I cannot afford to be pure about this any longer."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "A man who writes\u2014or who has written, and must write again\u2014cannot be remade into a farmer through sheer will. I did not come here to sacrifice the one thing that makes me myself. If this community is to survive, it requires that its members do not shatter."
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "We cannot afford the luxury of two free days when our buildings crumble around us and our margins narrow by the week. The school alone sustains us\u2014and it is already at the limit of what can be asked of those who teach while also laboring in the fields."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "Dwight's concert last evening proved that we came here for something beyond subsistence\u2014beauty, music, thought. If we deny members time for these things, we become merely a struggling farm, not a community. We cannot have it both ways forever, but we can have it now."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The principle is sound\u2014we came here to unite labor and culture, not to sacrifice one upon the altar of the other. If we cannot grant our members breathing room for the very pursuits that justify this community's existence, then we have already failed."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 1,
+      "ABSTAIN": 0
+    }
+  }
+]

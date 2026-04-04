@@ -1,0 +1,206 @@
+[
+  {
+    "round": 4,
+    "date": "Oct 1841",
+    "proposal": "<A RULE REQUIRING ALL MEMBERS, REGARDLESS OF SKILL, TO CONTRIBUTE EQUALLY TO FARM AND BUILDING LABOR ON A ROTATING SCHEDULE\u2014NO EXEMPTIONS FOR TEACHING OR INTELLECTUAL WORK>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "A community founded on transcendentalist principles cannot become the very hierarchy it despises. If we exempt ourselves from labor, we betray everything we claimed to build here. The rule must apply equally\u2014or it applies to no one. Sophia's suffering, most of all, demands we act."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "NO",
+        "reasoning": "\"This rule would render my trusteeship a fiction and my presence here futile. I came to save money through useful labor and careful stewardship\u2014not to spend my days indistinguishable from a hired hand, blistered and mute. The proposal mistakes equality for equity.\""
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "The school is the community's livelihood and the proof of our principles. If I am drawn equally to the fields, the school collapses\u2014and with it, the very institution that demonstrates women's capacity to direct a serious work. This rule would dismantle rather than build."
+      },
+      "Charles Dana": {
+        "vote": "NO",
+        "reasoning": "The proposal honors our highest ideals, but it ignores the hard truth that our survival depends on specialization. If The Harbinger goes unedited and our accounts untended, equal labor will mean equal ruin."
+      },
+      "John Sullivan Dwight": {
+        "vote": "NO",
+        "reasoning": "To require a musician or scholar to labor equally in the fields is to destroy the very vision that drew us here\u2014that we might each contribute our gifts freely, and that intellectual and cultural work holds the same dignity as agricultural labor. Ripley himself sought to create something *better* than mere self-sufficiency."
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 1,
+      "NO": 4,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 5,
+    "date": "Dec 1841",
+    "proposal": "<A ROTATING LABOR SCHEDULE WHERE MEMBERS SHIFT ROLES EVERY WEEKS\u2014FARM, BUILDING, TEACHING\u2014SO THAT NO ONE IS HOLLOWED OUT BY A SINGLE BURDEN, AND ALL LABOR\u2014INTELLECTUAL, PHYSICAL, AGRICULTURAL\u2014IS COUNTED AS ESSENTIAL TO SURVIVAL>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "NO",
+        "reasoning": "I proposed this measure believing in the principle of equal participation. But I have come to see that rotating the burdens of labor does not distribute justice\u2014it distributes despair. The proposal demands from each of us a suffering we were not born to bear, and calls that equality."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "NO",
+        "reasoning": "The proposal is well-intentioned, but it betrays a deeper failure\u2014Ripley is rotating the burden because the weight itself remains crushing. Constant switching between labors means I master none, contribute clearly to none, and find peace in none. It postpones collapse; it does not prevent it."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "The principle is sound\u2014no community can sustain itself if its members are worn to dust. I know this truth in my bones. And if I deny this proposal, I deny what I already know to be just."
+      },
+      "Charles Dana": {
+        "vote": "NO",
+        "reasoning": "The proposal addresses the symptom\u2014our exhaustion\u2014but not the disease, which is that we spend more money than the farm generates. Rotating through roles will only scatter what little efficiency we have, and it will scatter me at the moment when the accounts need the steadiest hand."
+      },
+      "John Sullivan Dwight": {
+        "vote": "NO",
+        "reasoning": "A rotation of labor may distribute burden equally, but equal distribution is not justice when capacities are unequal. If the community requires rules to sustain itself, then we must ask what ideal has already failed\u2014and no schedule can legislate back to life what has lost its breath."
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 1,
+      "NO": 4,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 7,
+    "date": "Apr 1842",
+    "proposal": "<A ROTATING LABOR SCHEDULE\u2014FARM, BUILDING, TEACHING, TRADE, ADMINISTRATIVE\u2014WITH ALL MEMBERS SHIFTING ROLES EVERY TWO WEEKS, SO THAT NO ONE IS CONSUMED BY A SINGLE BURDEN, AND ALL FORMS OF LABOR ARE COUNTED AS ESSENTIAL TO SURVIVAL>",
+    "proposed_by": "John Sullivan Dwight",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "The proposal speaks directly to the hypocrisy I have allowed to fester at this community's heart\u2014that we have merely reorganized the old exploitation under transcendentalist language. If our ideals are true, they must be tested by rotating every member through every labor, or they are merely decoration."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "NO",
+        "reasoning": "A rotating schedule treats the symptom, not the disease. The farm's income remains insufficient to save for my marriage, and I will have neither quiet nor mastery in any trade\u2014only perpetual disruption. No philosophy of labor cures labor."
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "The school cannot rotate its instructors every fortnight without destroying the very reputation that sustains us financially. To teach history, or French, or prepare a student for Harvard requires continuity. This is not farm work, where rotation might spread burden fairly\u2014it is specialized labor."
+      },
+      "Charles Dana": {
+        "vote": "NO",
+        "reasoning": "The proposal honors our principle that all labor is essential, and in theory it is sound\u2014yet our farm's finances are too precarious to rotate administrative work blindly. We cannot afford an apprentice's error in our accounts when creditors press us and our stores depend on careful management."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The proposal stands on its own merits\u2014all labor *is* essential, and no soul should be ground down to a single task while another tends only to beauty. If I do not vote for what I have proposed, I confess myself a coward, and the community deserves better than that confession."
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 2,
+      "NO": 3,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 9,
+    "date": "Aug 1842",
+    "proposal": "<RULE>",
+    "proposed_by": "John Sullivan Dwight",
+    "votes": {
+      "George Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 0,
+      "NO": 0,
+      "ABSTAIN": 5
+    }
+  },
+  {
+    "round": 15,
+    "date": "Aug 1843",
+    "proposal": "<RULE>",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 0,
+      "NO": 0,
+      "ABSTAIN": 5
+    }
+  },
+  {
+    "round": 22,
+    "date": "Oct 1844",
+    "proposal": "<COMMUNITY LABOR STANDARD>",
+    "proposed_by": "John Sullivan Dwight",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "John speaks from a place of humble truth\u2014we cannot build a just community on concealment. A standard for labor is not a betrayal of our ideals; it is the only honest path toward them."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "NO",
+        "reasoning": "A standard for labor will not conjure profit from thin air nor quiet my mind for the work that might actually secure my future. The mathematics remain unchanged\u2014we are five souls trying to generate sustenance from soil and ideals, and neither responds to better scheduling."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "The standard honors what we claim to be. If we cannot live by it, then we know what we are, and we must say so. John does not ask us to comfort ourselves with half-measures."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "Dwight understands what I have come to know\u2014that endless discussion of our troubles poisons the well. A labor standard brings order where there is chaos, and honest work is what this place was built upon. If we cannot solve the larger arithmetic, at least we can make the work itself bearable and fair."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "I proposed this standard because I could no longer pretend not to see it\u2014Sophia's hollowing exhaustion, Charles bent beneath accounts, all of us sustained by labor we do not ourselves perform or adequately honor. To vote otherwise would be to confirm that my conscience is decoration merely."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 1,
+      "ABSTAIN": 0
+    }
+  }
+]

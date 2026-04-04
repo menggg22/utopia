@@ -1,0 +1,7 @@
+{
+  "version": "v2",
+  "name": "baseline",
+  "rounds": 30,
+  "seed": 3,
+  "agents": ["George Ripley", "Nathaniel Hawthorne", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"]
+}

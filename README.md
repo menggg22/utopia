@@ -1,59 +1,28 @@
 # Digital Brook Farm: Simulating Utopia with AI Agents
 
+**[Watch the replay](https://menggg22.github.io/utopia/replay.html)** — step through 30 rounds of AI agents trying to build utopia.
+
 **[Read the blog post](https://menggg22.github.io/blog/utopia.html)** — the full story of what happened and why.
 
 What happens when you give AI agents the personas of real historical people, drop them into a shared world with scarce resources, and let them try to build utopia?
 
-Do they cooperate? Do they farm? Does anyone actually do the dishes — or does everyone just give speeches about why the dishes matter?
-
 We built a simulation of **Brook Farm** (1841-1847), the most famous failed utopian commune in American history. Five AI agents, each carrying the biography, motivations, and private doubts of a real person who lived there. No one told them how the story ends.
 
-**They figured it out themselves.** Hawthorne left on schedule. The intellectuals refused to farm. The school kept everyone alive. The founder destroyed himself trying to hold it all together.
-
-Then we asked: what if we changed the cast?
-
-![Community morale across all runs](figures/morale.png)
-
-Every run ends at 0% morale. Every run hits food crisis. The community always fails. The question is how — and who makes it worse.
+**They figured it out themselves.** The skeptic proposed financial transparency rules. The artist organized concerts until guilt drove him to the fields. The teacher hit satisfaction 100 four times while the community died around her. The founder farmed until he broke.
 
 ---
 
-## What Happened
+## The Cast
 
-Five agents, modeled from real biographies:
+Each agent gets a persona card built from historical research: who they were, why they joined, what they secretly wanted, and what skills they brought.
 
-| Agent | Role | What They Did |
-|-------|------|---------------|
-| **George Ripley** | Founder | Farmed more than anyone. Satisfaction hit 0. Carried the community on guilt. |
-| **Nathaniel Hawthorne** | Skeptic | Never farmed. Left in Round 11 — historically, he left in Nov 1842. |
-| **Sophia Ripley** | Teacher | Taught 20 of 30 rounds. Only reliable income source. Satisfaction: highest and most stable. |
-| **Charles Dana** | Pragmatist | Gave 15 speeches about the financial crisis. Farmed 3 times. |
-| **John Sullivan Dwight** | Artist | Organized concerts. Farmed when guilty. Left in Round 21. |
-
-![Action distribution — original run](figures/actions.png)
-
-The #1 action was **speaking** — agents spent more time talking about the crisis than working on it. Dana, the self-described pragmatist, gave speeches about financial ruin while farming 3 times in 30 rounds. This matches the historical record: Brook Farm's minutes are full of debate about labor shortages, written by people who weren't laboring.
-
----
-
-## What the Counterfactuals Revealed
-
-We removed one person at a time and reran the simulation.
-
-![Counterfactual comparison](figures/counterfactual.png)
-
-| Experiment | Result |
-|------------|--------|
-| **Remove the skeptic** (Hawthorne) | Happiest community. No departures. Most money. Satisfaction 3x higher. |
-| **Remove the teacher** (Sophia) | Only run that goes bankrupt. Money: -$1. |
-| **Remove the founder** (Ripley) | Nobody notices. Community reorganizes around the school. |
-| **Double the food** | Same farming rate. Hawthorne still leaves. Crisis delayed 5 rounds, not prevented. |
-
-The most striking finding: **doubling resources doesn't change behavior.** Agents farm exactly the same amount whether food is abundant or scarce. The failure is not material — it's the mismatch between who these people are and what the community needs them to do.
-
-Sophia Ripley, who historically missed only 2 classes in 6 years, is the indispensable member the simulation identifies. Not the visionary founder. Not the famous writer. The teacher who showed up every day.
-
-Deep dive into all 7 findings: [ANALYSIS.md](ANALYSIS.md). Every run also includes full event logs — conversations with inner thoughts, voting records, relationship trajectories, and narrative reconstructions you can read like a novel. Start with [`runs/run_20260401_235509/narrative.md`](runs/run_20260401_235509/narrative.md).
+| Agent | Role | The Real Person |
+|-------|------|-----------------|
+| **George Ripley** | Founder, visionary | Former minister who staked everything on proving idealism works |
+| **Nathaniel Hawthorne** | Trustee of Finance, writer | Joined for money, not ideology. Could not write. Hands full of blisters. |
+| **Sophia Ripley** | Head of School | George's wife. Ran the only profitable operation. Missed two classes in six years. |
+| **Charles Dana** | Editor, finance manager | 22, self-made, spoke ten languages. The "get things done" person. |
+| **John Sullivan Dwight** | Music teacher | Failed minister turned music critic. Organized the evening gatherings. |
 
 ---
 
@@ -63,13 +32,13 @@ Each round has 3 phases:
 
 1. **Act** — Each agent observes resources, relationships, gossip, and their own satisfaction. Chooses one action.
 2. **Talk** — 2-3 conversation pairs selected by trust dynamics. Agents say one thing, think another.
-3. **Reflect** — Private memory update: key moments, evolving trust per person, current concerns.
+3. **Reflect** — Private memory update: key moments, evolving trust, current concerns — and a community morale assessment.
 
-Agents have structured memory (not just a context window). Observations spread as gossip. Historical events fire at the right time: Brisbane's Fourierist visit, smallpox, the phalanstery fire.
+Community morale = the average of all agents' private assessments. No formula decides how the community feels — the agents do.
 
 The critical design decision: **agents are never told what historically happened.** Their persona says who they are, not what they did. If Hawthorne leaves, it's because the simulation dynamics pushed him there.
 
-Full system architecture: [DESIGN.md](DESIGN.md)
+Full system architecture: [v1/DESIGN.md](v1/DESIGN.md). What changed in v3: [V3-DESIGN.md](V3-DESIGN.md)
 
 ---
 
@@ -77,47 +46,86 @@ Full system architecture: [DESIGN.md](DESIGN.md)
 
 ```bash
 # Single run (~80 min via CLI, ~20 min via API)
-python simulate_v1.py 30
+python simulate_v3.py 30
 
 # With Anthropic API
 pip install anthropic
 export ANTHROPIC_API_KEY=sk-ant-...
-python simulate_v1.py 30 --backend api
+python simulate_v3.py 30 --backend api
 
 # Counterfactual: what if Hawthorne never joined?
-python simulate_v1.py --config experiments/no_hawthorne.json
+python simulate_v3.py --config experiments/no_hawthorne.json
 
 # Run all experiments
-python experiment.py experiments/
+python experiment_v3.py experiments/
 
-# Extract narrative, character arcs, metrics
+# Extract narrative, character arcs, metrics from any run
 python derive.py runs/<run_dir>/events.jsonl
 
 # Compare runs
-python compare.py runs/baseline_* runs/no_hawthorne_*
+python compare.py <run_dir_1> <run_dir_2> ...
 ```
 
 9 experiment configs included. Or write your own — change the agents, the resources, the seed.
 
 ---
 
+## What We Found
+
+Five agents, modeled from real biographies:
+
+| Agent | Role | What They Did |
+|-------|------|---------------|
+| **George Ripley** | Founder | Farmed 10 of 30 rounds. Satisfaction hit 0. Carried the community on guilt. |
+| **Nathaniel Hawthorne** | Skeptic | Proposed financial transparency (R2, passed 5-0). Wrote his way back from despair. |
+| **Sophia Ripley** | Teacher | Taught 9 rounds, wrote 9. Hit satisfaction 100 four separate times. Purpose-proof. |
+| **Charles Dana** | Pragmatist | Wrote 9 times, gave 14 speeches about the financial crisis. The weight of knowledge. |
+| **John Sullivan Dwight** | Artist | Organized 5 concerts (sat 100), then farmed out of guilt (sat 28). Hobbies are load-bearing. |
+
+Community morale declined smoothly from 80% to 1% over 30 rounds — no cliff, no flatline. Each agent found their own trajectory:
+
+| Agent | Satisfaction Shape | Why |
+|-------|-------------------|-----|
+| Hawthorne | U-curve (75 → 51 → 87) | Writing heals what truth-telling breaks |
+| Dwight | Inverted U (80 → 100 → 31) | Concerts sustain, guilt destroys |
+| Sophia | Plateau (78 → 100) | School is purpose-proof |
+| Ripley | Steady decline (70 → 0) | Farming burden, unrewarded sacrifice |
+| Dana | Decline with late recovery | Knowledge weighs, expression helps |
+
+Deep dive: [V3-ANALYSIS.md](V3-ANALYSIS.md)
+
+Counterfactual experiments (remove one person, double food, etc.) are running. Results will update here.
+
+---
+
 ## Project Structure
 
 ```
-simulate_v1.py           Simulation engine (3-phase rounds, structured memory, conversations)
+simulate_v3.py           Simulation engine (recommended)
+experiment_v3.py         Batch experiment runner
+experiments/             9 experiment configs
+runs/                    Completed runs with full event logs
+V3-DESIGN.md             System architecture and design decisions
+V3-ANALYSIS.md           Findings from v3 runs
 derive.py                Extract narrative, characters, metrics from events.jsonl
-experiment.py            Batch experiment runner
 compare.py               Cross-run analysis
-make_figures.py          Generate figures from run data
-experiments/             9 experiment configs (JSON)
-runs/                    6 completed runs with full event logs
-DESIGN.md                System architecture — personas, memory, gossip, economics
-ANALYSIS.md              Cross-experiment findings (7 findings across 6 runs)
 BROOK-FARM-PERSONAS.md   Historical research — persona cards, timeline, economic model
 ```
 
+### Earlier Versions
+
+The simulation went through three iterations. Each fixed a real problem:
+
+- **v1/** — The original experiment. Proved agents can reproduce historical dynamics — Hawthorne left on schedule, intellectuals refused to farm. But morale was formula-driven and hit 0 by round 10 in every run. Deep dive: [v1/ANALYSIS.md](v1/ANALYSIS.md)
+- **v2/** — Added passion bonuses, softer economy, neutral prompts. 9 runs proved the failure is reproducible but the narrative varies wildly by seed — marriage dissolution, governance trauma, zombie communes. Deep dive: [v2/V2-ANALYSIS.md](v2/V2-ANALYSIS.md)
+- **v3** (current) — Made morale agent-driven. Produced smooth decline curves, differentiated character arcs, and the richest narratives.
+
+Each version's code, configs, runs, and analysis are preserved in their folders.
+
+---
+
 ## What's Next
 
-The counterfactual experiments are done. The baseline seeds are queued. Beyond Brook Farm, there are dozens of documented utopian experiments: Oneida, New Harmony, the Shakers. Each failed differently. Each is a test case.
+Beyond Brook Farm, there are dozens of documented utopian experiments: Oneida, New Harmony, the Shakers. Each failed differently. Each is a test case.
 
 The code is open. You can write your own persona cards and run your own commune tonight. Maybe yours will survive.

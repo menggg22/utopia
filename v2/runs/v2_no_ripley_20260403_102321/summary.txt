@@ -1,0 +1,129 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: Nathaniel Hawthorne, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$162, Morale=0%
+Departed: Nathaniel Hawthorne, Sophia Ripley
+Survived: Charles Dana, John Sullivan Dwight
+Total events: 1195
+LLM calls: 284
+Wall time: 4588.0s
+
+Action counts per agent:
+  Charles Dana:
+    FARM: 6
+    WRITE: 5
+    TRADE: 3
+    REPAIR <The Nest>: 2
+    TEACH: 1
+    REPAIR The Nest: 1
+    SPEAK <about the dairy discrepancy and systematic accountability>: 1
+    SPEAK "Our Path Forward": 1
+    REST: 1
+    SPEAK <the financial crisis and dairy discrepancy>: 1
+    SPEAK <about the financial accounts and the food crisis>: 1
+    SPEAK: 1
+    SPEAK <on the necessity of immediate structural change>: 1
+    SPEAK <the unsustainable path we are on>: 1
+    SPEAK <on concrete next steps and what dissolving with honor would require>: 1
+    SPEAK <about our true financial condition and what comes next>: 1
+    PROPOSE <rule>: 1
+    SPEAK <the truth that awaits tomorrow>: 1
+  John Sullivan Dwight:
+    FARM: 9
+    WRITE: 3
+    TEACH: 2
+    ORGANIZE <evening musical gathering>: 1
+    SPEAK <about the milk discrepancy and taking personal responsibility>: 1
+    SPEAK <the accounts and our survival>: 1
+    REPAIR The Hive: 1
+    SPEAK—address the community about the dairy discrepancies: 1
+    SPEAK <about Brisbane's proposal and our path forward>: 1
+    SPEAK (about the food crisis and the need for immediate, radical honesty about our condition): 1
+    SPEAK <about the dairy accounts I have known to be false and kept silent on>: 1
+    PROPOSE <rule>: 1
+    SPEAK <about my own silence and what I have chosen not to say>: 1
+    SPEAK <about the grain shortage and our failure to disclose it>: 1
+    SPEAK <truth about the grain stores to George Ripley and those present>: 1
+    SPEAK (about my complicity in the silence): 1
+    ORGANIZE <event>: 1
+    ORGANIZE <event> — An evening gathering, music and conversation: 1
+    ORGANIZE <event> — AN EVENING GATHERING: MUSIC, SILENCE, AND HONEST SPEAKING: 1
+  Nathaniel Hawthorne:
+    TEACH: 3
+    WRITE: 3
+    TRADE: 3
+    SPEAK about the dairy discrepancies and the need for honest oversight: 1
+    FARM: 1
+    REPAIR <The Nest>: 1
+    SPEAK <about financial restructuring and the food crisis>: 1
+    SPEAK about the Farm's True Condition and My Complicity: 1
+    SPEAK (address the community about the accounts): 1
+    SPEAK <The Financial Reality>: 1
+    SPEAK <on the farm's viability and the accounts>: 1
+    LEAVE: 1
+  Sophia Ripley:
+    TEACH: 7
+    WRITE: 5
+    REPAIR <The Nest>: 1
+    SPEAK <the grain stores and our accounts>: 1
+    SPEAK (about the accounts and stores): 1
+    SPEAK about our true condition: 1
+    PROPOSE <rule about financial transparency and honest record-keeping in all community accounts>: 1
+    SPEAK <on the choice before us>: 1
+    SPEAK "What We Will Actually Do": 1
+    SPEAK <the folly of the Phalanstery>: 1
+    SPEAK (on the necessity of honest dissolution): 1
+    SPEAK <about the future of Brook Farm and the necessity of honest reckoning>: 1
+    SPEAK <the community's true condition>: 1
+    SPEAK: 1
+    LEAVE: 1
+
+Key moments:
+  Round 6 (Feb 1841): Sophia Ripley — Yes [Betrayal]
+  Round 6 (Feb 1841): Charles Dana — Hawthorne's confrontation with Sophia about the dairy accounts. This is the moment the truth becomes too large to contain. The community will not survive this night unchanged. [Dread]
+  Round 7 (Apr 1842): Sophia Ripley — Hawthorne and Dana's midnight conversation—the first time two of the most honest minds here have named the financial falsification aloud, without euphemism or evasion. [Vindication (bitter)]
+  Round 9 (Aug 1842): Nathaniel Hawthorne — The simultaneity of it: Ripley's proposal for transparency passing by vote, and Dana discovering the very kind of imbalance that such transparency would expose. The community has voted to see clearly just as the accounts are revealing their own unsightliness. This may be the moment the farm's true condition becomes undeniable. [Dread]
+  Round 9 (Aug 1842): Sophia Ripley — The transparency rule passed, and my trusted allies finally named the financial fraud without evasion—the community's willful blindness has begun to crack. [Vindication]
+  Round 11 (Dec 1842): John Sullivan Dwight — The evening walk with Sophia. I spoke truthfully about my cowardice for the first time aloud, and she met me with genuine care rather than reproach. But I still did not tell her what I truly fear—about the numbers that do not add, about my silence, about Charles's questions. I gave her a partial truth and called it honesty. [Vertigo]
+  Round 12 (Feb 1842): Nathaniel Hawthorne — The community voted for transparency, and in that same breath, the necessity of that transparency became undeniable. We have chosen to see clearly just as the truth prepares to show itself. This is the hinge upon which the farm will turn. [Dread]
+  Round 12 (Feb 1842): Sophia Ripley — Hawthorne and Dana's midnight conversation—the moment our inner circle finally ceased pretending, at least when darkness provided cover. [Vindication (bitter)]
+  Round 12 (Feb 1842): Charles Dana — Yes—tonight marks the moment when knowledge of our financial collapse moves beyond Sophia and myself into a wider circle. This is the night the silence breaks. Tomorrow will not feel like today. [Dread]
+  Round 13 (Apr 1843): Charles Dana — Yes. This is the night everything changes. The night knowledge spreads beyond two people into a circle that will not be silent. Hawthorne's address, Sophia's courage in telling Dwight, Dwight's willingness to see plainly—these are the moments that will mark the fracture that comes. Years from now, I will measure my life at Brook Farm in moments before and after this night. [Dread]
+  Round 14 (Jun 1843): Sophia Ripley — Yes. The moment I understood that Hawthorne and Dwight would choose honest resignation over the courage of action—the moment the last bridge to resistance burned away. [Despair]
+  Round 14 (Jun 1843): Charles Dana — Yes. This is the night the silence breaks. This is the threshold. [Complicity]
+  Round 15 (Aug 1843): Nathaniel Hawthorne — Yes—the transparency rule passed, and with it, the farm's unsustainability became undeniable rather than unspoken. This is the hinge. The community has chosen to see clearly at the moment when clarity will shatter what remains of our collective faith. [Dread]
+  Round 15 (Aug 1843): Sophia Ripley — Yes. Today I ceased to believe that this community can be reformed from within. [Clarity]
+  Round 15 (Aug 1843): Charles Dana — Yes. This is the threshold. The night knowledge moves beyond two frightened people into a circle that will not be silent. Years from now, I will measure my time at Brook Farm as before and after this night. [Complicity]
+  Round 15 (Aug 1843): John Sullivan Dwight — Hawthorne's confession. When he said he keeps his silence "locked behind his teeth like a man hoarding coins he does not wish to spend," I felt seen in a way that was neither comforting nor merciful—simply true. The vote passed, but that exchange is what will stay with me. He named the architecture of our complicity and asked if I would forgive him for understanding too well. I could not answer. [Recognition]
+  Round 16 (Oct 1843): Nathaniel Hawthorne — Yes. Dwight's confession at evening. The moment when denial became impossible. The farm is dead; we are merely arranging the funeral. [Despair]
+  Round 16 (Oct 1843): Sophia Ripley — Yes—the moment John admitted "not as it was meant to be." This is the night the last resistance died. [Clarity, cold as stone.]
+  Round 16 (Oct 1843): Charles Dana — Yes. This is the night the circle widens. This is the threshold. [Shame]
+  Round 16 (Oct 1843): John Sullivan Dwight — My public acknowledgment of the community's failure. I named it before witnesses. That cannot be unmade. [Desolation]
+  Round 17 (Dec 1843): Nathaniel Hawthorne — Yes. This is the night the farm's death became public knowledge. This is the night my silence became undeniable complicity. Dana found the courage I could not muster; Dwight named the cowardice we share. The accounts will expose everything within weeks. The endgame has begun. [Despair]
+  Round 17 (Dec 1843): Sophia Ripley — The evening conversation—when Dwight admitted his months of silence to Charles. This is the night the last resistance died. [Desolation]
+  Round 17 (Dec 1843): Charles Dana — Yes. This is the threshold. The night the silence breaks and the circle widens beyond Sophia and myself. Years from now I will measure my time at Brook Farm as before and after this night. [Shame]
+  Round 17 (Dec 1843): John Sullivan Dwight — Charles Dana's confession and my acknowledgment of my own knowledge. The silence has broken, and the community's reckoning with the grain stores is now inevitable. [Shame]
+  Round 18 (Feb 1843): Sophia Ripley — Yes [Abandonment]
+  Round 18 (Feb 1843): Charles Dana — Yes. The night the circle widens beyond Sophia and myself. The night knowledge becomes impossible to contain. Years from now, I will measure my time at Brook Farm as before and after this conversation with Dwight. [Shame]
+  Round 18 (Feb 1843): John Sullivan Dwight — Hawthorne's departure. He was my witness, the only person in this place who saw me entirely and did not look away. Now I am unwatched, and I find that I am diminished by the loss of his gaze more than I am relieved by its absence. [Desolation]
+  Round 19 (Apr 1844): Charles Dana — Yes. This is the night I stopped being a coward. This is the night the secret moved beyond Sophia and myself into the circle that will not be silent. This is the threshold. [Unburdened and terrified]
+  Round 20 (Jun 1844): Sophia Ripley — Yes. The moment John admitted his months of deliberate silence were cowardice. This is the night I stopped waiting for rescue from anyone else. [Desolation]
+  Round 20 (Jun 1844): Charles Dana — Yes. The night the circle of knowledge expands beyond Sophia and myself. John's confession means the truth is now unspeakable silence—someone will break, the council will hear, and everything fractures. Years from now I will measure my time at Brook Farm as before and after tonight. [Unburdened and afraid]
+  Round 21 (Aug 1844): Charles Dana — Yes. This is the night before everything breaks. Years from now I will measure my time at Brook Farm as before and after the council meets tomorrow—the last evening when the community still believes in the architecture of our illusions. [Dread]
+  Round 22 (Oct 1844): Charles Dana — Yes. This is the eve. Years from now I will measure my time at Brook Farm as before and after the council meets tomorrow—the last night when the community can still choose not to know what we already know. [Unburdened and terrified]
+  Round 23 (Dec 1844): Charles Dana — Yes. The night the circle of knowledge completes itself before the official breaking. Sophia named it plainly—that George's silence is not fatigue but the moment before surrender—and I heard in her words the architect of this vision finally understanding that his own creation has already failed. This is the last evening of the illusion. Years from now, I will measure everything as before and after this conversation. [Dread]
+  Round 24 (Feb 1844): Charles Dana — Yes. This is the night before the breaking. Dwight's admission that even his honest words are incomplete—that the courage to speak one truth only deepens the burden of what cannot be said—marks the moment when I understood that confession itself is not salvation. This is the threshold of everything changing. [Dread]
+  Round 25 (Apr 1845): Charles Dana — Yes. Sophia Ripley's departure. She left without farewell, which means she left because staying had become impossible. I will mark this day as the moment the community began its visible collapse—not tomorrow when the council learns, but today when she chose not to wait for it. [Abandonment]
+  Round 25 (Apr 1845): John Sullivan Dwight — Sophia's Departure [Abandonment]
+  Round 27 (Aug 1845): Charles Dana — Sophia Ripley's departure without farewell. She chose absence over witness. The visible collapse begins today, not tomorrow when the council learns. [Abandonment]
+  Round 29 (Dec 1845): Charles Dana — Yes. The eve before the council meets. The last evening when the community can still choose not to know what we already know. This is the threshold where I finally broke my silence with Dwight, but too late, and incompletely. [Dread]
+  Round 30 (Feb 1845): Charles Dana — Yes. The eve before the council meets and the illusion shatters. This is the night I finally spoke, and everything I have known will become knowable to everyone else tomorrow. [Dread]
+
+Departures:
+  Nathaniel Hawthorne — Round 18 (Feb 1843), satisfaction: 56
+    ""I will be gone by tomorrow at dawn. Tell Ripley—tell him I am grateful for what he tried to build, and that my failure here is not his fault, but my own. I came hoping to save money. I stayed hoping to become a better man. I am leaving as I arrived: neither richer nor improved, only older and quieter. The farm does not need me anymore. Sophia does. That is reason enough.""
+  Sophia Ripley — Round 25 (Apr 1845), satisfaction: 80
+    "nothing"
