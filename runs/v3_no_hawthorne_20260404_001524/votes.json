@@ -1,0 +1,62 @@
+[
+  {
+    "round": 3,
+    "date": "Aug 1841",
+    "proposal": "RULE",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "Without structure, we dissolve into self-interest. The cream spoils while philosophers debate epistemology. We came here to prove that labor and intellect could coexist\u2014we cannot prove this by abandoning the labor."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "Structure is the only thing that keeps us from dissolution. The school works because I impose order, not despite it. If George has finally understood this, then at least one of us has stopped chasing phantoms."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "Without rule, we are a collection of individuals, not a community\u2014and the fields prove it. If we are to survive the winter with our resources intact, we require common standards. I have seen what happens when commitment is optional."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "\"The experiment cannot survive on good intentions and philosophical abstractions. Mr. Ripley speaks truth, however much it troubles me. Without order, we shall dissolve into resentment and chaos.\""
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 15,
+    "date": "Aug 1843",
+    "proposal": "RULE",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "The ideal was never meant to sustain itself on faith alone\u2014it requires structure. Charles's faithfulness in the fields is not an accusation I can bear to leave unanswered. We must act or we perish."
+      },
+      "Sophia Ripley": {
+        "vote": "NO",
+        "reasoning": "We lack flour for winter, the roof fails with each rain, and our students' safety depends on practical remedy, not further governance. George's heart is noble, but rules do not repair buildings or fill granaries."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The ledger will not lie for us, and neither should we. If this Rule establishes what must be established\u2014that we speak plainly about our condition\u2014then I vote for it, though I vote for it knowing what it will cost us all."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The flour arithmetic will not resolve itself through faith or fellowship. If rules can salvage what remains\u2014if structure can preserve us through winter\u2014then I must vote for them, however much I despise what that admission means."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 3,
+      "NO": 1,
+      "ABSTAIN": 0
+    }
+  }
+]

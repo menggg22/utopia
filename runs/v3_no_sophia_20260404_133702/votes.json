@@ -1,0 +1,32 @@
+[
+  {
+    "round": 7,
+    "date": "Apr 1842",
+    "proposal": "RULE",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "Dana's rules will enforce what my idealism could not\u2014accountability and structure. If we are to survive, we must govern ourselves as rigorously as the land demands. He is right to insist upon it."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "Dana has shown the integrity to speak unwelcome truths without malice\u2014a rare quality in this place. Rules will not save a sinking venture, but order may at least spare us the chaos of complete dissolution. I remain long enough, perhaps, to extract what little value remains."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "A community without law is a community in free fall. We have ideals, but we also have ledgers, and they do not reconcile themselves through good intention alone. This rule is necessary, however much it pains me to say it."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "Dana speaks what I have been avoiding\u2014that beauty without structure is merely decoration, and a community that cannot acknowledge its own peril deserves neither. If I am to remain here with any integrity, I must support what is real."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  }
+]
