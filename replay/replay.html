@@ -46,12 +46,14 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: calc(100vh - 40px);
+    height: calc(100dvh - 40px);
     padding-top: 40px;
     overflow: hidden;
     background: radial-gradient(ellipse at 50% 0%, #ede5d4 0%, #faf8f4 60%);
   }
   body.on-landing {
     overflow: hidden;
+    height: 100dvh;
   }
   body.on-landing .spacer,
   body.on-landing .site-footer,
@@ -695,8 +697,9 @@
     /* Landing */
     .home-hero h1 { font-size: 26px; letter-spacing: 4px; }
     .home-hero .hero-sub { font-size: 10px; letter-spacing: 2px; }
-    .home-premise, .home-premise-alert { font-size: 14px; line-height: 1.6; }
-    .home-pull-quote .quote-text { font-size: 13px; max-width: 100%; }
+    .home-premise, .home-premise-alert { font-size: 13px; line-height: 1.55; }
+    .home-pull-quote .quote-text { font-size: 12px; max-width: 100%; }
+    .home-pull-quote .quote-attr { font-size: 10px; }
     .home-emoji-row-1 { font-size: 18px !important; letter-spacing: 3px !important; }
     .home-emoji-row-2 { font-size: 13px !important; letter-spacing: 3px !important; }
     .cta-btn { padding: 11px 22px; font-size: 12px; }
