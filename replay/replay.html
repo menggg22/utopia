@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Five AI agents with real 1840s personas try to build a utopian commune. Watch 30 rounds of dialogue, inner thoughts, votes, and departures unfold — or build your own.">
+<meta property="og:title" content="Utopia Lab — AI Commune Simulation">
+<meta property="og:description" content="Five AI agents with real historical personas try to build Brook Farm. Watch 30 rounds unfold — or build your own community.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://menggg22.github.io/utopia/replay.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Utopia Lab — AI Commune Simulation">
+<meta name="twitter:description" content="Five AI agents with real historical personas try to build Brook Farm. Watch 30 rounds unfold.">
+<title>Utopia Lab — AI Commune Simulation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #faf8f4;
+    color: #2a2a2a;
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Monospace only for data/labels */
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+  #app {
+    max-width: 860px;
+    width: 100%;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* Landing fills the viewport — no scroll */
+  #landing-screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: calc(100vh - 40px);
+    padding-top: 40px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, #ede5d4 0%, #faf8f4 60%);
+  }
+  body.on-landing {
+    overflow: hidden;
+  }
+  body.on-landing .spacer,
+  body.on-landing .site-footer,
+  body.on-landing .controls {
+    visibility: hidden;
+  }
+
+  /* Agent colors — darker for light bg */
+  .agent-gr { color: #2563a8; }
+  .agent-nh { color: #8b3daa; }
+  .agent-sr { color: #b5850a; }
+  .agent-cd { color: #2d8a4e; }
+  .agent-jd { color: #1a7a7a; }
+
+  .dim { opacity: 0.45; }
+  .bold { font-weight: 700; }
+  .red { color: #c0392b; }
+  .yellow { color: #b5850a; }
+  .green { color: #2d8a4e; }
+  .magenta { color: #8b3daa; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #d5d0c8;
+    margin: 24px 0;
+  }
+
+  /* ── Home / Run Selector ── */
+  .home-hero {
+    text-align: center;
+  }
+  .home-hero h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 46px;
+    letter-spacing: 14px;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .home-hero .hero-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-top: 6px;
+  }
+
+  .home-pull-quote {
+    text-align: center;
+    margin: 0;
+  }
+  .home-pull-quote .quote-text {
+    font-style: italic;
+    font-size: 17px;
+    color: #5a3e0a;
+    line-height: 1.55;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .home-pull-quote .quote-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.4;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+  }
+  .home-premise-alert {
+    color: #c0392b;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+    text-align: center;
+  }
+
+  .home-premise {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+    color: #3a3530;
+    text-align: center;
+  }
+  .home-premise .ending {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.55;
+    letter-spacing: 1px;
+  }
+
+  .cast-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 32px;
+  }
+  .cast-card {
+    padding: 10px 14px;
+    border: 1px solid #e0dbd3;
+    border-radius: 5px;
+    background: #f5f1eb;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1 1 160px;
+    max-width: 200px;
+  }
+  .cast-card:hover {
+    background: #ede8e0;
+    border-color: #b5a99a;
+  }
+  .cast-card.expanded {
+    background: #ede8e0;
+    border-color: #b5a99a;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .cast-name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+  .cast-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 4px;
+  }
+  .cast-hook {
+    font-size: 13px;
+    opacity: 0.6;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .cast-bio {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #d5d0c8;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+  .cast-card.expanded .cast-bio { display: block; }
+
+  .home-cta {
+    text-align: center;
+    margin: 28px 0 20px;
+    font-size: 16px;
+    opacity: 0.7;
+  }
+
+  .run-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 12px 0 24px;
+  }
+  .run-card {
+    background: #f0ece4;
+    border: 1px solid #d5d0c8;
+    border-radius: 6px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .run-card:hover {
+    background: #e8e2d8;
+    border-color: #b5a99a;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  }
+  .run-card .run-name {
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+  .run-card .run-desc {
+    font-size: 14px;
+    opacity: 0.65;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .run-card .run-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .tag-baseline { background: #d4edda; color: #155724; }
+  .tag-counterfactual { background: #fff3cd; color: #856404; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin: 28px 0 12px;
+    font-weight: 700;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 0;
+    padding: 14px 36px;
+    background: #2a2a2a;
+    color: #faf8f4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cta-btn:hover { background: #444; transform: translateY(-1px); }
+
+  /* Run picker screen */
+  .picker-header {
+    text-align: center;
+    margin: 40px 0 28px;
+  }
+  .picker-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .picker-header .picker-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* ── Intro ── */
+  .intro-scene {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin: 30px 0 10px;
+  }
+  .intro-title {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .intro-title h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    letter-spacing: 8px;
+    font-weight: 700;
+  }
+  .intro-title .subtitle {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+  .intro-quote {
+    text-align: center;
+    margin: 24px 0;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #8b6914;
+  }
+  .intro-quote .attribution {
+    font-size: 12px;
+    font-style: normal;
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+  .intro-desc {
+    text-align: center;
+    margin: 20px 0;
+    line-height: 1.8;
+  }
+  .intro-desc .hook {
+    color: #c0392b;
+    margin-top: 12px;
+  }
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.45;
+  }
+  .resident {
+    margin-bottom: 20px;
+    padding-left: 12px;
+  }
+  .resident .name { font-weight: 700; font-size: 15px; }
+  .resident .tagline { opacity: 0.5; font-size: 13px; margin-top: 2px; }
+  .intro-footer {
+    text-align: center;
+    opacity: 0.5;
+    font-size: 12px;
+    margin: 24px 0 8px;
+  }
+
+  /* ── Round view ── */
+  .round-header {
+    border: 1px solid #d5d0c8;
+    background: #f0ece4;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+  .round-header h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .resources { margin-bottom: 20px; }
+  .resource-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .resource-label { width: 70px; }
+  .bar-track {
+    width: 160px;
+    height: 12px;
+    background: #e8e2d8;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+  .bar-fill.food { background: #5da469; }
+  .bar-fill.money { background: #c9a227; }
+  .bar-fill.morale-high { background: #5da469; }
+  .bar-fill.morale-mid { background: #c9a227; }
+  .bar-fill.morale-low { background: #c0392b; }
+  .resource-value { font-size: 12px; opacity: 0.6; }
+
+  .section { margin-bottom: 28px; }
+  .section h3 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #e0dbd3;
+    padding-bottom: 6px;
+  }
+
+  .action-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    align-items: baseline;
+  }
+  .action-emoji { width: 24px; text-align: center; }
+  .action-agent {
+    font-weight: 700;
+    width: 110px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+  }
+  /* agent colors applied via .agent-XX class on text */
+  .action-role { opacity: 0.4; width: 70px; font-size: 12px; }
+  .action-type {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    background: #e8e2d8;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .action-detail { opacity: 0.7; font-family: 'Lora', serif; font-size: 14px; }
+
+  /* expandable conversations */
+  .conversation {
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 3px solid #d5d0c8;
+  }
+  .conversation .speaker { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; margin-bottom: 4px; letter-spacing: 0.5px; }
+  .conversation .says {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-style: italic;
+    margin: 4px 0 6px;
+    line-height: 1.5;
+  }
+  .conversation .inner {
+    font-size: 13px;
+    opacity: 0.55;
+    font-family: 'Lora', serif;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.025);
+    border-radius: 3px;
+    margin: 4px 0;
+    line-height: 1.5;
+  }
+  .expand-btn {
+    font-size: 12px;
+    color: #2563a8;
+    cursor: pointer;
+    margin-top: 8px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    padding: 0;
+  }
+  .expand-btn:hover { text-decoration: underline; }
+  .full-convo {
+    display: none;
+    margin-top: 14px;
+    padding: 16px;
+    background: #f0ece4;
+    border-radius: 6px;
+  }
+  .full-convo.open { display: block; }
+  .full-convo .turn {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e0dbd3;
+  }
+  .full-convo .turn:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .full-convo .turn-says {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-style: italic;
+    margin: 4px 0 6px;
+    line-height: 1.5;
+  }
+  .full-convo .turn-inner {
+    font-size: 13px;
+    opacity: 0.5;
+    font-family: 'Lora', serif;
+    margin-top: 6px;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 3px;
+    line-height: 1.5;
+  }
+
+  .key-moment {
+    margin-bottom: 14px;
+    padding: 10px 12px;
+    border-left: 3px solid #8b3daa;
+    background: rgba(139, 61, 170, 0.04);
+    border-radius: 0 4px 4px 0;
+  }
+  .key-moment .desc {
+    font-size: 14px;
+    font-family: 'Lora', serif;
+    line-height: 1.5;
+  }
+  .key-moment .emotion {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #8b3daa;
+    margin-top: 4px;
+  }
+
+  .departure-box {
+    border: 1px solid #c0392b;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    background: #fdf0ef;
+    border-radius: 4px;
+  }
+  .departure-box .departed-name { color: #c0392b; font-weight: 700; font-size: 15px; }
+  .departure-box .farewell {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  .vote-box {
+    border: 1px solid #c9a227;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    background: #fdfaef;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  .historical-event {
+    color: #8b6914;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .status-strip {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    background: #f0ece4;
+    border-radius: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .status-strip .status-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  .status-agent { white-space: nowrap; }
+  .status-agent .sat-val {
+    display: inline-block;
+    min-width: 20px;
+    text-align: right;
+    font-weight: 700;
+  }
+  .status-gone { opacity: 0.3; text-decoration: line-through; }
+
+  /* ── Finale ── */
+  .finale-scene {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin: 30px 0 10px;
+  }
+  .finale-title { text-align: center; margin: 20px 0; }
+  .finale-title h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: #c0392b;
+  }
+  .finale-title .subtitle { font-size: 13px; opacity: 0.5; margin-top: 4px; }
+
+  .fate { margin-bottom: 18px; padding-left: 12px; }
+  .fate .name { font-weight: 700; font-size: 15px; }
+  .fate .status-line { font-size: 13px; margin-top: 2px; }
+  .fate .farewell-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    opacity: 0.5;
+    margin-top: 2px;
+  }
+  .final-stats {
+    font-size: 12px;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  /* ── Controls ── */
+  .controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f0ece4;
+    border-top: 1px solid #d5d0c8;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+  .controls button {
+    background: #fff;
+    color: #2a2a2a;
+    border: 1px solid #c5bfb5;
+    padding: 8px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .controls button:hover { background: #e8e2d8; }
+  .controls button:disabled { opacity: 0.3; cursor: default; }
+  .controls button.home-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+  .controls .round-indicator {
+    font-size: 12px;
+    opacity: 0.5;
+    min-width: 100px;
+    text-align: center;
+  }
+  .spacer { height: 20px; }
+
+  .site-footer {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.4;
+    padding: 16px 0 80px;
+    line-height: 1.6;
+  }
+  .site-footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .site-footer a:hover { opacity: 0.8; }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; padding: 10px; }
+    .home-hero h1 { font-size: 30px; letter-spacing: 5px; }
+    .intro-title h1 { font-size: 24px; letter-spacing: 4px; }
+    .bar-track { width: 100px; }
+    .action-role { display: none; }
+    .controls button { padding: 8px 14px; font-size: 11px; }
+    .run-grid { grid-template-columns: 1fr; }
+    .cast-card { flex: 1 1 140px; max-width: 100%; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div id="landing-screen" class="screen active"></div>
+  <div id="home-screen" class="screen"></div>
+  <div id="intro-screen" class="screen"></div>
+  <div id="round-screen" class="screen"></div>
+  <div id="finale-screen" class="screen"></div>
+  <div class="spacer"></div>
+  <div class="site-footer">
+    Built by <a href="https://menggg22.github.io">Menggg</a> ✨ · <a href="https://github.com/menggg22/utopia">Source on GitHub</a> · CC BY-NC 4.0
+  </div>
+</div>
+
+<div class="controls">
+  <button class="home-btn" id="btn-home" onclick="goHome()" title="Back to run selector">🏠</button>
+  <button id="btn-back" onclick="goBack()" disabled>← Back</button>
+  <span class="round-indicator" id="round-indicator"></span>
+  <button id="btn-next" onclick="goNext()">Begin →</button>
+</div>
+
+<script>
+const AGENTS = {
+  "George Ripley":       { icon: "⛪ George", cls: "agent-gr", role: "Founder" },
+  "Nathaniel Hawthorne": { icon: "🪶 Nathaniel", cls: "agent-nh", role: "Writer" },
+  "Sophia Ripley":       { icon: "📖 Sophia", cls: "agent-sr", role: "Teacher" },
+  "Charles Dana":        { icon: "📰 Charles", cls: "agent-cd", role: "Editor" },
+  "John Sullivan Dwight":{ icon: "🎻 Dwight", cls: "agent-jd", role: "Musician" },
+};
+const TAGLINES = {
+  "George Ripley":       "Left the ministry to prove utopia is possible. Needs it to work more than anyone.",
+  "Nathaniel Hawthorne": "Joined not for ideology but to save money to marry. Watches more than he participates.",
+  "Sophia Ripley":       "Runs the school — the commune's only real income. Missed two classes in six years.",
+  "Charles Dana":        "22 years old, speaks ten languages, does whatever needs doing. The practical one.",
+  "John Sullivan Dwight":"Escaped a failed ministry. Found music. Will stay as long as the concerts continue.",
+};
+const BIOS = {
+  "George Ripley": `<b>Age 38. Former Unitarian minister.</b> Left his pulpit to prove that intellectual life and manual labor could coexist. Harvard Divinity graduate, member of Emerson's Transcendental Club. His personal book collection became Brook Farm's library.<br><br>Believed Brook Farm would be "a light over this country and this age." Had no farming experience. The community was in debt almost immediately.<br><br><i>After Brook Farm collapsed, he spent 13 years repaying $17,445 in debt. He never blamed anyone but himself.</i>`,
+
+  "Nathaniel Hawthorne": `<b>Age 37. Published author.</b> Joined not for ideology — he wanted to save money to marry Sophia Peabody. Ripley made him a finance trustee to draw him in. Descended from a Salem witch trial judge; haunted by ancestral guilt.<br><br>Initially tried to embrace farm work, boasting he'd become "a great, broad-shouldered, elephantine personage." Quickly changed his mind: <i>"Labor is the curse of the world."</i> Complained he couldn't write a word.<br><br><i>Left after 18 months. Later fictionalized Brook Farm in The Blithedale Romance.</i>`,
+
+  "Sophia Ripley": `<b>Age ~38. Co-founder and head of school.</b> George's wife and intellectual equal. Wrote a feminist essay for The Dial before Brook Farm. Taught history and foreign languages. At Brook Farm, women could become stockholders and were autonomous from their husbands.<br><br>The school was the commune's only reliable income. She missed two classes in six years.<br><br><i>Stayed through the very end. Later called their original optimism "childish, empty, & sad." Eventually converted to Catholicism.</i>`,
+
+  "Charles Dana": `<b>Age 22. The youngest key member.</b> Self-taught — entered Harvard but left when his eyesight failed. Arrived at Brook Farm with no money and enormous ambition. Spoke ten languages. Became trustee, head waiter, finance manager, and editor of The Harbinger.<br><br>A natural journalist: clear, concise, action-oriented. The "get things done" person when everyone else was philosophizing.<br><br><i>Left in 1846. Became managing editor of the New York Tribune. During the Civil War, served as Lincoln's personal liaison to General Grant. Was friends with Karl Marx.</i>`,
+
+  "John Sullivan Dwight": `<b>Age 28. Failed minister turned music critic.</b> Harvard Divinity graduate who discovered his true vocation wasn't preaching — it was Beethoven. Organized Brook Farm's concerts, theatrical events, and cultural life. Taught music and Latin.<br><br>Not a practical person. Found his element in the daily community gatherings where Brook Farmers would "stand in a circle and join hands and vow for truth."<br><br><i>Stayed through the end. Founded Dwight's Journal of Music (1852). Wrote the English lyrics to "O Holy Night." Became America's most respected music critic.</i>`,
+};
+const ACTION_EMOJI = {
+  FARM:"🌾", TEACH:"📚", WRITE:"✍️", SPEAK:"🗣️", ORGANIZE:"🎵",
+  TRADE:"💰", BUILD:"🔨", REPAIR:"🔧", REST:"💤", LEAVE:"🚪",
+  PROPOSE_RULE:"📜", RULE:"📜", VOTE:"🗳️"
+};
+const SEASON_EMOJI = { spring:"🌱", summer:"☀️", fall:"🍂", winter:"❄️" };
+
+// RUN_META is generated dynamically from ALL_RUNS keys
+let RUN_META = {};
+
+function buildRunMeta() {
+  RUN_META = {};
+  for (const key of Object.keys(ALL_RUNS)) {
+    const lk = key.toLowerCase();
+    let tag = "baseline";
+    if (lk.includes("no_") || lk.includes("no ") || lk.includes("double") || lk.includes("2x")) tag = "counterfactual";
+    RUN_META[key] = {
+      name: key,
+      desc: "",
+      tag: tag,
+    };
+  }
+}
+
+let ALL_RUNS = {};
+let roundData = [];
+let currentIdx = -1; // -1=intro, 0..n=rounds, n+1=finale
+let currentRunKey = null;
+
+function parseEvents(events) {
+  const rounds = {};
+  let maxRound = 0;
+  const agentsPresent = new Set();
+  const satMap = {};
+  for (const e of events) {
+    if (e.type === "persona_loaded") { agentsPresent.add(e.agent); satMap[e.agent] = 70; }
+    const r = e.round || 0;
+    if (r > 0) { if (!rounds[r]) rounds[r] = []; rounds[r].push(e); if (r > maxRound) maxRound = r; }
+  }
+  const data = [];
+  const snap = { agents: new Set(agentsPresent), sat: {...satMap} };
+  for (let r = 1; r <= maxRound; r++) {
+    const evts = rounds[r] || [];
+    const rd = { round: r, env: {}, actions: [], conversations: [], reflections: [],
+                 keyMoments: [], departures: [], historicalEvents: [], votes: [],
+                 agentsPresent: null, satMap: null };
+    for (const e of evts) {
+      switch(e.type) {
+        case "env_state": rd.env = e.data || {}; break;
+        case "action": rd.actions.push(e); break;
+        case "utterance": rd.conversations.push(e); break;
+        case "reflection":
+          rd.reflections.push(e);
+          if (e.data?.satisfaction != null) snap.sat[e.agent] = e.data.satisfaction;
+          break;
+        case "key_moment": rd.keyMoments.push(e); break;
+        case "agent_departed": rd.departures.push(e); snap.agents.delete(e.agent); break;
+        case "historical_event": rd.historicalEvents.push(e.data?.description || ""); break;
+        case "vote_result": rd.votes.push(e); break;
+      }
+    }
+    rd.agentsPresent = new Set(snap.agents);
+    rd.satMap = {...snap.sat};
+    data.push(rd);
+  }
+  return data;
+}
+
+function firstSentence(text, maxLen = 120) {
+  if (!text) return "";
+  // Find sentence boundary, skipping honorifics (Mr. Mrs. Dr. etc.)
+  const honorifics = /\b(Mr|Mrs|Ms|Dr|St|Rev|Jr|Sr|Vol|vs|etc|cf)\.\s/gi;
+  let searchText = text.replace(honorifics, (m) => m.replace(". ", "·\u200B"));
+  for (const end of [". ", "! ", "? ", "—"]) {
+    const idx = searchText.indexOf(end);
+    if (idx !== -1 && idx < maxLen && idx > 15) {
+      return text.slice(0, idx + end.trimEnd().length);
+    }
+  }
+  return text.length > maxLen ? text.slice(0, maxLen - 3) + "..." : text;
+}
+
+function moraleClass(m) { return m >= 60 ? "morale-high" : m >= 30 ? "morale-mid" : "morale-low"; }
+function satColorClass(s) { return s >= 60 ? "green" : s >= 30 ? "yellow" : "red"; }
+
+let convoCounter = 0;
+function toggleConvo(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle("open");
+}
+
+function toggleCast(card) {
+  const wasExpanded = card.classList.contains("expanded");
+  // Collapse all
+  document.querySelectorAll(".cast-card.expanded").forEach(c => c.classList.remove("expanded"));
+  if (!wasExpanded) card.classList.add("expanded");
+}
+
+// ── Render: Landing ──
+function renderLanding() {
+  return `
+    <!-- Emoji scene -->
+    <div style="text-align:center;font-size:22px;letter-spacing:6px;opacity:0.75">
+      🌳 🌾 🏡 🌾 🌳
+    </div>
+    <div style="text-align:center;font-size:16px;letter-spacing:8px;opacity:0.5;margin-top:6px">
+      📚 &nbsp; 🎻 &nbsp; ✍️ &nbsp; ⛏️ &nbsp; 📰
+    </div>
+
+    <!-- Top: title -->
+    <div class="home-hero">
+      <h1>Utopia Lab</h1>
+      <div class="hero-sub">An AI Agent Utopian Simulation</div>
+    </div>
+
+    <!-- Premise -->
+    <div class="home-premise">
+      In 1841, New England intellectuals founded <a href="https://en.wikipedia.org/wiki/Brook_Farm" target="_blank" style="color:inherit;text-underline-offset:3px">Brook Farm</a> — a utopian commune in Massachusetts.
+    </div>
+    <div class="home-premise">
+      Their hope was simple and beautiful: a just society where no one's labor was worth more than another's,
+      where thinkers could get their hands dirty, and where beauty, ideas, and honest work
+      could share the same table. However, things did not go as expected and Brook Farm only lasted six years.
+    </div>
+
+    <div class="home-premise-alert">
+      Today we gave five AI agents the same dream and watched what happened. 🎬
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center">
+      <button class="cta-btn" onclick="goRunPicker()">Watch the Simulation →</button>
+    </div>
+
+    <!-- Quote — closing thought -->
+    <div class="home-pull-quote">
+      <div class="quote-text">"Labor is the curse of the world, and nobody can meddle with it without becoming proportionately brutified."</div>
+      <div class="quote-attr">— Nathaniel Hawthorne, Round 4 · written in his journal, hands still blistered from the hay</div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.35;line-height:1.6">
+      Built by <a href="https://menggg22.github.io" style="color:inherit;text-underline-offset:2px">Menggg</a> ✨ · <a href="https://github.com/menggg22/utopia" style="color:inherit;text-underline-offset:2px">Source on GitHub</a> · CC BY-NC 4.0
+    </div>
+  `;
+}
+
+// ── Render: Home (Run Picker) ──
+function renderHome() {
+  const baselines = Object.entries(RUN_META).filter(([k,v]) => v.tag === "baseline");
+  const counterfactuals = Object.entries(RUN_META).filter(([k,v]) => v.tag === "counterfactual");
+  const castHooks = {
+    "George Ripley":        "Staked his life on the idea. Can't stop believing.",
+    "Nathaniel Hawthorne":  "Joined for money. Stayed out of guilt. Couldn't write a word.",
+    "Sophia Ripley":        "Ran the only thing that worked. Watched everything else fail.",
+    "Charles Dana":         "22 years old. Spoke ten languages. Saw the end coming first.",
+    "John Sullivan Dwight": "Found music. Found himself. Then the barn burned.",
+  };
+  return `
+    <div class="picker-header">
+      <h2>Choose a Simulation</h2>
+      <div class="picker-sub">Brook Farm · 1841–1847</div>
+    </div>
+
+    <div class="section-label">The People</div>
+    <div class="cast-grid" id="cast-grid">
+      ${Object.entries(AGENTS).filter(([n]) => castHooks[n]).map(([name, a]) => `
+        <div class="cast-card" onclick="toggleCast(this)">
+          <div class="cast-name"><span class="${a.cls}">${a.icon}</span></div>
+          <div class="cast-hook">${castHooks[name]}</div>
+          <div class="cast-bio">
+            ${BIOS[name] || TAGLINES[name]}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+
+    <div class="section-label">The runs <span style="font-family:'Lora',serif;font-weight:400;font-size:13px;opacity:0.5;letter-spacing:0;text-transform:none;margin-left:8px">Five idealists. One farm. Thirty rounds.</span></div>
+    <div class="run-grid">
+      ${baselines.map(([key, meta]) => `
+        <div class="run-card" onclick="selectRun('${key}')">
+          <div class="run-name">${meta.name}</div>
+          <div class="run-desc">${meta.desc}</div>
+          <span class="run-tag tag-baseline">BASELINE</span>
+        </div>
+      `).join("")}
+    </div>
+
+    ${counterfactuals.length ? `
+      <div class="section-label">What if...? <span style="font-family:'Lora',serif;font-weight:400;font-size:13px;opacity:0.5;letter-spacing:0;text-transform:none;margin-left:8px">Remove a member. Does history change?</span></div>
+      <div class="run-grid">
+        ${counterfactuals.map(([key, meta]) => `
+          <div class="run-card" onclick="selectRun('${key}')">
+            <div class="run-name">${meta.name}</div>
+            <div class="run-desc">${meta.desc}</div>
+            <span class="run-tag tag-counterfactual">WHAT IF</span>
+          </div>
+        `).join("")}
+      </div>
+    ` : ""}
+
+    <div class="section-label">Build your own <span style="font-family:'Lora',serif;font-weight:400;font-size:13px;opacity:0.5;letter-spacing:0;text-transform:none;margin-left:8px">The code is open.</span></div>
+    <div class="run-grid">
+      <div class="run-card" onclick="window.open('https://github.com/menggg22/utopia','_blank')">
+        <div class="run-name">Build your own →</div>
+        <div class="run-desc">Design your own utopian community — give your cast their biographies, motivations, and private doubts. The code is open.</div>
+        <span class="run-tag tag-counterfactual">OPEN SOURCE</span>
+      </div>
+    </div>
+
+  `;
+}
+
+// ── Render: Intro (per-run briefing) ──
+function renderIntro() {
+  const meta = RUN_META[currentRunKey] || {};
+  const isCounterfactual = meta.tag === "counterfactual";
+  const allAgents = Object.keys(AGENTS);
+
+  // Infer which agents are in this run from round 1
+  const presentAgents = new Set();
+  if (roundData.length > 0) {
+    for (const a of roundData[0].actions) presentAgents.add(a.agent);
+    roundData[0].agentsPresent.forEach(n => presentAgents.add(n));
+  } else {
+    allAgents.forEach(n => presentAgents.add(n));
+  }
+
+  // Starting resources from round 1
+  const startEnv = roundData.length > 0 ? roundData[0].env : {};
+
+  return `
+    <div style="margin:40px 0 28px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;opacity:0.4;text-transform:uppercase;margin-bottom:12px">
+        ${isCounterfactual ? "Counterfactual" : "Baseline"} · Brook Farm · 1841
+      </div>
+      <h1 style="font-family:'Crimson Pro',serif;font-size:36px;font-weight:700;margin-bottom:10px">${meta.name || currentRunKey}</h1>
+      <div style="font-size:19px;color:#5a3e0a;font-style:italic">${meta.desc || ""}</div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-title">The Residents</div>
+    ${allAgents.map(name => {
+      const a = AGENTS[name];
+      const present = presentAgents.has(name);
+      return `<div class="resident" style="${present ? "" : "opacity:0.3;text-decoration:line-through"}">
+        <div class="name"><span class="${a.cls}">${a.icon}</span> — ${a.role}${present ? "" : " &nbsp;<span style='font-family:JetBrains Mono,monospace;font-size:11px;text-decoration:none;color:#c0392b'>NOT IN THIS RUN</span>"}</div>
+        ${present ? `<div class="tagline">${TAGLINES[name]}</div>` : ""}
+      </div>`;
+    }).join("")}
+
+    <hr class="divider">
+    <div class="section-title">Starting Conditions</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;display:flex;gap:32px;flex-wrap:wrap;margin-bottom:28px">
+      <div>🍞 Food &nbsp;<strong>${startEnv.food ?? 100}</strong></div>
+      <div>💵 Money &nbsp;<strong>$${startEnv.money ?? 500}</strong></div>
+      <div>♥ Morale &nbsp;<strong>${startEnv.morale ?? 80}%</strong></div>
+      <div>👥 Members &nbsp;<strong>${presentAgents.size}</strong></div>
+    </div>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.4;text-align:center;margin-top:8px">
+      30 rounds · every decision made by AI · no one knows how it ends
+    </div>
+  `;
+}
+
+// ── Render: Round ──
+function renderRound(rd) {
+  const env = rd.env;
+  const season = env.season || "spring";
+  const morale = env.morale || 0;
+
+  let html = `
+    <div class="round-header">
+      <h2>${SEASON_EMOJI[season] || ""} Round ${rd.round} &nbsp;•&nbsp; ${env.date || ""} &nbsp;•&nbsp; ${season.toUpperCase()}</h2>
+    </div>
+    <div class="resources">
+      <div class="resource-row">
+        <span class="resource-label">🍞 Food</span>
+        <div class="bar-track"><div class="bar-fill food" style="width:${Math.min(100,(env.food||0)/2)}%"></div></div>
+        <span class="resource-value">${env.food||0}</span>
+      </div>
+      <div class="resource-row">
+        <span class="resource-label">💵 Money</span>
+        <div class="bar-track"><div class="bar-fill money" style="width:${Math.min(100,(env.money||0)/5)}%"></div></div>
+        <span class="resource-value">$${env.money||0}</span>
+      </div>
+      <div class="resource-row">
+        <span class="resource-label">♥ Morale</span>
+        <div class="bar-track"><div class="bar-fill ${moraleClass(morale)}" style="width:${morale}%"></div></div>
+        <span class="resource-value">${morale}%</span>
+      </div>
+      <div class="resource-row">
+        <span class="resource-label">👥 Members</span>
+        <span class="resource-value">${rd.agentsPresent.size}/5</span>
+      </div>
+    </div>`;
+
+  for (const he of rd.historicalEvents) {
+    if (he) html += `<div class="historical-event">📜 ${he}</div>`;
+  }
+  for (const d of rd.departures) {
+    const concerns = d.data?.final_concerns || [];
+    const farewell = firstSentence(concerns[0] || "", 150);
+    html += `<div class="departure-box">
+      <div class="departed-name">🚪 ${d.agent} DEPARTS (satisfaction: ${d.data?.final_satisfaction ?? "?"})</div>
+      ${farewell ? `<div class="farewell">"${farewell}"</div>` : ""}
+    </div>`;
+  }
+
+  // Actions
+  html += `<div class="section"><h3>Actions</h3>`;
+  for (const a of rd.actions) {
+    if (!rd.agentsPresent.has(a.agent) && !rd.departures.find(d => d.agent === a.agent)) continue;
+    const ag = AGENTS[a.agent] || {};
+    const chosen = a.data?.chosen_action || "";
+    const actionType = chosen.split(" ")[0];
+    const detail = chosen.slice(actionType.length).trim().replace(/^<|>$/g, "");
+    const emoji = ACTION_EMOJI[actionType] || "❓";
+    html += `<div class="action-row">
+      <span class="action-agent ${ag.cls}">${ag.icon}</span>
+      <span class="action-role">${ag.role || ""}</span>
+      <span class="action-type">${emoji} ${actionType}</span>
+      <span class="action-detail">${detail ? (actionType === "SPEAK" || actionType === "ORGANIZE" ? `"${firstSentence(detail, 80)}"` : firstSentence(detail, 80)) : ""}</span>
+    </div>`;
+  }
+  html += `</div>`;
+
+  // Conversations — expandable
+  if (rd.conversations.length > 0) {
+    html += `<div class="section"><h3>Conversations</h3>`;
+    // group by conversation_id
+    const convos = {};
+    for (const c of rd.conversations) {
+      const cid = c.data?.conversation_id || `unknown_${convoCounter++}`;
+      if (!convos[cid]) convos[cid] = [];
+      convos[cid].push(c);
+    }
+    let shown = 0;
+    for (const [cid, turns] of Object.entries(convos)) {
+      if (shown >= 3) break;
+      const first = turns[0];
+      const ag = AGENTS[first.agent] || {};
+      // Find second speaker
+      const second = turns.find(t => t.agent !== first.agent);
+      const ag2 = second ? (AGENTS[second.agent] || {}) : null;
+      const pairLabel = ag2
+        ? `<span class="${ag.cls}">${ag.icon}</span> ↔ <span class="${ag2.cls}">${ag2.icon}</span>`
+        : `<span class="${ag.cls}">${ag.icon}</span>`;
+      const says = firstSentence((first.data?.says || "").replace(/^"|"$/g, ""), 140);
+      const inner = firstSentence((first.data?.inner_thought || "").replace(/^\*|\*$/g, ""), 120);
+      const expandId = `convo_${convoCounter++}`;
+
+      html += `<div class="conversation">
+        <div class="speaker">${pairLabel}</div>
+        <div class="says">"${says}"</div>
+        ${inner ? `<div class="inner">💭 ${inner}</div>` : ""}`;
+
+      if (turns.length > 1) {
+        html += `<button class="expand-btn" onclick="toggleConvo('${expandId}')">
+          ▶ Read full conversation (${turns.length} turns)
+        </button>
+        <div class="full-convo" id="${expandId}">`;
+        for (const t of turns) {
+          const ta = AGENTS[t.agent] || {};
+          const tsays = (t.data?.says || "").replace(/^"|"$/g, "");
+          const tinner = (t.data?.inner_thought || "").replace(/^\*|\*$/g, "");
+          html += `<div class="turn">
+            <span class="speaker ${ta.cls}">${ta.icon}</span>
+            <div class="turn-says">"${tsays}"</div>
+            ${tinner ? `<div class="turn-inner">💭 ${tinner}</div>` : ""}
+          </div>`;
+        }
+        html += `</div>`;
+      }
+      html += `</div>`;
+      shown++;
+    }
+    html += `</div>`;
+  }
+
+  // Key moments
+  if (rd.keyMoments.length > 0) {
+    html += `<div class="section"><h3>Key Moments</h3>`;
+    for (const km of rd.keyMoments.slice(0, 3)) {
+      const ag = AGENTS[km.agent] || {};
+      const kmFull = km.data?.description || "";
+      const kmShort = firstSentence(kmFull, 150);
+      const kmHasMore = kmFull.length > kmShort.length;
+      const kmId = `km_${rd.round}_${convoCounter++}`;
+      html += `<div class="key-moment">
+        <div class="desc"><span class="${ag.cls}">★ ${ag.icon}</span>: ${kmShort}${kmHasMore ? "…" : ""}</div>
+        ${kmHasMore ? `
+        <button class="expand-btn" onclick="toggleConvo('${kmId}')">▶ Read more</button>
+        <div class="full-convo" id="${kmId}" style="padding:10px 0 4px">
+          <div style="font-size:14px;line-height:1.65;color:#3a2e20">${kmFull}</div>
+        </div>` : ""}
+        ${km.data?.emotion ? `<div class="emotion">Feeling: ${km.data.emotion}</div>` : ""}
+      </div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Votes
+  for (const v of rd.votes) {
+    html += `<div class="vote-box">
+      🗳️ <strong>VOTE:</strong> ${firstSentence(v.data?.proposal || "", 100)}<br>
+      Result: ${v.data?.result || ""}
+    </div>`;
+  }
+
+  // Status strip
+  html += `<div class="status-strip">`;
+  html += `<div class="status-label">Satisfaction</div>`;
+  for (const [name, a] of Object.entries(AGENTS)) {
+    const sat = rd.satMap[name] ?? "?";
+    if (!rd.agentsPresent.has(name)) {
+      html += `<span class="status-agent status-gone">${a.icon} gone</span>`;
+    } else {
+      html += `<span class="status-agent ${satColorClass(sat)}">${a.icon} <span class="sat-val">${sat}</span></span>`;
+    }
+  }
+  html += `</div>`;
+  return html;
+}
+
+// ── Render: Finale ──
+function renderFinale() {
+  const final = roundData[roundData.length - 1];
+  // Agents who were ever in this run (from round 1)
+  const everPresent = roundData.length > 0 ? roundData[0].agentsPresent : new Set(Object.keys(AGENTS));
+  const departed = new Set();
+  for (const name of Object.keys(AGENTS)) {
+    if (everPresent.has(name) && !final.agentsPresent.has(name)) departed.add(name);
+  }
+
+  // ── Compute all stats first ──
+  const actionCounts = {};
+  const satStart = {};
+  const allKeyMoments = [];
+  let totalConvos = 0, totalVotes = 0, totalKeyMoments = 0;
+  let hardestWorker = null; let mostFarms = 0;
+  let mostWriter = null; let mostWrites = 0;
+  let mostSpeaker = null; let mostSpeeches = 0;
+
+  for (const rd of roundData) {
+    totalConvos += Object.keys(rd.conversations.reduce((a,c) => { a[c.data?.conversation_id||"x"]=1; return a; }, {})).length;
+    totalVotes += rd.votes.length;
+    totalKeyMoments += rd.keyMoments.length;
+    allKeyMoments.push(...rd.keyMoments);
+    for (const a of rd.actions) {
+      if (!actionCounts[a.agent]) actionCounts[a.agent] = {};
+      const t = (a.data?.chosen_action || "REST").split(" ")[0];
+      actionCounts[a.agent][t] = (actionCounts[a.agent][t] || 0) + 1;
+    }
+    for (const r of rd.reflections) {
+      if (r.data?.satisfaction != null && satStart[r.agent] == null)
+        satStart[r.agent] = r.data.satisfaction;
+    }
+  }
+
+  const satMin = {};
+  for (const rd of roundData) {
+    for (const r of rd.reflections) {
+      if (r.data?.satisfaction != null) {
+        const prev = satMin[r.agent];
+        if (!prev || r.data.satisfaction < prev.val)
+          satMin[r.agent] = { val: r.data.satisfaction, round: rd.round };
+      }
+    }
+  }
+  let bigDropper = null, bigDrop = 0, bigDropStart = 0, bigDropEnd = 0, bigDropRound = null;
+  for (const [name, startSat] of Object.entries(satStart)) {
+    const min = satMin[name];
+    const endSat = min?.val ?? (final.satMap[name] ?? startSat);
+    const drop = startSat - endSat;
+    if (drop > bigDrop) { bigDrop = drop; bigDropper = name; bigDropStart = startSat; bigDropEnd = endSat; bigDropRound = min?.round ?? null; }
+  }
+
+  const EMOTION_WEIGHT = { Devastation: 6, Cowardice: 5, Terror: 5, Desolation: 5, Despair: 4, Grief: 4, Dread: 3, Resignation: 2, Solidarity: 1 };
+  let featuredKM = null, featuredScore = -1;
+  for (const km of allKeyMoments) {
+    const score = (EMOTION_WEIGHT[km.data?.emotion] || 0) * 10 + (km.round || 0) * 0.1;
+    if (score > featuredScore) { featuredScore = score; featuredKM = km; }
+  }
+
+  for (const [name, counts] of Object.entries(actionCounts)) {
+    const farms = counts["FARM"] || 0;
+    const writes = counts["WRITE"] || 0;
+    const speaks = (counts["SPEAK"] || 0) + (counts["ORGANIZE"] || 0);
+    if (farms > mostFarms) { mostFarms = farms; hardestWorker = name; }
+    if (writes > mostWrites) { mostWrites = writes; mostWriter = name; }
+    if (speaks > mostSpeeches) { mostSpeeches = speaks; mostSpeaker = name; }
+  }
+
+  const topActions = Object.entries(actionCounts).map(([name, counts]) => {
+    const top = Object.entries(counts).sort((a,b) => b[1]-a[1])[0];
+    return { name, action: top?.[0] || "?", count: top?.[1] || 0 };
+  });
+
+  // ── Render in order: header → fates → quote → stats → char notes → top actions → footer ──
+  let html = `
+    <div class="finale-scene">🌳 &nbsp;🍂&nbsp; 🏚️ &nbsp; 🏚️ &nbsp;🍂&nbsp; 🌳</div>
+    <div style="text-align:center;opacity:0.4;font-size:16px;letter-spacing:3px">🌿 &nbsp;&nbsp;&nbsp; 🍂 &nbsp; 🍂 &nbsp;&nbsp;&nbsp; 🌿</div>
+    <div class="finale-title">
+      <h1>T H E &nbsp; E N D</h1>
+      <div class="subtitle">${final.env.date || ""} — Brook Farm closes.</div>
+    </div>
+    <hr class="divider">
+    <div class="section-title">👥 FINAL FATES</div>`;
+
+  for (const [name, a] of Object.entries(AGENTS)) {
+    if (!everPresent.has(name)) continue;
+    const sat = final.satMap[name] ?? "?";
+    let statusLine = "", farewell = "";
+    if (departed.has(name)) {
+      for (const rd of roundData) {
+        for (const d of rd.departures) {
+          if (d.agent === name) {
+            statusLine = `<span class="red">Departed round ${d.data?.round||"?"} (${d.data?.date||""})</span>`;
+            farewell = firstSentence((d.data?.final_concerns||[])[0] || "", 120);
+          }
+        }
+      }
+    } else {
+      statusLine = `<span class="dim">Remained to the end</span>`;
+    }
+    html += `<div class="fate">
+      <div class="name"><span class="${a.cls}">${a.icon}</span> — ${a.role}</div>
+      <div class="status-line"><span class="${satColorClass(sat)}">Satisfaction: ${sat}</span> &nbsp;•&nbsp; ${statusLine}</div>
+      ${farewell ? `<div class="farewell-quote">"${farewell}"</div>` : ""}
+    </div>`;
+  }
+
+  // Featured key moment quote — right after fates
+  if (featuredKM) {
+    const kmAgent = AGENTS[featuredKM.agent] || {};
+    const kmFull = featuredKM.data.description || "";
+    const kmShort = firstSentence(kmFull, 160);
+    const kmHasMore = kmFull.length > kmShort.length;
+    const kmExpandId = "km_featured";
+    html += `<hr class="divider">
+    <div style="margin:24px 0;padding:0 8px">
+      <div style="font-size:18px;font-family:'Crimson Pro',serif;font-style:italic;line-height:1.6;color:#3a2e20">
+        "${kmShort}${kmHasMore ? "…" : ""}"
+      </div>
+      ${kmHasMore ? `
+      <button class="expand-btn" onclick="toggleConvo('${kmExpandId}')" style="margin-top:8px">
+        ▶ Read full moment
+      </button>
+      <div class="full-convo" id="${kmExpandId}" style="margin-top:12px">
+        <div style="font-size:17px;font-family:'Crimson Pro',serif;font-style:italic;line-height:1.65;color:#3a2e20;padding:12px 0">"${kmFull}"</div>
+      </div>` : ""}
+      <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.45;letter-spacing:1px">
+        — <span class="${kmAgent.cls}">${featuredKM.agent}</span>, Round ${featuredKM.round || "?"}
+        ${featuredKM.data?.emotion ? ` &nbsp;·&nbsp; ${featuredKM.data.emotion}` : ""}
+      </div>
+    </div>`;
+  }
+
+  // Stats + character notes
+  html += `<hr class="divider">
+    <div class="final-stats" style="text-align:left">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin-bottom:16px">By the numbers</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;margin-bottom:20px">
+        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
+          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalConvos}</div>
+          <div style="opacity:0.5;margin-top:2px">conversations had</div>
+        </div>
+        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
+          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalVotes}</div>
+          <div style="opacity:0.5;margin-top:2px">rules voted on</div>
+        </div>
+        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
+          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalKeyMoments}</div>
+          <div style="opacity:0.5;margin-top:2px">moments they'll remember</div>
+        </div>
+        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
+          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${final.env.morale ?? 0}%</div>
+          <div style="opacity:0.5;margin-top:2px">morale at the end</div>
+        </div>
+        ${bigDropper ? `<div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px;grid-column:1/-1">
+          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${bigDropStart} → ${bigDropEnd}</div>
+          <div style="opacity:0.5;margin-top:2px">${bigDropper.split(" ")[0]}'s satisfaction — fell ${bigDrop} points${bigDropRound === roundData.length ? ", never recovered" : bigDropRound ? `, hit bottom round ${bigDropRound}, never recovered` : ""}</div>
+        </div>` : ""}
+      </div>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin-bottom:12px">Character notes</div>
+      <div style="font-size:16px;line-height:2">
+        ${hardestWorker ? `🌾 <strong>${hardestWorker.split(" ")[0]}</strong> farmed the most — ${mostFarms} times. Nobody thanked them.` : ""}
+        ${mostWriter ? `<br>✍️ <strong>${mostWriter.split(" ")[0]}</strong> wrote the most — ${mostWrites} rounds of personal work.` : ""}
+        ${mostSpeaker ? `<br>🗣️ <strong>${mostSpeaker.split(" ")[0]}</strong> gave the most speeches — ${mostSpeeches} times addressing the community.` : ""}
+      </div>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin:20px 0 10px">What each person mostly did</div>
+      ${topActions.map(({name, action, count}) => {
+        const a = AGENTS[name] || {};
+        const emoji = ACTION_EMOJI[action] || "·";
+        return `<div style="font-size:15px;margin-bottom:6px"><span class="${a.cls}">${a.icon}</span> &nbsp; ${emoji} ${action} &nbsp;<span style="opacity:0.45;font-family:'JetBrains Mono',monospace;font-size:12px">${count}×</span></div>`;
+      }).join("")}
+    </div>`;
+
+  const runSummary = RUN_META[currentRunKey]?.summary;
+  if (runSummary) {
+    html += `<div style="max-width:560px;margin:64px auto 0;padding:0 24px;text-align:center;animation:fadeUp 1.2s ease both">
+      <div style="font-family:'Lora',serif;font-size:15px;font-style:italic;line-height:1.85;color:#5a4a30">${runSummary} 🎬</div>
+    </div>`;
+  }
+
+  html += `<div style="text-align:center;margin:40px 0 16px">
+    <button onclick="goRunPicker()" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;padding:12px 28px;background:#3a2e20;color:#f5f0e8;border:none;border-radius:3px;cursor:pointer;">
+      ← Choose another run
+    </button>
+  </div>`;
+
+  return html;
+}
+
+// ── Navigation ──
+function show(screenId) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(screenId).classList.add("active");
+}
+
+function renderCurrent() {
+  const btnBack = document.getElementById("btn-back");
+  const btnNext = document.getElementById("btn-next");
+  const indicator = document.getElementById("round-indicator");
+  const btnHome = document.getElementById("btn-home");
+
+  if (!currentRunKey) {
+    document.getElementById("home-screen").innerHTML = renderHome();
+    show("home-screen");
+    btnBack.disabled = true; btnBack.textContent = "← Back";
+    btnNext.disabled = true; btnNext.textContent = "Begin →";
+    indicator.textContent = "";
+    return;
+  }
+
+  btnBack.style.display = ""; btnNext.style.display = ""; btnHome.style.display = "";
+
+  if (currentIdx === -1) {
+    document.getElementById("intro-screen").innerHTML = renderIntro();
+    show("intro-screen");
+    btnBack.disabled = true;
+    btnNext.textContent = "Begin →"; btnNext.disabled = false;
+    indicator.textContent = RUN_META[currentRunKey]?.name || currentRunKey;
+  } else if (currentIdx < roundData.length) {
+    document.getElementById("round-screen").innerHTML = renderRound(roundData[currentIdx]);
+    show("round-screen");
+    btnBack.disabled = false;
+    btnNext.textContent = currentIdx === roundData.length - 1 ? "Finale →" : "Next →";
+    btnNext.disabled = false;
+    indicator.textContent = `Round ${roundData[currentIdx].round} / ${roundData.length}`;
+  } else {
+    document.getElementById("finale-screen").innerHTML = renderFinale();
+    show("finale-screen");
+    btnBack.disabled = false;
+    btnNext.disabled = true; btnNext.textContent = "End";
+    indicator.textContent = "Finale";
+  }
+  window.scrollTo(0, 0);
+}
+
+function selectRun(key) {
+  currentRunKey = key;
+  document.body.classList.remove("on-home");
+  roundData = parseEvents(ALL_RUNS[key]);
+  currentIdx = -1;
+  // Hide home button in single-run mode
+  const homeBtn = document.getElementById("btn-home");
+  if (homeBtn && Object.keys(ALL_RUNS).length <= 1) {
+    homeBtn.style.display = "none";
+  }
+  renderCurrent();
+}
+
+function goRunPicker() {
+  document.body.classList.remove("on-landing");
+  document.body.classList.add("on-home");
+  currentRunKey = null;
+  roundData = [];
+  currentIdx = -1;
+  renderCurrent();
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  // 🏠 goes back to landing if on run picker, otherwise to run picker
+  if (!currentRunKey) {
+    document.getElementById("landing-screen").innerHTML = renderLanding();
+    show("landing-screen");
+    document.body.classList.add("on-landing");
+    document.body.classList.remove("on-home");
+    window.scrollTo(0, 0);
+  } else {
+    currentRunKey = null;
+    roundData = [];
+    currentIdx = -1;
+    document.body.classList.add("on-home");
+    renderCurrent();
+  }
+}
+
+function goNext() {
+  if (currentRunKey && currentIdx < roundData.length) { currentIdx++; renderCurrent(); }
+}
+function goBack() {
+  if (currentIdx > -1) { currentIdx--; renderCurrent(); }
+  else if (currentIdx === -1 && currentRunKey) { goRunPicker(); }
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") { e.preventDefault(); goNext(); }
+  if (e.key === "ArrowLeft" || e.key === "Backspace") { e.preventDefault(); goBack(); }
+  if (e.key === "Escape") { e.preventDefault(); goHome(); }
+});
+
+// ── Boot: load data from external file ──
+fetch('replay_data.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Failed to load replay_data.json');
+    return r.json();
+  })
+  .then(data => {
+    if (data.runs) {
+      // New format: {meta: {...}, runs: {...}}
+      ALL_RUNS = data.runs;
+      RUN_META = data.meta || {};
+    } else {
+      // Legacy format: {key: events}
+      ALL_RUNS = data;
+      buildRunMeta();
+    }
+    // Always show landing first
+    document.getElementById("landing-screen").innerHTML = renderLanding();
+    show("landing-screen");
+    document.body.classList.add("on-landing");
+    window.scrollTo(0, 0);
+  })
+  .catch(err => {
+    document.getElementById('app').innerHTML =
+      '<p style="color:#c0392b;margin-top:40px;">Could not load replay_data.json.<br><br>' +
+      '1. Generate data: <code>python make_replay_data.py ../runs/</code><br>' +
+      '2. Serve locally: <code>python -m http.server 8000</code> (from replay/ dir)<br>' +
+      '3. Open: <code>http://localhost:8000/replay.html</code></p>';
+  });
+</script>
+</body>
+</html>

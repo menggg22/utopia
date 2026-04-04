@@ -1,4 +1,4 @@
-# Utopia Lab: Simulate Utopian Communities with AI Agents
+# Digital Brook Farm: Simulating Utopia with AI Agents
 
 **[Watch the replay](https://menggg22.github.io/utopia/replay.html)** — step through 30 rounds of AI agents trying to build utopia.
 

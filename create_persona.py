@@ -235,7 +235,7 @@ def main():
 
     print()
     print("=" * 50)
-    print("  UTOPIA LAB — Community Creator")
+    print("  UTOPIA — Community Creator")
     print("=" * 50)
     print()
     print("  Choose a starting point, or design from scratch:")

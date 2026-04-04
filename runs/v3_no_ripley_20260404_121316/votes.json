@@ -1,0 +1,32 @@
+[
+  {
+    "round": 11,
+    "date": "Dec 1842",
+    "proposal": "A FORMAL RESOURCE RATIONING SYSTEM BASED ON WEEKLY HOUSEHOLD NEEDS RATHER THAN LABOR THEORY",
+    "proposed_by": "Nathaniel Hawthorne",
+    "votes": {
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "The labor theory was always a beautiful fiction\u2014one man cannot transcend hunger or debt through belief alone. A rationing system based on actual need is the only mathematics that will keep us solvent long enough for anyone to gain anything from being here at all."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "The school requires clear allocation of resources to survive the coming months. I cannot maintain what we have built on ledgers George refuses to examine and principles that do not feed our students. Practical measurement of actual need is not a betrayal of our ideals\u2014it is the only way to preserve anything at all."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "A formal system means an end to the pretense that our labor balances our consumption \u2014 a fiction I have been maintaining in my ledgers while watching people go hungry. Transparency, however painful, is more honest than the mythology we have been living."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "Hawthorne speaks what we all feel but will not say\u2014that our ideals have failed to make bread and rent. A system based on need rather than labor merit at least does not pretend. I vote for our survival, not our philosophy."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  }
+]

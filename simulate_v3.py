@@ -1394,7 +1394,7 @@ def run_simulation(config: dict = None):
                 return emoji
         return "😐"
 
-    print(f"\n  🏛️  UTOPIA LAB")
+    print(f"\n  🏛️  UTOPIA SIMULATION")
     print(f"  {'─'*50}")
     print(f"  {exp_name}")
     print(f"  {n_rounds} rounds · {len(agents)} agents · seed {seed}")
@@ -1826,7 +1826,7 @@ def run_simulation(config: dict = None):
     survived_str = ', '.join(survived) if survived else 'None'
 
     print(f"\n  {'═'*52}")
-    print(f"  🏛️  UTOPIA LAB — SIMULATION COMPLETE")
+    print(f"  🏛️  SIMULATION COMPLETE")
     print(f"  {'─'*52}")
     print(f"  Rounds: {round_num} · LLM calls: {total_llm_calls} · {wall_time:.0f}s")
     print(f"  🌾 Food: {env.food}  💰 Money: ${env.money}  ❤️ Morale: {env.morale}%")
