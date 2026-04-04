@@ -1,0 +1,24 @@
+{
+  "version": "v2",
+  "name": "no_hawthorne",
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "rounds": 30,
+  "seed": 42,
+  "agents": [
+    "George Ripley",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "environment": {
+    "food": 100,
+    "money": 500,
+    "morale": 80
+  },
+  "timestamp": "20260403_085921",
+  "run_dir": "runs/v2_no_hawthorne_20260403_085921",
+  "git_hash": "bf6a903eec86b52111713c04f624a2a154cef45a",
+  "config_source": "experiments/v2/no_hawthorne.json",
+  "notes": null
+}

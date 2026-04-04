@@ -1,4 +1,5 @@
 {
+  "version": "v3",
   "name": "baseline",
   "rounds": 30,
   "seed": 3,

@@ -1,0 +1,111 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Nathaniel Hawthorne, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$222, Morale=0%
+Departed: None
+Survived: George Ripley, Nathaniel Hawthorne, Charles Dana, John Sullivan Dwight
+Total events: 1501
+LLM calls: 304
+Wall time: 5076.5s
+
+Action counts per agent:
+  Charles Dana:
+    TRADE: 6
+    WRITE: 5
+    FARM: 4
+    REPAIR the Hive: 2
+    TEACH: 2
+    REPAIR <the Hive — south corner and support beams>: 1
+    SPEAK on the implications of Brisbane's Fourierist proposal: 1
+    SPEAK <about honest accounting and priorities>: 1
+    ORGANIZE <event> — Winter Gathering (Readings, music, discourse, paid admission): 1
+    ORGANIZE <SPRING LITERARY SALON — "REFORM & RENEWAL": READINGS, DEBATE, HAWTHORNE'S NEWEST WORK, PAID ADMISSION>: 1
+    ORGANIZE <EVENT>: 1
+    SPEAK <the mathematics of our situation, and what comes next>: 1
+    REPAIR The Nest: 1
+    SPEAK about the financial mathematics and what they mean for Brook Farm's survival: 1
+    SPEAK (Address the community about our situation): 1
+    SPEAK <about the choices before us>: 1
+  George Ripley:
+    FARM: 11
+    REST: 2
+    SPEAK <our mission and the labor we all must share>: 1
+    REPAIR <the Nest>: 1
+    SPEAK <about shared responsibility and the poetry of labor>: 1
+    REPAIR <The Hive>: 1
+    SPEAK <on the authentic division of labor>: 1
+    REPAIR <The Nest>: 1
+    SPEAK (emergency gathering, food crisis): 1
+    SPEAK about our situation and what it demands of us: 1
+    SPEAK <about Brisbane's proposal and our path forward>: 1
+    ORGANIZE <evening gathering and honest accounting>: 1
+    TRADE: 1
+    SPEAK <on the Phalanstery proposal and community direction>: 1
+    : 1
+    SPEAK <about the crisis and what we must do together>: 1
+    SPEAK about the reality of our circumstances: 1
+    SPEAK <truth about our condition>: 1
+    SPEAK <the truth of our condition>: 1
+  John Sullivan Dwight:
+    ORGANIZE <event>: 7
+    TEACH: 5
+    WRITE: 4
+    FARM: 3
+    ORGANIZE <evening concert with all available members>: 1
+    SPEAK about what we are truly preserving: 1
+    SPEAK <on the fragility of shared vision and the courage required to admit it>: 1
+    SPEAK <the truth of our condition>: 1
+    ORGANIZE <sunset gathering with music for honest accounting>: 1
+    ORGANIZE <an evening gathering—honest accounting, music, and light>: 1
+    SPEAK <about the Phalanstery and our true path forward>: 1
+    SPEAK about our real strengths and what must change: 1
+    ORGANIZE <Winter Gathering musical program>: 1
+    SPEAK <about why we gathered here—what beauty and education mean beyond the balance sheet>: 1
+    ORGANIZE <evening gathering with music>: 1
+  Nathaniel Hawthorne:
+    TEACH: 9
+    REST: 4
+    TRADE: 4
+    REPAIR <The Nest>: 1
+    WRITE: 1
+    SPEAK <about Brisbane's proposal and the necessity of disciplined organization>: 1
+    SPEAK about the precarious state of our resources and what honesty demands of us: 1
+    SPEAK about the financial reality and the choice before us: 1
+    SPEAK <the actual condition of our finances and what it demands>: 1
+    ORGANIZE <event>: 1
+    ORGANIZE <SPRING LECTURE SERIES: "Literature & Reform">: 1
+    REPAIR <the Nest roof>: 1
+    SPEAK <the farm's financial condition and future>: 1
+    SPEAK <on the arithmetic and what must come>: 1
+    SPEAK <the farm's finances>: 1
+    SPEAK (Address the community about the farm's true financial position): 1
+
+Key moments:
+  Round 6 (Feb 1841): John Sullivan Dwight — Yes. This is the day the silence broke. [Recognition]
+  Round 7 (Apr 1842): Nathaniel Hawthorne — Dwight and I walked toward the apple orchard in the failing light. He saw behind my mask and spoke aloud what I have been performing. This matters. I will remember this. [Seen]
+  Round 7 (Apr 1842): John Sullivan Dwight — Yes. This is the day we stopped pretending the silence could save us. [Recognition]
+  Round 12 (Feb 1842): John Sullivan Dwight — Yes. George's penetrating attention and refusal to let me hide marked a turning point from isolation to connection within this community. [Relief]
+  Round 13 (Apr 1843): Charles Dana — George Ripley's visible doubt spreading. When a founder loses certainty, followers feel it in the marrow. This is the night the community began to unravel, though most do not yet know it. [Apprehension]
+  Round 13 (Apr 1843): John Sullivan Dwight — Yes—George opened himself to me, not as School Director or musician, but as someone he trusts with the deeper currents moving beneath our community. His reaching for me in that failing light felt like a threshold. [Trust]
+  Round 14 (Jun 1843): Nathaniel Hawthorne — The conversation with Dwight. Not because anything changed, but because for the first time, the masquerade was briefly lowered between us, and I saw my reflection in another man's doubt. [Recognition]
+  Round 15 (Aug 1843): George Ripley — The realization that Hawthorne now seeks comfort from Dana rather than from me—the man he once trusted utterly. [Betrayal]
+  Round 15 (Aug 1843): Charles Dana — Yes. This is the night George's certainty fractured visibly before the community. Not a fire, not a vote—but the moment before the collapse begins. In years hence, I will mark this as the beginning. [Dread]
+  Round 16 (Oct 1843): George Ripley — The evening conversation. Dwight's confession to Hawthorne that he does not truly believe—that is the moment my last hope fractures. It is one thing to worry in solitude. It is another to hear it spoken aloud by a man I trusted to carry the faith forward. [Betrayal]
+  Round 16 (Oct 1843): Charles Dana — Yes. This is the night the mathematical fiction of Brook Farm was directly renounced. Dwight said it aloud. Hawthorne heard it. I heard it. No one can pretend afterward that we do not know. [Dread]
+  Round 16 (Oct 1843): John Sullivan Dwight — Yes. This is the day we stopped rehearsing our faith in the numbers and spoke plainly about the arithmetic of our survival. Hawthorne's courage in asking, my willingness to answer—this marks a threshold. The silence is broken. What comes after, I cannot yet say. [Recognition]
+  Round 17 (Dec 1843): George Ripley — The evening conversation with Charles Dana. This is the moment when even my most stalwart deputy ceases to offer comfort and instead offers only honesty—and a warning. "Men will follow you further into this than they ought." Years from now, I will remember sitting in that room, hearing those words, and understanding that we are no longer pretending together. We are watching the dream fail in real time, and both of us know it. [Complicity]
+  Round 17 (Dec 1843): Charles Dana — George Ripley's admission—his willingness to be broken in front of me. This is the night the founder himself ceases to be the shield. Everything that follows will be shadow. [Dread]
+  Round 18 (Feb 1843): Nathaniel Hawthorne — The evening conversation with Dwight. He articulated—without judgment, with only recognition—that the crisis is not coming. It is here. And in his acknowledgment, the masquerade fractured in a way that cannot be repaired. This is the moment when the farm ceased to be something I am testing and became something I am witnessing fail. I am no longer a participant. I am a chronicler of its dissolution. [Recognition]
+  Round 18 (Feb 1843): Charles Dana — Yes. Tonight Hawthorne and Dwight spoke aloud what every careful observer has known in silence for weeks. The mathematics cannot hold. The founder cannot hide his sleeplessness. There is no redemption in hard work alone. This is the moment before the avalanche moves—when all the weight of snow settles into new geometry and only the mountain knows what comes next. [Witness]
+  Round 19 (Apr 1844): John Sullivan Dwight — Yes. This is the day we stopped rehearsing faith in our ideals and spoke the numbers plainly. Hawthorne's courage, my own willingness to confirm what he already knew—this threshold will divide everything that follows into before and after. [Catharsis]
+  Round 20 (Jun 1844): George Ripley — The evening conversation. When two men I trust most ceased to look toward me for hope and instead looked at each other with the recognition that we are watching this fail in real time. [Abandonment]
+  Round 20 (Jun 1844): Charles Dana — Yes. The evening conversation with Hawthorne where he asked me directly whether we should abandon this place with our dignity intact, rather than starving slowly in service to a fiction. This is the night the unspoken mathematics became audible. I cannot unknow what we both now know we both know. [Grief]
+  Round 20 (Jun 1844): John Sullivan Dwight — Yes. This is the night the community ceased pretending. Hawthorne forced the question; Dana did not look away. There is no going back now. [Despair]
+  Round 21 (Aug 1844): George Ripley — The conversation with Dwight—when he ceased even the kindness of pretense and spoke aloud his loss of faith. This is the moment I will mark as the one when I understood I could no longer serve as the light I promised to be. The moment the witness became the wound. [Helplessness]
+  Round 21 (Aug 1844): Nathaniel Hawthorne — Yes. Ripley asking Dwight to speak plainly about the farm's dissolution. The moment when the architect of the dream begins to see the ledger clearly. This is the beginning of the end being spoken aloud by the man whose faith has held us all in place. [Dread]
+  Round 21 (Aug 1844): Charles Dana — Yes. George's admission of his own fracture to Dwight, and Dwight's refusal to sustain the comfortable silence. The founder's private torment becomes shared; the knowledge spreads inward through the circle. [Dread]
+  Round 21 (Aug 1844): John Sullivan Dwight — Yes. This is the night we stopped performing hope and began living in truth. Everything that comes after will know this as the threshold. [Liberation]
+  Round 24 (Feb 1844): Charles Dana — Yes—Tonight I spoke aloud to Hawthorne what I have calculated in silence: that we are not slowly failing, but failing on schedule. This is the moment when the solitary burden becomes shared knowledge, and everything that follows will be shadow. [Resignation]

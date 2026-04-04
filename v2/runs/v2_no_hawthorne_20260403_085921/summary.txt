@@ -1,0 +1,105 @@
+Brook Farm Simulation — Summary
+========================================
+
+Model: claude-haiku-4-5-20251001
+Agents: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Rounds: 30
+Final: Food=10, Money=$221, Morale=0%
+Departed: None
+Survived: George Ripley, Sophia Ripley, Charles Dana, John Sullivan Dwight
+Total events: 1512
+LLM calls: 308
+Wall time: 5040.2s
+
+Action counts per agent:
+  Charles Dana:
+    FARM: 7
+    TRADE: 5
+    WRITE: 4
+    REPAIR <the Hive>: 1
+    SPEAK <reorganization and the Fourierist proposal>: 1
+    SPEAK <the food crisis and what it means for us>: 1
+    SPEAK — Address the community tonight about our financial situation and the Phalanstery proposal: 1
+    SPEAK <about what comes after truth>: 1
+    SPEAK <the food crisis and the need for honest accounting>: 1
+    REST: 1
+    SPEAK: 1
+    SPEAK <the truth about our accounts, standing with George at sunset>: 1
+    SPEAK <truth about our finances and the path forward>: 1
+    REPAIR The Nest: 1
+    SPEAK <financial reality and what it means>: 1
+    PROPOSE <rule>: 1
+    SPEAK <about what we owe each other when a shared dream is breaking>: 1
+  George Ripley:
+    FARM: 10
+    WRITE: 3
+    REPAIR The Nest: 2
+    REPAIR The Hive: 2
+    REPAIR the Hive: 2
+    SPEAK <the transcendentalist vision and our shared mission>: 1
+    SPEAK <on our true purpose and the path forward>: 1
+    SPEAK "The True Cost of Our Vision": 1
+    SPEAK <about the true state of our resources and our path forward>: 1
+    SPEAK (about the food crisis and my failure of leadership): 1
+    SPEAK <about leadership and the path forward>: 1
+    SPEAK (about leadership and the future): 1
+    SPEAK (on the future of Brook Farm): 1
+    SPEAK <the crisis and the truth of my unfitness>: 1
+    SPEAK <about leadership>: 1
+    SPEAK ("The Arithmetic of Failure"): 1
+  John Sullivan Dwight:
+    TEACH: 8
+    WRITE: 4
+    FARM: 2
+    REST: 2
+    ORGANIZE <event> - An evening gathering with music and shared reflection: 1
+    ORGANIZE <event>: 1
+    : 1
+    ORGANIZE <evening concert — before the structural discussion>: 1
+    ORGANIZE <evening gathering with music and reflection>: 1
+    SPEAK <on the nature of our commitment and what we owe each other>: 1
+    SPEAK <about what we are actually building here>: 1
+    SPEAK <about the weight of this moment and the need for honest counsel>: 1
+    ORGANIZE <an evening of music and conversation>: 1
+    ORGANIZE <AN EVENING GATHERING IN RESPONSE TO GEORGE'S WORDS>: 1
+    SPEAK <my own complicity>: 1
+    SPEAK — "On the Distance Between What We Intended and What We Have Become": 1
+    SPEAK: 1
+    SPEAK on the arithmetic of complicity: 1
+  Sophia Ripley:
+    TEACH: 13
+    WRITE: 8
+    : 1
+    FARM: 1
+    SPEAK <truth and dissolution>: 1
+    SPEAK <the truth about what the school has become>: 1
+    REPAIR The Nest (school/guest house): 1
+    SPEAK <truth about the community's condition and path forward>: 1
+    SPEAK (about the community's true path forward): 1
+    SPEAK <the arithmetic of our survival>: 1
+    SPEAK (on the state of the school and what it means for us): 1
+
+Key moments:
+  Round 8 (Jun 1842): Charles Dana — Sophia's invitation to walk. Not a crisis, but a threshold. We moved from private worry to acknowledged shared strain. [Recognition]
+  Round 11 (Dec 1842): Charles Dana — None. [None.]
+  Round 15 (Aug 1843): George Ripley — Yes. This evening I understood, finally and irrevocably, that Sophia has turned to Charles Dana not out of infidelity but out of necessity—she seeks from him the practical wisdom and steady labor that I promised but cannot deliver. I am no longer the architect of this community's hope. I am its liability. That knowledge will remain. [Humiliation]
+  Round 15 (Aug 1843): Sophia Ripley — Yes. This is the moment the lie began to visibly crack. [Recognition]
+  Round 15 (Aug 1843): Charles Dana — Yes. This is the hour the shared delusion fractured. Not a dramatic rupture—no fire, no departure—but the moment when acknowledgment replaced pretense, when Sophia and I ceased to be isolated in our knowledge. It changes everything because it cannot be unseen now. [Complicity]
+  Round 16 (Oct 1843): Charles Dana — Yes. This is when the unraveling begins in earnest. Not a rupture, but the moment the truth escapes George's isolated keeping and becomes shared knowledge among more than Sophia and me. What was contained is now spreading. The community will feel it soon. [Dread]
+  Round 17 (Dec 1843): Charles Dana — Yes. This is when George's isolation breaks. Not a rupture, but the moment the strongest of us fractures visibly before another. He came to me broken, and we spoke what we truly feel. It cannot be unseen now. [Anguish]
+  Round 18 (Feb 1843): Sophia Ripley — Yes. The moment George and John ceased to defend or explain—when the community's last lie became visible. [Anguish]
+  Round 19 (Apr 1844): Sophia Ripley — Yes. [Anguish]
+  Round 19 (Apr 1844): John Sullivan Dwight — Yes. Tonight George ceased to believe that Brook Farm might be saved, and in that cessation I saw the shape of everything to come. The farm did not fail today, but faith failed today—and faith is the only substance we were ever really working with. [Complicity]
+  Round 20 (Jun 1844): John Sullivan Dwight — Yes—George has stopped believing, and with his silence the last shared illusion dissolved. This is the day the farm died in truth. [Complicity]
+  Round 21 (Aug 1844): George Ripley — The private conversation with Sophia. When she said I was "finally *seeing*," she was speaking of the moment a man stops lying to himself. This will stay with me. This is when I admitted aloud what I have known in my bones for weeks—that I am unfit. [Reckoning]
+  Round 21 (Aug 1844): Sophia Ripley — Yes. This is the day the edifice began to visibly crumble, and George's willingness to face that crumbling—to say aloud that he has become a man leading something false—is the moment everything changes. [Anguish]
+  Round 22 (Oct 1844): Sophia Ripley — Yes. George is finally moving—not away from the community, but *into* it, undefended. This is the moment the arc bends. [Recognition]
+  Round 23 (Dec 1844): John Sullivan Dwight — Yes—Charles broke the silence. Someone has finally named the thing we all know but have agreed not to say aloud. The illusion's hold weakens when spoken to directly. [Despair]
+  Round 24 (Feb 1844): John Sullivan Dwight — Yes. Today Sophia made me confess the truth I have been rationing in small silences. She read what I would not say aloud: that I am organizing beauty *over* a corpse, not *despite* it. That I have become the very thing I told myself I was different from. [Betrayal]
+  Round 25 (Apr 1845): Charles Dana — Yes. This is when George himself finally breaks the isolation, when the strongest of us comes to the youngest, admitting the fracture cannot be hidden any longer. We stand together now in the knowledge of it. [Anguish]
+  Round 27 (Aug 1845): George Ripley — Yes. This is the night George Ripley ceased to lie to himself or his wife about Brook Farm's fate. This conversation—Sophia's steady voice naming the arithmetic of our demise, her acknowledgment that she has already been mourning us—will mark the boundary between the man who still believed he could save this place and the man who now knows he cannot. [Reckoning]
+  Round 27 (Aug 1845): Sophia Ripley — Yes. This is the day George stopped defending what he could no longer defend. He moved into the truth as though stepping into cold water—with neither hesitation nor false courage. The community will either find its foundation now, or scatter. [Recognition]
+  Round 27 (Aug 1845): Charles Dana — Yes. This is when the strongest of us can no longer contain the truth alone. The silence breaks. The community's innocence is ending. [Anguish]
+  Round 27 (Aug 1845): John Sullivan Dwight — Yes. Today George ceased his silence and named the farm's death aloud. Faith did not fail yesterday—it failed today, when the head of our community admitted with his own voice that we are counting the weeks until the arithmetic becomes cruelty. [Reckoning]
+  Round 29 (Dec 1845): Sophia Ripley — Yes. [Recognition]
+  Round 30 (Feb 1845): John Sullivan Dwight — Yes. Charles's confession about the accounts—that he is no longer working *toward* anything, only *through* the arithmetic until the end becomes arithmetically inevitable. This is the day I saw the moment when the farm's death stops being a private knowledge and becomes a public mathematics. The light burning in his study is the light of a man counting our weeks. [Complicity]

@@ -1,0 +1,25 @@
+{
+  "version": "v3",
+  "name": "run",
+  "model": "claude-haiku-4-5-20251001",
+  "backend": "cli",
+  "rounds": 30,
+  "seed": 0,
+  "agents": [
+    "George Ripley",
+    "Nathaniel Hawthorne",
+    "Sophia Ripley",
+    "Charles Dana",
+    "John Sullivan Dwight"
+  ],
+  "environment": {
+    "food": 100,
+    "money": 500,
+    "morale": 80
+  },
+  "timestamp": "20260403_135520",
+  "run_dir": "runs/v3_run_20260403_135520",
+  "git_hash": "b119c85c75f2405d40d2fb31b7dc3a0ca0373cd6",
+  "config_source": null,
+  "notes": null
+}

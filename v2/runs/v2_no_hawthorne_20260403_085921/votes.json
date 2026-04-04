@@ -1,0 +1,32 @@
+[
+  {
+    "round": 29,
+    "date": "Dec 1845",
+    "proposal": "<RULE>",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "George Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 0,
+      "NO": 0,
+      "ABSTAIN": 4
+    }
+  }
+]

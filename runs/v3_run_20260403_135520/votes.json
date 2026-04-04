@@ -1,0 +1,70 @@
+[
+  {
+    "round": 2,
+    "date": "Jun 1841",
+    "proposal": "A RULE REQUIRING DAILY FINANCIAL RECORD-KEEPING AND MONTHLY ACCOUNTING REVIEWS BY ALL TRUSTEES",
+    "proposed_by": "Nathaniel Hawthorne",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "The community's accounts do not balance\u2014I know this truth, even if I have not spoken it aloud. If we are to prove that transcendentalist ideals can govern a functioning society, we cannot ignore the ledgers. Hawthorne's proposal, though I hear the doubt in it, addresses a genuine necessity."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "As trustee of finance, I cannot manage what I cannot measure. Dana's confusion with the ledgers is no fault of his own\u2014the system itself is chaos. Proper record-keeping is the only way to know if this enterprise can possibly sustain itself, let alone enrich my own prospects."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "\"The accounts will not balance themselves, and sentiment cannot feed us. If we are to prove that idealism can be practiced in the world, we must first master the world's arithmetic.\""
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "Better record-keeping serves truth, and I am learning that truth\u2014however difficult\u2014is the only foundation upon which to build anything lasting. Hawthorne understands this. The ledgers need daily scrutiny if we are to navigate what lies ahead."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The community's survival depends upon order as much as inspiration. Mr. Hawthorne speaks from skepticism, perhaps\u2014but his concern for fiscal oversight is not unwarranted. I came here to escape the tedious minutiae of administration, yet I am beginning to see that even our noblest aspirations require... structure."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 5,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 13,
+    "date": "Apr 1843",
+    "proposal": "<RULE>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "We cannot sustain this community through ideals alone\u2014our cupboards grow emptier with each passing month. Daily accounting will neither corrupt our principles nor save us, but it may at least reveal whether we have any path forward before December arrives and the choice is made for us."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "This is the only honest thing we have done since Mr. Hawthorne arrived. I cannot teach my students the virtues of self-deception while voting against it. Better to see clearly what remains than to pretend."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The accounts must be transparent\u2014if not now, then chaos will come when winter makes the deception impossible. This rule gives us the dignity of reckoning before catastrophe forces our hand."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The community fractures not from too much accounting but from the absence of it\u2014a void into which doubt pours like winter through uninsulated walls. If financial clarity cannot restore what we have lost spiritually, at least it might preserve the dignity of those who labor while I arrange evening concerts."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 1
+    }
+  }
+]

@@ -1,0 +1,88 @@
+[
+  {
+    "round": 9,
+    "date": "Aug 1842",
+    "proposal": "<RULE ABOUT FINANCIAL TRANSPARENCY AND HONEST RECORD-KEEPING IN ALL COMMUNITY ACCOUNTS>",
+    "proposed_by": "Sophia Ripley",
+    "votes": {
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "Sophia Ripley proposes it, and she has never steered this enterprise toward deception\u2014only toward hope, which is a different failing. As Trustee of Finance, I cannot vote for the shadows I already see by candlelight each evening when I reconcile accounts that will not reconcile."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "I proposed this rule because I can no longer bear the silence that permits dishonesty to flourish. Our school's reputation\u2014and our students' futures\u2014depend upon integrity. Without it, we are merely another failed experiment built on comfortable delusions."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The rot spreads fastest in darkness. If we are to survive as a community, we must see clearly\u2014all of us, together. Sophia understands what I've been learning the hard way: deception is a slow poison."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "The missing milk already troubles my sleep; if we are to build something true at Brook Farm, we cannot build it on shadow and silence. Sophia speaks with the voice of conscience, and I find I cannot vote against conscience, however much the practical world exhausts me."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 15,
+    "date": "Aug 1843",
+    "proposal": "<RULE>",
+    "proposed_by": "John Sullivan Dwight",
+    "votes": {
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "\"A man cannot build his life\u2014or his fortune\u2014upon falsehood. If the accounts are to be reconciled at all, they must be reconciled in the light, not in the shadows where I have permitted them to fester.\""
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "If we cannot establish truth in our accounts, we establish nothing. I have proposed this rule; I cannot now refuse it. But I am under no illusion that transparency will cure what is fundamentally rotten."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The numbers will speak themselves within days\u2014the dairy accounts cannot be hidden much longer. If we do not choose transparency now, it will be forced upon us in chaos. Dwight is right: we must meet truth with courage, not delay."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "A community built upon our ideals cannot endure with falsehood at its foundation. If we do not insist upon the very honesty we demand of ourselves, we are merely performing virtue\u2014and I can no longer be party to that deception."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 4,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  },
+  {
+    "round": 21,
+    "date": "Aug 1844",
+    "proposal": "<RULE>",
+    "proposed_by": "Charles Dana",
+    "votes": {
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "I proposed this rule myself because deception corrodes everything it touches. The community cannot build anything honest upon a foundation of falsehoods. Better a bitter truth now than slow collapse wrapped in illusions."
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 1,
+      "NO": 0,
+      "ABSTAIN": 2
+    }
+  }
+]

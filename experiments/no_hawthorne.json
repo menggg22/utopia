@@ -1,7 +1,7 @@
 {
+  "version": "v3",
   "name": "no_hawthorne",
   "rounds": 30,
   "seed": 42,
-  "agents": ["George Ripley", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"],
-  "notes": "Counterfactual: what happens without the skeptic?"
+  "agents": ["George Ripley", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"]
 }

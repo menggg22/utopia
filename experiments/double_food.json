@@ -1,8 +1,8 @@
 {
+  "version": "v3",
   "name": "double_food",
   "rounds": 30,
   "seed": 42,
   "agents": ["George Ripley", "Nathaniel Hawthorne", "Sophia Ripley", "Charles Dana", "John Sullivan Dwight"],
-  "environment": {"food": 200},
-  "notes": "Counterfactual: does more starting food change the outcome, or do intellectuals still refuse to farm?"
+  "environment": {"food": 200, "money": 500, "morale": 80}
 }

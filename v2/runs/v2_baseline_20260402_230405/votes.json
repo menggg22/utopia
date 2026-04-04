@@ -1,0 +1,36 @@
+[
+  {
+    "round": 15,
+    "date": "Aug 1843",
+    "proposal": "<RULE: NO CAPITAL PROJECTS EXCEEDING $100 SHALL PROCEED WITHOUT UNANIMOUS CONSENT AND PROOF OF 30 DAYS' FOOD SECURITY>",
+    "proposed_by": "Sophia Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "YES",
+        "reasoning": "My wife sees what I cannot permit myself to acknowledge\u2014that vision without discipline becomes ruin. If I cannot master my own impulses, the rules must do it for me."
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "YES",
+        "reasoning": "The rule is sound financial prudence\u2014we cannot afford the hubris of capital projects when our larder sits at twenty-six days. Mrs. Ripley proposes what her husband should have enforced from the start. I will not vote against reason, even if reason alone cannot save us."
+      },
+      "Sophia Ripley": {
+        "vote": "YES",
+        "reasoning": "We cannot feed ourselves reliably, yet George speaks of expanding. This rule is not idealism abandoned\u2014it is idealism made coherent. We vote to survive first, or we vote for nothing."
+      },
+      "Charles Dana": {
+        "vote": "YES",
+        "reasoning": "The rule codifies what I have been managing in private for weeks\u2014a hard boundary between survival and aspiration. At 26 days of food and $520, we cannot afford another illusion of abundance. The 30-day security clause is not cruel; it is honest."
+      },
+      "John Sullivan Dwight": {
+        "vote": "YES",
+        "reasoning": "Sophia proposes what I have not had the courage to say aloud\u2014that beauty cannot flourish on a foundation of scarcity. The rule is just. We have twenty-six days of food and four percent morale. To spend capital on anything beyond survival is to choose poetry over bread, and I am not yet so lost to myself as to defend that choice."
+      }
+    },
+    "result": "PASSED",
+    "tally": {
+      "YES": 5,
+      "NO": 0,
+      "ABSTAIN": 0
+    }
+  }
+]

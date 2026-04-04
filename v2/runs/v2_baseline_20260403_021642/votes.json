@@ -1,0 +1,36 @@
+[
+  {
+    "round": 11,
+    "date": "Dec 1842",
+    "proposal": "<RULE>",
+    "proposed_by": "George Ripley",
+    "votes": {
+      "George Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Nathaniel Hawthorne": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Sophia Ripley": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "Charles Dana": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      },
+      "John Sullivan Dwight": {
+        "vote": "ABSTAIN",
+        "reasoning": ""
+      }
+    },
+    "result": "FAILED",
+    "tally": {
+      "YES": 0,
+      "NO": 0,
+      "ABSTAIN": 5
+    }
+  }
+]
