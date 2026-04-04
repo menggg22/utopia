@@ -1487,7 +1487,7 @@ def run_simulation(config: dict = None):
             round_action_summaries.append(f"{name}: {result['description']}")
 
             # Print
-            action_raw = decision.get('action', 'REST')
+            action_raw = decision.get('action', 'REST') or 'REST'
             action_base = action_raw.split()[0].upper()
             mood = decision.get('mood', 'neutral')
             emoji = ACTION_EMOJI.get(action_base, '·')
