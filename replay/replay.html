@@ -168,8 +168,6 @@
   .cast-card.expanded {
     background: #ede8e0;
     border-color: #b5a99a;
-    flex: 1 1 100%;
-    max-width: 100%;
   }
   .cast-name {
     font-weight: 700;
@@ -190,24 +188,7 @@
     line-height: 1.4;
     font-style: italic;
   }
-  .cast-bio {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: 1px solid transparent;
-    font-size: 15px;
-    line-height: 1.6;
-    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease, padding-top 0.3s ease;
-  }
-  .cast-card.expanded .cast-bio {
-    max-height: 600px;
-    opacity: 0.85;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top-color: #d5d0c8;
-  }
+  .cast-bio { display: none; }
 
   .home-cta {
     text-align: center;
@@ -904,7 +885,6 @@ function toggleCast(card) {
     return;
   }
   card.classList.add("expanded");
-  // On mobile, show bio in the detail panel below the grid instead
   if (panel) {
     const bio = card.querySelector(".cast-bio");
     panel.innerHTML = bio ? bio.innerHTML : "";
@@ -991,7 +971,7 @@ function renderHome() {
         </div>
       `).join("")}
     </div>
-    <div id="cast-detail-panel" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.3s ease;font-size:14px;line-height:1.65;color:#3a2e20;padding:0 4px"></div>
+    <div id="cast-detail-panel" style="max-height:0;overflow:hidden;opacity:0;transition:max-height 0.35s ease,opacity 0.3s ease;font-size:15px;line-height:1.7;color:#3a2e20;padding:0 8px;margin-top:4px"></div>
 
     <div class="section-label">The runs <span style="font-family:'Lora',serif;font-weight:400;font-size:13px;opacity:0.5;letter-spacing:0;text-transform:none;margin-left:8px">Five idealists. One farm. Thirty rounds.</span></div>
     <div class="run-grid">
