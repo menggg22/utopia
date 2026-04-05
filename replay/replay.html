@@ -750,6 +750,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 </style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-Ai7iRW8zpVpNW-2Hxa80R.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 </head>
 <body>
 
@@ -940,7 +946,7 @@ function renderLanding() {
 
     <!-- CTA -->
     <div style="text-align:center">
-      <button class="cta-btn" onclick="goRunPicker()">Watch the Simulation →</button>
+      <button class="cta-btn" onclick="plausible('Watch Simulation'); goRunPicker()">Watch the Simulation →</button>
     </div>
 
     <!-- Quote — closing thought -->
@@ -1467,6 +1473,7 @@ function renderCurrent() {
   } else {
     document.getElementById("finale-screen").innerHTML = renderFinale();
     show("finale-screen");
+    plausible('Reached Finale', {props: {run: currentRunKey}});
     btnBack.disabled = false;
     btnNext.disabled = true; btnNext.textContent = "End";
     indicator.textContent = "Finale";
@@ -1476,6 +1483,7 @@ function renderCurrent() {
 
 function selectRun(key) {
   currentRunKey = key;
+  plausible('Select Run', {props: {run: key}});
   document.body.classList.remove("on-home");
   roundData = parseEvents(ALL_RUNS[key]);
   currentIdx = -1;
