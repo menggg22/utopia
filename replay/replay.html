@@ -44,22 +44,94 @@
   #landing-screen.active {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: calc(100vh - 40px);
-    height: calc(100dvh - 40px);
-    padding-top: 40px;
+    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, #ede5d4 0%, #faf8f4 60%);
   }
   body.on-landing {
     overflow: hidden;
     height: 100dvh;
+    padding: 0;
+  }
+  body.on-landing #app {
+    max-width: 100%;
   }
   body.on-landing .spacer,
   body.on-landing .site-footer,
   body.on-landing .controls {
     display: none;
   }
+
+  /* ── Landing: cinematic entrance ── */
+  .landing-hero {
+    background: #1c1510;
+    flex: 0 0 58%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px 48px;
+    text-align: center;
+  }
+  .landing-hero .quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.6;
+    color: #f0e6d2;
+    max-width: 620px;
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+  }
+  .landing-hero .attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: #6a5a48;
+  }
+
+  .landing-body {
+    background: #faf8f4;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 40px;
+    text-align: center;
+    gap: 24px;
+  }
+  .landing-record {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a7a68;
+    line-height: 2;
+  }
+  .landing-premise {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    color: #4a3e34;
+    line-height: 2;
+  }
+  .landing-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    font-weight: 700;
+    color: #1a1510;
+    line-height: 1.8;
+  }
+  .landing-footer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    opacity: 0.3;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+  .landing-footer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   /* Agent colors — darker for light bg */
   .agent-gr { color: #2563a8; }
@@ -694,14 +766,11 @@
     body { font-size: 15px; padding: 10px; }
 
     /* Landing */
-    .home-hero h1 { font-size: 26px; letter-spacing: 4px; }
-    .home-hero .hero-sub { font-size: 10px; letter-spacing: 2px; }
-    .home-premise, .home-premise-alert { font-size: 16px; line-height: 1.6; }
-    .home-pull-quote .quote-text { font-size: 12px; max-width: 100%; }
-    .home-pull-quote .quote-attr { font-size: 10px; }
-    .home-emoji-row-1 { font-size: 18px !important; letter-spacing: 3px !important; }
-    .home-emoji-row-2 { font-size: 13px !important; letter-spacing: 3px !important; }
-    .cta-btn { padding: 16px 32px; font-size: 14px; width: 80%; }
+    .landing-hero { padding: 0 24px 36px; flex: 0 0 55%; }
+    .landing-hero .quote { font-size: 18px; }
+    .landing-body { padding: 24px 24px; gap: 14px; }
+    .landing-premise, .landing-kicker { font-size: 15px; }
+    .cta-btn { padding: 14px 28px; font-size: 12px; width: 80%; }
 
     /* Picker — cast: 5 compact chips in one row, no reflow on expand */
     .cast-grid { gap: 6px; flex-wrap: wrap; }
@@ -914,48 +983,29 @@ function toggleCast(card) {
 // ── Render: Landing ──
 function renderLanding() {
   return `
-    <!-- Emoji scene -->
-    <div class="home-emoji-row-1" style="text-align:center;font-size:22px;letter-spacing:6px;opacity:0.75">
-      🌳 🌾 🏡 🌾 🌳
-    </div>
-    <div class="home-emoji-row-2" style="text-align:center;font-size:16px;letter-spacing:8px;opacity:0.5;margin-top:6px">
-      📚 &nbsp; 🎻 &nbsp; ✍️ &nbsp; ⛏️ &nbsp; 📰
-    </div>
-
-    <!-- Top: title -->
-    <div class="home-hero">
-      <h1>Utopia Lab</h1>
-      <div class="hero-sub">An AI Agent Utopian Simulation</div>
+    <div class="landing-hero">
+      <div class="landing-record" style="margin-bottom:32px;color:#a08870">
+        Massachusetts · 1841 · Five agents · Thirty rounds
+      </div>
+      <div class="quote">
+        "I hate that my visions of harmonious labor and intellectual communion
+        have crumbled into ledger entries and unpaid invoices."
+      </div>
+      <div class="attr">— George Ripley, founder &nbsp;·&nbsp; Round 4 of 30</div>
     </div>
 
-    <!-- Premise -->
-    <div class="home-premise">
-      In 1841, New England intellectuals founded <a href="https://en.wikipedia.org/wiki/Brook_Farm" target="_blank" style="color:inherit;text-underline-offset:3px">Brook Farm</a> — a utopian commune in Massachusetts.
-    </div>
-    <div class="home-premise">
-      Their hope was simple and beautiful: a just society where no one's labor was worth more than another's,
-      where thinkers could get their hands dirty, and where beauty, ideas, and honest work
-      could share the same table. However, things did not go as expected and Brook Farm only lasted six years.
-    </div>
+    <div class="landing-body">
+      <div class="landing-kicker">
+        A utopian commune that lasted six years.<br>
+        We rebuilt it with AI to watch it fall apart.
+      </div>
 
-    <div class="home-premise-alert">
-      Today we gave five AI agents the same dream and watched what happened. 🎬
-    </div>
-
-    <!-- CTA -->
-    <div style="text-align:center">
       <button class="cta-btn" onclick="plausible('Watch Simulation'); goRunPicker()">Watch the Simulation →</button>
-    </div>
-
-    <!-- Quote — closing thought -->
-    <div class="home-pull-quote">
-      <div class="quote-text">"Labor is the curse of the world, and nobody can meddle with it without becoming proportionately brutified."</div>
-      <div class="quote-attr">— Nathaniel Hawthorne, Round 4 · written in his journal, hands still blistered from the hay</div>
-    </div>
-
-    <!-- Footer -->
-    <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.35;line-height:1.6">
-      Built by <a href="https://menggg22.github.io" style="color:inherit;text-underline-offset:2px">Menggg</a> ✨ · <a href="https://github.com/menggg22/utopia" style="color:inherit;text-underline-offset:2px">Source on GitHub</a> · CC BY-NC 4.0
+      <div class="landing-footer">
+        Built by <a href="https://menggg22.github.io" target="_blank">Menggg</a>
+        &nbsp;·&nbsp; <a href="https://github.com/menggg22/utopia" target="_blank">Source on GitHub</a>
+        &nbsp;·&nbsp; CC BY-NC 4.0
+      </div>
     </div>
   `;
 }
