@@ -18,8 +18,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #faf8f4;
-    color: #1c1a17;
+    background: #f7f4ef;
+    color: #1c1a18;
     font-family: 'Lora', serif;
     font-size: 17px;
     line-height: 1.7;
@@ -66,7 +66,7 @@
 
   /* ── Landing: cinematic entrance ── */
   .landing-hero {
-    background: #1c1510;
+    background: #161718;
     flex: 0 0 58%;
     display: flex;
     flex-direction: column;
@@ -79,7 +79,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 30px;
     line-height: 1.35;
-    color: #f0e6d2;
+    color: #f0ebe2;
     max-width: 620px;
     margin-bottom: 20px;
     letter-spacing: -0.3px;
@@ -88,11 +88,11 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.5px;
-    color: #6a5a48;
+    color: #4e545c;
   }
 
   .landing-body {
-    background: #faf8f4;
+    background: #f7f4ef;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -115,21 +115,21 @@
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #8a7a68;
+    color: #60666e;
     line-height: 2;
   }
   .landing-premise {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     letter-spacing: 0.3px;
-    color: #1c1a17;
+    color: #1c1a18;
     line-height: 2;
   }
   .landing-kicker {
     font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     letter-spacing: 0.3px;
-    color: #1c1a17;
+    color: #1c1a18;
     line-height: 1.8;
     text-wrap: balance;
   }
@@ -339,8 +339,8 @@
     display: inline-block;
     margin-top: 0;
     padding: 14px 36px;
-    background: #1c1a17;
-    color: #faf8f4;
+    background: #1c1a18;
+    color: #f7f4ef;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     letter-spacing: 1.5px;
@@ -349,7 +349,7 @@
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
   }
-  .cta-btn:hover { background: #2e2b27; transform: translateY(-1px); }
+  .cta-btn:hover { background: #2a2d30; transform: translateY(-1px); }
 
   /* Run picker screen */
   .picker-header {
@@ -370,65 +370,92 @@
   }
 
   /* ── Intro ── */
-  .intro-scene {
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 4px;
-    margin: 30px 0 10px;
+  .intro-header {
+    margin: 48px 0 40px;
+  }
+  .intro-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 16px;
   }
   .intro-title {
-    text-align: center;
-    margin: 20px 0;
-  }
-  .intro-title h1 {
-    font-family: 'Lora', serif;
-    font-size: 28px;
-    letter-spacing: 8px;
-    font-weight: 700;
-  }
-  .intro-title .subtitle {
-    font-size: 12px;
-    opacity: 0.5;
-    margin-top: 4px;
-  }
-  .intro-quote {
-    text-align: center;
-    margin: 24px 0;
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: #8b6914;
-  }
-  .intro-quote .attribution {
-    font-size: 12px;
-    font-style: normal;
-    opacity: 0.5;
-    margin-top: 4px;
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: #1c1a18;
+    margin-bottom: 20px;
   }
   .intro-desc {
-    text-align: center;
-    margin: 20px 0;
-    line-height: 1.8;
-  }
-  .intro-desc .hook {
-    color: #c0392b;
-    margin-top: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.7;
+    max-width: 520px;
   }
   .section-title {
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 11px;
-    margin-bottom: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.35;
+    margin: 52px 0 4px;
   }
   .resident {
-    margin-bottom: 20px;
-    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
-  .resident .name { font-weight: 700; font-size: 15px; }
-  .resident .tagline { opacity: 0.5; font-size: 13px; margin-top: 2px; }
+  .resident:last-of-type { border-bottom: none; }
+  .resident-absent { opacity: 0.3; }
+  .resident .res-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .resident .res-role {
+    font-size: 11px;
+    opacity: 0.45;
+    letter-spacing: 0.5px;
+  }
+  .resident .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    opacity: 0.55;
+    line-height: 1.55;
+  }
+  .intro-conditions {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    max-width: 360px;
+  }
+  .intro-condition-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .intro-condition-row:last-child { border-bottom: none; }
+  .intro-condition-label { opacity: 0.6; }
+  .intro-footnote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.35;
+    text-align: center;
+    margin: 52px 0 32px;
+    letter-spacing: 0.5px;
+  }
   .intro-footer {
     text-align: center;
     opacity: 0.5;
@@ -438,34 +465,40 @@
 
   /* ── Round view ── */
   .round-header {
-    border: 1px solid rgba(0,0,0,0.1);
-    background: #f6f5f2;
-    padding: 14px 18px;
-    margin-bottom: 24px;
-    border-radius: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0 0 20px;
+    margin-bottom: 28px;
   }
-  .round-header h2 {
-    font-family: 'Crimson Pro', serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #1a1a1a;
+  .round-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    color: #1c1a18;
+    margin-bottom: 6px;
+  }
+  .round-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.35;
   }
 
-  .resources { margin-bottom: 20px; }
+  .resources { margin-bottom: 24px; }
   .resource-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
   }
   .resource-label { width: 70px; }
   .bar-track {
     width: 160px;
-    height: 12px;
-    background: #e8e2d8;
+    height: 10px;
+    background: rgba(0,0,0,0.08);
     border-radius: 2px;
     overflow: hidden;
   }
@@ -479,24 +512,25 @@
   .bar-fill.morale-high { background: #5da469; }
   .bar-fill.morale-mid { background: #c9a227; }
   .bar-fill.morale-low { background: #c0392b; }
-  .resource-value { font-size: 12px; opacity: 0.6; }
+  .resource-value { font-size: 12px; opacity: 0.5; }
 
-  .section { margin-bottom: 28px; }
+  .section { margin-bottom: 32px; }
   .section h3 {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.4;
-    margin-bottom: 14px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    padding-bottom: 6px;
+    opacity: 0.35;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding-bottom: 8px;
+    font-weight: 400;
   }
 
   .action-row {
     display: flex;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     align-items: baseline;
@@ -510,140 +544,167 @@
     align-items: center;
     gap: 0;
   }
-  /* agent colors applied via .agent-XX class on text */
-  .action-role { opacity: 0.4; width: 70px; font-size: 12px; }
+  .action-role { opacity: 0.35; width: 70px; font-size: 12px; }
   .action-type {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 11px;
     letter-spacing: 0.5px;
-    background: #e8e2d8;
-    padding: 1px 6px;
+    background: rgba(0,0,0,0.06);
+    padding: 2px 7px;
     border-radius: 3px;
     white-space: nowrap;
+    text-transform: uppercase;
   }
-  .action-detail { opacity: 0.7; font-family: 'Lora', serif; font-size: 14px; }
+  .action-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    opacity: 0.55;
+    line-height: 1.5;
+  }
 
   /* expandable conversations */
   .conversation {
-    margin-bottom: 20px;
-    padding-left: 12px;
-    border-left: 3px solid rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(0,0,0,0.08);
   }
-  .conversation .speaker { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; margin-bottom: 4px; letter-spacing: 0.5px; }
+  .conversation .speaker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    opacity: 0.45;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
   .conversation .says {
     font-family: 'Lora', serif;
     font-size: 16px;
-    font-style: italic;
-    margin: 4px 0 6px;
-    line-height: 1.5;
+    font-weight: 400;
+    margin: 0 0 8px;
+    line-height: 1.6;
+    color: #1c1a18;
   }
   .conversation .inner {
-    font-size: 13px;
-    opacity: 0.55;
-    font-family: 'Lora', serif;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    opacity: 0.4;
     padding: 6px 10px;
-    background: rgba(0,0,0,0.025);
+    background: rgba(0,0,0,0.03);
     border-radius: 3px;
     margin: 4px 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
   .expand-btn {
-    font-size: 12px;
-    color: #2563a8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #1c1a18;
+    opacity: 0.45;
     cursor: pointer;
     margin-top: 8px;
     border: none;
     background: none;
-    font-family: inherit;
     padding: 0;
+    letter-spacing: 0.3px;
   }
-  .expand-btn:hover { text-decoration: underline; }
+  .expand-btn:hover { opacity: 0.8; }
   .full-convo {
     display: none;
-    margin-top: 14px;
+    margin-top: 16px;
     padding: 16px;
-    background: #f0ece4;
-    border-radius: 6px;
+    background: rgba(0,0,0,0.025);
+    border-radius: 4px;
   }
   .full-convo.open { display: block; }
   .full-convo .turn {
-    margin-bottom: 16px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
   .full-convo .turn:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
   .full-convo .turn-says {
     font-family: 'Lora', serif;
     font-size: 15px;
-    font-style: italic;
-    margin: 4px 0 6px;
-    line-height: 1.5;
+    font-weight: 400;
+    margin: 4px 0 8px;
+    line-height: 1.6;
+    color: #1c1a18;
   }
   .full-convo .turn-inner {
-    font-size: 13px;
-    opacity: 0.5;
-    font-family: 'Lora', serif;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    opacity: 0.4;
     margin-top: 6px;
     padding: 6px 10px;
     background: rgba(0,0,0,0.03);
     border-radius: 3px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .key-moment {
-    margin-bottom: 14px;
-    padding: 10px 12px;
-    border-left: 3px solid #8b3daa;
-    background: rgba(139, 61, 170, 0.04);
-    border-radius: 0 4px 4px 0;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-left: 2px solid rgba(139,61,170,0.4);
+    background: rgba(139,61,170,0.03);
   }
   .key-moment .desc {
-    font-size: 14px;
     font-family: 'Lora', serif;
-    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #1c1a18;
   }
   .key-moment .emotion {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    opacity: 0.5;
     color: #8b3daa;
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
   .departure-box {
-    border: 1px solid rgba(192,57,43,0.3);
+    border-left: 3px solid #c0392b;
     padding: 16px 20px;
-    margin-bottom: 20px;
-    background: #fdf4f3;
-    border-radius: 8px;
+    margin-bottom: 24px;
+    background: rgba(192,57,43,0.04);
   }
-  .departure-box .departed-name { color: #c0392b; font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 18px; }
+  .departure-box .departed-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #c0392b;
+    margin-bottom: 8px;
+  }
   .departure-box .farewell {
     font-family: 'Lora', serif;
-    font-style: italic;
+    font-weight: 400;
     font-size: 15px;
-    opacity: 0.65;
-    margin-top: 8px;
-    line-height: 1.55;
+    opacity: 0.7;
+    line-height: 1.6;
   }
 
   .vote-box {
-    border: 1px solid rgba(201,162,39,0.4);
+    border-left: 2px solid rgba(201,162,39,0.6);
     padding: 12px 16px;
     margin-bottom: 14px;
-    background: #fefcf0;
-    border-radius: 6px;
-    font-size: 14px;
+    background: rgba(201,162,39,0.04);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
   }
 
   .historical-event {
-    color: #8b6914;
     font-family: 'Lora', serif;
-    font-style: italic;
+    font-weight: 400;
     font-size: 15px;
-    margin-bottom: 14px;
-    line-height: 1.55;
+    color: #1c1a18;
+    opacity: 0.65;
+    margin-bottom: 16px;
+    line-height: 1.6;
+    padding-left: 14px;
+    border-left: 2px solid rgba(0,0,0,0.1);
   }
 
   .status-strip {
@@ -678,38 +739,71 @@
   .status-gone { opacity: 0.3; text-decoration: line-through; }
 
   /* ── Finale ── */
-  .finale-scene {
+  .finale-decoration {
     text-align: center;
     font-size: 20px;
     letter-spacing: 4px;
-    margin: 30px 0 10px;
+    margin: 30px 0 4px;
+    opacity: 0.6;
   }
-  .finale-title { text-align: center; margin: 20px 0; }
+  .finale-title { text-align: center; margin: 20px 0 28px; }
   .finale-title h1 {
-    font-family: 'Crimson Pro', serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
     font-size: 36px;
     letter-spacing: 6px;
     color: #c0392b;
     line-height: 1.1;
   }
-  .finale-title .subtitle { font-size: 13px; opacity: 0.45; margin-top: 8px; }
+  .finale-title .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
 
-  .fate { margin-bottom: 22px; padding-left: 16px; border-left: 2px solid rgba(0,0,0,0.08); }
-  .fate .name { font-family: 'Crimson Pro', serif; font-weight: 700; font-size: 18px; }
-  .fate .status-line { font-size: 14px; margin-top: 3px; color: #4a4540; }
+  .fate { margin-bottom: 24px; padding-left: 16px; border-left: 2px solid rgba(0,0,0,0.08); }
+  .fate .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1c1a18;
+  }
+  .fate .status-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
   .fate .farewell-quote {
     font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 15px;
-    opacity: 0.55;
-    margin-top: 6px;
-    line-height: 1.5;
+    font-weight: 400;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 8px;
+    line-height: 1.6;
   }
-  .final-stats {
-    font-size: 12px;
-    text-align: center;
-    margin: 16px 0;
+  .finale-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #1c1a18;
   }
+  .finale-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.45;
+    margin-top: 4px;
+  }
+  .finale-stat-card {
+    padding: 14px 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+  }
+  .final-stats { margin: 16px 0; }
 
   /* ── Controls ── */
   .controls {
@@ -717,7 +811,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(250,248,244,0.92);
+    background: rgba(247,244,239,0.92);
     border-top: 1px solid rgba(0,0,0,0.08);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -772,7 +866,7 @@
 
   @media (max-width: 768px) {
     /* Base */
-    body { font-size: 15px; padding: 10px; }
+    body { font-size: 15px; padding: 20px 24px; }
 
     /* Landing */
     .landing-hero {
@@ -802,9 +896,9 @@
     .section-label { margin: 16px 0 10px; font-size: 11px; }
 
     /* Intro */
-    .intro-title h1 { font-size: 22px; letter-spacing: 2px; }
-    .intro-scene { font-size: 16px; letter-spacing: 2px; }
-    .resident { padding-left: 8px; }
+    .intro-title { font-size: 30px; letter-spacing: -0.3px; }
+    .intro-header { margin: 32px 0 28px; }
+    .section-title { margin: 36px 0 4px; }
 
     /* Round */
     .bar-track { width: 80px; }
@@ -823,13 +917,16 @@
     .controls button { padding: 12px 20px; font-size: 12px; }
 
     /* Intro */
-    .intro-stats-row { gap: 16px !important; font-size: 12px !important; }
+    .intro-conditions { font-size: 12px; }
 
     /* Finale */
-    .finale-title h1 { font-size: 22px; letter-spacing: 2px; }
-    .finale-scene { font-size: 16px; letter-spacing: 2px; }
-    .fate { padding-left: 8px; }
-    .stats-grid { grid-template-columns: 1fr !important; }
+    .finale-title h1 { font-size: 26px; letter-spacing: 3px; }
+    .finale-decoration { display: none; }
+    .fate { padding-left: 10px; }
+    .fate .farewell-quote { display: none; }
+    .finale-char-notes { display: none; }
+    .finale-top-actions { display: none; }
+    .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -1115,37 +1212,47 @@ function renderIntro() {
   const startEnv = roundData.length > 0 ? roundData[0].env : {};
 
   return `
-    <div style="margin:40px 0 28px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;opacity:0.4;text-transform:uppercase;margin-bottom:12px">
-        ${isCounterfactual ? "Counterfactual" : "Baseline"} · Brook Farm · 1841
-      </div>
-      <h1 style="font-family:'Crimson Pro',serif;font-size:36px;font-weight:700;margin-bottom:10px">${meta.name || currentRunKey}</h1>
-      <div style="font-size:19px;color:#5a3e0a;font-style:italic">${meta.desc || ""}</div>
+    <div class="intro-header">
+      <div class="intro-tag">${isCounterfactual ? "Counterfactual" : "Baseline"} · Brook Farm · 1841</div>
+      <div class="intro-title">${meta.name || currentRunKey}</div>
+      ${meta.desc ? `<div class="intro-desc">${meta.desc}</div>` : ""}
     </div>
 
-    <hr class="divider">
     <div class="section-title">The Residents</div>
     ${allAgents.map(name => {
       const a = AGENTS[name];
       const present = presentAgents.has(name);
-      return `<div class="resident" style="${present ? "" : "opacity:0.3;text-decoration:line-through"}">
-        <div class="name"><span class="${a.cls}">${a.icon}</span> — ${a.role}${present ? "" : " &nbsp;<span style='font-family:JetBrains Mono,monospace;font-size:11px;text-decoration:none;color:#c0392b'>NOT IN THIS RUN</span>"}</div>
+      return `<div class="resident${present ? "" : " resident-absent"}">
+        <div class="res-name">
+          <span class="${a.cls}">${a.icon}</span>
+          <span class="res-role">${a.role}</span>
+          ${!present ? `<span style="font-size:10px;letter-spacing:0.5px;color:#c0392b;opacity:1">not in this run</span>` : ""}
+        </div>
         ${present ? `<div class="tagline">${TAGLINES[name]}</div>` : ""}
       </div>`;
     }).join("")}
 
-    <hr class="divider">
     <div class="section-title">Starting Conditions</div>
-    <div class="intro-stats-row" style="font-family:'JetBrains Mono',monospace;font-size:13px;display:flex;gap:32px;flex-wrap:wrap;margin-bottom:28px">
-      <div>🍞 Food &nbsp;<strong>${startEnv.food ?? 100}</strong></div>
-      <div>💵 Money &nbsp;<strong>$${startEnv.money ?? 500}</strong></div>
-      <div>♥ Morale &nbsp;<strong>${startEnv.morale ?? 80}%</strong></div>
-      <div>👥 Members &nbsp;<strong>${presentAgents.size}</strong></div>
+    <div class="intro-conditions">
+      <div class="intro-condition-row">
+        <span class="intro-condition-label">Food</span>
+        <span>${startEnv.food ?? 100}</span>
+      </div>
+      <div class="intro-condition-row">
+        <span class="intro-condition-label">Money</span>
+        <span>$${startEnv.money ?? 500}</span>
+      </div>
+      <div class="intro-condition-row">
+        <span class="intro-condition-label">Morale</span>
+        <span>${startEnv.morale ?? 80}%</span>
+      </div>
+      <div class="intro-condition-row">
+        <span class="intro-condition-label">Members</span>
+        <span>${presentAgents.size} of 5</span>
+      </div>
     </div>
 
-    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.4;text-align:center;margin-top:8px">
-      30 rounds · every decision made by AI · no one knows how it ends
-    </div>
+    <div class="intro-footnote">30 rounds · every decision made by AI · no one knows how it ends</div>
   `;
 }
 
@@ -1157,7 +1264,8 @@ function renderRound(rd) {
 
   let html = `
     <div class="round-header">
-      <h2>${SEASON_EMOJI[season] || ""} Round ${rd.round} &nbsp;•&nbsp; ${env.date || ""} &nbsp;•&nbsp; ${season.toUpperCase()}</h2>
+      <div class="round-number">Round ${rd.round}</div>
+      <div class="round-meta">${SEASON_EMOJI[season] || ""} ${season} · ${env.date || ""}</div>
     </div>
     <div class="resources">
       <div class="resource-row">
@@ -1188,7 +1296,7 @@ function renderRound(rd) {
     const concerns = d.data?.final_concerns || [];
     const farewell = firstSentence(concerns[0] || "", 150);
     html += `<div class="departure-box">
-      <div class="departed-name">🚪 ${d.agent} DEPARTS (satisfaction: ${d.data?.final_satisfaction ?? "?"})</div>
+      <div class="departed-name">${d.agent} departs — satisfaction: ${d.data?.final_satisfaction ?? "?"}</div>
       ${farewell ? `<div class="farewell">"${farewell}"</div>` : ""}
     </div>`;
   }
@@ -1277,8 +1385,8 @@ function renderRound(rd) {
         <div class="desc"><span class="${ag.cls}">★ ${ag.icon}</span>: ${kmShort}${kmHasMore ? "…" : ""}</div>
         ${kmHasMore ? `
         <button class="expand-btn" onclick="toggleConvo('${kmId}')">▶ Read more</button>
-        <div class="full-convo" id="${kmId}" style="padding:10px 0 4px">
-          <div style="font-size:14px;line-height:1.65;color:#3a2e20">${kmFull}</div>
+        <div class="full-convo" id="${kmId}" style="padding:10px 0 4px;background:none">
+          <div style="font-family:'Lora',serif;font-size:15px;line-height:1.65;color:#1c1a18">${kmFull}</div>
         </div>` : ""}
         ${km.data?.emotion ? `<div class="emotion">Feeling: ${km.data.emotion}</div>` : ""}
       </div>`;
@@ -1289,8 +1397,9 @@ function renderRound(rd) {
   // Votes
   for (const v of rd.votes) {
     html += `<div class="vote-box">
-      🗳️ <strong>VOTE:</strong> ${firstSentence(v.data?.proposal || "", 100)}<br>
-      Result: ${v.data?.result || ""}
+      <span style="opacity:0.45;letter-spacing:1px;text-transform:uppercase;font-size:11px">Vote</span><br>
+      ${firstSentence(v.data?.proposal || "", 100)}<br>
+      <span style="opacity:0.5">Result: ${v.data?.result || ""}</span>
     </div>`;
   }
 
@@ -1385,14 +1494,12 @@ function renderFinale() {
 
   // ── Render in order: header → fates → quote → stats → char notes → top actions → footer ──
   let html = `
-    <div class="finale-scene">🌳 &nbsp;🍂&nbsp; 🏚️ &nbsp; 🏚️ &nbsp;🍂&nbsp; 🌳</div>
-    <div style="text-align:center;opacity:0.4;font-size:16px;letter-spacing:3px">🌿 &nbsp;&nbsp;&nbsp; 🍂 &nbsp; 🍂 &nbsp;&nbsp;&nbsp; 🌿</div>
+    <div class="finale-decoration">🌳 &nbsp;🍂&nbsp; 🏚️ &nbsp; 🏚️ &nbsp;🍂&nbsp; 🌳</div>
     <div class="finale-title">
       <h1>T H E &nbsp; E N D</h1>
-      <div class="subtitle">${final.env.date || ""} — Brook Farm closes.</div>
+      <div class="subtitle">${final.env.date || ""} · Brook Farm closes</div>
     </div>
-    <hr class="divider">
-    <div class="section-title">👥 FINAL FATES</div>`;
+    <div class="section-title">Final Fates</div>`;
 
   for (const [name, a] of Object.entries(AGENTS)) {
     if (!everPresent.has(name)) continue;
@@ -1425,8 +1532,8 @@ function renderFinale() {
     const kmHasMore = kmFull.length > kmShort.length;
     const kmExpandId = "km_featured";
     html += `<hr class="divider">
-    <div style="margin:24px 0;padding:0 8px">
-      <div style="font-size:18px;font-family:'Crimson Pro',serif;font-style:italic;line-height:1.6;color:#3a2e20">
+    <div style="margin:24px 0">
+      <div style="font-family:'Lora',serif;font-size:17px;line-height:1.65;color:#1c1a18;opacity:0.85">
         "${kmShort}${kmHasMore ? "…" : ""}"
       </div>
       ${kmHasMore ? `
@@ -1434,66 +1541,70 @@ function renderFinale() {
         ▶ Read full moment
       </button>
       <div class="full-convo" id="${kmExpandId}" style="margin-top:12px">
-        <div style="font-size:17px;font-family:'Crimson Pro',serif;font-style:italic;line-height:1.65;color:#3a2e20;padding:12px 0">"${kmFull}"</div>
+        <div style="font-family:'Lora',serif;font-size:16px;line-height:1.7;color:#1c1a18;padding:12px 0">"${kmFull}"</div>
       </div>` : ""}
-      <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.45;letter-spacing:1px">
+      <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.4;letter-spacing:1px">
         — <span class="${kmAgent.cls}">${featuredKM.agent}</span>, Round ${featuredKM.round || "?"}
-        ${featuredKM.data?.emotion ? ` &nbsp;·&nbsp; ${featuredKM.data.emotion}` : ""}
+        ${featuredKM.data?.emotion ? ` · ${featuredKM.data.emotion}` : ""}
       </div>
     </div>`;
   }
 
   // Stats + character notes
   html += `<hr class="divider">
-    <div class="final-stats" style="text-align:left">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin-bottom:16px">By the numbers</div>
-      <div class="stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;margin-bottom:20px">
-        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
-          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalConvos}</div>
-          <div style="opacity:0.5;margin-top:2px">conversations had</div>
+    <div class="final-stats">
+      <div class="section-title" style="margin-top:0">By the numbers</div>
+      <div class="stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
+        <div class="finale-stat-card">
+          <div class="finale-stat-num">${totalConvos}</div>
+          <div class="finale-stat-label">conversations</div>
         </div>
-        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
-          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalVotes}</div>
-          <div style="opacity:0.5;margin-top:2px">rules voted on</div>
+        <div class="finale-stat-card">
+          <div class="finale-stat-num">${totalVotes}</div>
+          <div class="finale-stat-label">votes cast</div>
         </div>
-        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
-          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${totalKeyMoments}</div>
-          <div style="opacity:0.5;margin-top:2px">moments they'll remember</div>
+        <div class="finale-stat-card">
+          <div class="finale-stat-num">${totalKeyMoments}</div>
+          <div class="finale-stat-label">key moments</div>
         </div>
-        <div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px">
-          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${final.env.morale ?? 0}%</div>
-          <div style="opacity:0.5;margin-top:2px">morale at the end</div>
+        <div class="finale-stat-card">
+          <div class="finale-stat-num">${final.env.morale ?? 0}%</div>
+          <div class="finale-stat-label">final morale</div>
         </div>
-        ${bigDropper ? `<div style="padding:10px 14px;border:1px solid #e0dbd3;border-radius:4px;grid-column:1/-1">
-          <div style="font-size:22px;font-family:'Crimson Pro',serif;font-weight:700">${bigDropStart} → ${bigDropEnd}</div>
-          <div style="opacity:0.5;margin-top:2px">${bigDropper.split(" ")[0]}'s satisfaction — fell ${bigDrop} points${bigDropRound === roundData.length ? ", never recovered" : bigDropRound ? `, hit bottom round ${bigDropRound}, never recovered` : ""}</div>
+        ${bigDropper ? `<div class="finale-stat-card" style="grid-column:1/-1">
+          <div class="finale-stat-num">${bigDropStart} → ${bigDropEnd}</div>
+          <div class="finale-stat-label">${bigDropper.split(" ")[0]}'s satisfaction — fell ${bigDrop} points${bigDropRound ? `, bottomed round ${bigDropRound}` : ""}, never recovered</div>
         </div>` : ""}
       </div>
 
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin-bottom:12px">Character notes</div>
-      <div style="font-size:16px;line-height:2">
-        ${hardestWorker ? `🌾 <strong>${hardestWorker.split(" ")[0]}</strong> farmed the most — ${mostFarms} times. Nobody thanked them.` : ""}
-        ${mostWriter ? `<br>✍️ <strong>${mostWriter.split(" ")[0]}</strong> wrote the most — ${mostWrites} rounds of personal work.` : ""}
-        ${mostSpeaker ? `<br>🗣️ <strong>${mostSpeaker.split(" ")[0]}</strong> gave the most speeches — ${mostSpeeches} times addressing the community.` : ""}
+      <div class="finale-char-notes">
+        <div class="section-title" style="margin-top:0">Character notes</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2.2">
+          ${hardestWorker ? `🌾 ${hardestWorker.split(" ")[0]} farmed the most — ${mostFarms} times.` : ""}
+          ${mostWriter ? `<br>✍️ ${mostWriter.split(" ")[0]} wrote the most — ${mostWrites} rounds.` : ""}
+          ${mostSpeaker ? `<br>🗣️ ${mostSpeaker.split(" ")[0]} gave the most speeches — ${mostSpeeches} times.` : ""}
+        </div>
       </div>
 
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;opacity:0.4;text-transform:uppercase;margin:20px 0 10px">What each person mostly did</div>
-      ${topActions.map(({name, action, count}) => {
-        const a = AGENTS[name] || {};
-        const emoji = ACTION_EMOJI[action] || "·";
-        return `<div style="font-size:15px;margin-bottom:6px"><span class="${a.cls}">${a.icon}</span> &nbsp; ${emoji} ${action} &nbsp;<span style="opacity:0.45;font-family:'JetBrains Mono',monospace;font-size:12px">${count}×</span></div>`;
-      }).join("")}
+      <div class="finale-top-actions">
+        <div class="section-title">What each person mostly did</div>
+        ${topActions.map(({name, action, count}) => {
+          const a = AGENTS[name] || {};
+          const emoji = ACTION_EMOJI[action] || "·";
+          return `<div style="font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:8px"><span class="${a.cls}">${a.icon}</span> &nbsp; ${emoji} ${action} <span style="opacity:0.4;font-size:11px">${count}×</span></div>`;
+        }).join("")}
+      </div>
     </div>`;
 
   const runSummary = RUN_META[currentRunKey]?.summary;
   if (runSummary) {
-    html += `<div style="max-width:560px;margin:48px auto 0;padding:0 16px;text-align:center;animation:fadeUp 1.2s ease both">
-      <div style="font-family:'Lora',serif;font-size:15px;font-style:italic;line-height:1.85;color:#5a4a30">${runSummary} 🎬</div>
+    html += `<div style="margin:48px 0 0;text-align:center">
+      <div style="font-family:'Lora',serif;font-size:15px;line-height:1.85;color:#1c1a18;opacity:0.7">${runSummary}</div>
     </div>`;
   }
 
   html += `<div style="text-align:center;margin:40px 0 16px">
-    <button onclick="goRunPicker()" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;padding:12px 28px;background:#3a2e20;color:#f5f0e8;border:none;border-radius:3px;cursor:pointer;">
+    <button onclick="goRunPicker()" class="cta-btn" style="font-size:12px;letter-spacing:1px;padding:12px 28px">
       ← Choose another run
     </button>
   </div>`;
