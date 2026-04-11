@@ -19,7 +19,7 @@
 
   body {
     background: #faf8f4;
-    color: #2a2a2a;
+    color: #1c1a17;
     font-family: 'Lora', serif;
     font-size: 17px;
     line-height: 1.7;
@@ -52,9 +52,11 @@
     overflow: hidden;
     height: 100dvh;
     padding: 0;
+    display: block;
   }
   body.on-landing #app {
     max-width: 100%;
+    width: 100%;
   }
   body.on-landing .spacer,
   body.on-landing .site-footer,
@@ -70,18 +72,17 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 40px 48px;
+    padding: 48px 56px 56px;
     text-align: center;
   }
   .landing-hero .quote {
     font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 26px;
-    line-height: 1.6;
+    font-size: 30px;
+    line-height: 1.35;
     color: #f0e6d2;
     max-width: 620px;
     margin-bottom: 20px;
-    letter-spacing: 0.2px;
+    letter-spacing: -0.3px;
   }
   .landing-hero .attr {
     font-family: 'JetBrains Mono', monospace;
@@ -95,11 +96,19 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px 56px 32px;
+    text-align: center;
+  }
+  .landing-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 32px 40px;
-    text-align: center;
-    gap: 24px;
+    gap: 32px;
+    width: 100%;
   }
   .landing-record {
     font-family: 'JetBrains Mono', monospace;
@@ -113,23 +122,23 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     letter-spacing: 0.3px;
-    color: #4a3e34;
+    color: #1c1a17;
     line-height: 2;
   }
   .landing-kicker {
     font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     letter-spacing: 0.3px;
-    font-weight: 700;
-    color: #1a1510;
+    color: #1c1a17;
     line-height: 1.8;
+    text-wrap: balance;
   }
   .landing-footer {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     opacity: 0.3;
     line-height: 1.6;
-    margin-top: 4px;
+    margin-top: auto;
   }
   .landing-footer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
@@ -330,7 +339,7 @@
     display: inline-block;
     margin-top: 0;
     padding: 14px 36px;
-    background: #2a2a2a;
+    background: #1c1a17;
     color: #faf8f4;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
@@ -340,7 +349,7 @@
     cursor: pointer;
     transition: background 0.2s, transform 0.15s;
   }
-  .cta-btn:hover { background: #444; transform: translateY(-1px); }
+  .cta-btn:hover { background: #2e2b27; transform: translateY(-1px); }
 
   /* Run picker screen */
   .picker-header {
@@ -761,16 +770,24 @@
   }
   .site-footer a:hover { opacity: 0.8; }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     /* Base */
     body { font-size: 15px; padding: 10px; }
 
     /* Landing */
-    .landing-hero { padding: 28px 28px 32px; flex: 0 0 57%; }
-    .landing-hero .quote { font-size: 20px; line-height: 1.55; }
-    .landing-record { font-size: 10px; letter-spacing: 1px; line-height: 1.6; }
-    .landing-body { padding: 20px 28px; gap: 16px; }
-    .landing-premise, .landing-kicker { font-size: 13px; line-height: 1.7; }
+    .landing-hero {
+      padding: 32px 40px 28px;
+      flex: 0 0 52%;
+      justify-content: space-between;
+    }
+    .landing-record { font-size: 10px; letter-spacing: 0.5px; line-height: 1.6; }
+    .landing-hero .quote { font-size: 22px; line-height: 1.35; font-style: normal; font-weight: 400; }
+    .landing-hero .attr { }
+    .landing-body { padding: 0 28px; }
+    .landing-main { flex: 1; gap: 20px; }
+    .landing-footer { padding-bottom: 20px; }
+    .landing-premise, .landing-kicker { font-size: 13px; line-height: 1.75; max-width: 340px; }
+    .landing-kicker br { display: none; }
     .cta-btn { padding: 14px 28px; font-size: 12px; width: 85%; }
 
     /* Picker — cast: 5 compact chips in one row, no reflow on expand */
@@ -985,7 +1002,7 @@ function toggleCast(card) {
 function renderLanding() {
   return `
     <div class="landing-hero">
-      <div class="landing-record" style="margin-bottom:32px;color:#a08870">
+      <div class="landing-record" style="margin-bottom:40px">
         Massachusetts · 1841 · Five agents · Thirty rounds
       </div>
       <div class="quote">
@@ -996,12 +1013,13 @@ function renderLanding() {
     </div>
 
     <div class="landing-body">
-      <div class="landing-kicker">
-        A utopian commune that lasted six years.<br>
-        We rebuilt it with AI to watch it fall apart.
+      <div class="landing-main">
+        <div class="landing-kicker">
+          In 1841, a utopian commune lasted six years.<br>
+          Today, we rebuilt it with AI to watch it fall apart.
+        </div>
+        <button class="cta-btn" onclick="plausible('Watch Simulation'); goRunPicker()">Watch the Simulation →</button>
       </div>
-
-      <button class="cta-btn" onclick="plausible('Watch Simulation'); goRunPicker()">Watch the Simulation →</button>
       <div class="landing-footer">
         Built by <a href="https://menggg22.github.io" target="_blank">Menggg</a>
         &nbsp;·&nbsp; <a href="https://github.com/menggg22/utopia" target="_blank">Source on GitHub</a>
