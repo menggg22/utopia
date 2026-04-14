@@ -1,8 +1,8 @@
 # Utopia Lab: Simulate Utopian Communities with AI Agents
 
-**[Watch the replay](https://menggg22.github.io/utopia/replay.html)** — step through 30 rounds of AI agents trying to build utopia.
+**[Watch the replay](https://menggg.me/utopia/replay.html)** — step through 30 rounds of AI agents trying to build utopia.
 
-**[Read the blog post](https://menggg22.github.io/blog/utopia.html)** — the full story of what happened and why.
+**[Read the blog post](https://menggg.me/blog/utopia.html)** — the full story of what happened and why.
 
 What happens when you give AI agents the personas of real historical people, drop them into a shared world with scarce resources, and let them try to build utopia?
 

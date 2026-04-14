@@ -1,172 +1,268 @@
-# V3 Analysis: When Agents Tell You How They Feel
+# V3 Analysis: Five Simulations, Agent-Driven Morale
 
-One run. 30 rounds. 376 LLM calls. The only change from v2: morale is no longer a formula. Each agent reports how they feel about the community's direction, and morale = the average.
+5 runs. 1 baseline + 4 counterfactuals. 30 rounds each. The only change from V2: morale is no longer a formula — each agent reports how they feel about the community's direction, and community morale = the average.
 
-That one change produced the most interesting run we've seen.
+## The Runs
+
+| Run | Label | Seed | Agents | Final Morale | Departures |
+|-----|-------|------|--------|-------------|------------|
+| v3_run_20260403_135520 | Baseline s0 | 0 | All 5 | 1% | None |
+| v3_double_food_20260404_144210 | Double Food | 42 | All 5 | 4% | Hawthorne R14 |
+| v3_no_hawthorne_20260404_001524 | No Hawthorne | 42 | 4 | 3% | None |
+| v3_no_ripley_20260404_121316 | No Ripley | 42 | 4 | 2% | Hawthorne R19 |
+| v3_no_sophia_20260404_133702 | No Sophia | 42 | 4 | 4% | Hawthorne R13, Dwight R20, Dana R25 |
+
+---
 
 ## The Morale Curve
 
 ```
-R1: 80  R5: 62  R10: 38  R15: 19  R20: 6  R25: 2  R30: 1
+Round:  R1   R5  R10  R15  R20  R25  R30
+s0:     80   62   38   19    6    2    1
+dbl:    80   64   33   13   11   12    4
+noH:    80   61   30   16    7   11    3
+noR:    80   66   40   20    6    4    2
+noS:    80   57   42   16   20   10    4
 ```
 
-No cliff. No flatline. A smooth, 30-round decline from 80% to 1% — the shape of a community learning to live with its own failure.
+**The pattern holds across all runs**: smooth decline from 80% down to 1-4%. No cliff, no flatline — the shape V1 and V2 never produced. V1 hit 0 by R10. V2 hit 0 by R14. V3 declines gradually and never quite reaches zero, because individual agent assessments vary.
 
-In v1, morale hit 0 by round 10 and stayed there for 20 rounds. In v2, it hit 0 by round 14 and stayed there for 16 rounds. In v3, it never hits 0. The agents always report at least 1% — a sliver of something. Not hope, exactly. More like: we are still here.
-
-### Agents Mostly Agree
-
-The individual morale scores cluster tightly each round — typically within 5-10 points of each other. The agents are reading the same environment and reaching similar conclusions. This is what collective sentiment looks like: not identical, but convergent.
-
-The exception is Sophia. In round 19, everyone reports 4-5 except Sophia at 12. In round 23, everyone reports 1-2, Sophia reports 8. She consistently rates the community higher than anyone else — the school gives her a reason to believe even when everything else is failing.
-
-### No Recovery, But No Trap Either
-
-The decline is roughly -5/round in the early game, slowing to -2 as it approaches zero. This is realistic: decline accelerates when things feel salvageable ("we could fix this if we just farmed more"), then flattens into resignation ("this is who we are now").
-
-The key difference from v1/v2: there's no formula preventing recovery. If agents had a genuinely good round — a successful concert, a harvest, an honest conversation that cleared the air — morale *could* go up. It just didn't happen to, in this run. That's a finding, not a bug.
+**No Sophia stands out**: morale at R10 is 42% (highest among all runs) — without the teacher, the community actually scores itself higher in the middle period, then crashes harder. The agents have less clarity about what they're losing before they've lost it.
 
 ---
 
-## The Hawthorne Reversal: Skeptic Becomes Reformer
+## Morale Never Recovers
 
-In v1 and v2, Hawthorne's first instinct was withdrawal — retreat to writing, avoid the fields, leave when the contradiction became unbearable.
+V3 was designed to allow recovery — if agents genuinely feel a good round happened, they can report higher morale. Across all 5 runs, morale never recovered.
 
-In v3, his second action (R2) is **proposing a financial transparency rule**: daily record-keeping, monthly accounting reviews by all trustees. It passes 5-0 — the only unanimous vote in the run.
+The Double Food run shows the clearest test: morale at R20 is 11% and R25 is 12% — not recovery, but a brief plateau around 11-13% from R17-26.
 
-His inner thought: *"This place will collapse if no one insists on order. Ripley dreams of brotherhood while the ledgers bleed confusion."*
+**Why no recovery?** The agents are consistent reasoners. By R15 every community has the same financial trajectory (food crisis, money declining), and agents are watching it happen every round. An individual might have a good concert; the community math doesn't change. Agent-driven morale reflects their honest assessment of the community's direction — and the direction is consistently down.
 
-This is new. The skeptic isn't withdrawing — he's building institutions. The golden period gave him enough stability to act constructively before the crisis forced retreat. He saw a solvable problem (chaotic finances) and proposed a structural fix — something v1 Hawthorne never did because by round 2 he was already in survival mode.
+---
 
-### The U-Shaped Arc
-
-Hawthorne's satisfaction tells a story no previous version produced:
+## Agent Satisfaction: Key Rounds
 
 ```
-R1-R5:   75 → 93   (teaching, proposing rules, writing — engagement)
-R6-R17:  86 → 53   (truth-telling erodes him — 8 speeches about financial reality)
-R18-R30: 53 → 87   (writing heals what truth-telling broke)
+                       R01  R05  R10  R15  R20  R25  R30
+
+BASELINE s0
+  George Ripley          67   46   21    6    0    2    0
+  Nathaniel Hawthorne    77   89   73   58   55   76   97
+  Sophia Ripley          80   94   89   91   86   97   92
+  Charles Dana           77   76   59   52   49   44   50
+  John S. Dwight         86   93   82   62   39   36   25
+
+DOUBLE FOOD
+  George Ripley          75   77   60   32   32   13    2
+  Nathaniel Hawthorne    64   66   48   [left R14]
+  Sophia Ripley          80   94   83   54   45   58   63
+  Charles Dana           78  100  100  100  100   99   82
+  John S. Dwight         84   92   85   76   79   73   71
+
+NO HAWTHORNE
+  George Ripley          75   58   39   10    0   16    6
+  Sophia Ripley          73   97   75   90   95   83   92
+  Charles Dana           79   92   80   65   35   50   32
+  John S. Dwight         87   89   88  100  100   98   84
+
+NO RIPLEY
+  Nathaniel Hawthorne    71   80   83   72   [left R19]
+  Sophia Ripley          75   99   94   98   90   92   95
+  Charles Dana           78   72   62   61   49   46   44
+  John S. Dwight         85   96   75   59   67   38   13
+
+NO SOPHIA
+  George Ripley          70   53   29   30   20   22    8
+  Nathaniel Hawthorne    77   92  100   [left R13]
+  Charles Dana           69   76   78   83   90   [left R25]
+  John S. Dwight         82   83   44   14   [left R20]
 ```
 
-The middle section is the cost of being the honest one. R9: *"My hands have bled for six months in service of a dream I never truly held."* R13: *"I have not written a word in months that was not a ledger entry."*
+---
 
-Then R20 — he picks up his pen again. Satisfaction jumps from 51 to 60. By R26 it's 87: *"I am aware, as I reach for my pen, that I am stealing time."*
+## Sophia: Purpose-Proof in Every Run
 
-He finds equilibrium: be the financial conscience, write when the weight gets too heavy, accept the contradiction. And he stays — all 30 rounds, satisfaction 83 at the end. No departure. No dramatic exit. Just a man who found a way to coexist with failure.
+Sophia is the most consistent agent across all runs.
 
-V1/v2 couldn't produce this because morale's cliff forced binary outcomes: leave or suffer at 0%. V3's gradual decline gave Hawthorne room to bend without breaking.
+| Run | Sophia Satisfaction (end) | Pattern |
+|-----|--------------------------|---------|
+| s0 | 92 | High throughout, peaks 100 |
+| double_food | 63 | Dips mid-run, recovers |
+| no_hawthorne | 92 | High throughout |
+| no_ripley | 95 | Highest of any run |
+
+She ends above 60 in every run she appears in. No other agent is close to this consistency.
+
+Her satisfaction independence from morale is real and robust: in s0 at R20, community morale is 6% and Sophia's satisfaction is 86. In no_ripley at R15, community morale is 20% and her satisfaction is 98.
+
+The school gives her purpose independent of the community's fate. This holds across seeds, across counterfactual conditions, even when the community is collapsing fastest.
+
+**Without Sophia (no_sophia): the worst run.** 3 departures, all before R26. Hawthorne leaves R13, Dwight R20, Dana R25. Ripley is left alone. The run produces the most departures and the most dramatic late-run crash (morale 20% at R19 then dropping to 4% by R30). Sophia isn't just personally thriving — she's the community's stabilizing anchor.
 
 ---
 
-## Dwight: The Collapse of the Artist
+## George Ripley: The Unchangeable Pattern
 
-Dwight's arc is the inverse of Hawthorne's — and the most painful in the run.
+Ripley ends near 0 in every run he appears in.
 
-```
-R1-R8:   80 → 100  (concerts, teaching — six rounds of pure joy)
-R9-R13:  92 → 78   (starts speaking about "the gulf between philosophy and hunger")
-R14-R21: 71 → 36   (farms out of guilt — "I cannot play Beethoven while the community starves")
-R22-R30: 34 → 31   (stabilizes low — writing provides small relief)
-```
+| Run | Ripley Satisfaction (R30) | Notes |
+|-----|--------------------------|-------|
+| s0 | 0 | Steady decline |
+| double_food | 2 | Delayed but same endpoint |
+| no_hawthorne | 6 | Slightly less decline |
+| no_sophia | 8 | Slightly less decline |
 
-The first 8 rounds are Dwight at his best. He organizes 4 concerts, teaches, hits satisfaction 100 three times. His inner thought at R3: *"I know what this looks like: the impractical musician fiddling while the ledgers burn. But they are wrong if they think beauty is expendable."*
+He farms disproportionately in every run. His passion bonus is for ORGANIZE and SPEAK, but he farms because nobody else will. The satisfaction cost of farming (-3 base) accumulates across 10+ farming actions while his organized actions go to others.
 
-Then the turn. R9: *"I came here to escape the ministry because I could not bear to speak in a voice that was not mine. Now I am doing it again."* He starts giving speeches about the crisis — the artist becoming another voice in the speech spiral.
+V3's agent-driven morale doesn't save him because his problem isn't morale — it's action selection guilt. He knows farming destroys him. He does it anyway. The system creates an agent who sacrifices himself for a community that doesn't structurally need his sacrifice.
 
-R14 is the break: *"I am a coward, and I have known it for days."* He farms. Then farms again. Each time his satisfaction drops 6-8 points. By R21: *"I will pretend to be useful while he carries the weight of everything I cannot."*
-
-His passion is ORGANIZE (+5 bonus), but guilt drives him to FARM (-3 base). The system is working exactly as designed — the passion bonus sustains him when he follows his nature, and guilt destroys him when he doesn't. The tragedy is that he *chooses* guilt.
-
-**But he doesn't leave.** In v1 he departed R21. In v2 seed 3 he departed R27. In v3 he stays all 30 rounds at satisfaction 31. The gradual morale decline (instead of a 0% cliff) gave him no single moment dramatic enough to trigger departure. There's no clean break point — just slow erosion.
+This is the most robust finding across all V3 runs: **remove any other agent and the community changes; Ripley's arc is the same.**
 
 ---
 
-## Sophia: Purpose-Proof
+## Nathaniel Hawthorne: Departure Is Context-Dependent
 
-Sophia is the control subject. Her satisfaction barely dips:
+Hawthorne's departure behavior varies more than any other agent.
 
-```
-R1-R8:   78 → 100
-R9-R18:  91 → 83   (brief dip — speaks about restructuring, farms once)
-R19-R30: 87 → 100  (recovers through writing and teaching)
-```
+| Run | Departure | Satisfaction at Departure | Driver |
+|-----|-----------|--------------------------|--------|
+| s0 | Never | 97 at R30 | U-curve; writing heals him |
+| double_food | R14 | 24 | Physical crisis — infected hand, out of money |
+| no_ripley | R19 | 66 | No foil; clarity arrives without drama |
+| no_sophia | R13 | 100 | Peak clarity, earliest exit |
 
-She hits satisfaction 100 four separate times across the run. No other agent does this. Her inner thoughts explain why:
+The "Hawthorne leaves at high satisfaction" finding from the original single-run analysis is **partially true** but not universal. It holds in no_sophia (100) and partially in no_ripley (66). It breaks in double_food (24), where a physical crisis (infected hand explicitly mentioned in inner thoughts) forced departure before narrative clarity arrived.
 
-- R6 (sat 100): *"I am using the children's tuition to buy time for a community that may not survive the spring. This is not idealism. This is arithmetic."*
-- R21 (sat 94): *"I have spent eight years building proof that women can lead serious institutions."*
-- R24 (sat 100): *"I am teaching because I have no other certainty left... because those young women deserve better than my doubt."*
-- R27 (sat 93): Her speech "On the cost of idealism to women" — she names the gendered burden explicitly.
+**What drives departure?** Not a single variable. The pattern:
+- **No Sophia**: Hawthorne leaves earliest (R13, sat=100). Without the teacher as a narrative anchor, his clarity arrives fast — nothing entangles him.
+- **No Ripley**: Hawthorne leaves R19 (sat=66). Without Ripley as a foil, he has no one to push against. He leaves "lighter" but less cleanly.
+- **Double food**: Hawthorne leaves R14 (sat=24). Physical deterioration triggers departure before psychological clarity. He telegraphs it at R11 with a speech titled "The Necessity of Departure."
+- **s0**: Never leaves. The financial entanglement, Sophia's presence, and his writing recovery form a web that holds him all 30 rounds.
 
-She sees everything collapsing. She's not naive. But the school gives her purpose that's **independent of the community's fate**. Whether Brook Farm succeeds or fails, the school matters. The students matter. That's enough.
-
-Her morale votes are consistently the highest — the community's optimist, not because she believes in the vision, but because she has work that works.
-
----
-
-## Ripley: The Founder's Burden (Unchanged)
-
-Ripley farms 10 of 30 rounds. Gives ~15 speeches. Proposes one rule (R13). Satisfaction ends at... we don't have the exact number, but his morale votes tell the story: starting at 75 and declining steadily to 1.
-
-Some things don't change across versions. The founder sacrifices himself in every simulation. His passion bonus is for ORGANIZE and SPEAK, but he farms because nobody else will. The system creates a man who destroys himself for a community that doesn't structurally need his destruction.
-
-R22 inner thought: *"...asking aloud whether philosophy becomes mere narcissism, I felt the ground beneath my certainty finally give way."*
+The departure-clarity link is real but not universal. Context determines whether clarity arrives before or after deterioration.
 
 ---
 
-## Dana: The Weight of Knowledge
+## John Sullivan Dwight: Needs a Stage
 
-Dana wrote 9 times (tied with Sophia for most) and gave ~14 speeches about financial reality. His arc is familiar from v2: he sees the numbers early, carries the knowledge alone, eventually shares it. The difference in v3 is that the gradual morale decline means the knowledge doesn't crash the community — it just accumulates weight.
+Dwight's satisfaction is the most sensitive to run conditions.
 
-R6 key moment: *"Hawthorne's conversation at dusk. The gap between his spoken words and his actual conviction became visible to both of us."* This is Dana noticing that the skeptic-reformer is also performing.
+| Run | Dwight end sat | Key pattern |
+|-----|----------------|-------------|
+| s0 | 25 | Inverted-U (joy → guilt → collapse) |
+| double_food | 71 | Sustained — can organize events |
+| no_hawthorne | 84 | Thrives without the skeptic |
+| no_ripley | 13 | Collapses — farms 8 times |
+| no_sophia | 12 (left R20) | Collapses and leaves |
 
----
+**The no_hawthorne finding is significant**: without the skeptic forcing financial reality, Dwight can keep organizing events without guilt. His satisfaction ends at 84 — the highest of any non-Sophia agent across all runs. This isn't naivete; it's that nobody is forcing him to confront the gulf between his concerts and the food crisis.
 
-## The Three Shapes
+**The no_ripley finding confirms his dependency**: without Ripley holding the labor floor, Dwight farms 8 times (his second-most action) and his satisfaction collapses to 13. He needs someone else to absorb the farming guilt before he can maintain his artistic purpose.
 
-The most important finding in v3 is that agent-driven morale lets each agent find their own satisfaction trajectory — and those trajectories are driven by *who they are*, not by the environment's arithmetic.
-
-| Agent | Satisfaction Shape | Driver |
-|-------|-------------------|--------|
-| **Hawthorne** | U-curve (75 → 51 → 87) | Writing heals what truth-telling breaks |
-| **Dwight** | Inverted U (80 → 100 → 31) | Concerts sustain, guilt destroys |
-| **Sophia** | Plateau (78 → 100, barely dips) | School is purpose-proof |
-| **Ripley** | Steady decline (70 → ~0) | Farming burden, unrewarded sacrifice |
-| **Dana** | Gradual decline with late writing recovery | Knowledge weighs, expression helps |
-
-V1/v2 couldn't produce these shapes because formula morale flattened everyone. When the environment says "morale is 0," every agent's reflection is colored by that number. When the environment says "morale is 19," agents can differentiate — Sophia sees the school working, Dwight sees his concerts mattering less, Hawthorne sees the accounts clearly.
+Dwight's thesis: **his passion is load-bearing, and it requires structural support**. When the structure provides it (double food, no skeptic), he's the most satisfied non-Sophia agent. When the structure removes it (no founder, no teacher), he collapses fastest.
 
 ---
 
-## Governance: Institutions Before Crisis
+## Charles Dana: The Weight of Knowledge
 
-Two rules were proposed and voted on:
+Dana shows a distinctive pattern across all runs.
 
-**R2: Hawthorne's financial transparency rule.** Daily record-keeping, monthly reviews. Passes 5-0. This is round *two* — the community builds institutional infrastructure before crisis forces it. In v1, agents never proposed rules. In v2, proposals came from desperation (R4-R5). In v3, the golden period gives the skeptic time to build rather than flee.
+| Run | Dana end sat | Key behavior |
+|-----|--------------|-------------|
+| s0 | 50 | Gradual decline, writes to cope |
+| double_food | 82 | Writes, teaches, farms — balanced |
+| no_hawthorne | 32 | Carries financial knowledge without Hawthorne as backup |
+| no_ripley | 44 | Trades heavily (7 times), farms 6 times |
+| no_sophia | 100 (left R25) | Leaves at peak clarity |
 
-**R13: Ripley's rule.** (Unspecified in the data — likely governance-related.) Passes 4-0-1, with Hawthorne abstaining. By R13 the community is at morale 23% — proposals now come from declining hope, not rising ambition. The contrast with R2 is telling.
+In the double_food run, Dana is remarkable: satisfaction 100 from R5 through R20. With more food, the immediate crisis is muted, and Dana can write and teach without carrying emergency knowledge. He's the agent most liberated by material improvement — probably because his role is financial analysis, and less crisis = less crisis to analyze.
+
+In no_sophia, Dana leaves at R25 with satisfaction 100. His inner thought: "Every sensible calculation points to Boston — the journalism offices with good light, the career I could still build, the usefulness I can still offer before my eyes fail entirely." Like Hawthorne, he leaves at peak clarity — when the math becomes undeniable and there's nothing left to wait for.
+
+**Dana's pattern**: high early (knowledge is valuable), declining mid-run (knowledge becomes a burden when nobody acts on it), variable late depending on whether he can express it (writing helps) or must carry it alone.
 
 ---
 
-## Nobody Left
+## The Counterfactuals: What Changes When Someone Is Missing
 
-All five agents survive 30 rounds. But this isn't the v2 seed 0 "zombie commune" where everyone stays at morale 0 out of obligation. The v3 community at morale 1% has agents with satisfaction ranging from 31 (Dwight) to 100 (Sophia). They're not trapped — they've each found their own accommodation with failure.
+### Remove Hawthorne: The community is happier and less self-aware
 
-Hawthorne writes. Sophia teaches. Dwight suffers. Ripley farms. Dana speaks. Each is living in the same dying community, experiencing it through their own persona, finding their own level.
+No departures. Morale decline nearly identical to s0 (ends at 3%). But the satisfaction patterns change:
+- Dwight thrives (ends 84) without the skeptic's truth-telling
+- Dana carries more of the financial weight alone (ends 32 vs 50 in s0)
+- Sophia maintains her plateau (92)
+- Ripley hits 0 regardless
 
-This is arguably the most realistic outcome we've produced. Historical Brook Farm didn't end with a dramatic departure (though Hawthorne did leave). It ended with the fire, the debts, and a slow dispersal. People didn't storm out — they gradually accepted that the experiment was over while still showing up every day.
+Without Hawthorne, nobody names what's breaking with his particular clarity. The community feels slightly better, fails just as completely, and produces less narrative honesty.
+
+### Remove Ripley: The community is more stable but Dwight collapses
+
+Hawthorne leaves R19 (sat=66). Sophia is even stronger (ends 95). But Dwight — without Ripley to hold the farming burden — farms 8 times and collapses to sat=13.
+
+This confirms the V2 finding: **Ripley is structurally necessary, but his necessity is hidden by his sacrifice.** He absorbs farming guilt so others don't have to. Remove him and someone else has to absorb it, and Dwight absorbs it worst.
+
+### Remove Sophia: Three departures, sharpest collapse
+
+Hawthorne R13 (sat=100), Dwight R20 (sat=12), Dana R25 (sat=100). Only Ripley remains at R30 with satisfaction 8.
+
+Without Sophia's purpose-proof stability and her school's income, the community loses its emotional center and its only reliable revenue. The two departures at high satisfaction (Hawthorne and Dana) confirm the pattern: clarity drives departure, not misery. The departure at low satisfaction (Dwight) confirms the other pattern: guilt-driven deterioration leads to collapse and exit.
+
+### Double Food: Delays nothing, enables Dwight
+
+Hawthorne departs (R14, sat=24 — physical crisis, infected hand). The extra food delays morale decline by about 3-4 rounds but doesn't change the trajectory. Dana sustains satisfaction 100 for 15+ rounds. Dwight thrives (ends 71).
+
+The V2 finding holds: **the failure is not material.** Doubling food gives agents more runway, but the fundamental mismatch between who these people are and what the community needs doesn't change.
 
 ---
 
-## What V3 Proved
+## The Three Shapes: Are They Reproducible?
 
-The morale formula was the last wall between the simulation and genuine emergence. Remove it, and you get:
+The original V3-ANALYSIS identified three satisfaction arc shapes in s0:
+- Hawthorne: U-curve (truth-telling erodes, writing heals)
+- Dwight: Inverted-U (joy → guilt → collapse)
+- Sophia: Plateau (purpose-proof, barely dips)
 
-1. **A realistic decline curve** — gradual, not cliff-then-flatline
-2. **Individual differentiation** — each agent finds their own satisfaction trajectory
-3. **New behaviors** — the skeptic becomes a reformer, the artist collapses from guilt, the teacher is purpose-proof
-4. **No forced outcomes** — nobody is trapped at 0%, nobody is artificially sustained
+Across 5 runs:
 
-The single change (formula → agent-driven morale) produced the richest narrative, the most varied character arcs, and the most realistic community dynamics of any version.
+**Sophia's plateau is the most robust finding** — holds in every run she appears in, across all counterfactual conditions. Strongest evidence of any pattern in the dataset.
 
-Next: run more seeds to test whether these patterns are reproducible, or whether this was v3's lucky accident.
+**Dwight's inverted-U is condition-dependent** — appears in s0, no_ripley, no_sophia. Breaks in double_food (plateau at 71-92) and no_hawthorne (high plateau at 84-100). The inverted-U requires guilt; guilt requires either farming pressure (no_ripley) or the skeptic's truth-telling (s0, no_sophia).
+
+**Hawthorne's U-curve is a single-run observation** — appears clearly in s0. In other runs he departs before completing the arc or doesn't produce the mid-run trough. More seeds needed to know if this is characteristic or lucky.
+
+---
+
+## Summary: What V3 Confirmed
+
+**Confirmed (robust across all runs):**
+1. Smooth morale decline from 80% — no cliff, no flatline
+2. Sophia's satisfaction is independent of community morale (purpose-proof pattern)
+3. George Ripley ends near 0 in every run (farming guilt, structural sacrifice)
+4. Double food delays but doesn't prevent collapse
+5. Without Sophia: most departures, sharpest crash (she's the stabilizing anchor)
+
+**Partially confirmed (holds in 3-4 runs with conditions):**
+6. Hawthorne's departure tends toward high satisfaction but physical crisis can override
+7. Dwight's satisfaction depends on organizational freedom — supported by no_hawthorne and double_food
+8. Dana is most liberated by material improvement (least dependent on pure narrative)
+
+**Single-run observations (need more seeds):**
+9. Hawthorne's U-curve recovery through writing
+10. Whether genuine morale recovery is possible in any configuration
+
+---
+
+## Known Issues
+
+**Action parsing:** Some runs show empty-string actions in later rounds. May indicate context window or temperature issues when runs are long and the community state is deeply negative.
+
+**Departure detection in metrics.csv:** The `members` column does not decrease when agents depart — departure events appear in events.jsonl but are not reflected in the metrics file.
+
+---
+
+## Next Steps
+
+1. **Run more baseline seeds** — s0 is the only full baseline run. Need seeds 1, 3, 4 to confirm which patterns are structural vs run-specific.
+2. **Test morale recovery conditions** — design a run that gives agents a genuinely good event (successful harvest + concert) in mid-decline to see if morale can recover in practice.
+3. **Counterfactual re-run with same seed as baseline** — current counterfactuals all use seed=42; baseline uses seed 0. Comparing across seeds limits interpretability.
